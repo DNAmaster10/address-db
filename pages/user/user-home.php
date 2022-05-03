@@ -10,6 +10,11 @@
     </head>
     <body>
         <h1>Welcome back, <?php echo $_SESSION["username"]; ?>.</h1>
-        <form action="/pages/register
+        <form action="/pages/register/register-building.php">
+            <input type="submit" value="Register building">
+        </form>
+        <form action="/pages/register/district-home.php">
+            <input type="submit" value="Districts">
+        </form>
     </body>
 </html>
