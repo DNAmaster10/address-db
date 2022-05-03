@@ -16,7 +16,31 @@
 
     $stmt = $conn->prepare("SELECT password FROM users WHERE username=?");
     $stmt->bind_param("s", $username);
-    $stmt->execute()
+    $stmt->execute();
     $stmt->bind_result($result);
-
+    $stmt->fetch();
+    $stmt->close();
+    if ($result == $password) {
+        $_SESSION["username"] = $username;
+        $_SESSION["password"] = $password;
+        header ("Location: /pages/user/user-home.php");
+        die();
+    }
+    else {
+        $_SESSION["login_error"] = "Username or password invalid";
+        header ("Location: /pages/login/login.php");
+        die();
+    }
 ?>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Error</title>
+    </head>
+    <body>
+        <p>If you are seeing this, an unknown error has occured>
+        <form action="index.php">
+            <input type="submit" value="Home">
+        </form>
+    </body>
+</html>
