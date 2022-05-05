@@ -14,7 +14,7 @@
     </head>
     <body>
         <p>District name</p>
-        <form action="register-district_submit.php" method="POST">
+        <form action="/pages/register/register-district_submit.php" method="POST">
             <input type="text" placeholder="District name" name="district_name">
             <p>Postcode character (leave empty to autogenerate this)</p>
             <input type="text" name="code" maxlength="1" placeholder="e.g: A, B, 1, 2">
