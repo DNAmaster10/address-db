@@ -19,5 +19,8 @@
         $stmt->bind_param("s", $code);
         $stmt->execute();
         $stmt->bind_result($result);
+        $stmt->fetch();
+        $stmt->close();
+        error_log($result);
     }
 ?>
