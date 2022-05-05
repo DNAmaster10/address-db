@@ -12,6 +12,18 @@
         header ("Location: /pages/register/register-district.php");
         die();
     }
+    $district_name = $conn->real_escape_string($_POST["district_name"]);
+    $stmt = $conn>prepare("SELECT postcodeChar FROM districts WHERE district_name=?");
+    $stmt->bind_param("s", $district_name);
+    $stmt->execute();
+    $stmt->bind_result($result);
+    $stmt->fetch();
+    $stmt->close;
+    if (strlen($result) > 0) {
+        $_SESSION["district_error"] = "A district with that name already exists";
+        header ("Location: /pages/register/register-district.php");
+        die();
+    }
     if (isset($_POST["code"])) {
         if (strlen($_POST["code"]) > 1) {
             $_SESSION["district_error"] = "Code too long. Maximim one character allowed.";
@@ -21,7 +33,6 @@
         $code = $conn->real_escape_string($_POST["code"]);
         $code = strtoupper($code);
         $colour_code = $conn->real_escape_string($_POST["colour_code"]);
-        $district_name = $conn->real_escape_string($_POST["district_name"]);
         $stmt = $conn->prepare("SELECT postcodeChar FROM districts WHERE postcodeChar = ?");
         $stmt->bind_param("s", $code);
         $stmt->execute();
