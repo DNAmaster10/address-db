@@ -17,7 +17,7 @@
     $stmt->bind_result($result);
     $stmt->fetch();
     $stmt->close();
-    if ($result == $password) {
+    if ($result == $_SESSION["password"]) {
         $logged_in = true;
     }
     else {
