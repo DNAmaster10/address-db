@@ -15,9 +15,10 @@
     <body>
         <p>District name</p>
         <form action="/pages/register/register-district_submit.php" method="POST">
-            <input type="text" placeholder="District name" name="district_name">
+            <input type="text" placeholder="District name" name="district_name" required>
             <p>Postcode character (leave empty to autogenerate this)</p>
             <input type="text" name="code" maxlength="1" placeholder="e.g: A, B, 1, 2">
+            <input type="color" name="colour_code"  value="#0000ff">
             <input type="submit" value="Create district">
         </form>
         <p id="error_message"><?php if (isset($error_message)) {echo $error_message;} ?></p>
