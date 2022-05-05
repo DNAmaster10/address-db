@@ -26,4 +26,5 @@
         header ("Location: /pages/error/generic-error.php");
         die();
     }
+    unset($result);
 ?>
