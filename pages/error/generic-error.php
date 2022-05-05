@@ -14,7 +14,7 @@
     </head>
     <body>
         <p><?php echo $error_message; ?></p>
-        <form action="index.php">
+        <form action="/index.php">
             <input type="submit" value="Home">
         </form>
     </body>
