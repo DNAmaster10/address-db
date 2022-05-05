@@ -9,7 +9,7 @@
         <title>Districts</title>
     </head>
     <body>
-        <form action="/pages/register/register-district">
+        <form action="/pages/register/register-district.php">
             <input type="submit" value="Create district">
         </form>
 
