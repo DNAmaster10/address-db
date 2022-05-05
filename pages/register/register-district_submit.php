@@ -15,7 +15,7 @@
         }
         $code = $conn->real_escape_string($_POST["code"]);
         $code = strtoupper($code);
-        $stmt = $conn->prepare("SELECT postcodeChar FROM districts WHERE postcodeChar = ?";
+        $stmt = $conn->prepare("SELECT postcodeChar FROM districts WHERE postcodeChar = ?");
         $stmt->bind_param("s", $code);
         $stmt->execute();
         $stmt->bind_result($result);
