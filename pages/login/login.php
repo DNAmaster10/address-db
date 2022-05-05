@@ -2,7 +2,7 @@
     session_start();
     if (isset($_SESSION["login_error"])) {
         $error_message = $_SESSION["login_error"];
-        unset ($_SESSION["login_error"];
+        unset ($_SESSION["login_error"]);
     }
 ?>
 <!DOCTYPE html>
