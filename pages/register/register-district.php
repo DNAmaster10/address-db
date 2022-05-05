@@ -4,7 +4,7 @@
     include $_SERVER["DOCUMENT_ROOT"]."/includes/check_login.php";
     if (isset($_SESSION["district_error"])) {
         $error_message = $_SESSION["district_error"];
-        unset($_SESSION["district_error"];
+        unset($_SESSION["district_error"]);
     }
 ?>
 <!DOCTYPE html>
