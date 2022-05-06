@@ -54,4 +54,61 @@
             die();
         }
     }
+    else {
+        $colour_code = $conn->real_escape_string($_POST["colour_code"]);
+        $current_letter = "A";
+        while ($current_letter != "[" && $empty_found == false) {
+            $stmt = $conn->prepare("SELECT district_name FROM districts WHERE postcodeChar=?");
+            $stmt->bind_param("s",$current_letter);
+            $stmt->execute();
+            $stmt->bind_result($result);
+            $stmt->fetch();
+            $stmt->close();
+            if (strlen($result) < 1) {
+                unset ($result);
+                $empty_found = true;
+                $stmt = $conn->prepare("INSERT INTO districts (district_name,district_colour,postcodeChar) VALUES (?,?,$current_letter)");
+                $stmt->bind_param("ss", $district_name,$colour_code);
+                $stmt->execute();
+                header ("Location: /pages/register/district-home.php");
+                die();
+            }
+            else {
+                $current_letter = ++$current_letter;
+            }
+        }
+        $current_latter = "0";
+        while ($current_letter != ":") {
+            $stmt = $conn->prepare("SELECT district_name FROM districts WHERE postcodeChar=?");
+            $stmt->bind_param("s",$current_letter);
+            $stmt->execute();
+            $stmt->bind_result($result);
+            $stmt->fetch();
+            $stmt->close();
+            if (strlen($result) < 1) {
+                unset ($result);
+                $empty_found = true;
+                $stmt = $conn->prepare("INSERT INTO districts (district_name,district_colour,postcodeChar) VALUES (?,?,$current_letter)");
+                $stmt->bind_param("ss", $district_name,$colour_code);
+                $stmt->execute();
+                header ("Location: /pages/register/district-home.php");
+                die();
+            }
+            else {
+                $current_letter = ++$current_letter;
+            }
+        }
+        $_SESSION["district_error"] = "The maximim ammount of districts for this city has been reached";
+        header ("Location: /pages/register/register-district");
+        die();
+    }
 ?>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>error</title>
+    </head>
+    <body>
+        <p>If you are seeing this page, a serious error has occured</p>
+    </body>
+</html>
