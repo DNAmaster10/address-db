@@ -24,4 +24,7 @@
         <title><?php echo $search_term; ?></title>
     </head>
     <body>
-        <h1><?php echo $result_ammount; ?> results
+        <h1><?php echo $result_ammount; ?> results found</h1>
+        
+    </body>
+</html>
