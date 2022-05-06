@@ -18,7 +18,7 @@
     $stmt->execute();
     $stmt->bind_result($result);
     $stmt->fetch();
-    $stmt->close;
+    $stmt->close();
     if (strlen($result) > 0) {
         $_SESSION["district_error"] = "A district with that name already exists";
         header ("Location: /pages/register/register-district.php");
