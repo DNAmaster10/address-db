@@ -13,7 +13,7 @@
         die();
     }
     $district_name = $conn->real_escape_string($_POST["district_name"]);
-    $stmt = $conn>prepare("SELECT postcodeChar FROM districts WHERE district_name=?");
+    $stmt = $conn->prepare("SELECT postcodeChar FROM districts WHERE district_name=?");
     $stmt->bind_param("s", $district_name);
     $stmt->execute();
     $stmt->bind_result($result);
