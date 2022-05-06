@@ -75,6 +75,7 @@
             }
             else {
                 $current_letter = ++$current_letter;
+                error_log($current_letter);
             }
         }
         $current_latter = "0";
