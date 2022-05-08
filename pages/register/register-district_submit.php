@@ -67,7 +67,7 @@
             $stmt->fetch();
             $stmt->close();
             error_log("Sql result: ".$result);
-            if (strlen(strval($result)) < 1) {
+            if (!isset($result)) {
                 error_log("Adding to db, code: " + $current_letter);
                 unset ($result);
                 $empty_found = true;
@@ -80,6 +80,7 @@
             else {
                 $loop_count++;
                 $current_letter = ++$current_letter;
+                unset($result;);
             }
         }
         $loop_count = 0;
@@ -91,7 +92,7 @@
             $stmt->bind_result($result);
             $stmt->fetch();
             $stmt->close();
-            if (strlen(strval($result)) < 1) {
+            if (!isset($result)) {
                 unset ($result);
                 $empty_found = true;
                 $stmt = $conn->prepare("INSERT INTO districts (district_name,district_colour,postcodeChar) VALUES (?,?,$current_letter)");
@@ -103,6 +104,7 @@
             else {
                 $current_letter = ++$current_letter;
                 $loop_count++;
+                unset($result);
             }
         }
         $_SESSION["district_error"] = "The maximim ammount of districts for this city has been reached";
