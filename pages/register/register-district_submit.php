@@ -66,6 +66,7 @@
             $stmt->bind_result($result);
             $stmt->fetch();
             $stmt->close();
+            error_log("Sql result: ".$result);
             if (strlen($result) < 1) {
                 unset ($result);
                 $empty_found = true;
@@ -78,7 +79,6 @@
             else {
                 $loop_count++;
                 $current_letter = ++$current_letter;
-                error_log($current_letter);
             }
         }
         $loop_count = 0;
