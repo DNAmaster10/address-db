@@ -58,6 +58,7 @@
         $colour_code = $conn->real_escape_string($_POST["colour_code"]);
         $current_letter = "A";
         $loop_count = 0;
+        $emty_count = false;
         while ($loop_count != 27 && $empty_found == false) {
             $stmt = $conn->prepare("SELECT district_name FROM districts WHERE postcodeChar=?");
             $stmt->bind_param("s",$current_letter);
@@ -76,6 +77,7 @@
             }
             else {
                 $loop_count++;
+                $current_letter = ++$current_letter;
                 error_log($current_letter);
             }
         }
@@ -98,6 +100,7 @@
                 die();
             }
             else {
+                $current_letter = ++$current_letter;
                 $loop_count++;
             }
         }
