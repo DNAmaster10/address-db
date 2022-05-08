@@ -57,9 +57,9 @@
     else {
         $colour_code = $conn->real_escape_string($_POST["colour_code"]);
         $current_letter = "A";
-        $loop_count = 0;
+        $loop_count = 1;
         $empty_found = false;
-        while ($loop_count != 27 && $empty_found == false) {
+        while ($loop_count != 26 && $empty_found == false) {
             $stmt = $conn->prepare("SELECT district_name FROM districts WHERE postcodeChar=?");
             $stmt->bind_param("s",$current_letter);
             $stmt->execute();
@@ -71,8 +71,8 @@
                 error_log("Adding to db, code: ".$current_letter);
                 unset ($result);
                 $empty_found = true;
-                $stmt = $conn->prepare("INSERT INTO districts (district_name,district_colour,postcodeChar) VALUES (?,?,$current_letter)");
-                $stmt->bind_param("ss", $district_name,$colour_code);
+                $stmt = $conn->prepare("INSERT INTO districts (district_name,district_colour,postcodeChar) VALUES (?,?,?)");
+                $stmt->bind_param("sss", $district_name,$colour_code,$current_letter);
                 $stmt->execute();
                 header ("Location: /pages/register/district-home.php");
                 die();
@@ -95,8 +95,8 @@
             if (!$result) {
                 unset ($result);
                 $empty_found = true;
-                $stmt = $conn->prepare("INSERT INTO districts (district_name,district_colour,postcodeChar) VALUES (?,?,$current_letter)");
-                $stmt->bind_param("ss", $district_name,$colour_code);
+                $stmt = $conn->prepare("INSERT INTO districts (district_name,district_colour,postcodeChar) VALUES (?,?,?)");
+                $stmt->bind_param("sss", $district_name,$colour_code,$current_letter);
                 $stmt->execute();
                 header ("Location: /pages/register/district-home.php");
                 die();
