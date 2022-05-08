@@ -80,7 +80,7 @@
             else {
                 $loop_count++;
                 $current_letter = ++$current_letter;
-                unset($result;);
+                unset($result);
             }
         }
         $loop_count = 0;
