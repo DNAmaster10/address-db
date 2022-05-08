@@ -96,7 +96,7 @@
                 unset ($result);
                 $empty_found = true;
                 $stmt = $conn->prepare("INSERT INTO districts (district_name,district_colour,postcodeChar) VALUES (?,?,?)");
-                $stmt->bind_param("sss", $district_name,$colour_code,$current_letter);
+                $stmt->bind_param("sss",$district_name,$colour_code,$current_letter);
                 $stmt->execute();
                 header ("Location: /pages/register/district-home.php");
                 die();
