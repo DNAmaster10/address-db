@@ -81,7 +81,7 @@
         }
         $loop_count = 0;
         $current_letter = "0";
-        while ($loop_count != 10; && $empty_found == false) {
+        while ($loop_count != 10 && $empty_found == false) {
             $stmt = $conn->prepare("SELECT district_name FROM districts WHERE postcodeChar=?");
             $stmt->bind_param("s",$current_letter);
             $stmt->execute();
