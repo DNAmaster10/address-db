@@ -81,7 +81,7 @@
         }
         $placeholder_letter = "9";
         $current_letter = "0";
-        while ($current_letter != ++$placeholder_letter $$ $empty_found == false) {
+        while ($current_letter != ++$placeholder_letter && $empty_found == false) {
             $stmt = $conn->prepare("SELECT district_name FROM districts WHERE postcodeChar=?");
             $stmt->bind_param("s",$current_letter);
             $stmt->execute();
