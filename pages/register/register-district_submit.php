@@ -24,7 +24,7 @@
         header ("Location: /pages/register/register-district.php");
         die();
     }
-    if (isset($_POST["code"])) {
+    if (strlen($_POST["code"]) > 0) {
         if (strlen($_POST["code"]) > 1) {
             $_SESSION["district_error"] = "Code too long. Maximim one character allowed.";
             header ("Location: /pages/register/register-district.php");
