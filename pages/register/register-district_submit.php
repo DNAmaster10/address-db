@@ -102,7 +102,7 @@
             }
         }
         $_SESSION["district_error"] = "The maximim ammount of districts for this city has been reached";
-        header ("Location: /pages/register/register-district");
+        header ("Location: /pages/register/register-district.php");
         die();
     }
 ?>
