@@ -67,7 +67,7 @@
             $stmt->fetch();
             $stmt->close();
             error_log("Sql result: ".$result);
-            if ($result == ",") {
+            if (strval($result) == ",") {
                 error_log("Adding to db, code: " + $current_letter);
                 unset ($result);
                 $empty_found = true;
@@ -92,7 +92,7 @@
             $stmt->bind_result($result);
             $stmt->fetch();
             $stmt->close();
-            if ($result == ",") {
+            if (strval($result) == ",") {
                 unset ($result);
                 $empty_found = true;
                 $stmt = $conn->prepare("INSERT INTO districts (district_name,district_colour,postcodeChar) VALUES (?,?,$current_letter)");
