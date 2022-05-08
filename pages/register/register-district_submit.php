@@ -68,7 +68,7 @@
             $stmt->close();
             error_log("Sql result: ".$result);
             if (!$result) {
-                error_log("Adding to db, code: " + $current_letter);
+                error_log("Adding to db, code: ".$current_letter);
                 unset ($result);
                 $empty_found = true;
                 $stmt = $conn->prepare("INSERT INTO districts (district_name,district_colour,postcodeChar) VALUES (?,?,$current_letter)");
