@@ -57,8 +57,8 @@
     else {
         $colour_code = $conn->real_escape_string($_POST["colour_code"]);
         $current_letter = "A";
-        $reference_letter = "Z";
-        while ($current_letter != ++$reference_letter && $empty_found == false) {
+        $loop_count = 0;
+        while ($loop_count != 27 && $empty_found == false) {
             $stmt = $conn->prepare("SELECT district_name FROM districts WHERE postcodeChar=?");
             $stmt->bind_param("s",$current_letter);
             $stmt->execute();
@@ -75,13 +75,13 @@
                 die();
             }
             else {
-                $current_letter = ++$current_letter;
+                $loop_count++;
                 error_log($current_letter);
             }
         }
-        $placeholder_letter = "9";
+        $loop_count = 0;
         $current_letter = "0";
-        while ($current_letter != ++$placeholder_letter && $empty_found == false) {
+        while ($loop_count != 10; && $empty_found == false) {
             $stmt = $conn->prepare("SELECT district_name FROM districts WHERE postcodeChar=?");
             $stmt->bind_param("s",$current_letter);
             $stmt->execute();
@@ -98,7 +98,7 @@
                 die();
             }
             else {
-                $current_letter = ++$current_letter;
+                $loop_count++;
             }
         }
         $_SESSION["district_error"] = "The maximim ammount of districts for this city has been reached";
