@@ -57,7 +57,7 @@
     else {
         $colour_code = $conn->real_escape_string($_POST["colour_code"]);
         $current_letter = "A";
-        $reference_letter = "Z"
+        $reference_letter = "Z";
         while ($current_letter != ++$reference_letter && $empty_found == false) {
             $stmt = $conn->prepare("SELECT district_name FROM districts WHERE postcodeChar=?");
             $stmt->bind_param("s",$current_letter);
