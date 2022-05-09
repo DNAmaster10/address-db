@@ -14,4 +14,17 @@
     </head>
     <body>
         <form action="/pages/register/register-street_unit_submit.php">
-            <input type="text" placeholder="Unit name" name="street_unit"
+            <p>Street unit name: </p>
+            <input type="text" placeholder="Unit name" name="street_unit" required>
+            <p>Postcode char (leave blank to autogenerate)</p> 
+            <input type="text" placeholder="Unit code" name="unit_code">
+            <select name="district">
+                <?php
+                    $stmt = $conn->prepare("SELECT district_name FROM districts");
+                    $stmt->execute();
+                    $result = $stmt->get_result();
+                    while ($row = $result->fetch_assoc()) {
+                        
+                    }
+                ?>
+            </select>
