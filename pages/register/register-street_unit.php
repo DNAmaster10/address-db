@@ -20,11 +20,14 @@
             <input type="text" placeholder="Unit code" name="unit_code">
             <select name="district">
                 <?php
-                    $stmt = $conn->prepare("SELECT district_name FROM districts");
+                    $stmt = $conn->prepare("SELECT district_id,district_name FROM districts");
                     $stmt->execute();
                     $result = $stmt->get_result();
                     while ($row = $result->fetch_assoc()) {
-                        
+                        echo "<option value='".$row["district_id"]."'>".$row["district_name"]."</option>";
                     }
                 ?>
             </select>
+        </form>
+    </body>
+</html>
