@@ -15,6 +15,11 @@
                 <input type="submit" value="Register building">
             </form>
         </div>
+        <div id="street_container">
+            <form action="/pages/register/register-street_unit.php">
+                <input type="submit" value="Register street unit">
+            </form>
+        </div>
         <div id="district_container">
             <form action="/pages/register/district-home.php">
                 <input type="submit" value="Districts">
