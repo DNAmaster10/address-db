@@ -12,6 +12,18 @@
         header ("Location: /pages/register/register-district.php");
         die();
     }
+    if (!isset($_POST["points"]) or strlen($_POST["points"]) < 16) {
+        $_SESSION["district_error"] = "Please enter at least three points for the district border";
+        header ("Location: /pages/register/register-district.php");
+        die();
+    }
+    $points = $conn->real_escape_string($_POST["points"]);
+    if ((substr_count($points, "-")) < 2) {
+        $_SESSION["district_error"] = "Please enter at least three points for the district border";
+        header ("Location: /pages/register/register-district.php");
+        die();
+    }
+
     $district_name = $conn->real_escape_string($_POST["district_name"]);
     $stmt = $conn->prepare("SELECT postcodeChar FROM districts WHERE district_name=?");
     $stmt->bind_param("s", $district_name);
