@@ -86,7 +86,7 @@
                 unset ($result);
                 $empty_found = true;
                 $stmt = $conn->prepare("INSERT INTO districts (district_name,district_colour,postcodeChar,points) VALUES (?,?,?,?)");
-                $stmt->bind_param("sss",$district_name,$colour_code,$current_letter,$points);
+                $stmt->bind_param("ssss",$district_name,$colour_code,$current_letter,$points);
                 $stmt->execute();
                 header ("Location: /pages/register/district-home.php");
                 die();
@@ -110,7 +110,7 @@
                 unset ($result);
                 $empty_found = true;
                 $stmt = $conn->prepare("INSERT INTO districts (district_name,district_colour,postcodeChar,points) VALUES (?,?,?,?)");
-                $stmt->bind_param("sss",$district_name,$colour_code,$current_letter,$points);
+                $stmt->bind_param("ssss",$district_name,$colour_code,$current_letter,$points);
                 $stmt->execute();
                 header ("Location: /pages/register/district-home.php");
                 die();
