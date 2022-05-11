@@ -23,6 +23,8 @@
         header ("Location: /pages/register/register-district.php");
         die();
     }
+    $points = str_replace("(", "", $points);
+    $points = str_replace(")", "", $points);
 
     $district_name = $conn->real_escape_string($_POST["district_name"]);
     $stmt = $conn->prepare("SELECT postcodeChar FROM districts WHERE district_name=?");
@@ -83,8 +85,8 @@
                 error_log("Adding to db, code: ".$current_letter);
                 unset ($result);
                 $empty_found = true;
-                $stmt = $conn->prepare("INSERT INTO districts (district_name,district_colour,postcodeChar) VALUES (?,?,?)");
-                $stmt->bind_param("sss",$district_name,$colour_code,$current_letter);
+                $stmt = $conn->prepare("INSERT INTO districts (district_name,district_colour,postcodeChar,points) VALUES (?,?,?,?)");
+                $stmt->bind_param("sss",$district_name,$colour_code,$current_letter,$points);
                 $stmt->execute();
                 header ("Location: /pages/register/district-home.php");
                 die();
@@ -107,8 +109,8 @@
             if (!$result) {
                 unset ($result);
                 $empty_found = true;
-                $stmt = $conn->prepare("INSERT INTO districts (district_name,district_colour,postcodeChar) VALUES (?,?,?)");
-                $stmt->bind_param("sss",$district_name,$colour_code,$current_letter);
+                $stmt = $conn->prepare("INSERT INTO districts (district_name,district_colour,postcodeChar,points) VALUES (?,?,?,?)");
+                $stmt->bind_param("sss",$district_name,$colour_code,$current_letter,$points);
                 $stmt->execute();
                 header ("Location: /pages/register/district-home.php");
                 die();
