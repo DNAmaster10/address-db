@@ -1,6 +1,7 @@
 <?php
-    //the variables that needed to be passed: $coord = ("12,34")
-    $stmt = $conn->prepare("SELECT district_id,postcodeChar FROM districts")
+    //the variables that needed to be passed: $coord = ("12,34"). Returned variable $district_location = "district"
+    $probability_district_array = array();
+    $stmt = $conn->prepare("SELECT district_name,postcodeChar,points FROM districts")
     $stmt->execute();
     $result = $stmt->get_result();
     while ($row = $result->fetch_assoc()) {
@@ -69,8 +70,60 @@
             array_push($line_coords, $polygon[$i]);
             $real_current_coords = [floatval($current_coord[0]), floatval($current_coord[1])];
             for ($j=0; $j < $loop_ammount - 1; $j++) {
-
+                $real_current_coords[0] = $real_current_coords[0] + $delta_y;
+                $real_current_coords[1] = $real_current_coords[1] + $delta_y;
+                array_push ($line_coords, strval(round($real_current_coords[0])).",".strval(round($real_current_coords[1])));
+            }
+            $temp = explode($coord[0],",");
+            $coord_current = [intval($temp[0]),intval($temp[1])];
+            for ($h=0; $h < $width + 2) {
+                $temps = (strval($coord_current[0]).",".strval($coord_current[1]))
+                if (in_array($temps, $line_coords)) {
+                    $intersections_x++;
+                    break;
+                }
+                $coord_current[0] = $coord_current[0] + 1;
+            }
+            $coord_current = [intval($temp[0]),intval($temp[1])];
+            for ($j=0; $j < $height + 2; $j++) {
+                $temps = (strval($coord_current[0] + "," strval($coord_current[1]));
+                if (in_array($temps, $line_coords)) {
+                    $intersections_y++;
+                    break;
+                }
+                $coord_current[1] = $coord_current[1] + 1
+            }
+            $coord_current = [intval($temp[0]),intval($temp[1])];
+            for ($k=0; $k < $height + 2; $k++) {
+                $temps = (strval($coord_current[0] + "," strval($coord_current[1]));
+                if (in_array($temps, $line_coords)) {
+                    $intersections_y_down++;
+                    break;
+                }
+                $coord_current[1] = $coord_current[1] + 1;
+            }
+            $coord_current = [intval($temp[0]),intval($temp[1])];
+            for ($l=0; $l < $width; $l++) {
+                $temps = (strval($coord_current[0] + "," strval($coord_current[1]));
+                if (in_array($temps, $line_coords)) {
+                    $intersections_x_left++;
+                    break;
+                }
+                $coord_current[0] = $coord_current[0] + 1;
             }
         }
+        if (($intersections_x % 2) != 0) {
+            $probability++;
+        }
+        if (($intersections_y % 2) != 0) {
+            $probability++;
+        }
+        if (($intersections_x_left % 2) != 0) {
+            $probability++;
+        }
+        if (($intersecions_y_down % 2) != 0) {
+            $probability++;
+        }
+        array_push($probability_district_array, $row["district_name"].strval($probability))
     }
 ?>
