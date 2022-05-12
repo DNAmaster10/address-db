@@ -43,7 +43,34 @@
             }
             $total_deltax = intval(intval($next_coord[0]) - intval($current_coord[0]));
             $total_deltay = intval(intval($next_coord[1]) - intval($current_coord[1]));
-            if 
+            if ($total_deltax >= 0) {
+                $positive_total_delta_x = $total_deltax;
+            }
+            else {
+                $positive_total_delta_x = $total_deltax * -1;
+            }
+            if ($total_deltay >= 0) {
+                $positive_total_delta_y = $total_deltay;
+            }
+            else {
+                $positive_total_delta_y = $total_deltay * -1;
+            }
+            if ($positive_total_delta_x >= $positive_total_delta_y) {
+                $loop_ammount = $positive_total_delta_x;
+                $delta_x = $total_deltax / $positive_total_delta_x;
+                $delta_y = $total_deltay / $positive_total_delta_x;
+            }
+            else {
+                $loop_ammount = $positive_total_delta_y;
+                $delta_x = $total_deltax / $positive_total_delta_y;
+                $delta_y = $total_deltay / $positive_total_delta_y;
+            }
+            $line_coords = [];
+            array_push($line_coords, $polygon[$i]);
+            $real_current_coords = [floatval($current_coord[0]), floatval($current_coord[1])];
+            for ($j=0; $j < $loop_ammount - 1; $j++) {
+
+            }
         }
     }
 ?>
