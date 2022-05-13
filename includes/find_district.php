@@ -35,14 +35,14 @@
         $intersections_y_down = 0;
         
         for ($i=0; $i < $array_length; $i++) {
-            $current_coord = explode(",",$polygon[$i])
+            $current_coord = explode(",",$polygon[$i]);
             if ($i+1 != $array_length){
-                $next_coord = explode(",",$polygon[$i+1])
+                $next_coord = explode(",",$polygon[$i+1]);
             }
             else {
                 $next_coord = explode(",",$polygon[0]);
             }
-            $total_deltax = intval(intval($next_coord[0]) - intval($current_coord[0]));
+            $total_deltax = intval(intval($next_coord[0]) -; intval($current_coord[0]));
             $total_deltay = intval(intval($next_coord[1]) - intval($current_coord[1]));
             if ($total_deltax >= 0) {
                 $positive_total_delta_x = $total_deltax;
