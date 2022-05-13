@@ -86,7 +86,7 @@
             }
             $coord_current = [intval($temp[0]),intval($temp[1])];
             for ($j=0; $j < $height + 2; $j++) {
-                $temps = (strval($coord_current[0]) + "," strval($coord_current[1]));
+                $temps = (strval($coord_current[0]).",".strval($coord_current[1]));
                 if (in_array($temps, $line_coords)) {
                     $intersections_y++;
                     break;
@@ -95,7 +95,7 @@
             }
             $coord_current = [intval($temp[0]),intval($temp[1])];
             for ($k=0; $k < $height + 2; $k++) {
-                $temps = (strval($coord_current[0] + "," strval($coord_current[1]));
+                $temps = (strval($coord_current[0].",".strval($coord_current[1]));
                 if (in_array($temps, $line_coords)) {
                     $intersections_y_down++;
                     break;
@@ -104,7 +104,7 @@
             }
             $coord_current = [intval($temp[0]),intval($temp[1])];
             for ($l=0; $l < $width; $l++) {
-                $temps = (strval($coord_current[0] + "," strval($coord_current[1]));
+                $temps = (strval($coord_current[0].",".strval($coord_current[1]));
                 if (in_array($temps, $line_coords)) {
                     $intersections_x_left++;
                     break;
