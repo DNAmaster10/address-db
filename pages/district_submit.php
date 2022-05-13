@@ -10,6 +10,10 @@
         <title>dwe</title>
     </head>
     <body>
-        <?php echo (strval($probability_district_array[0])); ?>
+        <?php 
+        for ($i=0; $i<$array_length; $i++){
+            echo (strval($probability_district_array[$i])); 
+        }
+        ?>
     </body>
 </html>
