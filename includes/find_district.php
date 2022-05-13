@@ -16,6 +16,7 @@
 
         $y_array = [];
         for ($i = 0; $i < $array_length; $i++) {
+            error_log(strval($polygon[0]));
             $temp = explode(",",$polygon[$i]);
             error_log("##############".strval($temp[0]).strval($temp[1]));
             $temp = intval($temp[1]);
