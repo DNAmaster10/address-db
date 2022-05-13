@@ -100,7 +100,7 @@
                     $intersections_y_down++;
                     break;
                 }
-                $coord_current[1] = $coord_current[1] + 1;
+                $coord_current[1] = $coord_current[1] - 1;
             }
             $coord_current = [intval($temp[0]),intval($temp[1])];
             for ($l=0; $l < $width; $l++) {
@@ -109,7 +109,7 @@
                     $intersections_x_left++;
                     break;
                 }
-                $coord_current[0] = $coord_current[0] + 1;
+                $coord_current[0] = $coord_current[0] - 1;
             }
         }
         if (($intersections_x % 2) != 0) {
