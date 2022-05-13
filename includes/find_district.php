@@ -4,6 +4,7 @@
     $stmt = $conn->prepare("SELECT district_name,postcodeChar,points FROM districts");
     $stmt->execute();
     $result = $stmt->get_result();
+    $coord = explode(",",$coord);
     while ($row = $result->fetch_assoc()) {
         $polygon = explode(".",$row["points"]);
         $array_length = count($polygon);
