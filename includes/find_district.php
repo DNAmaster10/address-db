@@ -86,7 +86,7 @@
             }
             $coord_current = [intval($temp[0]),intval($temp[1])];
             for ($j=0; $j < $height + 2; $j++) {
-                $temps = (strval($coord_current[0] + "," strval($coord_current[1]));
+                $temps = (strval($coord_current[0]) + "," strval($coord_current[1]));
                 if (in_array($temps, $line_coords)) {
                     $intersections_y++;
                     break;
