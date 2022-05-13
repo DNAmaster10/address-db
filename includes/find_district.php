@@ -5,7 +5,7 @@
     $stmt->execute();
     $result = $stmt->get_result();
     while ($row = $result->fetch_assoc()) {
-        $polygon = explode("-",$row["points"]);
+        $polygon = explode(".",$row["points"]);
         $array_length = count($polygon);
         $x_array = [];
         for ($i = 0; $i < $array_length; $i++) {

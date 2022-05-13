@@ -18,7 +18,7 @@
         die();
     }
     $points = $conn->real_escape_string($_POST["points"]);
-    if ((substr_count($points, "-")) < 2) {
+    if ((substr_count($points, ".")) < 2) {
         $_SESSION["district_error"] = "Please enter at least three points for the district border";
         header ("Location: /pages/register/register-district.php");
         die();

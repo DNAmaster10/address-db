@@ -20,7 +20,7 @@
             <input type="text" name="code" maxlength="1" placeholder="e.g: A, B, 1, 2">
             <input type="color" name="colour_code"  value="#0000ff">
             <p>Enter the co-ordinates below, starting from the first corner of the district, in the order the borders connect. y, in this case, corresponds to the in-game z axis. A minimum of 3 points must be entered. Make sure syntax is EXACT, or many errors will be present down the line.</p>
-            <input type="text" name="points" placeholder="(x,y)-(x,y)-(x,y)" required>
+            <input type="text" name="points" placeholder="(x,y).(x,y).(x,y)" required>
             <input type="submit" value="Create district">
         </form>
         <p id="error_message"><?php if (isset($error_message)) {echo $error_message;} ?></p>
