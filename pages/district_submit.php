@@ -12,7 +12,7 @@
     <body>
         <?php 
         for ($i=0; $i<$array_length; $i++){
-            echo (strval($probability_district_array[$i])); 
+            echo (strval($probability_district_array[$i])."  "); 
         }
         ?>
     </body>
