@@ -91,7 +91,7 @@
                     $intersections_y++;
                     break;
                 }
-                $coord_current[1] = $coord_current[1] + 1
+                $coord_current[1] = $coord_current[1] + 1;
             }
             $coord_current = [intval($temp[0]),intval($temp[1])];
             for ($k=0; $k < $height + 2; $k++) {
