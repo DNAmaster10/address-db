@@ -30,7 +30,7 @@
             $y2 = $current_coord[1];
 
             if ($y < $y1 != $y < $y2 && $x < ($x2-$x1) * ($y-$y1) / ($y2-$y1) + $x1) {
-                $is_in =! $is_in;
+                $is_in = !$is_in;
             }
             array_push ($probability_district_array, $row["district_name"]." result: ".strval($is_in)."<br>");
         }
