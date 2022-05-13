@@ -114,15 +114,19 @@
         }
         if (($intersections_x % 2) != 0) {
             $probability++;
+            error_log($row["district_name"]."A");
         }
         if (($intersections_y % 2) != 0) {
             $probability++;
+            error_log($row["district_name"]."B");
         }
         if (($intersections_x_left % 2) != 0) {
             $probability++;
+            error_log($row["district_name"]."C");
         }
         if (($intersections_y_down % 2) != 0) {
             $probability++;
+            error_log($row["district_name"]."D");
         }
         array_push($probability_district_array, $row["district_name"].strval($probability))." ";
     }
