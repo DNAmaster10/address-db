@@ -5,131 +5,34 @@
     $stmt->execute();
     $result = $stmt->get_result();
     $coord = explode(",",$coord);
+    $coord = [intval($coord[0]),intval($coord[1])];
     while ($row = $result->fetch_assoc()) {
         $polygon = explode(".",$row["points"]);
-        $array_length = count($polygon);
-        $x_array = [];
-        for ($i = 0; $i < $array_length; $i++) {
-            $temp = explode(",",$polygon[$i]);
-            $temp = intval($temp[0]);
-            array_push($x_array, $temp);
-        }
+        $n = count($polygon);
+        $is_in = false;
+        $x = $coord[0];
+        $y = $coord[1];
 
-        $y_array = [];
-        for ($i = 0; $i < $array_length; $i++) {
-            error_log(strval($polygon[$i]));
-            $temp = explode(",",$polygon[$i]);
-            $temp = intval($temp[1]);
-            array_push($y_array, $temp);
-        }
-
-        $x_min = min($x_array);
-        $y_min = min($y_array);
-        $x_max = max($x_array);
-        $y_max = max($y_array);
-        $width = $x_max - $x_min;
-        $height = $y_max - $y_min;
-        
-        $probability = 0;
-        $intersections_x = 0;
-        $intersections_y = 0;
-        $intersections_x_left = 0;
-        $intersections_y_down = 0;
-        
-        for ($i=0; $i < $array_length; $i++) {
+        for ($i=0; $i < $n-1; ++$i) {
             $current_coord = explode(",",$polygon[$i]);
-            if ($i+1 != $array_length){
+            $current_coord = [intval($current_coord[0]),intval($current_coord[1])];
+            if ($i !< count($polygon)){
                 $next_coord = explode(",",$polygon[$i+1]);
+                $next_coord = [intval($next_coord[0]),intval($next_coord[1])];
             }
             else {
-                $next_coord = explode(",",$polygon[0]);
+                $next_coord = explode (",",$polygon[0]);
+                $next_coord = [intval($next_coord[0]),intval($next_coord[1])];
             }
-            $total_deltax = intval(intval($next_coord[0]) - intval($current_coord[0]));
-            $total_deltay = intval(intval($next_coord[1]) - intval($current_coord[1]));
-            if ($total_deltax >= 0) {
-                $positive_total_delta_x = $total_deltax;
+            $x1 = $current_coord[0];
+            $x2 = $next_coord[0];
+            $y1 = $current_coord[1];
+            $y2 = $current_coord[1];
+
+            if ($y < $y1 != $y < $y2 && $x < ($x2-$x1) * ($y-$y1) / ($y2-$y1) + $x1) {
+                $is_in =! $is_in;
             }
-            else {
-                $positive_total_delta_x = $total_deltax * -1;
-            }
-            if ($total_deltay >= 0) {
-                $positive_total_delta_y = $total_deltay;
-            }
-            else {
-                $positive_total_delta_y = $total_deltay * -1;
-            }
-            if ($positive_total_delta_x >= $positive_total_delta_y) {
-                $loop_ammount = $positive_total_delta_x;
-                $delta_x = $total_deltax / $positive_total_delta_x;
-                $delta_y = $total_deltay / $positive_total_delta_x;
-            }
-            else {
-                $loop_ammount = $positive_total_delta_y;
-                $delta_x = $total_deltax / $positive_total_delta_y;
-                $delta_y = $total_deltay / $positive_total_delta_y;
-            }
-            $line_coords = [];
-            array_push($line_coords, $polygon[$i]);
-            $real_current_coords = [floatval($current_coord[0]), floatval($current_coord[1])];
-            for ($j=0; $j < $loop_ammount - 1; $j++) {
-                $real_current_coords[0] = $real_current_coords[0] + $delta_y;
-                $real_current_coords[1] = $real_current_coords[1] + $delta_y;
-                array_push ($line_coords, strval(round($real_current_coords[0])).",".strval(round($real_current_coords[1])));
-            }
-            $temp = $coord;
-            $coord_current = [intval($temp[0]),intval($temp[1])];
-            for ($h=0; $h < $width*2; $h++) {
-                $temps = (strval($coord_current[0]).",".strval($coord_current[1]));
-                if (in_array($temps, $line_coords)) {
-                    $intersections_x++;
-                    break;
-                }
-                $coord_current[0] = $coord_current[0] + 1;
-            }
-            $coord_current = [intval($temp[0]),intval($temp[1])];
-            for ($j=0; $j < $height*2; $j++) {
-                $temps = (strval($coord_current[0]).",".strval($coord_current[1]));
-                if (in_array($temps, $line_coords)) {
-                    $intersections_y++;
-                    break;
-                }
-                $coord_current[1] = $coord_current[1] + 1;
-            }
-            $coord_current = [intval($temp[0]),intval($temp[1])];
-            for ($k=0; $k < $height*2; $k++) {
-                $temps = (strval($coord_current[0]).",".strval($coord_current[1]));
-                if (in_array($temps, $line_coords)) {
-                    $intersections_y_down++;
-                    break;
-                }
-                $coord_current[1] = $coord_current[1] - 1;
-            }
-            $coord_current = [intval($temp[0]),intval($temp[1])];
-            for ($l=0; $l < $width*2; $l++) {
-                $temps = (strval($coord_current[0]).",".strval($coord_current[1]));
-                if (in_array($temps, $line_coords)) {
-                    $intersections_x_left++;
-                    break;
-                }
-                $coord_current[0] = $coord_current[0] - 1;
-            }
+            array_push ($probability_district_array, $row["district_name"]." result: ".strval($is_in)."<br>");
         }
-        if (($intersections_x % 2) != 0) {
-            $probability++;
-            error_log($row["district_name"].": A");
-        }
-        if (($intersections_y % 2) != 0) {
-            $probability++;
-            error_log($row["district_name"]."B");
-        }
-        if (($intersections_x_left % 2) != 0) {
-            $probability++;
-            error_log($row["district_name"]."C");
-        }
-        if (($intersections_y_down % 2) != 0) {
-            $probability++;
-            error_log($row["district_name"]."D");
-        }
-        array_push($probability_district_array, '-------------------------------<br>'.$row["district_name"].'<br>Probability: '.strval($probability).'<br>Intersecions right: '.strval($intersections_x).'<br>Intersecions up: '.strval($intersections_y).'<br>Intersections left: '.strval($intersections_x_left).'<br>Intersections down: '.strval($intersections_y_down));
     }
 ?>
