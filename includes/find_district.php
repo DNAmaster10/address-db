@@ -9,7 +9,7 @@
     while ($row = $result->fetch_assoc()) {
         $polygon = explode(".",$row["points"]);
         $n = count($polygon);
-        $is_in = false;
+        $is_in = "no";
         $x = $coord[0];
         $y = $coord[1];
 
@@ -30,11 +30,11 @@
             $y2 = $current_coord[1];
 
             if ($y < $y1 != $y < $y2 && $x < ($x2-$x1) * ($y-$y1) / ($y2-$y1) + $x1) {
-                if ($is_in) {
-                    $is_in = false;
+                if ($is_in == "no") {
+                    $is_in = "yes";
                 }
                 else {
-                    $is_in = true;
+                    $is_in = "no";
                 }
             }
             array_push ($probability_district_array, $row["district_name"]." result: ".strval($is_in)."<br>");
