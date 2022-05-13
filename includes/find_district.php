@@ -130,6 +130,6 @@
             $probability++;
             error_log($row["district_name"]."D");
         }
-        array_push($probability_district_array, $row["district_name"].strval($probability))." ";
+        array_push($probability_district_array, '-------------------------------'.$row["district_name"].'\nProbability: '.strval($probability).'\nIntersecions right: '.strval($intersections_x).'\nIntersecions up: '.strval($intersections_y).'\nIntersections left: '.strval($intersections_x_left).'\nIntersections down: '.strval($intersections_y_down);
     }
 ?>
