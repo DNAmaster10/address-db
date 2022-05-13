@@ -42,7 +42,7 @@
             else {
                 $next_coord = explode(",",$polygon[0]);
             }
-            $total_deltax = intval(intval($next_coord[0]) -; intval($current_coord[0]));
+            $total_deltax = intval(intval($next_coord[0]) - intval($current_coord[0]));
             $total_deltay = intval(intval($next_coord[1]) - intval($current_coord[1]));
             if ($total_deltax >= 0) {
                 $positive_total_delta_x = $total_deltax;
