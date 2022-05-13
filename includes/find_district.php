@@ -1,7 +1,7 @@
 <?php
     //the variables that needed to be passed: $coord = ("12,34"). Returned variable $district_location = "district"
     $probability_district_array = array();
-    $stmt = $conn->prepare("SELECT district_name,postcodeChar,points FROM districts")
+    $stmt = $conn->prepare("SELECT district_name,postcodeChar,points FROM districts");
     $stmt->execute();
     $result = $stmt->get_result();
     while ($row = $result->fetch_assoc()) {
