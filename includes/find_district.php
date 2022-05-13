@@ -124,6 +124,6 @@
         if (($intersecions_y_down % 2) != 0) {
             $probability++;
         }
-        array_push($probability_district_array, $row["district_name"].strval($probability));
+        array_push($probability_district_array, $row["district_name"].strval($probability))." ";
     }
 ?>
