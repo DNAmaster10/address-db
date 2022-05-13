@@ -28,6 +28,7 @@
             $x2 = $next_coord[0];
             $y1 = $current_coord[1];
             $y2 = $current_coord[1];
+            error_log ("Ran check for line in ".$row["district_name"];
 
             if ($y < $y1 != $y < $y2 && $x < ($x2-$x1) * ($y-$y1) / ($y2-$y1) + $x1) {
                 if ($is_in == "no") {
