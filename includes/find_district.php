@@ -1,7 +1,7 @@
 <?php
     //the variables that needed to be passed: $coord = ("12,34"). Returned variable $district_location = "district"
     $probability_district_array = array();
-    $stmt = $conn->prepare("SELECT district_name,postcodeChar,points FROM districts");
+    $stmt = $conn->prepare("SELECT district_name,points FROM districts");
     $stmt->execute();
     $result = $stmt->get_result();
     $coord = explode(",",$coord);
@@ -37,7 +37,7 @@
                     $is_in = "no";
                 }
             }
-            array_push ($probability_district_array, $row["district_name"]." result: ".strval($is_in)."<br>");
+            array_push ($probability_district_array, $row["district_name"]." result: ".$is_in."<br>");
         }
     }
 ?>
