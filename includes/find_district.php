@@ -15,7 +15,7 @@
         }
 
         $y_array = [];
-        for ($i = 0; i < $array_length; $i++) {
+        for ($i = 0; $i < $array_length; $i++) {
             $temp = explode(",",$polygon[$i]);
             $temp = intval($temp[1]);
             array_push($y_array, $temp);
