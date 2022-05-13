@@ -78,7 +78,7 @@
             }
             $temp = $coord;
             $coord_current = [intval($temp[0]),intval($temp[1])];
-            for ($h=0; $h < $width + 2; $h++) {
+            for ($h=0; $h < $width*2; $h++) {
                 $temps = (strval($coord_current[0]).",".strval($coord_current[1]));
                 if (in_array($temps, $line_coords)) {
                     $intersections_x++;
@@ -87,7 +87,7 @@
                 $coord_current[0] = $coord_current[0] + 1;
             }
             $coord_current = [intval($temp[0]),intval($temp[1])];
-            for ($j=0; $j < $height + 2; $j++) {
+            for ($j=0; $j < $height*2; $j++) {
                 $temps = (strval($coord_current[0]).",".strval($coord_current[1]));
                 if (in_array($temps, $line_coords)) {
                     $intersections_y++;
@@ -96,7 +96,7 @@
                 $coord_current[1] = $coord_current[1] + 1;
             }
             $coord_current = [intval($temp[0]),intval($temp[1])];
-            for ($k=0; $k < $height + 2; $k++) {
+            for ($k=0; $k < $height*2; $k++) {
                 $temps = (strval($coord_current[0]).",".strval($coord_current[1]));
                 if (in_array($temps, $line_coords)) {
                     $intersections_y_down++;
@@ -105,7 +105,7 @@
                 $coord_current[1] = $coord_current[1] - 1;
             }
             $coord_current = [intval($temp[0]),intval($temp[1])];
-            for ($l=0; $l < $width; $l++) {
+            for ($l=0; $l < $width*2; $l++) {
                 $temps = (strval($coord_current[0]).",".strval($coord_current[1]));
                 if (in_array($temps, $line_coords)) {
                     $intersections_x_left++;
@@ -116,7 +116,7 @@
         }
         if (($intersections_x % 2) != 0) {
             $probability++;
-            error_log($row["district_name"]."A");
+            error_log($row["district_name"].": A");
         }
         if (($intersections_y % 2) != 0) {
             $probability++;
