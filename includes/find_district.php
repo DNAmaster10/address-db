@@ -76,7 +76,7 @@
                 $real_current_coords[1] = $real_current_coords[1] + $delta_y;
                 array_push ($line_coords, strval(round($real_current_coords[0])).",".strval(round($real_current_coords[1])));
             }
-            $temp = explode($coord[0],",");
+            $temp = $coord;
             $coord_current = [intval($temp[0]),intval($temp[1])];
             for ($h=0; $h < $width + 2; $h++) {
                 $temps = (strval($coord_current[0]).",".strval($coord_current[1]));
