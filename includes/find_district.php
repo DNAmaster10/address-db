@@ -37,7 +37,7 @@
                     $is_in = "no";
                 }
             }
-            array_push ($probability_district_array, $row["district_name"]." result: ".$is_in."<br>");
         }
+        array_push ($probability_district_array, $row["district_name"]." result: ".$is_in."<br>");
     }
 ?>
