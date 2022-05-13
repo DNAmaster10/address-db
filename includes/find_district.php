@@ -76,7 +76,7 @@
             }
             $temp = explode($coord[0],",");
             $coord_current = [intval($temp[0]),intval($temp[1])];
-            for ($h=0; $h < $width + 2) {
+            for ($h=0; $h < $width + 2; $h++) {
                 $temps = (strval($coord_current[0]).",".strval($coord_current[1]));
                 if (in_array($temps, $line_coords)) {
                     $intersections_x++;
