@@ -13,10 +13,10 @@
         $x = $coord[0];
         $y = $coord[1];
 
-        for ($i=0; $i < $n+1; ++$i) {
+        for ($i=0; $i < $n; ++$i) {
             $current_coord = explode(",",$polygon[$i]);
             $current_coord = [intval($current_coord[0]),intval($current_coord[1])];
-            if ($i < count($polygon)-1){
+            if ($i < count($polygon)){
                 $next_coord = explode(",",$polygon[$i+1]);
                 $next_coord = [intval($next_coord[0]),intval($next_coord[1])];
             }
@@ -27,7 +27,7 @@
             $x1 = $current_coord[0];
             $x2 = $next_coord[0];
             $y1 = $current_coord[1];
-            $y2 = $current_coord[1];
+            $y2 = $next_coord[1];
             error_log ("Ran check for line in ".$row["district_name"]);
 
             if ($y < $y1 != $y < $y2 && $x < ($x2-$x1) * ($y-$y1) / ($y2-$y1) + $x1) {
