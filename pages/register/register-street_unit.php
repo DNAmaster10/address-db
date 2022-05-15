@@ -17,7 +17,7 @@
             <p>Street unit name: </p>
             <input type="text" placeholder="Unit name" name="street_unit" required>
             <p>Postcode char (leave blank to autogenerate)</p> 
-            <input type="text" placeholder="Unit code" name="unit_code">
+            <input type="text" placeholder="Unit code" name="unit_code" maxlength="1">
             <select name="district">
                 <?php
                     $stmt = $conn->prepare("SELECT district_name FROM districts");
