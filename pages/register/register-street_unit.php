@@ -28,6 +28,15 @@
                     }
                 ?>
             </select>
+            <p>Make sure co-ords entered are in exact format, and are correct before submiting.</p>
+            <input type="text" name="coords" placeholder="(x,y).(x,y).(x,y)">
+            <input type="submit" value="Register">
         </form>
+        <p>
+            <?php if (isset($error)) {
+                echo ($error);
+            }
+            ?>
+        </p>
     </body>
 </html>
