@@ -2,7 +2,7 @@
     include $_SERVER["DOCUMENT_ROOT"]."/includes/dbh.php";
     include $_SERVER["DOCUMENT_ROOT"]."/includes/check_login.php";
     #Get the street unit name
-    if (!isset($_POST["unit_name"])) {
+    if (!isset($_POST["street_unit"])) {
         $_SESSION["street_unit_error"] = "Please enter a name for the street unit";
         header ("Location: /pages/register/register-street_unit.php");
         die();
