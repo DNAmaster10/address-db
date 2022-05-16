@@ -41,6 +41,7 @@
     }
     $district_code = $result;
     if (isset($_POST["unit_code"])) {
+        error_log("Got to line 44");
         $code = $conn->real_escape_string($_POST["unit_code"]);
         if (strlen($code) > 1) {
             $_SESSION["street_unit_error"] = "Enter a code 1 character long";
