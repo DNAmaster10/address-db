@@ -64,7 +64,7 @@
         error_log("Got to line 61");
         $full_code = $district_code.$code;
         $coords = $conn->real_escape_string($_POST["coords"]);
-        $stmt->prepare("INSERT INTO street_units (name,postcodeChar,full_postcode,parent_distict,points) VALUES (?,?,?,?,?)");
+        $stmt = $conn->prepare("INSERT INTO street_units (name,postcodeChar,full_postcode,parent_distict,points) VALUES (?,?,?,?,?)");
         $stmt->bind_param("sssss",$unit_name,$code,$full_code,$district,$coords);
         $stmt->execute();
         header ("Location: /pages/register/register-street_unit.php");
@@ -75,7 +75,7 @@
         $loop_count = 1;
         $empty_found = false;
         while ($loop_count != 26 && $empty_found == false) {
-            $stmt->prepare("SELECT name FROM street_unit WHERE postcodeChar=?");
+            $stmt = $conn->prepare("SELECT name FROM street_unit WHERE postcodeChar=?");
             $stmt->bind_param("s",$current_letter);
             $stmt->execute();
             $stmt->bind_result($result);
@@ -94,7 +94,7 @@
             $loop_count = 0;
             $current_letter = "0";
             while ($loop_count < 10 && $empty_found == false) {
-                $stmt->prepare("SELECT name FROM street_unit WHERE postcodeChar=?");
+                $stmt = $conn->prepare("SELECT name FROM street_unit WHERE postcodeChar=?");
                 $stmt->bind_param("s",$current_letter);
                 $stmt->execute();
                 $stmt->bind_result($result);
@@ -117,7 +117,7 @@
         else {
             $full_code = $disrict_code + $code;
             $coords = $conn->real_escape_string($_POST["coords"]);
-            $stmt->prepare("INSERT INTO street_units (name,postcodeChar,full_postcode,parent_distict,points) VALUES (?,?,?,?,?)");
+            $stmt = $conn->prepare("INSERT INTO street_units (name,postcodeChar,full_postcode,parent_distict,points) VALUES (?,?,?,?,?)");
             $stmt->bind_param("sssss",$unit_name,$code,$full_code,$district,$coords);
             $stmt->execute();
             header ("Location: /pages/register/register-street_unit.php");
