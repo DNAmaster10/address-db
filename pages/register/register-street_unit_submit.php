@@ -84,6 +84,7 @@
                 unset ($result);
                 $empty_found = true;
             }
+            $current_letter = ++$current_letter;
             $loop_count++;
         }
         if (!$empty_found) {
@@ -101,6 +102,7 @@
                     $code = $current_letter;
                     unset($result);
                 }
+                $current_letter = ++$current_letter;
                 $loop_count++;
             }
         }
