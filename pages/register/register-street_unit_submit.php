@@ -20,6 +20,7 @@
         header ("Location: /pages/register/register-street_unit.php");
         die();
     }
+    unset($result);
     #Get district
     if (!isset($_POST["district"])) {
         $_SESSION["street_unit_error"] = "Please select a parent district";
@@ -40,6 +41,7 @@
         die();
     }
     $district_code = $result;
+    unset($result);
     if (isset($_POST["unit_code"])) {
         error_log("Got to line 44");
         $code = $conn->real_escape_string($_POST["unit_code"]);
@@ -86,6 +88,7 @@
             }
             $current_letter = ++$current_letter;
             $loop_count++;
+            unset($result);
         }
         if (!$empty_found) {
             $loop_count = 0;
