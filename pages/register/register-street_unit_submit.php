@@ -28,7 +28,7 @@
     }
     $district = $conn->real_escape_string($_POST["district"]);
     #Make sure district exists
-    $stmt = $conn->prepare("SELECT postcodeChar FROM district WHERE district_name=?");
+    $stmt = $conn->prepare("SELECT postcodeChar FROM districts WHERE district_name=?");
     $stmt->bind_param("s",$district);
     $stmt->execute();
     $stmt->bind_result($result);
