@@ -24,7 +24,7 @@
                     $stmt->execute();
                     $result = $stmt->get_result();
                     while ($row = $result->fetch_assoc()) {
-                        echo "<option value='".$row["district_id"]."'>".$row["district_name"]."</option>";
+                        echo "<option value='".$row["district_name"]."'>".$row["district_name"]."</option>";
                     }
                 ?>
             </select>
