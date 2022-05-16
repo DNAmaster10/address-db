@@ -75,8 +75,8 @@
         $loop_count = 1;
         $empty_found = false;
         while ($loop_count != 26 && $empty_found == false) {
-            $stmt = $conn->prepare("SELECT name FROM street_unit WHERE postcodeChar=?");
-            $stmt->bind_param("s",$current_letter);
+            $stmt = $conn->prepare("SELECT name FROM street_units WHERE postcodeChar = ? AND parent_district = ?");
+            $stmt->bind_param("s",$current_letter,$district);
             $stmt->execute();
             $stmt->bind_result($result);
             $stmt->fetch();
@@ -94,8 +94,8 @@
             $loop_count = 0;
             $current_letter = "0";
             while ($loop_count < 10 && $empty_found == false) {
-                $stmt = $conn->prepare("SELECT name FROM street_unit WHERE postcodeChar=?");
-                $stmt->bind_param("s",$current_letter);
+                $stmt = $conn->prepare("SELECT name FROM street_units WHERE postcodeChar=? AND parent_district = ?");
+                $stmt->bind_param("ss",$current_letter,$district);
                 $stmt->execute();
                 $stmt->bind_result($result);
                 $stmt->fetch();
