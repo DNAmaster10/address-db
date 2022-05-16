@@ -58,6 +58,7 @@
             header ("Location: /pages/register/register-street_unit.php");
             die();
         }
+        error_log("Got to line 61");
         $full_code = $disrict_code + $code;
         $coords = $conn->real_escape_string($_POST["coords"]);
         $stmt->prepare("INSERT INTO street_units (name,postcodeChar,full_postcode,parent_distict,points) VALUES (?,?,?,?,?)");
