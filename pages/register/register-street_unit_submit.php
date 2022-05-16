@@ -76,7 +76,7 @@
         $empty_found = false;
         while ($loop_count != 26 && $empty_found == false) {
             $stmt = $conn->prepare("SELECT name FROM street_units WHERE postcodeChar = ? AND parent_district = ?");
-            $stmt->bind_param("s",$current_letter,$district);
+            $stmt->bind_param("ss",$current_letter,$district);
             $stmt->execute();
             $stmt->bind_result($result);
             $stmt->fetch();
