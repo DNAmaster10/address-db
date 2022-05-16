@@ -58,6 +58,13 @@
             header ("Location: /pages/register/register-street_unit.php");
             die();
         }
+        $full_code = $disrict_code + $code;
+        $coords = $conn->real_escape_string($_POST["coords"]);
+        $stmt->prepare("INSERT INTO street_units (name,postcodeChar,full_postcode,parent_distict,points) VALUES (?,?,?,?,?)");
+        $stmt->bind_param("sssss",$unit_name,$code,$full_code,$district,$coords);
+        $stmt->execute();
+        header ("Location: /pages/register/register-street_unit.php");
+        die();
     }
     else {
         $current_letter = "A";
