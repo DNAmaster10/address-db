@@ -13,7 +13,7 @@
         <title>Create Street Unit</title>
     </head>
     <body>
-        <form action="/pages/register/register-street_unit_submit.php">
+        <form action="/pages/register/register-street_unit_submit.php" method="POST">
             <p>Street unit name: </p>
             <input type="text" placeholder="Unit name" name="street_unit" required>
             <p>Postcode char (leave blank to autogenerate)</p> 
