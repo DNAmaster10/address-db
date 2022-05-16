@@ -48,8 +48,8 @@
             header ("Location: /pages/register/register-street_unit.php");
             die();
         }
-        $stmt = $conn->prepare ("SELECT name FROM street_units WHERE postcodeChar = ?");
-        $stmt->bind_param("s",$code);
+        $stmt = $conn->prepare ("SELECT name FROM street_units WHERE postcodeChar = ? AND parent_district = ?");
+        $stmt->bind_param("ss",$code,$district);
         $stmt->execute();
         $stmt->bind_result($result);
         $stmt->fetch();
