@@ -42,7 +42,7 @@
     }
     $district_code = $result;
     unset($result);
-    if (isset($_POST["unit_code"])) {
+    if (strlen($_POST["unit_code"]) > 0) {
         error_log("Got to line 44");
         $code = $conn->real_escape_string($_POST["unit_code"]);
         if (strlen($code) > 1) {
