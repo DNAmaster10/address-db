@@ -115,7 +115,7 @@
             die();
         }
         else {
-            $full_code = $disrict_code + $code;
+            $full_code = $district_code.$code;
             $coords = $conn->real_escape_string($_POST["coords"]);
             $stmt = $conn->prepare("INSERT INTO street_units (name,postcodeChar,full_postcode,parent_distict,points) VALUES (?,?,?,?,?)");
             $stmt->bind_param("sssss",$unit_name,$code,$full_code,$district,$coords);
