@@ -54,7 +54,7 @@
         $stmt->bind_result($result);
         $stmt->fetch();
         $stmt->close();
-        if ($result) {
+        if (strlen($result) > 0) {
             $_SESSION["street_unit_error"] = "A unit with that code already exists";
             header ("Location: /pages/register/register-street_unit.php");
             die();
