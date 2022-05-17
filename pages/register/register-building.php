@@ -17,7 +17,8 @@
             <p>Co-ords. Format: "x,y" e.g: "10,-23". Pressing "Generate details" will attempt to autofill all inputs that can be found based on the buildings location.</p>
             <input type="text" name="coord" placeholder="x,y" required>
             <button type="button" action="get_details()" value="Generate details">
-            <select name="district">
+            <p>District: </p>
+            <select name="district" id="district_select">
                 <?php
                     $stmt = $conn->prepare("SELECT district_name FROM districts");
                     $stmt->execute();
@@ -26,6 +27,9 @@
                         echo "<option value='".$row["district_name"]."'>".$row["district_name"]."</option>";
                     }
                 ?>
+            </select>
+            <p>Street Unit: </p>
+            <select name="street_unit" it="street_unit_select">
             </select>
         </form>
     </body>
