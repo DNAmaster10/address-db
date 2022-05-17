@@ -73,7 +73,7 @@
         $current_letter = "A";
         $loop_count = 1;
         $empty_found = false;
-        while ($loop_count != 26 && $empty_found == false) {
+        while ($loop_count != 27 && $empty_found == false) {
             $stmt = $conn->prepare("SELECT district_name FROM districts WHERE postcodeChar=?");
             $stmt->bind_param("s",$current_letter);
             $stmt->execute();
