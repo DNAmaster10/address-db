@@ -26,6 +26,7 @@
                     $stmt->close();
                     error_log("Got to 1");
                     while ($row = $result->fetch_assoc()) {
+                        error_log("Got to 2");
                         echo "<option value='".$row["district_name"]."'>".$row["district_name"]."</option>";
                     }
                 ?>
