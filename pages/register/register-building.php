@@ -1,7 +1,7 @@
 <?php
     session_start();
     include $_SERVER["DOCUMENT_ROOT"]."/includes/dbh.php";
-    include $_SERVER["DOCUMENT_ROOT"]."/incldes/check_login.php";
+    include $_SERVER["DOCUMENT_ROOT"]."/includes/check_login.php";
     if (isset($_SESSION["building_error"])) {
         $error = $_SESSION["building_error"];
         unset($_SESSION["building_error"]);
