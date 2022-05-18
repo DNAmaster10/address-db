@@ -1,5 +1,5 @@
 function changeStreetUnits() {
-    var district = this.value
+    var district = document.getElementById("district_select").value;
     console.log(value);
     console.log("hello");
     $.ajax({
