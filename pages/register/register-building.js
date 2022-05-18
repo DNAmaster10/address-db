@@ -1,4 +1,3 @@
-document.getElementById("district_select").onchance = changeStreetUnits;
 function changeStreetUnits() {
     var district = this.value
     console.log(value);

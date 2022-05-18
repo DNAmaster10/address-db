@@ -25,7 +25,7 @@
                     $result = $stmt->get_result();
                     $stmt->close();
                     while ($row = $result->fetch_assoc()) {
-                        echo "<option value='".$row["district_name"]."'>".$row["district_name"]."</option>";
+                        echo "<option value='".$row["district_name"]."' onchange='changeStreetUnits()'>".$row["district_name"]."</option>";
                     }
                 ?>
             </select>
