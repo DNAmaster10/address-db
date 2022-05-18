@@ -23,6 +23,8 @@
                     $stmt = $conn->prepare("SELECT district_name FROM districts");
                     $stmt->execute();
                     $result = $stmt->get_result();
+                    $stmt->close();
+                    error_log("Got to 1");
                     while ($row = $result->fetch_assoc()) {
                         echo "<option value='".$row["district_name"]."'>".$row["district_name"]."</option>";
                     }
