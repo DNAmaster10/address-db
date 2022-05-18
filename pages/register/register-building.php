@@ -18,14 +18,14 @@
             <input type="text" name="coord" placeholder="x,y" required>
             <button type="button" action="get_details()" value="Generate details"></button>
             <p>District: </p>
-            <select name="district" id="district_select">
+            <select name="district" id="district_select" onchange='changeStreetUnits()'>
                 <?php
                     $stmt = $conn->prepare("SELECT district_name FROM districts");
                     $stmt->execute();
                     $result = $stmt->get_result();
                     $stmt->close();
                     while ($row = $result->fetch_assoc()) {
-                        echo "<option value='".$row["district_name"]."' onchange='changeStreetUnits()'>".$row["district_name"]."</option>";
+                        echo "<option value='".$row["district_name"]."'>".$row["district_name"]."</option>";
                     }
                 ?>
             </select>
