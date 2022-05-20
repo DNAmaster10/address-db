@@ -1,7 +1,7 @@
 <?php
 $dbServername = "localhost";
-$dbUsername = "SAMSi_main";
-$dbPassword = "samsi";
+$dbUsername = "kaloro-db";
+$dbPassword = "password";
 $dbName = "kaloro-db";
 $conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);
 if (mysqli_connect_errno())
