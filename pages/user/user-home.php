@@ -16,8 +16,8 @@
             </form>
         </div>
         <div id="street_container">
-            <form action="/pages/register/register-street_unit.php">
-                <input type="submit" value="Register street unit">
+            <form action="/pages/register/street-unit-home.php">
+                <input type="submit" value="Street units">
             </form>
         </div>
         <div id="district_container">

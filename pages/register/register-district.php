@@ -13,6 +13,9 @@
         <title>Register district</title>
     </head>
     <body>
+        <form action="/pages/register/district-home.php">
+            <input type="submit" value="Back">
+        </form>
         <p>District name</p>
         <form action="/pages/register/register-district_submit.php" method="POST">
             <input type="text" placeholder="District name" name="district_name" required>

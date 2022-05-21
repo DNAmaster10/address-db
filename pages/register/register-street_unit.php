@@ -13,6 +13,9 @@
         <title>Create Street Unit</title>
     </head>
     <body>
+        <form action="/pages/user/user-home.php">
+            <input type="submit" value="Back">
+        </form>
         <form action="/pages/register/register-street_unit_submit.php" method="POST">
             <p>Street unit name: </p>
             <input type="text" placeholder="Unit name" name="street_unit" required>

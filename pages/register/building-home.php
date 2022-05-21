@@ -6,14 +6,14 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Districts</title>
+        <title>Buildings</title>
     </head>
     <body>
-        <form action="/pages/register/register-district.php">
-            <input type="submit" value="Create district">
-        </form>
+        <p>Buildings</p>
         <form action="/pages/user/user-home.php">
             <input type="submit" value="Back">
         </form>
-    </body>
+        <form action="/pages/register/register-building.php">
+            <input type="submit" value="Register building">
+        </form>
 </html>
