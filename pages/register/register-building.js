@@ -11,7 +11,7 @@ function changeStreetUnits() {
             else {
                 var street_unit_array = data.split("#-#");
                 selectionBox = document.getElementById("district_select");
-                while (selectBox.options.length > 0) {
+                while (selectionBox.options.length > 0) {
                     selectBox.remove(0);
                 }
                 street_unit_count = street_unit_array.length;
