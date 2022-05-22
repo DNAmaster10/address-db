@@ -14,6 +14,7 @@
         $y = $coord[1];
 
         for ($i=0; $i < $n-1; ++$i) {
+            $collisions = 0;
             $current_coord = explode(",",$polygon[$i]);
             $current_coord = [intval($current_coord[0]),intval($current_coord[1])];
             if ($i < count($polygon)){
@@ -32,6 +33,7 @@
             if ($y1 >= $y && $y2 <= $y or $y1 <= $y1 && $y2 >= $y) {
                 if ($x1 >= $x && $x2 >= $x) {
                     $is_in = !$is_in;
+                    $collisions = $collisions + 1;
                 }
                 else {
                     $dx = $x1 - $x2;
@@ -44,6 +46,7 @@
                     }
                     if ($dx == 0 or $dy == 0) {
                         $is_in = !$is_in;
+                        $collisions = $collisions + 1;
                     }
                     else {
                         $dxdy = $dx / $dy;
@@ -51,13 +54,14 @@
                         $lx = ($x1 + ($pdy1 * $dxdy));
                         if ($lx >= $x) {
                             $is_in = !$is_in;
+                            $collisions = $collisions + 1;
                         }
                     }
                 }
             }
         }
         array_push ($probability_district_array, [$row["district_name"],$is_in]);
-        error_log($row["district_name"].strval($is_in));
+        error_log($row["district_name"].strval($is_in)." ".intval($collisions));
     }
     $n = count($probability_district_array);
     $found = false;
