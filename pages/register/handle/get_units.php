@@ -14,8 +14,7 @@
         $stmt->execute();
         $result = $stmt->get_result();
         while ($row = $result->fetch_assoc()) {
-            echo ($row["parent_district"]."#-#");
-            echo ("street units");
+            echo ($row["name"]."#-#");
         }
     }
 ?>
