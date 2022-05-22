@@ -38,6 +38,7 @@
     $n = count($probability_district_array);
     $found = false;
     $potential_districts = array();
+    error_log(strval($probability_district_array));
     for ($i = 0; $i < $n; $i++) {
         if ($probability_district_array[$i][1]) {
             array_push($potential_districts, $probability_district_array[$i][0]);
