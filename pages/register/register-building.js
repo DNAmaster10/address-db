@@ -36,7 +36,7 @@ function get_details() {
     }
     else {
         $.ajax({
-            url: "/pages/register",
+            url: "/pages/register/handle/get_details.php",
             type: "GET",
             data: {coords:co_ords_string},
             success: function(data) {
