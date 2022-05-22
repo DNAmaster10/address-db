@@ -26,11 +26,34 @@
             }
             $x1 = $current_coord[0];
             $x2 = $next_coord[0];
-            $y1 = $current_coord[1];
-            $y2 = $next_coord[1];
+            $y1 = $current_coord[1] + 0.001;
+            $y2 = $next_coord[1] + 0.001;
 
-            if ($y < $y1 != $y < $y2 && $x < ($x2-$x1) * ($y-$y1) / ($y2-$y1) + $x1) {
-                $is_in = !$is_in;
+            if ($y1 >= $y && $y2 <= $y or $y1 <= $y1 && $y2 >= $y) {
+                if ($x1 >= $x && $x2 >= $x) {
+                    $is_in = !$is_in;
+                }
+                else {
+                    $dx = $x1 - $x2;
+                    $dy = $y1 - $y2;
+                    if ($dx < 0) {
+                        $dx = $dx * -1;
+                    }
+                    if ($dy < 0) {
+                        $dy = $dy * -1;
+                    }
+                    if ($dx == 0 or $dy == 0) {
+                        $is_in = !$is_in;
+                    }
+                    else {
+                        $dxdy = $dx / $dy;
+                        $pdy1 = $y1 - $y;
+                        $lx = ($x1 + ($pdy1 * $dxdy))
+                        if ($lx >= $x) {
+                            $is_in = !$is_in;
+                        }
+                    }
+                }
             }
         }
         array_push ($probability_district_array, [$row["district_name"],$is_in]);
