@@ -61,7 +61,7 @@
             }
         }
         array_push ($probability_district_array, [$row["district_name"],$is_in]);
-        error_log($row["district_name"].strval($is_in)." ".strval($collisions));
+        error_log($row["district_name"]."State: ".strval($is_in)." Count: ".strval($collisions));
     }
     $n = count($probability_district_array);
     $found = false;
