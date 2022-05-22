@@ -10,7 +10,7 @@ function changeStreetUnits() {
             }
             else {
                 var street_unit_array = data.split("#-#");
-                selectionBox = document.getElementById("district_select");
+                selectionBox = document.getElementById("street_unit_select");
                 while (selectionBox.options.length > 0) {
                     selectionBox.remove(0);
                 }

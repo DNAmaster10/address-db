@@ -33,7 +33,7 @@
                 ?>
             </select>
             <p>Street Unit: </p>
-            <select name="street_unit" it="street_unit_select">
+            <select name="street_unit" id="street_unit_select">
             </select>
         </form>
     </body>
