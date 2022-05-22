@@ -18,10 +18,10 @@
         </form>
         <form action="register-building_submit.php" method="POST">
             <p>Co-ords. Format: "x,y" e.g: "10,-23". Pressing "Generate details" will attempt to autofill all inputs that can be found based on the buildings location.</p>
-            <input type="text" name="coord" placeholder="x,y" required>
-            <button type="button" action="get_details()" value="Generate details"></button>
+            <input type="text" name="coord" placeholder="x,y" id="coords" required>
+            <button type="button" action="get_details()">Generate details</button>
             <p>District: </p>
-            <select name="district" id="district_select" onchange='changeStreetUnits()'>
+            <select name="district" id="district_select" onchange='changeStreetUnits()' required>
                 <?php
                     $stmt = $conn->prepare("SELECT district_name FROM districts");
                     $stmt->execute();
@@ -33,7 +33,7 @@
                 ?>
             </select>
             <p>Street Unit: </p>
-            <select name="street_unit" id="street_unit_select">
+            <select name="street_unit" id="street_unit_select" required>
             </select>
         </form>
     </body>

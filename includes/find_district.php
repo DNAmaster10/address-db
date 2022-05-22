@@ -9,7 +9,7 @@
     while ($row = $result->fetch_assoc()) {
         $polygon = explode(".",$row["points"]);
         $n = count($polygon);
-        $is_in = "no";
+        $is_in = false;
         $x = $coord[0];
         $y = $coord[1];
 
@@ -31,14 +31,22 @@
             error_log ("Ran check for line in ".$row["district_name"]);
 
             if ($y < $y1 != $y < $y2 && $x < ($x2-$x1) * ($y-$y1) / ($y2-$y1) + $x1) {
-                if ($is_in == "no") {
-                    $is_in = "yes";
-                }
-                else {
-                    $is_in = "no";
-                }
+                $is_in = !$is_in;
             }
         }
-        array_push ($probability_district_array, $row["district_name"]." result: ".$is_in."<br>");
+        array_push ($probability_district_array, [$row["district_name"],$is_in]);
+    }
+    $n = count($probability_district_array);
+    $potential_districts = array();
+    for ($i = 0; $i < $n; $i++) {
+        if ($probability_district_array[$i][1]) {
+            array_push($potential_districts, $probability_district_array[$i][0];
+        }
+    }
+    if (count($potential_districts > 1)) {
+        echo ("error1");
+    }
+    else {
+        $district = $potential_districts[0][0];
     }
 ?>

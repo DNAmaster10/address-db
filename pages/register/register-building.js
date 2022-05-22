@@ -19,7 +19,7 @@ function changeStreetUnits() {
                     console.log("There are no street units in that district");
                 }
                 else {
-                    for (var i=0; i<street_unit_count; i++) {
+                    for (var i=0; i<street_unit_count -1; i++) {
                         var newOption = new Option (street_unit_array[i],street_unit_array[i]);
                         selectionBox.add(newOption,undefined);
                     }
@@ -28,4 +28,17 @@ function changeStreetUnits() {
         }
     });
 }
+
+function get_details() {
+    var co_ords_string = document.getElementById("coords").value;
+    if (co_ords_string.length < 3) {
+        console.log("Co-ords entered too short");
+    }
+    else {
+        $.ajax({
+            url: "/pages/register
+        });
+    }
+}
+
 changeStreetUnits();
