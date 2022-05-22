@@ -28,7 +28,6 @@
             $x2 = $next_coord[0];
             $y1 = $current_coord[1];
             $y2 = $next_coord[1];
-            error_log ("Ran check for line in ".$row["district_name"]);
 
             if ($y < $y1 != $y < $y2 && $x < ($x2-$x1) * ($y-$y1) / ($y2-$y1) + $x1) {
                 $is_in = !$is_in;
@@ -37,13 +36,15 @@
         array_push ($probability_district_array, [$row["district_name"],$is_in]);
     }
     $n = count($probability_district_array);
+    $found = false;
     $potential_districts = array();
     for ($i = 0; $i < $n; $i++) {
         if ($probability_district_array[$i][1]) {
             array_push($potential_districts, $probability_district_array[$i][0]);
+            $found = true;
         }
     }
-    if (count($potential_districts > 1)) {
+    if (!$found) {
         echo ("error1");
     }
     else {
