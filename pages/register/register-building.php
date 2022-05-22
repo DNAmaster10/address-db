@@ -19,7 +19,7 @@
         <form action="register-building_submit.php" method="POST">
             <p>Co-ords. Format: "x,y" e.g: "10,-23". Pressing "Generate details" will attempt to autofill all inputs that can be found based on the buildings location.</p>
             <input type="text" name="coord" placeholder="x,y" id="coords" required>
-            <button type="button" action="get_details()">Generate details</button>
+            <button type="button" onclick="get_details()">Generate details</button>
             <p>District: </p>
             <select name="district" id="district_select" onchange='changeStreetUnits()' required>
                 <?php
