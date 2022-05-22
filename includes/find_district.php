@@ -45,7 +45,7 @@
         }
     }
     if (!$found) {
-        echo ("error1");
+        $district = "error1";
     }
     else {
         $district = $potential_districts[0][0];

@@ -26,5 +26,11 @@
     #Find out the district
     $coord = $coords_string;
     include $_SERVER["DOCUMENT_ROOT"]."/includes/find_district.php";
-    echo ("District: ".$district);
+    if ($district == "error1") {
+        echo ("No district was found for that co-ordinate");
+        die();
+    }
+    else {
+        echo ("District: ". $district);
+    }
 ?>
