@@ -48,7 +48,7 @@
                     else {
                         $dxdy = $dx / $dy;
                         $pdy1 = $y1 - $y;
-                        $lx = ($x1 + ($pdy1 * $dxdy))
+                        $lx = ($x1 + ($pdy1 * $dxdy));
                         if ($lx >= $x) {
                             $is_in = !$is_in;
                         }
