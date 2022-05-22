@@ -13,6 +13,9 @@
         <title>Register Building</title>
     </head>
     <body>
+        <form action="/pages/register/building-home.php">
+            <input type="submit" value="Back">
+        </form>
         <form action="register-building_submit.php" method="POST">
             <p>Co-ords. Format: "x,y" e.g: "10,-23". Pressing "Generate details" will attempt to autofill all inputs that can be found based on the buildings location.</p>
             <input type="text" name="coord" placeholder="x,y" required>

@@ -13,7 +13,7 @@
         <title>Create Street Unit</title>
     </head>
     <body>
-        <form action="/pages/user/user-home.php">
+        <form action="/pages/register/street-unit-home.php">
             <input type="submit" value="Back">
         </form>
         <form action="/pages/register/register-street_unit_submit.php" method="POST">
