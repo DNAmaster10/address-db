@@ -11,8 +11,8 @@
     <body>
         <h1>Welcome back, <?php echo $_SESSION["username"]; ?>.</h1>
         <div id="building_container">
-            <form action="/pages/register/register-building.php">
-                <input type="submit" value="Building">
+            <form action="/pages/register/building-home.php">
+                <input type="submit" value="Buildings">
             </form>
         </div>
         <div id="street_container">
