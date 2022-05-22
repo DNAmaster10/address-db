@@ -36,7 +36,12 @@ function get_details() {
     }
     else {
         $.ajax({
-            url: "/pages/register
+            url: "/pages/register",
+            type: "GET",
+            data: {coords:co_ords_string},
+            success: function(data) {
+                console.log(data);
+            }
         });
     }
 }
