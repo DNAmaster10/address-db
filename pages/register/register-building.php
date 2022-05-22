@@ -6,6 +6,7 @@
         $error = $_SESSION["building_error"];
         unset($_SESSION["building_error"]);
     }
+    error_log("Register boo");
 ?>
 <!DOCTYPE html>
 <html>
