@@ -5,6 +5,7 @@
     if (!isset($_GET["district"])) {
         echo ("error");
     }
+    echo ("Got to 1");
     else {
         $district = $conn->real_escape_string($_GET["district"]);
         $stmt = $conn->prepare("SELECT name FROM street_units WHERE parent_district=?");
