@@ -1,7 +1,7 @@
 <?php
     session_start();
     include $_SERVER["DOCUMENT_ROOT"]."/includes/dbh.php";
-    include $_SERVER["DOCUMENT_ROOT"]."/includes/check_login.php";
+    #include $_SERVER["DOCUMENT_ROOT"]."/includes/check_login.php";
     echo ("Got to 1");
     if (!isset($_GET["district"])) {
         echo ("error");
