@@ -40,7 +40,7 @@
     $potential_districts = array();
     for ($i = 0; $i < $n; $i++) {
         if ($probability_district_array[$i][1]) {
-            array_push($potential_districts, $probability_district_array[$i][0];
+            array_push($potential_districts, $probability_district_array[$i][0]);
         }
     }
     if (count($potential_districts > 1)) {
