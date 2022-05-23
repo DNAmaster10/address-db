@@ -52,12 +52,13 @@
             $collisions = 0;
             $current_coord = explode(",",$polygon[$i]);
             $current_coord = [intval($current_coord[0]),intval($current_coord[1])];
-            if ($i < $n){
-                $next_coord = explode(",",$polygon[$i+1]);
+            if ($i = $n){
+                $next_coord = explode (",",$polygon[0]);
                 $next_coord = [intval($next_coord[0]),intval($next_coord[1])];
+
             }
             else {
-                $next_coord = explode (",",$polygon[0]);
+                $next_coord = explode(",",$polygon[$i+1]);
                 $next_coord = [intval($next_coord[0]),intval($next_coord[1])];
             }
             $x1 = $current_coord[0];
