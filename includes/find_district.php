@@ -1,4 +1,46 @@
 <?php
+    function find_x($y, $x1, $y1, $x2, $y2) {
+        $dx = $x1 - $x2;
+        $dy = $y1 - $y2;
+        if ($dx < 0) {
+            $dx = $dx * -1;
+        }
+        if ($dy < 0) {
+            $dy = $dy * -1;
+        }
+        if ($dx == 0) {
+            return ($x1);
+        }
+        if ($dy == 0) {
+            return ("unknown");
+        }
+        $dxdy = $dx / $dy;
+        $pdy1 = $y1 - $y;
+        return ($x1 + ($dxdy * $pdy1));
+    }
+
+    function check_line($x, $y, $x1, $y1, $x2, $y2) {
+        if (($y1 > $y2 && $y < $y1 && $y > $y2) or ($y1 < $y2 && $y > $y1 && $y < $y2)) {
+            if ($x < $x1 && $x < $x2) {
+                return (true);
+            }
+            else if ($x > $x1 && $x > $x2) {
+                return (false);
+            }
+            else {
+                $xpoint = find_x($x, $x1, $y1, $x2, $y2);
+                if ($xpoint >= $x) {
+                    return (true);
+                }
+                else {
+                    return (false);
+                }
+            }
+        }
+        else {
+            return (false);
+        }
+    }
     //the variables that needed to be passed: $coord = ("12,34"). Returned variable $district_location = "district"
     $probability_district_array = array();
     $stmt = $conn->prepare("SELECT district_name,points FROM districts");
@@ -29,35 +71,9 @@
             $x2 = $next_coord[0];
             $y1 = $current_coord[1] + 0.001;
             $y2 = $next_coord[1] + 0.001;
-
-            if ($y1 >= $y && $y2 <= $y or $y1 <= $y1 && $y2 >= $y) {
-                if ($x1 >= $x && $x2 >= $x) {
-                    $is_in = !$is_in;
-                    $collisions = $collisions + 1;
-                }
-                else {
-                    $dx = $x1 - $x2;
-                    $dy = $y1 - $y2;
-                    if ($dx < 0) {
-                        $dx = $dx * -1;
-                    }
-                    if ($dy < 0) {
-                        $dy = $dy * -1;
-                    }
-                    if ($dx == 0 or $dy == 0) {
-                        $is_in = !$is_in;
-                        $collisions = $collisions + 1;
-                    }
-                    else {
-                        $dxdy = $dx / $dy;
-                        $pdy1 = $y1 - $y;
-                        $lx = ($x1 + ($pdy1 * $dxdy));
-                        if ($lx >= $x) {
-                            $is_in = !$is_in;
-                            $collisions = $collisions + 1;
-                        }
-                    }
-                }
+            collides = check_line($x, $y, $x1, $y1, $x2, $y2);
+            if ($collides) {
+                $is_in = !$is_in;
             }
         }
         array_push ($probability_district_array, [$row["district_name"],$is_in]);
