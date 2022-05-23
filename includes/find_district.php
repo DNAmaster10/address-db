@@ -48,6 +48,7 @@
         $y = $coord[1];
 
         for ($i=0; $i < $n; $i++) {
+            error_log("Checking line in ".$row["district_name"]);
             $collisions = 0;
             $current_coord = explode(",",$polygon[$i]);
             $current_coord = [intval($current_coord[0]),intval($current_coord[1])];
@@ -63,7 +64,6 @@
             $x2 = $next_coord[0];
             $y1 = $current_coord[1] + 0.001;
             $y2 = $next_coord[1] + 0.001;
-            error_log("Checking line in ".$row["district_name"]);
             $collides = check_line($x, $y, $x1, $y1, $x2, $y2);
             if ($collides) {
                 error_log("Colision found in ".$row["district_name"]);
