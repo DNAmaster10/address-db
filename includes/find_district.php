@@ -63,8 +63,8 @@
             $x2 = $next_coord[0];
             $y1 = $current_coord[1] + 0.001;
             $y2 = $next_coord[1] + 0.001;
-            $collides = check_line($x, $y, $x1, $y1, $x2, $y2);
             error_log("Checking line in ".$row["district_name"]);
+            $collides = check_line($x, $y, $x1, $y1, $x2, $y2);
             if ($collides) {
                 error_log("Colision found in ".$row["district_name"]);
                 $is_in = !$is_in;
