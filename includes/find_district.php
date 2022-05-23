@@ -47,11 +47,11 @@
         $x = $coord[0];
         $y = $coord[1];
 
-        for ($i=0; $i < $n; ++$i) {
+        for ($i=0; $i < $n; $i++) {
             $collisions = 0;
             $current_coord = explode(",",$polygon[$i]);
             $current_coord = [intval($current_coord[0]),intval($current_coord[1])];
-            if ($i < count($polygon)){
+            if ($i < $n){
                 $next_coord = explode(",",$polygon[$i+1]);
                 $next_coord = [intval($next_coord[0]),intval($next_coord[1])];
             }
