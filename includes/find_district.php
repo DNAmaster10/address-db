@@ -47,7 +47,7 @@
         $x = $coord[0];
         $y = $coord[1];
 
-        for ($i=0; $i < $n-1; ++$i) {
+        for ($i=0; $i < $n; ++$i) {
             $collisions = 0;
             $current_coord = explode(",",$polygon[$i]);
             $current_coord = [intval($current_coord[0]),intval($current_coord[1])];
