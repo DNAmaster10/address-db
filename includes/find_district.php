@@ -21,20 +21,12 @@
 
     function check_line($x, $y, $x1, $y1, $x2, $y2) {
         if (($y1 > $y2 && $y < $y1 && $y > $y2) or ($y1 < $y2 && $y > $y1 && $y < $y2)) {
-            if ($x < $x1 && $x < $x2) {
+            $xpoint = find_x($x, $x1, $y1, $x2, $y2);
+            if ($xpoint >= $x) {
                 return (true);
             }
-            else if ($x > $x1 && $x > $x2) {
-                return (false);
-            }
             else {
-                $xpoint = find_x($x, $x1, $y1, $x2, $y2);
-                if ($xpoint >= $x) {
-                    return (true);
-                }
-                else {
-                    return (false);
-                }
+                return (false);
             }
         }
         else {
