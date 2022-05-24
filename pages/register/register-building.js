@@ -40,7 +40,14 @@ function get_details() {
             type: "GET",
             data: {coords:co_ords_string},
             success: function(data) {
-                console.log(data);
+                if (data == "error1") {
+                    console.log("No district or street unit was found");
+                }
+                else {
+                    var details = data.split("#-#");
+                    selectionBox = document.getElementById("district_select");
+                    selectionBox.value = details[0];
+                }
             }
         });
     }
