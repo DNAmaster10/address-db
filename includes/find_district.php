@@ -33,6 +33,7 @@
         }
     }
     //the variables that needed to be passed: $coord = ("12,34"). Returned variable $district_location = "district"
+    error_log("Running with coords ". strval($coords));
     $probability_district_array = array();
     $stmt = $conn->prepare("SELECT district_name,points FROM districts");
     $stmt->execute();
