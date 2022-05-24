@@ -15,13 +15,14 @@
             else if ($x1 == $x2 and $x >= $x1) {
                 return(true);
             }
-            else:
+            else {
                 $xpoint = get_x($y, $x1, $y1, $x2, $y2);
                 if ($xpoint > $x):
                     return(true);
                 else {
                     return(false);
                 }
+            }
         }
         else {
             return (false);
