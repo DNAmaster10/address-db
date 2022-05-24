@@ -86,4 +86,5 @@
     else {
         $district = $potential_districts[0][0];
     }
+    unset ($coords);
 ?>
