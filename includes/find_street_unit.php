@@ -65,10 +65,12 @@
             $x2 = intval($next_coord[0]);
             $y1 = floatval($current_coord[1] + 0.001);
             $y2 = floatval($next_coord[1] + 0.001);
+            error_log("checking line");
             $collides = check_line_streetunit($x, $y, $x1, $y1, $x2, $y2);
             if ($collides) {
                 $is_in = !$is_in;
                 $collisions++;
+                error_log("collision found");
             }
         }
         array_push ($probability_unit_array, [$row["name"],$is_in]);
