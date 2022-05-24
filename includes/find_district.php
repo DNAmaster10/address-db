@@ -17,8 +17,9 @@
             }
             else {
                 $xpoint = get_x($y, $x1, $y1, $x2, $y2);
-                if ($xpoint > $x):
+                if ($xpoint > $x) {
                     return(true);
+                }
                 else {
                     return(false);
                 }
