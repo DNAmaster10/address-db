@@ -47,6 +47,9 @@ function get_details() {
                     var details = data.split("#-#");
                     selectionBox = document.getElementById("district_select");
                     selectionBox.value = details[0];
+
+                    selectionBox = document.getElementById("street_unit_select");
+                    selectionBox.value = details[1];
                 }
             }
         });
