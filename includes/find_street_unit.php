@@ -1,5 +1,5 @@
 <?php
-    function find_x($y, $x1, $y1, $x2, $y2) {
+    function find_x_streetunit($y, $x1, $y1, $x2, $y2) {
         $dy = $y1 - $y2;
         $dx = $x1 - $x2;
         $gradient = $dy / $dx;
@@ -7,7 +7,7 @@
         $xpoint = ($y - $yintercept) / $gradient;
         return ($xpoint);
     }
-    function check_line($x, $y, $x1, $y1, $x2, $y2) {
+    function check_line_streetunit($x, $y, $x1, $y1, $x2, $y2) {
         if (($y1 >= $y2 && $y >= $y2 && $y <= $y1) or ($y2 >= $y1 && $y >= $y1 && $y <= $y2)) {
             if (($y1 == $y2 and $x1 > $x and $x2 < $x) or ($y1 == $y2 and $x2 > $x1 and $x2 > $x and $x1 < $x) or ($x < $x1 and $x < $x2)) {
                 return(true);
@@ -19,7 +19,7 @@
                 return(false);
             }
             else {
-                $xpoint = find_x($y, $x1, $y1, $x2, $y2);
+                $xpoint = find_x_streetunit($y, $x1, $y1, $x2, $y2);
                 if ($xpoint > $x) {
                     return(true);
                 }
@@ -63,7 +63,7 @@
             $x2 = intval($next_coord[0]);
             $y1 = floatval($current_coord[1] + 0.001);
             $y2 = floatval($next_coord[1] + 0.001);
-            $collides = check_line($x, $y, $x1, $y1, $x2, $y2);
+            $collides = check_line_streetunit($x, $y, $x1, $y1, $x2, $y2);
             if ($collides) {
                 $is_in = !$is_in;
                 $collisions++;
