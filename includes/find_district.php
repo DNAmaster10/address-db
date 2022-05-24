@@ -1,38 +1,27 @@
 <?php
     function find_x($y, $x1, $y1, $x2, $y2) {
-        $dx = $x1 - $x2;
         $dy = $y1 - $y2;
-        if ($dx < 0) {
-            $dx = $dx * -1;
-        }
-        if ($dy < 0) {
-            $dy = $dy * -1;
-        }
-        if ($dx == 0) {
-            return ($x1);
-        }
-        if ($dy == 0) {
-            return ("unknown");
-        }
-        $dxdy = $dx / $dy;
-        $pdy1 = $y1 - $y;
-        if ($pdy1 < 0) {
-        	$pdy1 = $pdy1 * -1;
-        	return (-1 * ($x1 + ($dxdy * pdy1)));
-        }
-        else {
-        	return ($x1 + ($dxdy * $pdy1));
-        }
+        $dx = $x1 - $x2;
+        $gradient = $dy / $dx;
+        $yintercept = $y1 - ($gradient * $x1)
+        $xpoint = ($y - $intercept) / $gradient;
+        return ($xpoint);
     }
     function check_line($x, $y, $x1, $y1, $x2, $y2) {
-        if (($y1 > $y2 && $y < $y1 && $y > $y2) or ($y1 < $y2 && $y > $y1 && $y < $y2)) {
-            $xpoint = find_x($x, $x1, $y1, $x2, $y2);
-            if ($xpoint >= $x) {
+        if (($y1 >= $y2 && $y >= $y2 && $y <= $y1) or ($y2 >= $y1 && $y >= $y1 && $y <= $y2)) {
+            if (($y1 == $y2 and $x1 > $x and $x2 < $x) or ($y1 == $y2 and $x2 > $x1 and $x2 > $x and $x1 < $x) or ($x < $x1 and $x < $x2)) {
+                return(true);
+            }
+            elif ($x1 == $x2 and $x >= $x1) {
                 return (true);
             }
-            else {
-                return (false);
-            }
+            else:
+                $xpoint = get_x($y, $x1, $y1, $x2, $y2);
+                if ($xpoint > $x):
+                    return (true);
+                else {
+                    return (false);
+                }
         }
         else {
             return (false);
