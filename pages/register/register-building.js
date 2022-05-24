@@ -55,5 +55,4 @@ function get_details() {
         });
     }
 }
-
 changeStreetUnits();
