@@ -33,6 +33,7 @@
         }
     }
     //the variables that needed to be passed: $coord = ("12,34"), $district = "newcastle" Returned variable $street_unit = "unit name"
+    error_log("Finding street unit for district ".$district);
     $probability_unit_array = array();
     $stmt = $conn->prepare("SELECT name,points FROM street_units WHERE parent_district=?");
     $stmt->bind_param("s",$district);
