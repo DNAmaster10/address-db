@@ -3,7 +3,7 @@
         $dy = $y1 - $y2;
         $dx = $x1 - $x2;
         $gradient = $dy / $dx;
-        $yintercept = $y1 - ($gradient * $x1)
+        $yintercept = $y1 - ($gradient * $x1);
         $xpoint = ($y - $intercept) / $gradient;
         return ($xpoint);
     }
