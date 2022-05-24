@@ -66,7 +66,7 @@
                 $next_coord = explode(",",$polygon[0]);
                 $next_coord = [intval($next_coord[0]),intval($next_coord[1])];
             }
-            error_log("Checking line: ".$i.". Point ".strval($current_coord). " to ".strval($next_coord));
+            error_log("Checking line: ".$i.". Point ".strval($current_coord[0]).",".strval($current_coord[1]). " to ".strval($next_coord[0]).",".strval($next_coord[1]));
             $x1 = intval($current_coord[0]);
             $x2 = intval($next_coord[0]);
             $y1 = floatval($current_coord[1] + 0.001);
