@@ -15,6 +15,9 @@
             else if ($x1 == $x2 and $x <= $x1) {
                 return(true);
             }
+            else if ($x1 == $x2 and $x > $x1) {
+                return(false);
+            }
             else {
                 $xpoint = find_x($y, $x1, $y1, $x2, $y2);
                 if ($xpoint > $x) {
