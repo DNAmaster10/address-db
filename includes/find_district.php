@@ -4,7 +4,7 @@
         $dx = $x1 - $x2;
         $gradient = $dy / $dx;
         $yintercept = $y1 - ($gradient * $x1);
-        $xpoint = ($y - $intercept) / $gradient;
+        $xpoint = ($y - $yintercept) / $gradient;
         return ($xpoint);
     }
     function check_line($x, $y, $x1, $y1, $x2, $y2) {
