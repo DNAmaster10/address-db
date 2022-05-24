@@ -33,7 +33,6 @@
         }
     }
     //the variables that needed to be passed: $coord = ("12,34"), $district = "newcastle" Returned variable $street_unit = "unit name"
-    error_log("Finding street unit for district ".$district);
     $probability_unit_array = array();
     $stmt = $conn->prepare("SELECT name,points FROM street_units WHERE parent_district=?");
     $stmt->bind_param("s",$district);
@@ -42,7 +41,6 @@
     $coord = explode(",",$coord);
     $coord = [intval($coord[0]),intval($coord[1])];
     while ($row = $result->fetch_assoc()) {
-        error_log("checking street unit ".$row["name"]);
         $polygon = explode(".",$row["points"]);
         $n = count($polygon);
         $is_in = false;
@@ -65,12 +63,10 @@
             $x2 = intval($next_coord[0]);
             $y1 = floatval($current_coord[1] + 0.001);
             $y2 = floatval($next_coord[1] + 0.001);
-            error_log("checking line ".$current_coord[0].",".$current_coord[1]." to ".$next_coord[0].",".$next_coord[1]);
             $collides = check_line_streetunit($x, $y, $x1, $y1, $x2, $y2);
             if ($collides) {
                 $is_in = !$is_in;
                 $collisions++;
-                error_log("collision found");
             }
         }
         array_push ($probability_unit_array, [$row["name"],$is_in]);
