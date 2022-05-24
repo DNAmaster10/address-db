@@ -42,6 +42,7 @@
     $coord = explode(",",$coord);
     $coord = [intval($coord[0]),intval($coord[1])];
     while ($row = $result->fetch_assoc()) {
+        error_log("checking street unit ".$row["name"]);
         $polygon = explode(".",$row["points"]);
         $n = count($polygon);
         $is_in = false;
