@@ -31,6 +31,12 @@
         die();
     }
     else {
-        echo ("District: ". $district);
+        include $_SERVER["DOCUMENT_ROOT"]."/includes/find_street_unit.php";
+        if ($street_unit == "error1") {
+            echo ("No street unit was found for that co-ordinate");
+        }
+        else {
+            echo ($district."#-#".$street_unit);
+        }
     }
 ?>
