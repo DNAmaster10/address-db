@@ -12,7 +12,7 @@
             if (($y1 == $y2 and $x1 > $x and $x2 < $x) or ($y1 == $y2 and $x2 > $x1 and $x2 > $x and $x1 < $x) or ($x < $x1 and $x < $x2)) {
                 return(true);
             }
-            else if ($x1 == $x2 and $x >= $x1) {
+            else if ($x1 == $x2 and $x <= $x1) {
                 return(true);
             }
             else {
