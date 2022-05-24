@@ -32,9 +32,10 @@
             return (false);
         }
     }
-    //the variables that needed to be passed: $coord = ("12,34"). Returned variable $district_location = "district"
-    $probability_district_array = array();
-    $stmt = $conn->prepare("SELECT district_name,points FROM districts");
+    //the variables that needed to be passed: $coord = ("12,34"), $district = "newcastle" Returned variable $street_unit = "unit name"
+    $probability_unit_array = array();
+    $stmt = $conn->prepare("SELECT name,points FROM street_units WHERE parent_district=?");
+    $stmt->bind_param("s",$district);
     $stmt->execute();
     $result = $stmt->get_result();
     $coord = explode(",",$coord);
@@ -68,21 +69,21 @@
                 $collisions++;
             }
         }
-        array_push ($probability_district_array, [$row["district_name"],$is_in]);
+        array_push ($probability_unit_array, [$row["name"],$is_in]);
     }
-    $n = count($probability_district_array);
+    $n = count($probability_unit_array);
     $found = false;
-    $potential_districts = array();
+    $potential_units = array();
     for ($i = 0; $i < $n; $i++) {
-        if ($probability_district_array[$i][1]) {
-            array_push($potential_districts, $probability_district_array[$i][0]);
+        if ($probability_unit_array[$i][1]) {
+            array_push($potential_units, $probability_unit_array[$i][0]);
             $found = true;
         }
     }
     if (!$found) {
-        $district = "error1";
+        $street_unit = "error1";
     }
     else {
-        $district = $potential_districts[0][0];
+        $street_unit = $potential_units[0][0];
     }
 ?>
