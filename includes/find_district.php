@@ -24,7 +24,6 @@
         	return ($x1 + ($dxdy * $pdy1));
         }
     }
-
     function check_line($x, $y, $x1, $y1, $x2, $y2) {
         if (($y1 > $y2 && $y < $y1 && $y > $y2) or ($y1 < $y2 && $y > $y1 && $y < $y2)) {
             $xpoint = find_x($x, $x1, $y1, $x2, $y2);
@@ -68,10 +67,10 @@
                 $next_coord = [intval($next_coord[0]),intval($next_coord[1])];
             }
             error_log("Checking line: ".$i.". Point ".strval($current_coord). " to ".strval($next_coord));
-            $x1 = $current_coord[0];
-            $x2 = $next_coord[0];
-            $y1 = $current_coord[1] + 0.001;
-            $y2 = $next_coord[1] + 0.001;
+            $x1 = intval($current_coord[0]);
+            $x2 = intval($next_coord[0]);
+            $y1 = floatval($current_coord[1] + 0.001);
+            $y2 = floatval($next_coord[1] + 0.001);
             $collides = check_line($x, $y, $x1, $y1, $x2, $y2);
             if ($collides) {
                 error_log("Collision found for this line");
