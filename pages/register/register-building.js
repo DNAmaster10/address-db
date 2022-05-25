@@ -60,8 +60,8 @@ function get_details() {
 }
 
 function typeChange(checkbox) {
-    if (checkbox.checked == "checked") {
-        checkbox.checked = "none";
+    if (checkbox.checked == "true") {
+        checkbox.checked = "";
     }
     value = checkbox.value;
     console.log(value);
