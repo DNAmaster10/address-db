@@ -11,6 +11,7 @@ function changeStreetUnits() {
             }
             else {
                 console.log(data);
+                console.log("Success function ran");
                 var street_unit_array = data.split("#-#");
                 selectionBox = document.getElementById("street_unit_select");
                 while (selectionBox.options.length > 0) {
@@ -26,6 +27,7 @@ function changeStreetUnits() {
                         selectionBox.add(newOption,undefined);
                     }
                 }
+                data = undefined;
             }
         }
     });
@@ -53,6 +55,7 @@ function get_details() {
                     selectionBox = document.getElementById("street_unit_select");
                     selectionBox.value = details[1];
                 }
+                data = undefined;
             }
         });
     }
