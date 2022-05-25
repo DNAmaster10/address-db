@@ -35,6 +35,11 @@
             <p>Street Unit: </p>
             <select name="street_unit" id="street_unit_select" required>
             </select>
+            <p>Building type: </p>
+            <input type="radio" name="type" value="
+            <p>Street name. This entry box is unnofficial. Please enter the street unit in exact syntax:</p>
+            <input type="text" name="street" placeholder="Highbroom avenue" required>
+            <
         </form>
     </body>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
