@@ -61,6 +61,7 @@ function get_details() {
 
 function typeChange(value) {
     console.log(value);
+    console.log("hello");
 }
 
 changeStreetUnits();

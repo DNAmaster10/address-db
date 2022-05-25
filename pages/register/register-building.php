@@ -46,21 +46,21 @@
                 <label for="houseSelect">House</label>
                 <input type="radio" id="apartmentSelect" name="type" onclick="typeChange(this)" value="apartment">
                 <label for="apartmentSelect">Apartment</label>
-                <input type="radio" id="commercialSelect" name="type" value="commercial">
+                <input type="radio" id="commercialSelect" name="type" onclick="typeChange(this)" value="commercial">
                 <label for="commercialSelect">Commercial</label>
-                <input type="radio" id="officeSelect" name="type" value="office">
+                <input type="radio" id="officeSelect" name="type" onclick="typeChange(this)" value="office">
                 <label for="officeSelect">Office</label>
-                <input type="radio" id="industrySelect" name="type" value="industry">
+                <input type="radio" id="industrySelect" name="type" onclick="typeChange(this)" value="industry">
                 <label for="industrySelect">Industry</label>
-                <input type="radio" id="franchiseSelect" name="type" value="franchise">
+                <input type="radio" id="franchiseSelect" name="type" onclick="typeChange(this)" value="franchise">
                 <label for="franchiseSelect">Franchise</label>
-                <input type="radio" id="monumentSelect" name="type" value="monument">
+                <input type="radio" id="monumentSelect" name="type" onclick="typeChange(this)" value="monument">
                 <label for="monumentSelect">Monument</label>
-                <input type="radio" id="stationSelect" name="type" value="station">
+                <input type="radio" id="stationSelect" name="type" onclick="typeChange(this)" value="station">
                 <label for="stationSelect">Station</label>
-                <input type="radio" id="bus_stopSelect" name="type" value="bus_stop">
+                <input type="radio" id="bus_stopSelect" name="type" onclick="typeChange(this)" value="bus_stop">
                 <label for="bus_stopSelect">Bus stop</label>
-                <input type="radio" id="specialSelect" name="type" value="special">
+                <input type="radio" id="specialSelect" name="type" onclick="typeChange(this)" value="special">
                 <label for="specialSelect">Special</label>
             </div>
             <div id="commerce_type" class="commerce_type">
