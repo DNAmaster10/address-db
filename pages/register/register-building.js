@@ -60,8 +60,8 @@ function get_details() {
 }
 
 function typeChange(value) {
+    value = value.value;
     console.log(value);
-    console.log("hello");
 }
 
 changeStreetUnits();
