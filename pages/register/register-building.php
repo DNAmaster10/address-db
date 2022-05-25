@@ -42,9 +42,9 @@
             </select>
             <p>Building type: </p>
             <div id="building_type_select">
-                <input type="radio" id="houseSelect" name="type" value="house">
+                <input type="radio" id="houseSelect" name="type" onclick="typeChange(this)" value="house">
                 <label for="houseSelect">House</label>
-                <input type="radio" id="apartmentSelect" name="type" value="apartment">
+                <input type="radio" id="apartmentSelect" name="type" onclick="typeChange(this)" value="apartment">
                 <label for="apartmentSelect">Apartment</label>
                 <input type="radio" id="commercialSelect" name="type" value="commercial">
                 <label for="commercialSelect">Commercial</label>
