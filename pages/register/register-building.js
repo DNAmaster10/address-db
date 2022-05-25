@@ -58,4 +58,17 @@ function get_details() {
         });
     }
 }
+
+var typeRadio = document.mainForm.type;
+var prev = null;
+for (var i = 0; i < typeRadio.length; i++) {
+    typeRadio[i].addEventListener("change", function() {
+        (prev) ? console.log(prev.value): null;
+        if (this !== prev) {
+            prev = this;
+        }
+        console.log(this.value)
+    });
+}
+
 changeStreetUnits();

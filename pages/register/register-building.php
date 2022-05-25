@@ -12,11 +12,16 @@
     <head>
         <title>Register Building</title>
     </head>
+    <style>
+        .commerce_type {
+            visibility: hidden;
+        }
+    </style>
     <body>
         <form action="/pages/register/building-home.php">
             <input type="submit" value="Back">
         </form>
-        <form action="register-building_submit.php" method="POST">
+        <form action="register-building_submit.php" method="POST" name="mainForm">
             <p>Co-ords. Format: "x,y" e.g: "10,-23". Pressing "Generate details" will attempt to autofill all inputs that can be found based on the buildings location.</p>
             <input type="text" name="coord" placeholder="x,y" id="coords" required>
             <button type="button" onclick="get_details()">Generate details</button>
@@ -58,7 +63,10 @@
                 <input type="radio" id="specialSelect" name="type" value="special">
                 <label for="specialSelect">Special</label>
             </div>
-            <p>Street name. This entry box is unnofficial. Please enter the street unit in exact syntax:</p>
+            <div id="commerce_type" class="commerce_type">
+
+            </div>
+            <p>Street name. This entry box is unnofficial. Please enter the street name in exact syntax:</p>
             <input type="text" name="street" placeholder="Highbroom avenue" required>
         </form>
     </body>
