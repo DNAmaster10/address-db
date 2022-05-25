@@ -61,7 +61,8 @@ function get_details() {
 
 function typeChange(checkbox) {
     if (checkbox.checked == "true") {
-        checkbox.checked = "";
+        console.log("unchecking");
+        checkbox.checked = "false";
     }
     value = checkbox.value;
     console.log(value);
