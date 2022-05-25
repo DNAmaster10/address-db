@@ -45,6 +45,18 @@
                 <label for="commercialSelect">Commercial</label>
                 <input type="radio" id="officeSelect" name="type" value="office">
                 <label for="officeSelect">Office</label>
+                <input type="radio" id="industrySelect" name="type" value="industry">
+                <label for="industrySelect">Industry</label>
+                <input type="radio" id="franchiseSelect" name="type" value="franchise">
+                <label for="franchiseSelect">Franchise</label>
+                <input type="radio" id="monumentSelect" name="type" value="monument">
+                <label for="monumentSelect">Monument</label>
+                <input type="radio" id="stationSelect" name="type" value="station">
+                <label for="stationSelect">Station</label>
+                <input type="radio" id="bus_stopSelect" name="type" value="bus_stop">
+                <label for="bus_stopSelect">Bus stop</label>
+                <input type="radio" id="specialSelect" name="type" value="special">
+                <label for="specialSelect">Special</label>
             </div>
             <p>Street name. This entry box is unnofficial. Please enter the street unit in exact syntax:</p>
             <input type="text" name="street" placeholder="Highbroom avenue" required>
