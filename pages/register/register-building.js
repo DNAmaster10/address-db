@@ -60,7 +60,7 @@ function get_details() {
 }
 
 function typeChange(checkbox) {
-    if (checkbox.checked == "checked") {
+    if (checkbox.checked) {
         console.log("unchecking");
         checkbox.checked = "false";
     }
