@@ -10,8 +10,6 @@ function changeStreetUnits() {
                 console.log("An error occured.");
             }
             else {
-                console.log(data);
-                console.log("Success function ran");
                 var street_unit_array = data.split("#-#");
                 selectionBox = document.getElementById("street_unit_select");
                 while (selectionBox.options.length > 0) {
