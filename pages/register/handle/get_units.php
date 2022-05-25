@@ -14,6 +14,6 @@
         while ($row = $result->fetch_assoc()) {
             echo ($row["name"]."#-#");
         }
-        echo ("return");
+        echo (" are the street units for ".$district);
     }
 ?>
