@@ -59,8 +59,11 @@ function get_details() {
     }
 }
 
-function typeChange(value) {
-    value = value.value;
+function typeChange(checkbox) {
+    if (checkbox.checked == "checked") {
+        checkbox.checked = "none";
+    }
+    value = checkbox.value;
     console.log(value);
 }
 
