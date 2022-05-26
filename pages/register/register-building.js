@@ -62,7 +62,7 @@ function removeBuildingType(building_type) {
     document.getElementById("type_" + building_type + "_container").remove();
 
     var current_types = document.getElementById("building_types").value;
-    var new_types = current_types.replace("#-#" + building_type);
+    var new_types = current_types.replace("#-#" + building_type, "");
     document.getElementById("building_types").value = new_types;
 }
 function addBuildingType() {
@@ -88,12 +88,6 @@ function addBuildingType() {
         var new_types = current_types.concat("#-#",building_type);
         document.getElementById("building_types").value = new_types;
     }
-    //else {
-    //    document.getElementById("type_" + building_type + "_container").remove();
-
-    //    var current_types = document.getElementById("building_types").value;
-    //    var new_types = current_types.replace("#-#" + building_type);
-    //}
 }
 
 
