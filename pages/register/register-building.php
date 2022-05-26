@@ -43,7 +43,7 @@
             <p>Building type(s): </p>
             <div id="all_building_type_container">
                 <div id="building_type_list_container">
-                    <input type="hidden" name="building_types" id="building_types">
+                    <input type="hidden" name="building_types" id="building_types" value="">
                 </div>
                 <div id="commerce_type" class="commerce_type" class="commerce_type_container">
 

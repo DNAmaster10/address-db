@@ -69,6 +69,7 @@ function addBuildingType() {
 
         var element = document.createElement("p");
         element.setAttribute("id","type_" + building_type + "_p");
+        document.getElementById("type_" + building_type + "_container").appendChild(element);
         document.getElementById("type_" + building_type + "_p").innerHTML = building_type;
 
         var current_types = document.getElementById("building_types").value;
