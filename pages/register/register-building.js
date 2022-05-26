@@ -59,13 +59,9 @@ function get_details() {
     }
 }
 
-function typeChange(checkbox) {
-    if (checkbox.checked) {
-        console.log("unchecking");
-        checkbox.checked = "false";
-    }
-    value = checkbox.value;
-    console.log(value);
+function addBuildingType() {
+    var building_type = document.getElementById("add_building_type").select.options[select.selectedIndex].value;
+    console.log(building_type);
 }
 
 changeStreetUnits();

@@ -40,28 +40,24 @@
             <p>Street Unit: </p>
             <select name="street_unit" id="street_unit_select" required>
             </select>
-            <p>Building type: </p>
-            <div id="building_type_select">
-                <input type="radio" id="houseSelect" name="housetype" onclick="typeChange(this)" value="house">
-                <label for="houseSelect">House</label>
-                <input type="radio" id="apartmentSelect" name="apartmenttype" onclick="typeChange(this)" value="apartment">
-                <label for="apartmentSelect">Apartment</label>
-                <input type="radio" id="commercialSelect" name="commercialtype" onclick="typeChange(this)" value="commercial">
-                <label for="commercialSelect">Commercial</label>
-                <input type="radio" id="officeSelect" name="officetype" onclick="typeChange(this)" value="office">
-                <label for="officeSelect">Office</label>
-                <input type="radio" id="industrySelect" name="industrytype" onclick="typeChange(this)" value="industry">
-                <label for="industrySelect">Industry</label>
-                <input type="radio" id="franchiseSelect" name="franchisetype" onclick="typeChange(this)" value="franchise">
-                <label for="franchiseSelect">Franchise</label>
-                <input type="radio" id="monumentSelect" name="monumenttype" onclick="typeChange(this)" value="monument">
-                <label for="monumentSelect">Monument</label>
-                <input type="radio" id="stationSelect" name="stationtype" onclick="typeChange(this)" value="station">
-                <label for="stationSelect">Station</label>
-                <input type="radio" id="bus_stopSelect" name="bus_stoptype" onclick="typeChange(this)" value="bus_stop">
-                <label for="bus_stopSelect">Bus stop</label>
-                <input type="radio" id="specialSelect" name="specialtype" onclick="typeChange(this)" value="special">
-                <label for="specialSelect">Special</label>
+            <p>Building type(s): </p>
+            <div id="building_type_list_container">
+                <input type="hidden" name="building_types" id="building_types">
+            </div>
+            <div id="building_type_select_container">
+                <select id="add_building_type" onchance="add_type()">
+                    <option value="house">House</option>
+                    <option value="apartment">Apartment</option>
+                    <option value="commercial">Commercial</option>
+                    <option value="office">Office</option>
+                    <option value="industry">Industry</option>
+                    <option value="franchise">Franchise</option>
+                    <option value="monument">Monument</option>
+                    <option value="station">Station</option>
+                    <option value="bus_stop">Bus Stop</option>
+                    <option value="special">Special</option>
+                </select>
+                <button id="add_building_type_button" onclick="addBuildingType()">Add type</button>
             </div>
             <div id="commerce_type" class="commerce_type">
 
