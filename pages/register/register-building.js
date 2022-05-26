@@ -61,7 +61,7 @@ function get_details() {
 
 function addBuildingType() {
     var select_element = document.getElementById("add_building_type");
-    var building_type = select_element.options[select.selectedIndex].value;
+    var building_type = select_element.options[select_element.selectedIndex].value;
     console.log(building_type);
 }
 
