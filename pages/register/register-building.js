@@ -62,7 +62,12 @@ function get_details() {
 function addBuildingType() {
     var select_element = document.getElementById("add_building_type");
     var building_type = select_element.options[select_element.selectedIndex].value;
-    console.log(building_type);
+    if (!document.getElementById("type_" + building_type)) {
+        var element = document.createElement("p");
+        element.setAttribute("id","type_" + building_type);
+        document.getElementById("building_type_list_container").appendChild(element);
+        document.getElementById("type_" + building_type).innerHTML = building_type;
+    }
 }
 
 changeStreetUnits();

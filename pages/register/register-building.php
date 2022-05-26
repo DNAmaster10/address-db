@@ -13,7 +13,7 @@
         <title>Register Building</title>
     </head>
     <style>
-        .commerce_type {
+        .commerce_type_container {
             visibility: hidden;
         }
     </style>
@@ -41,26 +41,28 @@
             <select name="street_unit" id="street_unit_select" required>
             </select>
             <p>Building type(s): </p>
-            <div id="building_type_list_container">
-                <input type="hidden" name="building_types" id="building_types">
-            </div>
-            <div id="building_type_select_container">
-                <select id="add_building_type" onchance="add_type()">
-                    <option value="house">House</option>
-                    <option value="apartment">Apartment</option>
-                    <option value="commercial">Commercial</option>
-                    <option value="office">Office</option>
-                    <option value="industry">Industry</option>
-                    <option value="franchise">Franchise</option>
-                    <option value="monument">Monument</option>
-                    <option value="station">Station</option>
-                    <option value="bus_stop">Bus Stop</option>
-                    <option value="special">Special</option>
-                </select>
-                <button id="add_building_type_button" onclick="addBuildingType()">Add type</button>
-            </div>
-            <div id="commerce_type" class="commerce_type">
+            <div id="all_building_type_container">
+                <div id="building_type_list_container">
+                    <input type="hidden" name="building_types" id="building_types">
+                </div>
+                <div id="commerce_type" class="commerce_type" class="commerce_type_container">
 
+                </div>
+                <div id="building_type_select_container">
+                    <select id="add_building_type" onchance="add_type()">
+                        <option value="house">House</option>
+                        <option value="apartment">Apartment</option>
+                        <option value="commercial">Commercial</option>
+                        <option value="office">Office</option>
+                        <option value="industry">Industry</option>
+                        <option value="franchise">Franchise</option>
+                        <option value="monument">Monument</option>
+                        <option value="station">Station</option>
+                        <option value="bus_stop">Bus Stop</option>
+                        <option value="special">Special</option>
+                    </select>
+                    <button id="add_building_type_button" onclick="addBuildingType()">Add type</button>
+                </div>
             </div>
             <p>Street name. This entry box is unnofficial. Please enter the street name in exact syntax:</p>
             <input type="text" name="street" placeholder="Highbroom avenue" required>
