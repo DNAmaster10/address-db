@@ -79,8 +79,8 @@ function addBuildingType() {
         document.getElementById("type_" + building_type + "_p").innerHTML = building_type;
 
         var element = document.createElement("button");
-        element.setAtrribute("id", "remove_building_button_ " + building_type);
-        element.setAttiibute("onclick","removeBuildingType('"+ building_type +"')");
+        element.setAttribute("id", "remove_building_button_ " + building_type);
+        element.setAttribute("onclick","removeBuildingType('"+ building_type +"')");
         document.getElementById("type_" + building_type + "_container").appendChild(element);
         document.getElementById("remove_building_button_" + building_type).innerHTML = "X";
 
