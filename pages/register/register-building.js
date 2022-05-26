@@ -62,12 +62,34 @@ function get_details() {
 function addBuildingType() {
     var select_element = document.getElementById("add_building_type");
     var building_type = select_element.options[select_element.selectedIndex].value;
-    if (!document.getElementById("type_" + building_type)) {
-        var element = document.createElement("p");
-        element.setAttribute("id","type_" + building_type);
+    if (!document.getElementById("type_" + building_type + "_container")) {
+        var element = document.createElement("div");
+        element.setAttribute("id","type_" + building_type + "_container");
         document.getElementById("building_type_list_container").appendChild(element);
         document.getElementById("type_" + building_type).innerHTML = building_type;
+
+        var current_types = document.getElementById("building_types").value;
+        var new_types = current_types.concat("#-#",building_type);
+        document.getElementById("building_types").value = new_types;
+    }
+    else {
+        document.getElementById("type_" + building_type + "_container").remove();
+
+        var current_types = document.getElementById("building_types").value;
+        var new_types = current_types.replace("#-#" + building_type);
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 changeStreetUnits();
