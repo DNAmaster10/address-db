@@ -71,7 +71,7 @@ function addBuildingType() {
     if (!document.getElementById("type_" + building_type + "_container")) {
         var element = document.createElement("div");
         element.setAttribute("id","type_" + building_type + "_container");
-        element.setAttribure("class","building_type_container");
+        element.setAttribute("class","building_type_container");
         document.getElementById("building_type_list_container").appendChild(element);
 
         var element = document.createElement("p");
