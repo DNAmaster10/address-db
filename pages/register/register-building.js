@@ -60,7 +60,8 @@ function get_details() {
 }
 
 function addBuildingType() {
-    var building_type = document.getElementById("add_building_type").select.options[select.selectedIndex].value;
+    var select_element = document.getElementById("add_building_type");
+    var building_type = select_element.options[select.selectedIndex].value;
     console.log(building_type);
 }
 
