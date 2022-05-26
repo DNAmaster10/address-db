@@ -71,16 +71,19 @@ function addBuildingType() {
     if (!document.getElementById("type_" + building_type + "_container")) {
         var element = document.createElement("div");
         element.setAttribute("id","type_" + building_type + "_container");
+        element.setAttribure("class","building_type_container");
         document.getElementById("building_type_list_container").appendChild(element);
 
         var element = document.createElement("p");
         element.setAttribute("id","type_" + building_type + "_p");
+        element.setAttribute("class","inline");
         document.getElementById("type_" + building_type + "_container").appendChild(element);
         document.getElementById("type_" + building_type + "_p").innerHTML = building_type;
 
         var element = document.createElement("button");
         element.setAttribute("id", "remove_building_button_" + building_type);
         element.setAttribute("onclick","removeBuildingType('"+ building_type +"')");
+        element.setAttribute("class","inline");
         document.getElementById("type_" + building_type + "_container").appendChild(element);
         document.getElementById("remove_building_button_" + building_type).innerHTML = "X";
 

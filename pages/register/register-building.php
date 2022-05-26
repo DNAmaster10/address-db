@@ -16,6 +16,9 @@
         .commerce_type_container {
             visibility: hidden;
         }
+        .building_type_container {
+            border: 1px solid black;
+        }
     </style>
     <body>
         <form action="/pages/register/building-home.php">
