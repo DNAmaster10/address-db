@@ -81,6 +81,44 @@ function addBuildingType() {
         document.getElementById("type_" + building_type + "_p").innerHTML = building_type;
 
         var element = document.createElement("button");
+        element.setAttribute("onclick", "minusCount(this)");
+        element.setAttribute("class", "inline");
+        element.setAttribute("id","minus10Button_" + building_type);
+        element.setAttribute("value", "10");
+        document.getElementById("type_" + building_type + "_container").appendChild(element);
+        document.getElementById("minus10Button_" + building_type).innerHTML = "-10";
+
+        var element = document.createElement("button");
+        element.setAttribute("onclick", "minusCount(this)");
+        element.setAttribute("class", "inline");
+        element.setAttribute("id","minus1Button_" + building_type);
+        element.setAttribute("value", "1");
+        document.getElementById("type_" + building_type + "_container").appendChild(element);
+        document.getElementById("minus1Button_" + building_type).innerHTML = "-1";
+
+        var element = document.createElement("p");
+        element.setAttribute("id","typeAmmountP_" + building_type);
+        element.setAttribute("class","inline");
+        document.getElementById("type_" + building_type + "_container").appendChild(element);
+        document.getElementById("typeAmmountP_" + building_type).innerHTML = "1";
+
+        var element = document.createElement("button");
+        element.setAttribute("onclick", "plusCount(this)");
+        element.setAttribute("class", "inline");
+        element.setAttribute("id","plus1Button_" + building_type);
+        element.setAttribute("value","1");
+        document.getElementById("type_" + building_type + "_container").appendChild(element);
+        document.getElementById("minus1Button_" + building_type).innerHTML = "+1";
+
+        var element = document.createElement("button");
+        element.setAttribute("onclick", "plusCount(this)");
+        element.setAttribute("class", "inline");
+        element.setAttribute("id","plus10Button_" + building_type);
+        element.setAttribute("value","10");
+        document.getElementById("type_" + building_type + "_container").appendChild(element);
+        document.getElementById("minus1Button_" + building_type).innerHTML = "+10";
+
+        var element = document.createElement("button");
         element.setAttribute("id", "remove_building_button_" + building_type);
         element.setAttribute("onclick","removeBuildingType('"+ building_type +"')");
         element.setAttribute("class","inline");
@@ -92,17 +130,4 @@ function addBuildingType() {
         document.getElementById("building_types").value = new_types;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 changeStreetUnits();
