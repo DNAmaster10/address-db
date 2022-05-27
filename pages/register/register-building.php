@@ -20,7 +20,7 @@
             border: 1px solid black;
         }
         .inline {
-            display:
+            display: inline;
         }
     </style>
     <body>
