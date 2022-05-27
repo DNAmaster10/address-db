@@ -108,7 +108,7 @@ function addBuildingType() {
         element.setAttribute("id","plus1Button_" + building_type);
         element.setAttribute("value","1");
         document.getElementById("type_" + building_type + "_container").appendChild(element);
-        document.getElementById("minus1Button_" + building_type).innerHTML = "+1";
+        document.getElementById("plus1Button_" + building_type).innerHTML = "+1";
 
         var element = document.createElement("button");
         element.setAttribute("onclick", "plusCount(this)");
@@ -116,7 +116,7 @@ function addBuildingType() {
         element.setAttribute("id","plus10Button_" + building_type);
         element.setAttribute("value","10");
         document.getElementById("type_" + building_type + "_container").appendChild(element);
-        document.getElementById("minus1Button_" + building_type).innerHTML = "+10";
+        document.getElementById("plus10Button_" + building_type).innerHTML = "+10";
 
         var element = document.createElement("button");
         element.setAttribute("id", "remove_building_button_" + building_type);
