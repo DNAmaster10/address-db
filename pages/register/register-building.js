@@ -99,6 +99,7 @@ function addBuildingType() {
         var element = document.createElement("input");
         element.setAttribute("id","typeAmmountP_" + building_type);
         element.setAttribute("class","inline");
+        element.setAttribute("name","ammount_" + building_type);
         document.getElementById("type_" + building_type + "_container").appendChild(element);
         document.getElementById("typeAmmountP_" + building_type).value = "1";
 
