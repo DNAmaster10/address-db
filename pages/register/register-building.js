@@ -96,11 +96,11 @@ function addBuildingType() {
         document.getElementById("type_" + building_type + "_container").appendChild(element);
         document.getElementById("minus1Button_" + building_type).innerHTML = "-1";
 
-        var element = document.createElement("p");
+        var element = document.createElement("input");
         element.setAttribute("id","typeAmmountP_" + building_type);
         element.setAttribute("class","inline");
         document.getElementById("type_" + building_type + "_container").appendChild(element);
-        document.getElementById("typeAmmountP_" + building_type).innerHTML = "1";
+        document.getElementById("typeAmmountP_" + building_type).value = "1";
 
         var element = document.createElement("button");
         element.setAttribute("onclick", "plusCount(this)");
