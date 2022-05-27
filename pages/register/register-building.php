@@ -19,6 +19,9 @@
         .building_type_container {
             border: 1px solid black;
         }
+        .inline {
+            display:
+        }
     </style>
     <body>
         <form action="/pages/register/building-home.php">
