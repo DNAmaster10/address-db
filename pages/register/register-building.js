@@ -65,6 +65,18 @@ function removeBuildingType(building_type) {
     var new_types = current_types.replace("#-#" + building_type, "");
     document.getElementById("building_types").value = new_types;
 }
+function minusCount(element) {
+    var increment_ammount = element.value;
+    increment_ammount = parseInt(increment_ammount);
+    var id = element.id;
+    var id_array = id.split("_");
+    var building_type = id[1];
+    current_count = document.getElementById("typeAmmountP_" + building_type).value;
+    current_count = parseInt(current_count);
+    new_count = current_count + inrement_ammount;
+    document.getElementById("typeAmmountP_" + building_type).value = new_count;
+}
+
 function addBuildingType() {
     var select_element = document.getElementById("add_building_type");
     var building_type = select_element.options[select_element.selectedIndex].value;
