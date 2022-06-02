@@ -153,7 +153,7 @@ function addBuildingType() {
 
 function add_commerce_item() {
     var item = document.getElementById("commerce_type_text_input").value;
-    document.getElementById("commerce_Type_text_input").value = "";
+    document.getElementById("commerce_type_text_input").value = "";
     var old_items = document.getElementById("commerce_items_hidden").value;
     var new_items = old_items + "#-#" + item;
     document.getElementById("commerce_items_hidden").value = new_items;
