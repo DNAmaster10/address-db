@@ -69,7 +69,7 @@ function removeBuildingType(building_type) {
         document.getElementById("commerce_type").style.visibiltty = "hidden";
     }
 }
-function minusCount(element) {
+function alterCount(element) {
     var increment_ammount = element.value;
     increment_ammount = parseInt(increment_ammount);
     var id = element.id;
@@ -80,7 +80,6 @@ function minusCount(element) {
     new_count = current_count + inrement_ammount;
     document.getElementById("typeAmmountP_" + building_type).value = new_count;
 }
-
 function addBuildingType() {
     var select_element = document.getElementById("add_building_type");
     var building_type = select_element.options[select_element.selectedIndex].value;
@@ -97,7 +96,7 @@ function addBuildingType() {
         document.getElementById("type_" + building_type + "_p").innerHTML = building_type;
 
         var element = document.createElement("button");
-        element.setAttribute("onclick", "minusCount(this)");
+        element.setAttribute("onclick", "alterCount(this)");
         element.setAttribute("class", "inline");
         element.setAttribute("id","minus10Button_" + building_type);
         element.setAttribute("value", "10");
@@ -105,7 +104,7 @@ function addBuildingType() {
         document.getElementById("minus10Button_" + building_type).innerHTML = "-10";
 
         var element = document.createElement("button");
-        element.setAttribute("onclick", "minusCount(this)");
+        element.setAttribute("onclick", "alterCount(this)");
         element.setAttribute("class", "inline");
         element.setAttribute("id","minus1Button_" + building_type);
         element.setAttribute("value", "1");
@@ -120,7 +119,7 @@ function addBuildingType() {
         document.getElementById("typeAmmountP_" + building_type).value = "1";
 
         var element = document.createElement("button");
-        element.setAttribute("onclick", "plusCount(this)");
+        element.setAttribute("onclick", "alterCount(this)");
         element.setAttribute("class", "inline");
         element.setAttribute("id","plus1Button_" + building_type);
         element.setAttribute("value","1");
@@ -128,7 +127,7 @@ function addBuildingType() {
         document.getElementById("plus1Button_" + building_type).innerHTML = "+1";
 
         var element = document.createElement("button");
-        element.setAttribute("onclick", "plusCount(this)");
+        element.setAttribute("onclick", "alterCount(this)");
         element.setAttribute("class", "inline");
         element.setAttribute("id","plus10Button_" + building_type);
         element.setAttribute("value","10");
