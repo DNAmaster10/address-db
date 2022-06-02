@@ -152,7 +152,7 @@ function addBuildingType() {
     }
 }
 
-add_commerce_item() {
+function add_commerce_item() {
     var item = document.getElementById("commerce_type_text_input").value;
     document.getElementById("commerce_Type_text_input").value = "";
     var old_items = document.getElementById("commerce_items_hidden").value;
@@ -162,12 +162,12 @@ add_commerce_item() {
     new_items_p = old_items_p + ", " + item;
     document.getElementById("commerce_p").innerHTML = new_items_p;
 }
-reset_commerce_items() {
+function reset_commerce_items() {
     document.getElementById("commerce_type_text_input").value = "";
     document.getElementById("commerce_items_hidden").value = "";
     document.getElementById("commerce_p").innerHTML = "";
 }
-addCommercialTypeInput() {
+function addCommercialTypeInput() {
     document.getElementById("commerce_type").style.visibility = "vissible";
 }
 changeStreetUnits();
