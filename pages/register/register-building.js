@@ -66,8 +66,7 @@ function removeBuildingType(building_type) {
     var new_types = current_types.replace("#-#" + building_type, "");
     document.getElementById("building_types").value = new_types;
     if (building_type == "commercial") {
-        document.getElementById("commerce_type").style.visibilty = "hidden";
-        console.log("hidden commerce type");
+        document.getElementById("commerce_type").style.visibility = "hidden";
     }
 }
 function alterCount(element) {
@@ -100,7 +99,7 @@ function addBuildingType() {
         element.setAttribute("onclick", "alterCount(this)");
         element.setAttribute("class", "inline");
         element.setAttribute("id","minus10Button#" + building_type);
-        element.setAttribute("value", "10");
+        element.setAttribute("value", "-10");
         document.getElementById("type_" + building_type + "_container").appendChild(element);
         document.getElementById("minus10Button#" + building_type).innerHTML = "-10";
 
@@ -108,7 +107,7 @@ function addBuildingType() {
         element.setAttribute("onclick", "alterCount(this)");
         element.setAttribute("class", "inline");
         element.setAttribute("id","minus1Button#" + building_type);
-        element.setAttribute("value", "1");
+        element.setAttribute("value", "-1");
         document.getElementById("type_" + building_type + "_container").appendChild(element);
         document.getElementById("minus1Button#" + building_type).innerHTML = "-1";
 
