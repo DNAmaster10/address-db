@@ -158,7 +158,12 @@ function add_commerce_item() {
     var new_items = old_items + "#-#" + item;
     document.getElementById("commerce_items_hidden").value = new_items;
     var old_items_p = document.getElementById("commerce_p").innerHTML;
-    new_items_p = old_items_p + ", " + item;
+    if (old_items_p == "") {
+        new_items_p = item;
+    }
+    else {
+        new_items_p = old_items_p + ", " + item;
+    }
     document.getElementById("commerce_p").innerHTML = new_items_p;
 }
 function reset_commerce_items() {
