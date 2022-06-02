@@ -67,6 +67,7 @@ function removeBuildingType(building_type) {
     document.getElementById("building_types").value = new_types;
     if (building_type == "commercial") {
         document.getElementById("commerce_type").style.visibilty = "hidden";
+        console.log("hidden commerce type");
     }
 }
 function alterCount(element) {
