@@ -55,7 +55,7 @@
                     <input type="hidden" name="commerce_items" id="commerce_items_hidden" value="">
                     <p id="commerce_p"></p>
                     <input type="text" placeholder="Movies / food e.t.c" id="commerce_type_text_input"></input>
-                    <button onclick="add_commerce_item">Add item</button>
+                    <button onclick="add_commerce_item()">Add item</button>
                 </div>
                 <div id="building_type_select_container">
                     <select id="add_building_type" onchance="add_type()">
