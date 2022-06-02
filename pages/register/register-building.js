@@ -1,5 +1,6 @@
 function changeStreetUnits() {
     var district = document.getElementById("district_select").value;
+    console.log("running");
     $.ajax({
         url: "/pages/register/handle/get_units.php",
         type: "GET",
