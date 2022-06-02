@@ -1,3 +1,4 @@
+var hasCommercial = false;
 function changeStreetUnits() {
     var district = document.getElementById("district_select").value;
     console.log("running");
@@ -64,6 +65,9 @@ function removeBuildingType(building_type) {
     var current_types = document.getElementById("building_types").value;
     var new_types = current_types.replace("#-#" + building_type, "");
     document.getElementById("building_types").value = new_types;
+    if (building_type == "commercial") {
+        document.getElementById("commerce_type").style.visibiltty = "hidden";
+    }
 }
 function minusCount(element) {
     var increment_ammount = element.value;
@@ -142,5 +146,28 @@ function addBuildingType() {
         var new_types = current_types.concat("#-#",building_type);
         document.getElementById("building_types").value = new_types;
     }
+    if (building_type == "commercial") {
+        hasCommercial = true;
+        addCommercialTypeInput();
+    }
+}
+
+add_commerce_item() {
+    var item = document.getElementById("commerce_type_text_input").value;
+    document.getElementById("commerce_Type_text_input").value = "";
+    var old_items = document.getElementById("commerce_items_hidden").value;
+    var new_items = old_items + "#-#" + item;
+    document.getElementById("commerce_items_hidden").value = new_items;
+    var old_items_p = document.getElementById("commerce_p").innerHTML;
+    new_items_p = old_items_p + ", " + item;
+    document.getElementById("commerce_p").innerHTML = new_items_p;
+}
+reset_commerce_items() {
+    document.getElementById("commerce_type_text_input").value = "";
+    document.getElementById("commerce_items_hidden").value = "";
+    document.getElementById("commerce_p").innerHTML = "";
+}
+addCommercialTypeInput() {
+    document.getElementById("commerce_type").style.visibility = "vissible";
 }
 changeStreetUnits();
