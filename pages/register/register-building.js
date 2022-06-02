@@ -77,7 +77,7 @@ function alterCount(element) {
     var building_type = id_array[1];
     current_count = document.getElementById("typeAmmountP_" + building_type).value;
     current_count = parseInt(current_count);
-    new_count = current_count + inrement_ammount;
+    new_count = current_count + increment_ammount;
     document.getElementById("typeAmmountP_" + building_type).value = new_count;
 }
 function addBuildingType() {
