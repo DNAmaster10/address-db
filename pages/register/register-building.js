@@ -167,6 +167,6 @@ function reset_commerce_items() {
     document.getElementById("commerce_p").innerHTML = "";
 }
 function addCommercialTypeInput() {
-    document.getElementById("commerce_type").style.visibility = "vissible";
+    document.getElementById("commerce_type").style.visibility = "visible";
 }
 changeStreetUnits();
