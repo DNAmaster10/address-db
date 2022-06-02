@@ -73,7 +73,8 @@ function alterCount(element) {
     var increment_ammount = element.value;
     increment_ammount = parseInt(increment_ammount);
     var id = element.id;
-    var id_array = id.split("_");
+    var id_array = id.split("#");
+    console.log(id_array);
     var building_type = id[1];
     console.log(building_type);
     current_count = document.getElementById("typeAmmountP_" + building_type).value;
@@ -99,18 +100,18 @@ function addBuildingType() {
         var element = document.createElement("button");
         element.setAttribute("onclick", "alterCount(this)");
         element.setAttribute("class", "inline");
-        element.setAttribute("id","minus10Button_" + building_type);
+        element.setAttribute("id","minus10Button#" + building_type);
         element.setAttribute("value", "10");
         document.getElementById("type_" + building_type + "_container").appendChild(element);
-        document.getElementById("minus10Button_" + building_type).innerHTML = "-10";
+        document.getElementById("minus10Button#" + building_type).innerHTML = "-10";
 
         var element = document.createElement("button");
         element.setAttribute("onclick", "alterCount(this)");
         element.setAttribute("class", "inline");
-        element.setAttribute("id","minus1Button_" + building_type);
+        element.setAttribute("id","minus1Button#" + building_type);
         element.setAttribute("value", "1");
         document.getElementById("type_" + building_type + "_container").appendChild(element);
-        document.getElementById("minus1Button_" + building_type).innerHTML = "-1";
+        document.getElementById("minus1Button#" + building_type).innerHTML = "-1";
 
         var element = document.createElement("input");
         element.setAttribute("id","typeAmmountP_" + building_type);
@@ -122,18 +123,18 @@ function addBuildingType() {
         var element = document.createElement("button");
         element.setAttribute("onclick", "alterCount(this)");
         element.setAttribute("class", "inline");
-        element.setAttribute("id","plus1Button_" + building_type);
+        element.setAttribute("id","plus1Button#" + building_type);
         element.setAttribute("value","1");
         document.getElementById("type_" + building_type + "_container").appendChild(element);
-        document.getElementById("plus1Button_" + building_type).innerHTML = "+1";
+        document.getElementById("plus1Button#" + building_type).innerHTML = "+1";
 
         var element = document.createElement("button");
         element.setAttribute("onclick", "alterCount(this)");
         element.setAttribute("class", "inline");
-        element.setAttribute("id","plus10Button_" + building_type);
+        element.setAttribute("id","plus10Button#" + building_type);
         element.setAttribute("value","10");
         document.getElementById("type_" + building_type + "_container").appendChild(element);
-        document.getElementById("plus10Button_" + building_type).innerHTML = "+10";
+        document.getElementById("plus10Button#" + building_type).innerHTML = "+10";
 
         var element = document.createElement("button");
         element.setAttribute("id", "remove_building_button_" + building_type);
