@@ -75,7 +75,7 @@ function alterCount(element) {
     var id = element.id;
     var id_array = id.split("_");
     var building_type = id[1];
-    console.log(id);
+    console.log(building_type);
     current_count = document.getElementById("typeAmmountP_" + building_type).value;
     current_count = parseInt(current_count);
     new_count = current_count + inrement_ammount;
