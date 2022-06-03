@@ -1,3 +1,4 @@
 const domContainer = document.getElementById("building_type_list_container");
 const root = ReactDOM.createRoot(domContainer);
-root.render("<p>This is a test!</p>");
+const element = <p>Hello!</p>;
+root.render(element);
