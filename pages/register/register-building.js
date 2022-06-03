@@ -30,7 +30,9 @@ function changeStreetUnits() {
     });
 }
 function get_details() {
-    var co_ords_string = document.getElementById("coords").value;
+    var x_coord = document.getElementById("x_coord").value;
+    var y_coord = document.getElementById("y_coord").value;
+    var co_ords_string = x_coord + y_coord;
     if (co_ords_string.length < 3) {
         console.log("Co-ords entered too short");
     }

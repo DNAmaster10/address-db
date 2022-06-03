@@ -50,9 +50,30 @@
                         <select name="street_unit" id="street_unit_select">
                         </select>
                     </div>
+                    <div id="building_type_container">
+                        <select id="add_building_type">
+                            <option value="house">House</option>
+                            <option value="apartment">Apartment</option>
+                            <option value="commercial">Commercial</option>
+                            <option value="office">Office</option>
+                            <option value="industry">Industry</option>
+                            <option value="franchise">Franchise</option>
+                            <option value="monument">Monument</option>
+                            <option value="station">Station</option>
+                            <option value="bus_stop">Bus Stop</option>
+                            <option value="special">Special</option>
+                        </select>
+                        <button id="add_building_type_button" class="inline" onclick="addBuildingType()">Add building type</button>
+                        <div id="building_type_list_container">
+
+                        </div>
+                    </div>
                 </div>
             </form>
         </div>
+        <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+
+        <script src="register-building-type.js"></script>
     </body>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="/pages/register/register-building.js"></script>
