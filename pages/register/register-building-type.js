@@ -1,7 +1,11 @@
 function addBuildingType() {
     var rootElement = $("#building_type_list_container");
     var buildingType = document.getElementById("add_building_type").value;
-    if (buildingType != "commercial" && buildingType != "franchise") {
+    var current_building_list = document.getElementById("building_type_list_hidden").value;
+    if (current_building_list.includes(building_type)) {
+        return (false);
+    }
+    else if (buildingType != "commercial" && buildingType != "franchise") {
         var element = `
             <div id="`+buildingType+`_container" class="building_type_container">
             <p class="inline">Type: `+buildingType+` | Ammount: </p>
