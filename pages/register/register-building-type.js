@@ -47,7 +47,7 @@ function change_building_count(element) {
     var current_count = document.getElementById(building_type + "_ammount_input").value;
     current_count = parseInt(current_count);
     var new_count = current_count + increment_ammount;
-    if (new_count == 0) {
+    if (new_count == 0 || new_count == "NaN") {
         new_count = 1;
     }
     document.getElementById(building_type + "_ammount_input").value = new_count;
