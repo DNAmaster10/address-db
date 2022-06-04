@@ -12,41 +12,7 @@
     <head>
         <title>Register Building</title>
     </head>
-    <link rel="stylesheet" href="/css/main.css">
-    <style>
-        body {
-            background-color: #9bb7bf;
-        }
-        .inline {
-            display: inline;
-        }
-        .building_type_container {
-            border: 1px solid #000000;
-        }
-        .main_form_container {
-            background-color: #1f7891;
-            width: 90%;
-            border-radius: 10px;
-            padding: 10px;
-            margin: auto;
-        }
-        .secondary_container {
-            background-color: #0f2d36;
-            padding: 10px;
-            border-radius: 10px;
-        }
-        p {
-            color: #ffffff;
-        }
-        .coords_container {
-            padding: 10px;
-            margin: auto;
-            text-align: center;
-        }
-        .center {
-            margin: auto;
-        }
-    </style>
+    <link rel="stylesheet" href="./css/register-building.css">
     <body>
         <div id="back_button_container" class="back_button_container">
             <form action="/pages/register/building-home.php">
