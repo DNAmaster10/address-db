@@ -36,6 +36,7 @@ function addBuildingType() {
             <button type="button" onclick="change_building_count(this)" value="1" class="inline" id="commercial_minus_ammount_button">+1</button>
             <button type="button" onclick="change_building_count(this)" value="-1" class="inline" id="commercial_plus_ammount_button">-1</button>
             <div id="commerce" class="inline">
+                <input type="text" name="commerce_types" placeholder="Food,Car Parts">
             </div>
             <button type="button" class="inline" onclick="remove_type(this)" id="commercial_remove_type">X</button>
         </div>
