@@ -28,7 +28,7 @@ function addBuildingType() {
             <button type="button" onclick="change_building_count(this)" value="-1" class="inline" id="franchise#plus_ammount_button">-1</button>
             <p class="inline"> | Owner(s): </p>
             <input type="text" placeholder="DNAmaster10,Needn_NL" name="franchise_owners">
-            <p> | Commerce types: </p>
+            <p class="inlin"> | Commerce types: </p>
             <div id="commerce_franchise" class="inline">
                 <input type="text" name="commerce_types_franchise" placeholder="Food,Car Parts">
             </div>
@@ -43,7 +43,7 @@ function addBuildingType() {
             <input type="text" name="commercial_ammount" value="1" placeholder="ammount" class="inline" id="commercial_ammount_input">
             <button type="button" onclick="change_building_count(this)" value="1" class="inline" id="commercial#minus_ammount_button">+1</button>
             <button type="button" onclick="change_building_count(this)" value="-1" class="inline" id="commercial#plus_ammount_button">-1</button>
-            <p> | Commerce types: </p>
+            <p class="inline"> | Commerce types: </p>
             <div id="commerce" class="inline">
                 <input type="text" name="commerce_types" placeholder="Food,Car Parts">
             </div>
