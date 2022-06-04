@@ -69,6 +69,7 @@
                         </div>
                     </div>
                 </div>
+                <input type="submit" value="Register Building">
             </form>
         </div>
         <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
