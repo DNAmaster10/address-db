@@ -13,11 +13,19 @@
         <title>Register Building</title>
     </head>
     <style>
+        body {
+            background-color: #1d2c40;
+        }
         .inline {
             display: inline;
         }
         .building_type_container {
             border: 1px solid #000000;
+        }
+        .main_form_container {
+            background-color: #218596;
+            width: 90%;
+            border-radius: 10px;
         }
     </style>
     <body>
