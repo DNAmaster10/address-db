@@ -16,6 +16,9 @@
         .inline {
             display: inline;
         }
+        .building_type_container {
+            border: 1px solid #000000;
+        }
     </style>
     <body>
         <div id="back_button_container" class="back_button_container">
