@@ -38,9 +38,9 @@ function addBuildingType() {
     rootElement.append(element);
 }
 
-function change_building_count(this) {
-    var increment_ammount = this.value;
-    var button_id = this.id;
+function change_building_count(element) {
+    var increment_ammount = element.value;
+    var button_id = element.id;
     var id_array = button_id.split("_");
     var building_type = id_array[0];
     var current_count = document.getElementById(building_type + "_ammount_input").value;
