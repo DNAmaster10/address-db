@@ -3,6 +3,9 @@ function addBuildingType() {
     var buildingType = document.getElementById("add_building_type").value;
     var buildingTypeText = buildingType.replace("_", " ");
     buildingTypeText = buildingTypeText.capitalize();
+    letter_to_cap = buildingTypeText.charAt(0);
+    letter_to_cap = letter_to_cap.toUpperCase();
+    buildingTypeText.chatAt(0) = letter_to_cap;
     var current_building_list = document.getElementById("building_type_list_hidden").value;
     if (current_building_list.includes(buildingType)) {
         return (false);
@@ -26,6 +29,9 @@ function addBuildingType() {
             <button type="button" onclick="change_building_count(this)" value="-1" class="inline" id="franchise_plus_ammount_button">-1</button>
             <p class="inline"> | Owner(s): </p>
             <input type="text" placeholder="DNAmaster10,Needn_NL" name="franchise_owners">
+            <div id="commerce_franchise" class="inline">
+                <input type="text" name="commerce_types_franchise" placeholder="Food,Car Parts">
+            </div>
             <button type="button" class="inline" onclick="remove_type(this)" id="franchise_remove_type">X</button>
         </div>
         `;
