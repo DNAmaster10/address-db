@@ -23,7 +23,7 @@
         <div id="main_form_container" class="main_form_container">
             <form action="/pages/register/register-building_submit.php" method="POST">
                 <div id="essential_container" class="essential_container secondary_container">
-                <h2>Essential Details</h2>
+                <h3>Essential Details</h3>
                     <div id="coords_container" class="coords_container">
                         <input type="text" id="x_coord" name="x_coord" placeholder="X" class="inline center">
                         <input type="text" id="y_coord" name="y_coord" placeholder="Y" class="inline center">
