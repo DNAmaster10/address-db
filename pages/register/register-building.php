@@ -14,7 +14,7 @@
     </head>
     <style>
         body {
-            background-color: #1d2c40;
+            background-color: #202121;
         }
         .inline {
             display: inline;
@@ -23,11 +23,14 @@
             border: 1px solid #000000;
         }
         .main_form_container {
-            background-color: #218596;
+            background-color: #2cc777;
             width: 90%;
             border-radius: 10px;
             padding: 10px;
             margin: auto;
+        }
+        .secondary_container {
+            background-color: #497869;
         }
     </style>
     <body>
@@ -38,7 +41,7 @@
         </div>
         <div id="main_form_container" class="main_form_container">
             <form action="/pages/register/register-building_submit.php" method="POST">
-                <div id="essential_container" class="essential_container">
+                <div id="essential_container" class="essential_container secondary_container">
                     <div id="coords_container" class="coords_container">
                         <input type="text" id="x_coord" name="x_coord" placeholder="X" class="inline">
                         <input type="text" id="y_coord" name="y_coord" placeholder="Y" class="inline">
