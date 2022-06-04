@@ -14,7 +14,7 @@
     </head>
     <style>
         body {
-            background-color: #202121;
+            background-color: #9bb7bf;
         }
         .inline {
             display: inline;
@@ -23,14 +23,19 @@
             border: 1px solid #000000;
         }
         .main_form_container {
-            background-color: #2cc777;
+            background-color: #1f7891;
             width: 90%;
             border-radius: 10px;
             padding: 10px;
             margin: auto;
         }
         .secondary_container {
-            background-color: #497869;
+            background-color: #0f2d36;
+            padding: 10px;
+            border-radius: 10px
+        }
+        p {
+            color: #ffffff;
         }
     </style>
     <body>
