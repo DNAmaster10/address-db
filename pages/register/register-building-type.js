@@ -2,7 +2,6 @@ function addBuildingType() {
     var rootElement = $("#building_type_list_container");
     var buildingType = document.getElementById("add_building_type").value;
     var buildingTypeText = buildingType.replace("_", " ");
-    buildingTypeText = buildingTypeText.capitalize();
     letter_to_cap = buildingTypeText.charAt(0);
     letter_to_cap = letter_to_cap.toUpperCase();
     buildingTypeText.chatAt(0) = letter_to_cap;
