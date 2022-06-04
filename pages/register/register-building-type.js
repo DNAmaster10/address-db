@@ -17,12 +17,13 @@ function addBuildingType() {
     else {
         var element = `
         <div id="commercial_container" class="building_type_container">
-            <p>Type: Commercial | Ammount: </p>
+            <p class="inline">Type: Commercial | Ammount: </p>
             <input type="text" name="commercial_ammount" value="1" placeholder="ammount" class="inline" id="commercial_ammount_input">
             <button type="button" onclick="change_building_count(this)" value="1" class="inline" id="commercial_minus_ammount_button">+1</button>
             <button type="button" onclick="change_building_count(this)" value="-1" class="inline" id="commercial_plus_ammount_button">-1</button>
-            <div id="commerce>
+            <div id="commerce" class="inline">
             </div>
+            <button type="button" class="inline" onclick="remove_type(this)" id="commercial_remove_type">X</button>
         </div>
         `
     }
@@ -51,4 +52,19 @@ function change_building_count(element) {
         new_count = 1;
     }
     document.getElementById(building_type + "_ammount_input").value = new_count;
+}
+
+function remove_type(element) {
+    var button_id = element.id;
+    var id_array = button_id.split("_");
+    var building_type = id_array[0];
+    document.getElementById(building_type + "_container").remove();
+    var current_building_list = document.getElementById("building_type_list_hidden").value;
+    if (current_building_list.includes("#-#" + building_type)) {
+        current_building_list = current_building_list.replace("#-#" + building_type, "");
+    }
+    else {
+        current_building_list = current_building_list.replace(building_type, "");
+    }
+    document.getElementById("building_type_list_hidden").value = current_building_list;
 }
