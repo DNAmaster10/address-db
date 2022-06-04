@@ -13,6 +13,7 @@
         <title>Register Building</title>
     </head>
     <link rel="stylesheet" href="./css/register-building.css">
+    <link rel="stylesheet" href="/css/main.css">
     <body>
         <div id="back_button_container" class="back_button_container">
             <form action="/pages/register/building-home.php">
