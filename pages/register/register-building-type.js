@@ -4,7 +4,7 @@ function addBuildingType() {
     var buildingTypeText = buildingType.replace("_", " ");
     letter_to_cap = buildingTypeText.charAt(0);
     letter_to_cap = letter_to_cap.toUpperCase();
-    buildingTypeText.chatAt(0) = letter_to_cap;
+    buildingTypeText.charAt(0) = letter_to_cap;
     var current_building_list = document.getElementById("building_type_list_hidden").value;
     if (current_building_list.includes(buildingType)) {
         return (false);
