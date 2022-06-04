@@ -45,6 +45,7 @@ function change_building_count(element) {
     var id_array = button_id.split("_");
     var building_type = id_array[0];
     var current_count = document.getElementById(building_type + "_ammount_input").value;
+    current_count = parseInt(current_count);
     var new_count = current_count + increment_ammount;
     document.getElementById(building_type + "_ammount_input").value = new_count;
 }
