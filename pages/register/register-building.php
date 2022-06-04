@@ -68,7 +68,7 @@
                         </select>
                         <button id="add_building_type_button" class="inline" onclick="addBuildingType()" type="button">Add building type</button>
                         <div id="building_type_list_container">
-
+                            <input type="hidden" name="building_type_list" id="building_type_list_hidden">
                         </div>
                     </div>
                 </div>
