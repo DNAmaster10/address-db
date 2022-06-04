@@ -16,7 +16,7 @@ function addBuildingType() {
             <input type="text" name="`+buildingType+`_ammount" value="1" placeholder="ammount" class="inline" id="`+buildingType+`_ammount_input">
             <button type="button" onclick="change_building_count(this)" value="1" class="inline" id="`+buildingType+`#minus_ammount_button">+1</button>
             <button type="button" onclick="change_building_count(this)" value="-1" class="inline" id="`+buildingType+`#plus_ammount_button">-1</button>
-            <button type="button" class="inline" onclick="remove_type(this)" id="`+buildingType+`#remove_type">X</button>
+            <button type="button" class="inline del_button" onclick="remove_type(this)" id="`+buildingType+`#remove_type">X</button>
         </div>`;
     }
     else if (buildingType == "franchise") {
@@ -31,7 +31,7 @@ function addBuildingType() {
             <div id="commerce_franchise" class="inline">
                 <input type="text" name="commerce_types_franchise" placeholder="Food,Car Parts">
             </div>
-            <button type="button" class="inline" onclick="remove_type(this)" id="franchise#remove_type">X</button>
+            <button type="button" class="inline del_button" onclick="remove_type(this)" id="franchise#remove_type">X</button>
         </div>
         `;
     }
@@ -45,7 +45,7 @@ function addBuildingType() {
             <div id="commerce" class="inline">
                 <input type="text" name="commerce_types" placeholder="Food,Car Parts">
             </div>
-            <button type="button" class="inline" onclick="remove_type(this)" id="commercial#remove_type">X</button>
+            <button type="button" class="inline del_button" onclick="remove_type(this)" id="commercial#remove_type">X</button>
         </div>
         `;
     }
