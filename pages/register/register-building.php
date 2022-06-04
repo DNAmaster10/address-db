@@ -32,10 +32,17 @@
         .secondary_container {
             background-color: #0f2d36;
             padding: 10px;
-            border-radius: 10px
+            border-radius: 10px;
         }
         p {
             color: #ffffff;
+        }
+        .coords_container {
+            padding: 10px;
+            margin: auto;
+        }
+        .center {
+            margin: auto;
         }
     </style>
     <body>
@@ -48,9 +55,9 @@
             <form action="/pages/register/register-building_submit.php" method="POST">
                 <div id="essential_container" class="essential_container secondary_container">
                     <div id="coords_container" class="coords_container">
-                        <input type="text" id="x_coord" name="x_coord" placeholder="X" class="inline">
-                        <input type="text" id="y_coord" name="y_coord" placeholder="Y" class="inline">
-                        <button type="button" onclick="get_details()" class="inline">Generate details</button>
+                        <input type="text" id="x_coord" name="x_coord" placeholder="X" class="inline center">
+                        <input type="text" id="y_coord" name="y_coord" placeholder="Y" class="inline center">
+                        <button type="button" onclick="get_details()" class="inline center">Generate details</button>
                         <br>
                         <p id="generate_details_error_p"></p>
                     </div>
