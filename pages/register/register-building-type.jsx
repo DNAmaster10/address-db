@@ -3,9 +3,9 @@ function addBuildingType() {
     const root = ReactDOM.createRoot(domContainer);
 
     const buildingType = document.getElementById("add_building_type").value;
-    const div_id = buildingType + "Container";
-    if (buildingType != "commercial" or buildingType != "franchise") {
-        const element = <div id={buildingType}>
+    const divId = buildingType + "Container";
+    if (buildingType != "commercial" || buildingType != "franchise") {
+        const element = <div id={divId}></div>
     }
     root.render(element);
 }
