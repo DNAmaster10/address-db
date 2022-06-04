@@ -1,4 +1,4 @@
-function addBuildingType() {
+function addBuildingTypeOld() {
   const domContainer = document.getElementById("building_type_list_container");
   const root = ReactDOM.createRoot(domContainer);
   const buildingType = document.getElementById("add_building_type").value;
@@ -17,4 +17,11 @@ function addBuildingType() {
     root.render(element);
     console.log("got to 2");
   }
+}
+
+function addBuildingType() {
+    var rootElement = document.getElementById("building_type_list_container");
+    var buildingType = document.getElementById("add_building_type").value;
+    var element = "<div id='" + buildigType + "_container'><p>This is a test</p></div>";
+    rootElement.append(element);
 }
