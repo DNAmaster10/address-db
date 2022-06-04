@@ -12,6 +12,7 @@
     <head>
         <title>Register Building</title>
     </head>
+    <link rel="stylesheet" href="/css/main.css">
     <style>
         body {
             background-color: #9bb7bf;
