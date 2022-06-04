@@ -48,7 +48,7 @@
                         <select name="street_unit" id="street_unit_select">
                         </select>
                     </div>
-                    <div id="building_type_container" class="building_type_container">
+                    <div id="building_type_container_main" class="building_type_container">
                         <select id="add_building_type">
                             <option value="house">House</option>
                             <option value="apartment">Apartment</option>

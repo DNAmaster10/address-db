@@ -13,6 +13,7 @@ body {
     border-radius: 10px;
     padding: 10px;
     margin: auto;
+    max-width: 800px;
 }
 .secondary_container {
     background-color: #aad2ba;
@@ -65,13 +66,21 @@ input[type=text]:focus {
 .district_street_unit_container{
     margin: auto;
     text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid black;
 }
-.building_type_container {
+.building_type_container_main {
     border: none;
     padding: 20px;
     text-align: center;
 }
-
+h3 {
+    margin: auto;
+    color: #e1fae5;
+    text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+    text-align: center;
+}
+.
 
 
 
