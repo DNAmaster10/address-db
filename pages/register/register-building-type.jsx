@@ -8,11 +8,12 @@ function addBuildingType() {
         const element = <div id={divId}>
 
         </div>
+        root.render(element);
     }
     else {
         const element = <div id={divId}>
 
         </div>
+        root.render(element);
     }
-    root.render(element);
 }

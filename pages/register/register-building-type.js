@@ -8,11 +8,11 @@ function addBuildingType() {
     const element = /*#__PURE__*/React.createElement("div", {
       id: divId
     });
+    root.render(element);
   } else {
     const element = /*#__PURE__*/React.createElement("div", {
       id: divId
     });
+    root.render(element);
   }
-
-  root.render(element);
 }
