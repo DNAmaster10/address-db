@@ -4,8 +4,15 @@ function addBuildingType() {
 
     const buildingType = document.getElementById("add_building_type").value;
     const divId = buildingType + "Container";
-    if (buildingType != "commercial" || buildingType != "franchise") {
-        const element = <div id={divId}></div>
+    if (buildingType != "commercial" && buildingType != "franchise") {
+        const element = <div id={divId}>
+
+        </div>
+    }
+    else {
+        const element = <div id={divId}>
+
+        </div>
     }
     root.render(element);
 }

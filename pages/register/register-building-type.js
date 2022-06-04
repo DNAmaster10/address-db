@@ -4,7 +4,11 @@ function addBuildingType() {
   const buildingType = document.getElementById("add_building_type").value;
   const divId = buildingType + "Container";
 
-  if (buildingType != "commercial" || buildingType != "franchise") {
+  if (buildingType != "commercial" && buildingType != "franchise") {
+    const element = /*#__PURE__*/React.createElement("div", {
+      id: divId
+    });
+  } else {
     const element = /*#__PURE__*/React.createElement("div", {
       id: divId
     });
