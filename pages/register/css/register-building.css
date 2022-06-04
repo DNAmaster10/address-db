@@ -84,8 +84,14 @@ h3 {
     border: 2px solid black;
     border-radius: 10px;
     padding: 5px;
+    margin-bottom: 5px;
 }
-
+.del_button {
+    float: right;
+}
+#add_building_type {
+    margin-bottom: 10px;
+}
 
 
 
