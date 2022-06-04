@@ -1,6 +1,8 @@
 function addBuildingType() {
     var rootElement = $("#building_type_list_container");
     var buildingType = document.getElementById("add_building_type").value;
+    var buildingTypeText = buildingType.replace("_", " ");
+    buildingTypeText = buildingTypeText.capitalize();
     var current_building_list = document.getElementById("building_type_list_hidden").value;
     if (current_building_list.includes(buildingType)) {
         return (false);
@@ -8,7 +10,7 @@ function addBuildingType() {
     else if (buildingType != "commercial" && buildingType != "franchise") {
         var element = `
             <div id="`+buildingType+`_container" class="building_type_container">
-            <p class="inline">Type: `+buildingType+` | Ammount: </p>
+            <p class="inline">Type: `+buildingTypeText+` | Ammount: </p>
             <input type="text" name="`+buildingType+`_ammount" value="1" placeholder="ammount" class="inline" id="`+buildingType+`_ammount_input">
             <button type="button" onclick="change_building_count(this)" value="1" class="inline" id="`+buildingType+`_minus_ammount_button">+1</button>
             <button type="button" onclick="change_building_count(this)" value="-1" class="inline" id="`+buildingType+`_plus_ammount_button">-1</button>
