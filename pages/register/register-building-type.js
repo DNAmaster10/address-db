@@ -3,16 +3,18 @@ function addBuildingType() {
   const root = ReactDOM.createRoot(domContainer);
   const buildingType = document.getElementById("add_building_type").value;
   const divId = buildingType + "Container";
-
+  console.log("got to 3");
   if (buildingType != "commercial" && buildingType != "franchise") {
     const element = /*#__PURE__*/React.createElement("div", {
       id: divId
     });
     root.render(element);
+    console.log("got to 1");
   } else {
     const element = /*#__PURE__*/React.createElement("div", {
       id: divId
     });
     root.render(element);
+    console.log("got to 2");
   }
 }
