@@ -3,16 +3,26 @@ function addBuildingType() {
     var buildingType = document.getElementById("add_building_type").value;
     if (buildingType != "commercial" && buildingType != "franchise") {
         var element = `
-        <div id='` + buildingType + `_container' class='building_type_container'>
-            <p>`+buildingType+`</p>
+            <div id="`+building_type+`_container" class="building_type_container">
+            <p class="inline">Type: `+building_type+` | Ammount: </p>
+            <input type="text" name="`+building_type+`_ammount" value="1" placeholder="ammount" class="inline" id="`+building_type+`_ammount_input">
+            <button type="button" onclick="change_building_count(this)" value="1" class="inline" id="`+building_type+`_minus_ammount_button">+1</button>
+            <button type="button" onclick="change_building_count(this)" value="-1" class="inline" id="`+building_type+`_plus_ammount_button">-1</button>
+            <button type="button" class="inline" onclick="remove_type(this)" id="`+building_type+`_remove_type">X</button>
         </div>`;
     }
     else if (buildingType == "franchise") {
         var element = `
         <div id="franchise_container" class="building_type_container">
-            <p>Franchise</p>
+            <p class="inline">Type: Franchise | Ammount: </p>
+            <input type="text" name="franchise_ammount" value="1" placeholder="ammount" class="inline" id="franchise_ammount_input">
+            <button type="button" onclick="change_building_count(this)" value="1" class="inline" id="franchise_minus_ammount_button">+1</button>
+            <button type="button" onclick="change_building_count(this)" value="-1" class="inline" id="franchise_plus_ammount_button">-1</button>
+            <p class="inline"> | Owner(s): </p>
+            <input type="text" placeholder="DNAmaster10,Needn_NL" name="franchise_owners">
+            <button type="button" class="inline" onclick="remove_type(this)" id="franchise_remove_type">X</button>
         </div>
-        `
+        `;
     }
     else {
         var element = `
@@ -25,7 +35,7 @@ function addBuildingType() {
             </div>
             <button type="button" class="inline" onclick="remove_type(this)" id="commercial_remove_type">X</button>
         </div>
-        `
+        `;
     }
     var current_building_list = document.getElementById("building_type_list_hidden").value;
     if (current_building_list == "") {
