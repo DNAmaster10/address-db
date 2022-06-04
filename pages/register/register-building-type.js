@@ -40,10 +40,11 @@ function addBuildingType() {
 
 function change_building_count(element) {
     var increment_ammount = element.value;
+    increment_ammount = parseInt(increment_ammount);
     var button_id = element.id;
     var id_array = button_id.split("_");
     var building_type = id_array[0];
     var current_count = document.getElementById(building_type + "_ammount_input").value;
-    var new_count = current_count + pareseInt(increment_ammount);
+    var new_count = current_count + increment_ammount;
     document.getElementById(building_type + "_ammount_input").value = new_count;
 }
