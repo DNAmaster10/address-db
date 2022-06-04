@@ -63,7 +63,7 @@
                             <option value="bus_stop">Bus Stop</option>
                             <option value="special">Special</option>
                         </select>
-                        <button id="add_building_type_button" class="inline" onclick="addBuildingType()">Add building type</button>
+                        <button id="add_building_type_button" class="inline" onclick="addBuildingType()" type="button">Add building type</button>
                         <div id="building_type_list_container">
 
                         </div>
