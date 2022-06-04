@@ -2,7 +2,7 @@ function addBuildingType() {
     var rootElement = $("#building_type_list_container");
     var buildingType = document.getElementById("add_building_type").value;
     var current_building_list = document.getElementById("building_type_list_hidden").value;
-    if (current_building_list.includes(building_type)) {
+    if (current_building_list.includes(buildingType)) {
         return (false);
     }
     else if (buildingType != "commercial" && buildingType != "franchise") {
