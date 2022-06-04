@@ -40,6 +40,7 @@
         .coords_container {
             padding: 10px;
             margin: auto;
+            text-align: center;
         }
         .center {
             margin: auto;
