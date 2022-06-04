@@ -22,6 +22,6 @@ function addBuildingTypeOld() {
 function addBuildingType() {
     var rootElement = document.getElementById("building_type_list_container");
     var buildingType = document.getElementById("add_building_type").value;
-    var element = "<div id='" + buildigType + "_container'><p>This is a test</p></div>";
+    var element = "<div id='" + buildingType + "_container'><p>This is a test</p></div>";
     rootElement.append(element);
 }
