@@ -1,5 +1,5 @@
 body {
-    background-color: #9bb7bf;
+    background-color: #b9f5d8;
 }
 .inline {
     display: inline;
@@ -8,19 +8,19 @@ body {
     border: 1px solid #000000;
 }
 .main_form_container {
-    background-color: #1f7891;
+    background-color: #6b8f71;
     width: 90%;
     border-radius: 10px;
     padding: 10px;
     margin: auto;
 }
 .secondary_container {
-    background-color: #0f2d36;
+    background-color: #aad2ba;
     padding: 10px;
     border-radius: 10px;
 }
 p {
-    color: #ffffff;
+    color: #1d1e18;
 }
 .coords_container {
     padding: 10px;
