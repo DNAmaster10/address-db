@@ -81,7 +81,7 @@
                     <div id="construction_data">
                         <p>Construction info:</p>
                         <p>Built by: </p><input type="text" name="builders" placeholder="DNAmaster10, Needn_NL">
-                        <p>Data of completion: </p><input type="date_completion" name="construction_data" placeholder="23/06/2022">
+                        <p>Data of completion: </p><input type="date" name="construction_data" placeholder="23/06/2022">
                     </div>
                 </div>
                 <div class="secondary_container" id="cencus_container">
