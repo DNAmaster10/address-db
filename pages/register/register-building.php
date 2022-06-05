@@ -111,7 +111,7 @@
                         <br>
                         <p class="inline">Other bedrooms: </p><input type="text" name="other_bedrooms_apartment" id="apartment_bedroom_ammount" value="0">
                         <button type="button" onclick="increment_apartment_bedroom_ammount(this)" id="increment_apartment_bedroom_ammount_1" value="1">+1</button>
-                        <button type="button" onclick="increment_apartment_bedroom_ammount(this)" value="-1" id="incremenent_house_bedroom_ammount_-1">-1</button>
+                        <button type="button" onclick="increment_apartment_bedroom_ammount(this)" value="-1" id="incremenent_apartment_bedroom_ammount_-1">-1</button>
                     </div>
                 </div>
                 <div id="description_container" class="description_container">

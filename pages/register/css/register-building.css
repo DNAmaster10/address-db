@@ -124,7 +124,7 @@ textarea {
     margin-top: 2%;
     text-align: center;
 }
-input[disabled],input[disabled]:hover {
+input[disabled],input[disabled]:hover,button[disabled],button[disabled]:hover {
     background-color: #b6b8b6;
     border-color: #bfbfbf;
 }
