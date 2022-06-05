@@ -75,6 +75,9 @@
                         <input type="text" name="street_name" placeholder="London Street">
                     </div>
                 </div>
+                <div id="description_container" class="description_container">
+                    <textarea name="description" id="description_text_area" class="description_text_area" rows="5" cols="50">
+                </div>
                 <input type="submit" value="Register Building">
             </form>
         </div>

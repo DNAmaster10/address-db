@@ -73,6 +73,7 @@ input[type=text]:focus {
     border: none;
     padding: 20px;
     text-align: center;
+    border-bottom: 1px solid black;
 }
 h3 {
     margin: auto;
@@ -90,6 +91,12 @@ h3 {
     float: right;
 }
 #add_building_type {
+    margin-bottom: 10px;
+}
+.street_details_container_main {
+    text-align: center;
+}
+br {
     margin-bottom: 10px;
 }
 
