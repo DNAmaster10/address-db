@@ -76,7 +76,7 @@
                     </div>
                 </div>
                 <div id="description_container" class="description_container">
-                    <textarea name="description" id="description_text_area" class="description_text_area" rows="5" cols="50">
+                    <textarea name="description" id="description_text_area" class="description_text_area" rows="5" cols="50"></textarea>
                 </div>
                 <input type="submit" value="Register Building">
             </form>
