@@ -54,7 +54,7 @@ input[type=text],textarea,input[type=date] {
     border: 2px solid #364a39;
     outline: none ! important;
 }
-input[type=text]:hover:not(:focus),textarea:hover:not(:focus),input[type=date]:hover:not(:focus) {
+input[type=text]:enabled:hover:not(:focus),textarea:hover:not(:focus),input[type=date]:hover:not(:focus) {
     background-color: #a5d6ad;
 }
 input[type=text]:focus,textarea:focus,input[type=date]:focus {
@@ -125,7 +125,8 @@ textarea {
     text-align: center;
 }
 input[disabled],input[disabled]:hover {
-    background-color: #dddddd;
+    background-color: #b6b8b6;
+    border-color: #bfbfbf;
 }
 
 
