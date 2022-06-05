@@ -14,6 +14,7 @@ body {
     padding: 10px;
     margin: auto;
     max-width: 900px;
+    text-align: center;
 }
 .secondary_container {
     background-color: #aad2ba;
@@ -42,7 +43,7 @@ button,select,input[type=submit] {
     color: white;
     padding: 3px;
 }
-button:hover {
+button:hover,select:hover,input[type=submit]:hover {
     background-color: #446349;
     box-shadow: 0 2px 4px 0 rgba(0,0,0,0.24), 0 10px 20px 0 rgba(0,0,0,0.19);
 }
@@ -128,7 +129,11 @@ input[disabled],input[disabled]:hover,button[disabled],button[disabled]:hover {
     background-color: #b6b8b6;
     border-color: #bfbfbf;
 }
-
+#form_submit {
+    padding:10px;
+    text-align: center;
+    margin-top: 10px;
+}
 
 
 

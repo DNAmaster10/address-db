@@ -89,7 +89,7 @@
                     <div id="cencus_data_house" class="inline">
                         <h5>House data</h5>
                         <input type="checkbox" id="house_yes_no" name="has_house" value="yes" onclick="show_house()">
-                        <label for="house_yes_no">Contians house</label><br>
+                        <label for="house_yes_no">Contains house</label><br>
                         <p class="inline">Master bedroom: </p><input type="radio" id="master_bedroom_yes" name="master_bedroom" value="yes">
                         <label for="master_bedroom_yes">Yes</label>
                         <input type="radio" id="master_bedroom_no" name="master_bedroom">
@@ -102,7 +102,7 @@
                     <div id="cencus_data_apartment">
                         <h5>Apartment data</h5>
                         <input type="checkbox" id="apartment_yes_no" name="has_apartment" value="yes" onclick="show_apartment()">
-                        <label for="apartment_yes_no">Contians apartment</label><br>
+                        <label for="apartment_yes_no">Contains apartment</label><br>
                         <p class="inline">Has couch/bed/double bed e.t.c: </p>
                         <input type="radio" id="furniture_yes" name="furniture">
                         <label for="furniture_yes">Yes</label>
