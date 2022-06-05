@@ -66,6 +66,14 @@
                             <input type="hidden" name="building_type_list" id="building_type_list_hidden">
                         </div>
                     </div>
+                    <div id="street_details_container_main" class="street_details_container_main">
+                        <p id="street_details_p">The following details must be enetered exactly, with no spelling mistakes or syntax issues, as it is "unofficial data"</p><br>
+                        <p class="inline">Building name or number: </p>
+                        <input type="text" name="building_name" placeholder="Flower Cottage / 23">
+                        <br>
+                        <p class="inline">Street name: </p>
+                        <input type="text" name="street_name" placeholder="London Street">
+                    </div>
                 </div>
                 <input type="submit" value="Register Building">
             </form>
