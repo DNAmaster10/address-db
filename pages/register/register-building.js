@@ -58,7 +58,7 @@ function get_details() {
         });
     }
 }
-show_house() {
+function show_house() {
     if (document.getElementById("house_yes_no").checked) {
         document.getElementById("master_bedroom_yes").disabled = false;
         document.getElementById("master_bedroom_no").disable = false;
