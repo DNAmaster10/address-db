@@ -95,7 +95,7 @@ function increment_house_bedroom_ammount(element) {
     increment_ammount = parseInt(increment_ammount);
     var current_count = document.getElementById("house_bedroom_ammount").value;
     current_count = parseInt(current_count);
-    current_count = current_count + incrememt_ammount;
+    current_count = current_count + increment_ammount;
     if (current_count < 0) {
         document.getElementById("house_bedroom_ammount").value = "0";
     }
@@ -108,7 +108,7 @@ function increment_apartment_bedroom_ammount(element) {
     increment_ammount = parseInt(increment_ammount);
     var current_count = document.getElementById("apartment_bedroom_ammount").value;
     current_count = parseInt(current_count);
-    current_count = current_count + incrememt_ammount;
+    current_count = current_count + increment_ammount;
     if (current_count < 0) {
         document.getElementById("apartment_bedroom_ammount").value = "0";
     }
