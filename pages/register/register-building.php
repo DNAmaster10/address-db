@@ -88,13 +88,13 @@
                     <h4>Cencus data</h4>
                     <div id="cencus_data_house">
                         <h5>House data</h5>
-                        <input type="checkbox" id="house_yes_no" name="has_house" value="no" onclick="show_house()">
+                        <input type="checkbox" id="house_yes_no" name="has_house" value="yes" onclick="show_house()">
                         <p>Master bedroom: </p><input type="radio" id="master_bedroom_yes" name="master_bedroom" value="yes">
                         <label for="master_bedroom_yes">Yes</label>
                         <input type="radio" id="master_bedroom_no" name="master_bedroom">
                         <label for="master_bedroom_no">No</label>
                         <br>
-                        <p>Other bedrooms: </p><input type="text" name="other_bedrooms_house">
+                        <p>Other bedrooms: </p><input type="text" name="other_bedrooms_house" id="house_bedroom_ammount">
                     </div>
                 </div>
                 <div id="description_container" class="description_container">
