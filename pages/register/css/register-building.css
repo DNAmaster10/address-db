@@ -102,6 +102,15 @@ br {
 textarea {
     box-sizing: border-box;
     resize: none;
+    width: 90%;
+    margin: 5%;
+    height: 100px;
+}
+.description_container {
+    margin-top: 2%;
+    background-color: #aad2ba;
+    padding: 10px;
+    border-radius: 10px;
 }
 
 
