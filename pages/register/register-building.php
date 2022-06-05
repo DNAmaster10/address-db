@@ -86,7 +86,7 @@
                 </div>
                 <div class="secondary_container" id="cencus_container">
                     <h4>Cencus data</h4>
-                    <div id="cencus_data_house">
+                    <div id="cencus_data_house" class="inline">
                         <h5>House data</h5>
                         <input type="checkbox" id="house_yes_no" name="has_house" value="yes" onclick="show_house()">
                         <label for="house_yes_no">Contians house: </label>
