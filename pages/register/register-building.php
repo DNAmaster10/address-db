@@ -21,7 +21,7 @@
             </form>
         </div>
         <div id="main_form_container" class="main_form_container">
-            <form action="/pages/register/register-building_submit.php" method="POST">
+            <form action="/pages/register/register-building_submit.php" method="POST" enctype="multipart/form-data">
                 <div id="essential_container" class="essential_container secondary_container">
                 <h3>Essential Details</h3>
                     <div id="coords_container" class="coords_container">
@@ -115,10 +115,14 @@
                     </div>
                 </div>
                 <div id="description_container" class="description_container">
-                    <p>Description:</p>
+                    <h4 id="extra_details_heading">Extra details</h4>
+                    <p>Image upload. Files must be either png or jpg / jpeg. Files must not be more than 8MB, as more than this will make loading the image later a slower proccess for people with a slower internet connection. </p>
+                    <input type="file" name="image_file" id="image_upload">
+                    <br>
+                    <h4>Description</h4>
                     <textarea name="description" id="description_text_area" class="description_text_area" rows="5" cols="50"></textarea>
                 </div>
-                <input type="submit" value="Register Building">
+                <input type="submit" value="Register Building" id="form_submit">
             </form>
         </div>
         <script src="register-building-type.js"></script>
