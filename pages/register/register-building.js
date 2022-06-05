@@ -64,14 +64,14 @@ function show_house() {
         document.getElementById("master_bedroom_no").disabled = false;
         document.getElementById("house_bedroom_ammount").disabled = false;
         document.getElementById("increment_house_bedroom_ammount_1").disabled = false;
-        document.getElementById("incremennt_house_bedroom_ammount_-1").disabled = false;
+        document.getElementById("increment_house_bedroom_ammount_-1").disabled = false;
     }
     else {
         document.getElementById("master_bedroom_yes").disabled = true;
         document.getElementById("master_bedroom_no").disabled = true;
         document.getElementById("house_bedroom_ammount").disabled = true;
         document.getElementById("increment_house_bedroom_ammount_1").disabled = true;
-        document.getElementById("incremennt_house_bedroom_ammount_-1").disabled = true;
+        document.getElementById("increment_house_bedroom_ammount_-1").disabled = true;
     }
 }
 function show_apartment() {
