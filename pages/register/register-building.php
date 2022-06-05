@@ -75,8 +75,29 @@
                         <input type="text" name="street_name" placeholder="London Street">
                     </div>
                 </div>
-                <div id="description_container" class="description_container">
+                <div class="secondary_container" id="construction_container">
                     <h3 id="optional_details_header">Optional Details</h3>
+                    <h4>Constuction data</h4>
+                    <div id="construction_data">
+                        <p>Construction info:</p>
+                        <p>Built by: </p><input type="text" name="builders" placeholder="DNAmaster10, Needn_NL">
+                        <p>Data of completion: </p><input type="date_completion" name="construction_data" placeholder="23/06/2022">
+                    </div>
+                </div>
+                <div class="secondary_container" id="cencus_container">
+                    <h4>Cencus data</h4>
+                    <div id="cencus_data_house">
+                        <h5>House data</h5>
+                        <input type="checkbox" id="house_yes_no" name="has_house" value="no" onclick="show_house()">
+                        <p>Master bedroom: </p><input type="radio" id="master_bedroom_yes" name="master_bedroom" value="yes">
+                        <label for="master_bedroom_yes">Yes</label>
+                        <input type="radio" id="master_bedroom_no" name="master_bedroom">
+                        <label for="master_bedroom_no">No</label>
+                        <br>
+                        <p>Other bedrooms: </p><input type="text" name="other_bedrooms_house">
+                    </div>
+                </div>
+                <div id="description_container" class="description_container">
                     <p>Description:</p>
                     <textarea name="description" id="description_text_area" class="description_text_area" rows="5" cols="50"></textarea>
                 </div>
