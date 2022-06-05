@@ -99,6 +99,10 @@ h3 {
 br {
     margin-bottom: 10px;
 }
+textarea {
+    box-sizing: border-box;
+    resize: none;
+}
 
 
 
