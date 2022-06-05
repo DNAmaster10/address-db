@@ -97,7 +97,7 @@
                         <br>
                         <p>Other bedrooms: </p><input type="text" name="other_bedrooms_house" id="house_bedroom_ammount" value="0">
                         <button type="button" onclick="increment_house_bedroom_ammount(this)" id="increment_house_bedroom_ammount_1" value="1">+1</button>
-                        <button type="button" onclick="incremenent_house_bedroom_ammount(this)" id="increment_house_bedroom_ammount_-1" value="-1">-1</button>
+                        <button type="button" onclick="increment_house_bedroom_ammount(this)" id="increment_house_bedroom_ammount_-1" value="-1">-1</button>
                     </div>
                     <div id="cencus_data_apartment">
                         <h5>Apartment data</h5>
