@@ -77,7 +77,6 @@
                 </div>
                 <div id="description_container" class="description_container">
                     <h3 id="optional_details_header">Optional Details</h3>
-                    <br>
                     <p>Description:</p>
                     <textarea name="description" id="description_text_area" class="description_text_area" rows="5" cols="50"></textarea>
                 </div>
