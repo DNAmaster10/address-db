@@ -61,7 +61,7 @@ function get_details() {
 function show_house() {
     if (document.getElementById("house_yes_no").checked) {
         document.getElementById("master_bedroom_yes").disabled = false;
-        document.getElementById("master_bedroom_no").disable = false;
+        document.getElementById("master_bedroom_no").disabled = false;
         document.getElementById("house_bedroom_ammount").disabled = false;
     }
     else {
