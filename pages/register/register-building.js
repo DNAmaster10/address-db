@@ -66,8 +66,9 @@ function show_house() {
     }
     else {
         document.getElementById("master_bedroom_yes").disabled = true;
-        document.getElementById("master_bedroom_no").disable = true;
+        document.getElementById("master_bedroom_no").disabled = true;
         document.getElementById("house_bedroom_ammount").disabled = true;
     }
 }
 changeStreetUnits();
+show_house();

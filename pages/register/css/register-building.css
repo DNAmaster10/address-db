@@ -124,6 +124,9 @@ textarea {
     margin-top: 2%;
     text-align: center;
 }
+input[disabled] {
+    background-color: #dddddd;
+}
 
 
 
