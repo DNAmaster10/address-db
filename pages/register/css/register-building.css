@@ -77,8 +77,6 @@ input[type=text]:focus,textarea:focus {
 }
 h3 {
     margin: auto;
-    color: #e1fae5;
-    text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
     text-align: center;
 }
 .building_type_container {
@@ -103,7 +101,9 @@ textarea {
     box-sizing: border-box;
     resize: none;
     width: 90%;
-    margin: 5%;
+    margin-right: 5%;
+    margin-left: 5%;
+    margin-top: 2%;
     height: 100px;
 }
 .description_container {
