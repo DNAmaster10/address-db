@@ -99,7 +99,10 @@ h3 {
 br {
     margin-bottom: 10px;
 }
-
+textarea {
+    resize: none;
+    text-align: center;
+}
 
 
 
