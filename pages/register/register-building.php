@@ -123,6 +123,9 @@
                     <textarea name="description" id="description_text_area" class="description_text_area" rows="5" cols="50"></textarea>
                 </div>
                 <input type="submit" value="Register Building" id="form_submit">
+                <p><?php if (isset($error)) {
+                    echo ($error);
+                } ?></p>
             </form>
         </div>
         <script src="register-building-type.js"></script>
