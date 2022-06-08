@@ -68,7 +68,7 @@
     }
     $street_unit_char = $result;
 
-    $curret_letter = "A";
+    $current_letter = "A";
     $loop_count = 1;
     $empty_found = false;
     $postcode_pre = $district_char.$street_unit_char;
