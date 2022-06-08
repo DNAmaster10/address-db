@@ -90,12 +90,7 @@
                         <h5>House data</h5>
                         <input type="checkbox" id="house_yes_no" name="has_house" value="yes" onclick="show_house()">
                         <label for="house_yes_no">Contains house</label><br>
-                        <p class="inline">Master bedroom: </p><input type="radio" id="master_bedroom_yes" name="master_bedroom" value="yes">
-                        <label for="master_bedroom_yes">Yes</label>
-                        <input type="radio" id="master_bedroom_no" name="master_bedroom">
-                        <label for="master_bedroom_no">No</label>
-                        <br>
-                        <p>Other bedrooms: </p><input type="text" name="other_bedrooms_house" id="house_bedroom_ammount" value="0">
+                        <p>Additional bedrooms: </p><input type="text" name="other_bedrooms_house" id="house_bedroom_ammount" value="0">
                         <button type="button" onclick="increment_house_bedroom_ammount(this)" id="increment_house_bedroom_ammount_1" value="1">+1</button>
                         <button type="button" onclick="increment_house_bedroom_ammount(this)" id="increment_house_bedroom_ammount_-1" value="-1">-1</button>
                     </div>
@@ -109,7 +104,7 @@
                         <input type="radio" id="furniture_no" name="furniture">
                         <label for="furniture_no">No</label>
                         <br>
-                        <p class="inline">Other bedrooms: </p><input type="text" name="other_bedrooms_apartment" id="apartment_bedroom_ammount" value="0">
+                        <p class="inline">Additional bedrooms: </p><input type="text" name="other_bedrooms_apartment" id="apartment_bedroom_ammount" value="0">
                         <button type="button" onclick="increment_apartment_bedroom_ammount(this)" id="increment_apartment_bedroom_ammount_1" value="1">+1</button>
                         <button type="button" onclick="increment_apartment_bedroom_ammount(this)" value="-1" id="increment_apartment_bedroom_ammount_-1">-1</button>
                     </div>
