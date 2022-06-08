@@ -58,7 +58,7 @@
     $stmt = $conn->prepare("SELECT postcodeChar FROM street_units WHERE name=?");
     $stmt->bind_param("s", $street_unit_name);
     $stmt->execute();
-    $stmt->bind_result($result)
+    $stmt->bind_result($result);
     $stmt->fetch();
     $stmt->close();
     if (!$result) {
