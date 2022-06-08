@@ -31,7 +31,7 @@
     }
     if (!isset($_POST["building_name"])) {
         $_SESSION["building_error"] = "Please enter a valid name for this building.";
-        header ("Location: /pages/register/register-building.php";
+        header ("Location: /pages/register/register-building.php");
         die();
     }
     if (!isset($_POST["street_name"])) {
