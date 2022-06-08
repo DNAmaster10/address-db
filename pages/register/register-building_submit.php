@@ -74,7 +74,7 @@
     $postcode_pre = $district_char.$street_unit_char;
     while ($loop_count !=27 && $empty_found == false) {
         $current_postcode = $postcode_pre.$current_letter;
-        $stmt = $conn->prepare("SELECT building_name FROM buildings WHERE postcode=?";
+        $stmt = $conn->prepare("SELECT building_name FROM buildings WHERE postcode=?");
         $stmt->bind_param("s",$current_postcode);
         $stmt->execute();
         $stmt->bind_result($result);
@@ -95,7 +95,7 @@
     $current_letter = "0";
     while ($loop_count != 10 && $empty_found = false) {
         $current_postcode = $postcode_pre.$current_letter;
-        $stmt = $conn->prepare("SELECT building_name FROM buildings WHERE postcode=?";
+        $stmt = $conn->prepare("SELECT building_name FROM buildings WHERE postcode=?");
         $stmt->bind_param("s",$current_postcode);
         $stmt->execute();
         $stmt->bind_result($result);
@@ -120,7 +120,7 @@
     $building_name = $conn->real_escape_string($_POST["building_name"]);
     $street_name = $conn->real_escape_string($_POST["street_name"]);
 
-    $stmt = $conn->prepare("SELECT building_name FROM buildings WHERE parent_street=?";
+    $stmt = $conn->prepare("SELECT building_name FROM buildings WHERE parent_street=?");
     $stmt->bind_param("s",$street_name);
     $stmt->execute();
     $stmt->bind_result($result);
