@@ -138,7 +138,7 @@
     $building_type_list_array = explode("#-#",$building_type_list);
     $type_ammount = count($building_type_list_array);
     for ($i=0; $i < $type_ammount; $i++) {
-        error_log($building_type_list_array[i].": ".$_POST[$building_type_list_array[i]."ammount");
+        error_log($building_type_list_array[i].": ".$_POST[$building_type_list_array[i]."ammount"]);
     }
 ?>
 
