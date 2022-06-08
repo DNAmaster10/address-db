@@ -114,6 +114,7 @@
             unset($result);
         }
     }
+    error_log($empty_found);
     if (!$empty_found) {
         $_SESSION["building_error"] = "That street unit is full!";
         header ("Location: /pages/register/register-building.php");
