@@ -84,6 +84,7 @@
             unset ($result);
             $empty_found = true;
             $free_char = $current_letter;
+            error_log("Empty found!");
         }
         else {
             $loop_count++;
@@ -105,6 +106,7 @@
             unset ($result);
             $empty_found = true;
             $free_char = $current_letter;
+            error_log("Empty found!");
         }
         else {
             $loop_count++;
