@@ -94,7 +94,7 @@
     }
     $loop_count = 0;
     $current_letter = "0";
-    while ($loop_count != 10 && $empty_found = false) {
+    while ($loop_count != 10 && $empty_found == false) {
         $current_postcode = $postcode_pre.$current_letter;
         $stmt = $conn->prepare("SELECT building_name FROM buildings WHERE postcode=?");
         $stmt->bind_param("s",$current_postcode);
