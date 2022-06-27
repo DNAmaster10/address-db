@@ -81,7 +81,7 @@
                     <div id="construction_data">
                         <p>Construction info:</p>
                         <p>Built by: </p><input type="text" name="builders" placeholder="DNAmaster10, Needn_NL">
-                        <p>Data of completion: </p><input type="date" name="construction_data" placeholder="23/06/2022">
+                        <p>Data of completion: </p><input type="date" name="construction_date">
                     </div>
                 </div>
                 <div class="secondary_container" id="cencus_container">
@@ -98,11 +98,8 @@
                         <h5>Apartment data</h5>
                         <input type="checkbox" id="apartment_yes_no" name="has_apartment" value="yes" onclick="show_apartment()">
                         <label for="apartment_yes_no">Contains apartment</label><br>
-                        <p class="inline">Has couch/bed/double bed e.t.c: </p>
-                        <input type="radio" id="furniture_yes" name="furniture">
-                        <label for="furniture_yes">Yes</label>
-                        <input type="radio" id="furniture_no" name="furniture">
-                        <label for="furniture_no">No</label>
+                        <p class="inline">Apartments with furniture: </p>
+                        <input type="text" name="furniture_ammount" placeholder="12">
                         <br>
                         <p class="inline">Additional bedrooms: </p><input type="text" name="other_bedrooms_apartment" id="apartment_bedroom_ammount" value="0">
                         <button type="button" onclick="increment_apartment_bedroom_ammount(this)" id="increment_apartment_bedroom_ammount_1" value="1">+1</button>

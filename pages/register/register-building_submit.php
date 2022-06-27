@@ -84,7 +84,6 @@
             unset ($result);
             $empty_found = true;
             $free_char = $current_letter;
-            error_log("Empty found!");
         }
         else {
             $loop_count++;
@@ -106,7 +105,6 @@
             unset ($result);
             $empty_found = true;
             $free_char = $current_letter;
-            error_log("Empty found!");
         }
         else {
             $loop_count++;
@@ -114,7 +112,6 @@
             unset($result);
         }
     }
-    error_log($empty_found);
     if (!$empty_found) {
         $_SESSION["building_error"] = "That street unit is full!";
         header ("Location: /pages/register/register-building.php");
@@ -140,8 +137,43 @@
     $building_type_list = $conn->real_escape_string($_POST["building_type_list"]);
     $building_type_list_array = explode("#-#",$building_type_list);
     $type_ammount = count($building_type_list_array);
-    for ($i=0; $i < $type_ammount; $i++) {
-        error_log($building_type_list_array[$i].": ".$_POST[$building_type_list_array[$i]."_ammount"]);
+    if ($type_ammount < 1) {
+        $_SESSION["buiding_error"] = "Please enter at least one building type";
+        header ("Location: /pages/register/register-building.php");
+        die();
+    }
+    if (!isset($_POST[$building_type_list_array[0]."_ammount")) {
+        $_SESSION["building_error"] = "Please enter the ammount of " + $building_type_list_array[0] + "s.";
+        header ("Location: /pages/register/register-building.php");
+        die();
+    }
+    $ammount_type = $_POST[$building_type_list_array[0]."_ammount";
+    for ($i=1; $i < $type_ammount; $i++) {
+        if (!isset($_POST[$building_type_list_array[$i]."_ammount"])) {
+            $_SESSION["building_error"] = "Please enter the ammount of " + $building_type_list_array[$i] + "s.";
+            header ("Location: /pages/register/register-building.php");
+            die();
+        }
+        $ammount_type = $ammount_type.",".$_POST[$building_type_list_array[$i]."_ammount"];
+    }
+    $building_type_list = implode(",",$building_type_list_array);
+
+    $builders = $conn->real_escape_string($_POST["builders"]);
+    $construction_date = $conn->real_escape_string($_POST["construction_date"]);
+    $total_population = 0;
+    if (isset($_POST["has_house"]) && $_POST["has_house"] == "yes") {
+        if (!str_contains($building_type_list, "house")) {
+            $_SESSION["building_error"] = "Please add the building type: house, to the list of building types.";
+            header ("Location: /pages/register/register-building.php");
+            die();
+        }
+        if (!isset("other_bedrooms_house")) {
+            $_SESSION["building_error"] = "Please enter the ammount of additional bedrooms in the house";
+            header ("Location: /pages/register/register-building.php");
+            die();
+        }
+        $total_houses =
+        $total_population =
     }
 ?>
 
