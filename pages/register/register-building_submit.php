@@ -39,7 +39,7 @@
         header ("Location: /pages/register/register-building.php");
         die();
     }
-
+    //Finds parent district and street unit chars
     $district_name = $conn->real_escape_string($_POST["district"]);
     $stmt = $conn->prepare("SELECT postcodeChar FROM districts WHERE district_name =?");
     $stmt->bind_param("s", $district_name);
@@ -67,7 +67,7 @@
         die();
     }
     $street_unit_char = $result;
-
+    //finds available post code char for building
     $current_letter = "A";
     $loop_count = 1;
     $empty_found = false;
@@ -117,6 +117,7 @@
         header ("Location: /pages/register/register-building.php");
         die();
     }
+    //Checks if a building with that name under that street already exists
     $building_name = $conn->real_escape_string($_POST["building_name"]);
     $street_name = $conn->real_escape_string($_POST["street_name"]);
 
@@ -130,7 +131,7 @@
         unset($result);
     }
     else {
-        $_SESSION["building_error"] = "A building with that name on that street already exists";
+        $_SESSION["building_error"] = "A building with that name on that street already exists.";
         header ("Location: /pages/register/register-building.php");
         die();
     }
@@ -142,12 +143,13 @@
         header ("Location: /pages/register/register-building.php");
         die();
     }
-    if (!isset($_POST[$building_type_list_array[0]."_ammount")) {
+    if (!isset($_POST[$building_type_list_array[0]."_ammount"])) {
         $_SESSION["building_error"] = "Please enter the ammount of " + $building_type_list_array[0] + "s.";
         header ("Location: /pages/register/register-building.php");
         die();
     }
-    $ammount_type = $_POST[$building_type_list_array[0]."_ammount";
+    //Generates ammount type list
+    $ammount_type = $_POST[$building_type_list_array[0]."_ammount"];
     for ($i=1; $i < $type_ammount; $i++) {
         if (!isset($_POST[$building_type_list_array[$i]."_ammount"])) {
             $_SESSION["building_error"] = "Please enter the ammount of " + $building_type_list_array[$i] + "s.";
@@ -161,6 +163,7 @@
     $builders = $conn->real_escape_string($_POST["builders"]);
     $construction_date = $conn->real_escape_string($_POST["construction_date"]);
     $total_population = 0;
+    $total_houses = 0;
     if (isset($_POST["has_house"]) && $_POST["has_house"] == "yes") {
         if (!str_contains($building_type_list, "house")) {
             $_SESSION["building_error"] = "Please add the building type: house, to the list of building types.";
@@ -172,8 +175,42 @@
             header ("Location: /pages/register/register-building.php");
             die();
         }
-        $total_houses =
-        $total_population =
+        $total_houses = $conn->real_escape_string($_POST["house_ammount"]);
+        $total_houses = intval($total_houses);
+        $additional_bedrooms = $conn->real_escape_string($_POST["other_bedrooms_house"]);
+        $additional_bedrooms = intval($additional_bedrooms);
+        $total_population = $total_population + (($total_houses * 2) + $additional_bedrooms);
+    }
+    if (isset($_POST["has_apartment"]) && $_POST["has_house"] == "yes") {
+        if (!str_contains($building_type_list, "apartment")) {
+            $_SESSION["building_error"] = "Please add the building type: apartment, to the list of building types.";
+            header ("Location: /pages/register/register-building.php");
+            die();
+        }
+        if (!isset("apartment_bedroom_ammount")) {
+            $_SESSION["building_error"] = "Please enter the ammount of additional bedrooms in the apartment";
+            header ("Location: /pages/register/register-building.php");
+            die();
+        }
+        if (!isset("furniture_ammount")) {
+            $_SESSION["building_error"] = "Please enter the ammount of furniture items in the apartment";
+            header ("Location: /pages/register/register-building.php");
+            die();
+        }
+        $additional_bedrooms_apartment = $conn->real_escape_string($_POST["apartment_bedroom_ammount"]);
+        $addition_bedrooms_apartment = intval($additional_bedrooms_apartment);
+        $furniture_ammount = $conn->real_escape_string($_POST["furniture_ammount"]);
+        $furniture_ammount = intval($furniture_ammount);
+        $total_apartments = $conn->real_escape_string($_POST["apartment_ammount"]);
+        $total_apartments = intval($total_apartments);
+        $apartments_without_furniture = $total_apartments - $furniture_ammount;
+        $total_population = $total_population + ($apartments_without_furniture + $furniture_ammount + $addition_bedrooms_apartment);
+    }
+    if (!isset($_POST["description"])) {
+        $description = "none";
+    }
+    else {
+        $description = $conn->real_escape_string($_POST["description"]);
     }
 ?>
 
