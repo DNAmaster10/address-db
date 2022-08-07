@@ -3,6 +3,10 @@
     include $_SERVER["DOCUMENT_ROOT"]."/includes/dbh.php";
     include $_SERVER["DOCUMENT_ROOT"]."/includes/check_login.php";
 
+    function removeRow() {
+        $stmt = $conn->prepare("DELETE FROM buildings WHERE ");
+    }
+
     //Checks if all essential types are set
     if (!isset($_POST["x_coord"])) {
         $_SESSION["building_error"] = "Please enter a valid x co-ordinate.";
@@ -41,7 +45,7 @@
     }
     //Finds parent district and street unit chars
     $district_name = $conn->real_escape_string($_POST["district"]);
-    $stmt = $conn->prepare("SELECT postcodeChar FROM districts WHERE district_name =?");
+    $stmt = $conn->prepare("SELECT postcodeChar FROM districts WHERE district_name = ?");
     $stmt->bind_param("s", $district_name);
     $stmt->execute();
     $stmt->bind_result($result);
@@ -212,6 +216,7 @@
     else {
         $description = $conn->real_escape_string($_POST["description"]);
     }
+
 ?>
 
 
