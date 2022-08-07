@@ -4,7 +4,10 @@
     include $_SERVER["DOCUMENT_ROOT"]."/includes/check_login.php";
 
     function removeRow() {
-        $stmt = $conn->prepare("DELETE FROM buildings WHERE ");
+        $stmt = $conn->prepare("DELETE FROM buildings WHERE postcode = ?")
+        $stmt->bind_param("s", $postcode);
+        $stmt->close;
+        die();
     }
 
     //Checks if all essential types are set
@@ -121,6 +124,8 @@
         header ("Location: /pages/register/register-building.php");
         die();
     }
+    $postcode = $postcode_pre.$free_char;
+    $postcode_char = $free_char;
     //Checks if a building with that name under that street already exists
     $building_name = $conn->real_escape_string($_POST["building_name"]);
     $street_name = $conn->real_escape_string($_POST["street_name"]);
@@ -139,6 +144,18 @@
         header ("Location: /pages/register/register-building.php");
         die();
     }
+    //Get x and y co-ords
+    $x_coord = $conn->real_escape_string($_POST["x_coord"]);
+    $y_coord = $conn->real_escape_string($_POST["y_coord"]);
+    $x_coord = intval($x_coord);
+    $y_coord = intval($y_coord);
+
+    //Insert the current details into the database
+    $stmt = $conn->prepare("INSERT INTO buildings (parent_street_unit, parent_district, postcode, postcode_char, parent_street, building_name, x, y) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("sssssssii", $street_unit_char, $district_char, $postcode, $postcode_char, $street_name, $building_name, $x_coord, $y_coord);
+    $stmt->execute();
+    $stmt->close();
+
     $building_type_list = $conn->real_escape_string($_POST["building_type_list"]);
     $building_type_list_array = explode("#-#",$building_type_list);
     $type_ammount = count($building_type_list_array);
