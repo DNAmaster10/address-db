@@ -162,12 +162,12 @@
     if ($type_ammount < 1) {
         $_SESSION["buiding_error"] = "Please enter at least one building type";
         header ("Location: /pages/register/register-building.php");
-        die();
+        removeRow();
     }
     if (!isset($_POST[$building_type_list_array[0]."_ammount"])) {
         $_SESSION["building_error"] = "Please enter the ammount of " + $building_type_list_array[0] + "s.";
         header ("Location: /pages/register/register-building.php");
-        die();
+        removeRow();
     }
     //Generates ammount type list
     $ammount_type = $_POST[$building_type_list_array[0]."_ammount"];
@@ -175,14 +175,31 @@
         if (!isset($_POST[$building_type_list_array[$i]."_ammount"])) {
             $_SESSION["building_error"] = "Please enter the ammount of " + $building_type_list_array[$i] + "s.";
             header ("Location: /pages/register/register-building.php");
-            die();
+            removeRow();
         }
         $ammount_type = $ammount_type.",".$_POST[$building_type_list_array[$i]."_ammount"];
     }
     $building_type_list = implode(",",$building_type_list_array);
 
-    $builders = $conn->real_escape_string($_POST["builders"]);
-    $construction_date = $conn->real_escape_string($_POST["construction_date"]);
+    $stmt = $conn->prepare("INSERT INTO buildings (types, type_ammount) VALUES (?,?) WHERE postcode = ?");
+    $stmt->bind_param("ss", $building_type_list, $ammount_type);
+    $stmt->execute();
+    $stmt->close();
+
+    if (isset($_POST["builders"])) {
+        $builders = $conn->real_escape_string($_POST["builders"]);
+        $stmt = $conn->prepare("INSERT INTO buildings (builders) VALUES (?) WHERE postcode=?");
+        $stmt->bind_param("s", $builders);
+        $stmt->execute();
+        $stmt->close();
+    }
+    if (isset($_POST["construction_date"])) {
+        $construction_date = $conn->real_escape_string($_POST["construction_date"]);
+        $stmt = $conn->prepare("INSERT INTO buildings (builders) VALUES (?) WHERE postcode=?");
+        $stmt->bind_param("s", $construction_date);
+        $stmt->execute();
+        $stmt->close();
+    }
     $total_population = 0;
     $total_houses = 0;
     if (isset($_POST["has_house"]) && $_POST["has_house"] == "yes") {
