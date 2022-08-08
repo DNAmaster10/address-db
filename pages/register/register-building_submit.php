@@ -182,21 +182,21 @@
     $building_type_list = implode(",",$building_type_list_array);
 
     $stmt = $conn->prepare("INSERT INTO buildings (types, type_ammount) VALUES (?,?) WHERE postcode = ?");
-    $stmt->bind_param("ss", $building_type_list, $ammount_type);
+    $stmt->bind_param("sss", $building_type_list, $ammount_type, $postcode);
     $stmt->execute();
     $stmt->close();
 
     if (isset($_POST["builders"])) {
         $builders = $conn->real_escape_string($_POST["builders"]);
         $stmt = $conn->prepare("INSERT INTO buildings (builders) VALUES (?) WHERE postcode=?");
-        $stmt->bind_param("s", $builders);
+        $stmt->bind_param("ss", $builders, $postcode);
         $stmt->execute();
         $stmt->close();
     }
     if (isset($_POST["construction_date"])) {
         $construction_date = $conn->real_escape_string($_POST["construction_date"]);
         $stmt = $conn->prepare("INSERT INTO buildings (builders) VALUES (?) WHERE postcode=?");
-        $stmt->bind_param("s", $construction_date);
+        $stmt->bind_param("ss", $construction_date, $postcode);
         $stmt->execute();
         $stmt->close();
     }
@@ -206,13 +206,18 @@
         if (!str_contains($building_type_list, "house")) {
             $_SESSION["building_error"] = "Please add the building type: house, to the list of building types.";
             header ("Location: /pages/register/register-building.php");
-            die();
+            removeRow();
         }
         if (!isset("other_bedrooms_house")) {
             $_SESSION["building_error"] = "Please enter the ammount of additional bedrooms in the house";
             header ("Location: /pages/register/register-building.php");
-            die();
+            removeRow();
         }
+        $stmt = $conn->prepare("INSERT INTO buildings (contains_house) VALUES ('yes') WHERE postcode=?");
+        $stmt->bind_param("s", $postcode);
+        $stmt->execute();
+        $stmt->close();
+
         $total_houses = $conn->real_escape_string($_POST["house_ammount"]);
         $total_houses = intval($total_houses);
         $additional_bedrooms = $conn->real_escape_string($_POST["other_bedrooms_house"]);
