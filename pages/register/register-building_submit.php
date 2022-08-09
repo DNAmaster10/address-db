@@ -180,7 +180,7 @@
     }
     $building_type_list = implode(",",$building_type_list_array);
 
-    $stmt = $conn->prepare("INSERT INTO buildings (types, type_ammount) VALUES (?,?) WHERE postcode = ?");
+    $stmt = $conn->prepare("INSERT INTO buildings (types, type_ammount) VALUES (?,?) WHERE postcode=?");
     $stmt->bind_param("sss", $building_type_list, $ammount_type, $postcode);
     $stmt->execute();
     $stmt->close();
@@ -200,7 +200,7 @@
         }
         if (isset($commerce_types)) {
             $temp_types = $conn->real_escape_string($_POST["commerce_types_franchise"]);
-            $commerce_types = $commerce_types.$temp_types;
+            $commerce_types = $commerce_types.",".$temp_types;
         }
         else {
             $commerce_types = $conn->real_escape_string($_POST["commerce_types_franchise"]);
@@ -253,7 +253,7 @@
 
         $total_houses = $conn->real_escape_string($_POST["house_ammount"]);
         $total_houses = intval($total_houses);
-        if (!isset($_POST["other_bedrooms_house"])) {
+        if (!isset($_POST["oth`r_bedrooms_house"])) {
             $_SESSION["building_error"] = "Please enter the ammount of additional bedrooms contained in every house present other than the master bedroom";
             removeRow();
         }
