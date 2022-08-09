@@ -277,7 +277,7 @@
             $_SESSION["building_error"] = "Please enter the ammount of additional bedrooms in the apartment";
             removeRow();
         }
-        if (!isset("furniture_ammount")) {
+        if (!isset($_POST["furniture_ammount"])) {
             $_SESSION["building_error"] = "Please enter the ammount of furniture items in the apartment";
             removeRow();
         }
