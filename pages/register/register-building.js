@@ -72,9 +72,17 @@ function show_house() {
 }
 function show_apartment() {
     if (document.getElementById("apartment_yes_no").checked) {
-        document.getElementById("")
+        document.getElementById("furniture_ammount").disabled = false;
+        document.getElementById("increment_apartment_furniture_ammount_1").disabled = false;
+        document.getElementById("increment_apartment_furniture_ammount_-1").disabled = false;
+        document.getElementById("apartment_bedroom_ammount").disabled = false;
+        document.getElementById("increment_apartment_bedroom_ammount_1").disabled = false;
+        document.getElementById("increment_apartment_bedroom_ammount_-1").disabled = false;
     }
     else {
+        document.getElementById("furniture_ammount").disabled = true;
+        document.getElementById("increment_apartment_furniture_ammount_1").disabled = true;
+        document.getElementById("increment_apartment_furniture_ammount_-1").disabled = true;
         document.getElementById("apartment_bedroom_ammount").disabled = true;
         document.getElementById("increment_apartment_bedroom_ammount_1").disabled = true;
         document.getElementById("increment_apartment_bedroom_ammount_-1").disabled = true;
