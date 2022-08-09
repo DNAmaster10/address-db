@@ -153,7 +153,7 @@
 
     //Insert the current details into the database
     $stmt = $conn->prepare("INSERT INTO buildings (parent_street_unit, parent_district, postcode, postcode_char, parent_street, building_name, x, y) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("sssssssii", $street_unit_char, $district_char, $postcode, $postcode_char, $street_name, $building_name, $x_coord, $y_coord);
+    $stmt->bind_param("ssssssii", $street_unit_char, $district_char, $postcode, $postcode_char, $street_name, $building_name, $x_coord, $y_coord);
     $stmt->execute();
     $stmt->close();
 
