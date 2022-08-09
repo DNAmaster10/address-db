@@ -273,7 +273,7 @@
             $_SESSION["building_error"] = "Please add the building type: apartment, to the list of building types.";
             removeRow();
         }
-        if (!isset("apartment_bedroom_ammount")) {
+        if (!isset($_POST["apartment_bedroom_ammount"])) {
             $_SESSION["building_error"] = "Please enter the ammount of additional bedrooms in the apartment";
             removeRow();
         }
