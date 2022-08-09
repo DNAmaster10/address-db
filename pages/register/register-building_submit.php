@@ -4,9 +4,10 @@
     include $_SERVER["DOCUMENT_ROOT"]."/includes/check_login.php";
 
     function removeRow() {
-        $stmt = $conn->prepare("DELETE FROM buildings WHERE postcode = ?")
+        $stmt = $conn->prepare("DELETE FROM buildings WHERE postcode = ?");
         $stmt->bind_param("s", $postcode);
         $stmt->close;
+        header ("Location: /pages/register/register-building.php");
         die();
     }
 
@@ -166,7 +167,6 @@
     }
     if (!isset($_POST[$building_type_list_array[0]."_ammount"])) {
         $_SESSION["building_error"] = "Please enter the ammount of " + $building_type_list_array[0] + "s.";
-        header ("Location: /pages/register/register-building.php");
         removeRow();
     }
     //Generates ammount type list
@@ -174,7 +174,6 @@
     for ($i=1; $i < $type_ammount; $i++) {
         if (!isset($_POST[$building_type_list_array[$i]."_ammount"])) {
             $_SESSION["building_error"] = "Please enter the ammount of " + $building_type_list_array[$i] + "s.";
-            header ("Location: /pages/register/register-building.php");
             removeRow();
         }
         $ammount_type = $ammount_type.",".$_POST[$building_type_list_array[$i]."_ammount"];
@@ -185,6 +184,45 @@
     $stmt->bind_param("sss", $building_type_list, $ammount_type, $postcode);
     $stmt->execute();
     $stmt->close();
+
+
+    if (str_contains($building_type_list, "commercial")) {
+        if (!isset($_POST["commerce_types"])) {
+            $_SESSION["building_error"] = "Please specify the commerce types sold in the commercial building(s)";
+            removeRow();
+        }
+        $commerce_types = $conn->real_escape_string($_POST["commerce_types"]);
+    }
+    if (str_contains($building_type_list, "franchise")) {
+        if (!isset($_POST["commerce_types_franchise"])) {
+            $_SESSION["building_error"] = "Please specify the commerce types sold in the franchise building(s)";
+            removeRow();
+        }
+        if (isset($commerce_types)) {
+            $temp_types = $conn->real_escape_string($_POST["commerce_types_franchise"]);
+            $commerce_types = $commerce_types.$temp_types;
+        }
+        else {
+            $commerce_types = $conn->real_escape_string($_POST["commerce_types_franchise"]);
+        }
+        if (!isset($_POST["franchise_owners"])) {
+            $_SESSION["building_error"] = "Please specify the owners of the franchises contained in the building";
+            removeRow();
+        }
+        else {
+            $franchise_owners = $conn->real_escape_string($_POST["franchise_owners"]);
+            $stmt = $conn->prepare("INSERT INTO buildings (franchise_owners) VALUES (?) WHERE postcode=?");
+            $stmt->bind_param("ss", $franchise_owners, $postcode);
+            $stmt->execute();
+            $stmt->close();
+        }
+    }
+    if (isset($commerce_types)) {
+        $stmt = $conn->prepare("INSERT INTO buildings (commerce_types) VALUES (?) WHERE postcode=?");
+        $stmt->bind_param("ss", $commerce_types, $postcode);
+        $stmt->execute();
+        $stmt->close();
+    }
 
     if (isset($_POST["builders"])) {
         $builders = $conn->real_escape_string($_POST["builders"]);
@@ -200,17 +238,12 @@
         $stmt->execute();
         $stmt->close();
     }
+    //Calculate house population
     $total_population = 0;
     $total_houses = 0;
     if (isset($_POST["has_house"]) && $_POST["has_house"] == "yes") {
         if (!str_contains($building_type_list, "house")) {
             $_SESSION["building_error"] = "Please add the building type: house, to the list of building types.";
-            header ("Location: /pages/register/register-building.php");
-            removeRow();
-        }
-        if (!isset("other_bedrooms_house")) {
-            $_SESSION["building_error"] = "Please enter the ammount of additional bedrooms in the house";
-            header ("Location: /pages/register/register-building.php");
             removeRow();
         }
         $stmt = $conn->prepare("INSERT INTO buildings (contains_house) VALUES ('yes') WHERE postcode=?");
@@ -220,70 +253,71 @@
 
         $total_houses = $conn->real_escape_string($_POST["house_ammount"]);
         $total_houses = intval($total_houses);
+        if (!isset($_POST["other_bedrooms_house"])) {
+            $_SESSION["building_error"] = "Please enter the ammount of additional bedrooms contained in every house present other than the master bedroom";
+            removeRow();
+        }
         $additional_bedrooms = $conn->real_escape_string($_POST["other_bedrooms_house"]);
         $additional_bedrooms = intval($additional_bedrooms);
+
+        $stmt = $conn->prepare("INSERT INTO buildings (other_bedrooms_house) VALUES (?) WHERE postcode = ?");
+        $stmt->bind_param("is", $additional_bedrooms, $postcode);
+        $stmt->execute();
+        $stmt->close();
+
         $total_population = $total_population + (($total_houses * 2) + $additional_bedrooms);
     }
-    if (isset($_POST["has_apartment"]) && $_POST["has_house"] == "yes") {
+    //Caclulate apartment population
+    if (isset($_POST["has_apartment"]) && $_POST["has_apartment"] == "yes") {
         if (!str_contains($building_type_list, "apartment")) {
             $_SESSION["building_error"] = "Please add the building type: apartment, to the list of building types.";
-            header ("Location: /pages/register/register-building.php");
-            die();
+            removeRow();
         }
         if (!isset("apartment_bedroom_ammount")) {
             $_SESSION["building_error"] = "Please enter the ammount of additional bedrooms in the apartment";
-            header ("Location: /pages/register/register-building.php");
-            die();
+            removeRow();
         }
         if (!isset("furniture_ammount")) {
             $_SESSION["building_error"] = "Please enter the ammount of furniture items in the apartment";
-            header ("Location: /pages/register/register-building.php");
-            die();
+            removeRow();
         }
         $additional_bedrooms_apartment = $conn->real_escape_string($_POST["apartment_bedroom_ammount"]);
-        $addition_bedrooms_apartment = intval($additional_bedrooms_apartment);
+        $additional_bedrooms_apartment = intval($additional_bedrooms_apartment);
         $furniture_ammount = $conn->real_escape_string($_POST["furniture_ammount"]);
         $furniture_ammount = intval($furniture_ammount);
         $total_apartments = $conn->real_escape_string($_POST["apartment_ammount"]);
         $total_apartments = intval($total_apartments);
         $apartments_without_furniture = $total_apartments - $furniture_ammount;
         $total_population = $total_population + ($apartments_without_furniture + $furniture_ammount + $addition_bedrooms_apartment);
+
+        $stmt = $conn->prepare("INSERT INTO buildings (furniture_apartment,other_bedrooms_apartment) VALUES (?,?) WHERE postcode=?");
+        $stmt->bind_param("iis",$furniture_ammount,$additional_bedrooms_apartment,$postcode);
+        $stmt->execute();
+        $stmt->close();
+
     }
+    $stmt = $conn->prepare("INSERT INTO buildings (population) VALUES (?) WHERE postcode = ?");
+    $stmt->bind_param("is", $total_population, $postocde);
+    $stmt->execute();
+    $stmt->close();
+
     if (!isset($_POST["description"])) {
         $description = "none";
     }
     else {
         $description = $conn->real_escape_string($_POST["description"]);
     }
-
+    $stmt = $conn->prepare("INSERT INTO buildings (description) VALUES (?) WHERE postcode=?");
+    $stmt->bind_param("ss",$description,$postcode);
+    $stmt->execute();
+    $stmt->close();
 ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Registered!</title>
+    </head>
+    <body>
+        <p>The building has been registered</p>
+    </body>
+</html>
