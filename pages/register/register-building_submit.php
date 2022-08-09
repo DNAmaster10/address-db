@@ -180,7 +180,7 @@
     }
     $building_type_list = implode(",",$building_type_list_array);
 
-    $stmt = $conn->prepare("INSERT INTO buildings (types, type_ammount) VALUES (?,?) WHERE postcode=?");
+    $stmt = $conn->prepare("UPDATE buildings SET types = ?, type_ammount = ? WHERE postcode = ?");
     $stmt->bind_param("sss", $building_type_list, $ammount_type, $postcode);
     $stmt->execute();
     $stmt->close();
@@ -211,14 +211,14 @@
         }
         else {
             $franchise_owners = $conn->real_escape_string($_POST["franchise_owners"]);
-            $stmt = $conn->prepare("INSERT INTO buildings (franchise_owners) VALUES (?) WHERE postcode=?");
+            $stmt = $conn->prepare("UPDATE buildings SET franchise_owners = ? WHERE postcode=?");
             $stmt->bind_param("ss", $franchise_owners, $postcode);
             $stmt->execute();
             $stmt->close();
         }
     }
     if (isset($commerce_types)) {
-        $stmt = $conn->prepare("INSERT INTO buildings (commerce_types) VALUES (?) WHERE postcode=?");
+        $stmt = $conn->prepare("UPDATE buildings SET commerce_types = ? WHERE postcode=?");
         $stmt->bind_param("ss", $commerce_types, $postcode);
         $stmt->execute();
         $stmt->close();
@@ -226,14 +226,14 @@
 
     if (isset($_POST["builders"])) {
         $builders = $conn->real_escape_string($_POST["builders"]);
-        $stmt = $conn->prepare("INSERT INTO buildings (builders) VALUES (?) WHERE postcode=?");
+        $stmt = $conn->prepare("UPDATE buildings SET builders = ? WHERE postcode=?");
         $stmt->bind_param("ss", $builders, $postcode);
         $stmt->execute();
         $stmt->close();
     }
     if (isset($_POST["construction_date"])) {
         $construction_date = $conn->real_escape_string($_POST["construction_date"]);
-        $stmt = $conn->prepare("INSERT INTO buildings (builders) VALUES (?) WHERE postcode=?");
+        $stmt = $conn->prepare("UPDATE buildings SET construction_date = ? WHERE postcode=?");
         $stmt->bind_param("ss", $construction_date, $postcode);
         $stmt->execute();
         $stmt->close();
@@ -246,7 +246,7 @@
             $_SESSION["building_error"] = "Please add the building type: house, to the list of building types.";
             removeRow();
         }
-        $stmt = $conn->prepare("INSERT INTO buildings (contains_house) VALUES ('yes') WHERE postcode=?");
+        $stmt = $conn->prepare("UPDATE buildings SET contains_house = 'yes' WHERE postcode=?");
         $stmt->bind_param("s", $postcode);
         $stmt->execute();
         $stmt->close();
@@ -266,6 +266,9 @@
         $stmt->close();
 
         $total_population = $total_population + (($total_houses * 2) + $additional_bedrooms);
+    }
+    else {
+        //Set contains house to no
     }
     //Caclulate apartment population
     if (isset($_POST["has_apartment"]) && $_POST["has_apartment"] == "yes") {
