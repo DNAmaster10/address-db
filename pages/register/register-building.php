@@ -99,7 +99,9 @@
                         <input type="checkbox" id="apartment_yes_no" name="has_apartment" value="yes" onclick="show_apartment()">
                         <label for="apartment_yes_no">Contains apartment</label><br>
                         <p class="inline">Apartments with furniture: </p>
-                        <input type="text" name="furniture_ammount" placeholder="12">
+                        <input type="text" name="furniture_ammount" placeholder="12" id="furniture_ammount">
+                        <button type="button" onclick="increment_apartment_furniture(this)" id="increment_apartment_furniture_ammount_1" value="1">+1</button>
+                        <button type="button" onclick="increment_apartment_furniture(this)" id="increment_apartment_furniture_ammount_-1" value="-1">-1</button>
                         <br>
                         <p class="inline">Additional bedrooms: </p><input type="text" name="other_bedrooms_apartment" id="apartment_bedroom_ammount" value="0">
                         <button type="button" onclick="increment_apartment_bedroom_ammount(this)" id="increment_apartment_bedroom_ammount_1" value="1">+1</button>
