@@ -131,8 +131,8 @@
     $building_name = $conn->real_escape_string($_POST["building_name"]);
     $street_name = $conn->real_escape_string($_POST["street_name"]);
 
-    $stmt = $conn->prepare("SELECT building_name FROM buildings WHERE parent_street=?");
-    $stmt->bind_param("s",$street_name);
+    $stmt = $conn->prepare("SELECT building_name FROM buildings WHERE parent_street=? AND building_name=?");
+    $stmt->bind_param("ss",$street_name, $building_name);
     $stmt->execute();
     $stmt->bind_result($result);
     $stmt->fetch();
