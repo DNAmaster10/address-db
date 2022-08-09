@@ -72,9 +72,7 @@ function show_house() {
 }
 function show_apartment() {
     if (document.getElementById("apartment_yes_no").checked) {
-        document.getElementById("apartment_bedroom_ammount").disabled = false;
-        document.getElementById("increment_apartment_bedroom_ammount_1").disabled = false;
-        document.getElementById("increment_apartment_bedroom_ammount_-1").disabled = false;
+        document.getElementById("")
     }
     else {
         document.getElementById("apartment_bedroom_ammount").disabled = true;
