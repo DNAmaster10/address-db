@@ -5,6 +5,7 @@
 <html>
     <head>
         <title>Kaloro db</title>
+        <link rel="stylesheet" href="/index.css">
     </head>
     <body>
         <ul>
