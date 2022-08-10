@@ -100,9 +100,9 @@
         }
     }
     $loop_count = 0;
-    $current_letter = "0";
+    $current_letter = 0;
     while ($loop_count != 10 && $empty_found == false) {
-        $current_postcode = $postcode_pre.$current_letter;
+        $current_postcode = $postcode_pre.strval($current_letter);
         $stmt = $conn->prepare("SELECT building_name FROM buildings WHERE postcode=?");
         $stmt->bind_param("s",$current_postcode);
         $stmt->execute();
@@ -116,7 +116,7 @@
         }
         else {
             $loop_count++;
-            $current_letter = ++$current_letter;
+            $current_letter = $current_letter + 1;
             unset($result);
         }
     }
@@ -336,8 +336,16 @@
 <html>
     <head>
         <title>Registered!</title>
+        <link rel="stylesheet" href="/css/main.css">
     </head>
     <body>
-        <p>The building has been registered</p>
+        <form action="./register-building.php">
+            <input type="submit" value="Register another">
+        </form>
+        <form action="./pages/user/user-home.php">
+            <input type="submit" value="Home">
+        </form>
+        <p>The building has been registered.</p>
+        <p>Postcode: <?php echo $postcode; ?></p>
     </body>
 </html>
