@@ -246,21 +246,23 @@
             $_SESSION["building_error"] = "Please add the building type: house, to the list of building types.";
             removeRow();
         }
+        $param = "yes";
         $stmt = $conn->prepare("UPDATE buildings SET contains_house = ? WHERE postcode=?");
-        $stmt->bind_param("ss", "yes", $postcode);
+        $stmt->bind_param("ss", $param, $postcode);
         $stmt->execute();
         $stmt->close();
+        unset($param);
 
         $total_houses = $conn->real_escape_string($_POST["house_ammount"]);
         $total_houses = intval($total_houses);
-        if (!isset($_POST["oth`r_bedrooms_house"])) {
+        if (!isset($_POST["other_bedrooms_house"])) {
             $_SESSION["building_error"] = "Please enter the ammount of additional bedrooms contained in every house present other than the master bedroom";
             removeRow();
         }
         $additional_bedrooms = $conn->real_escape_string($_POST["other_bedrooms_house"]);
         $additional_bedrooms = intval($additional_bedrooms);
 
-        $stmt = $conn->prepare("INSERT INTO buildings (other_bedrooms_house) VALUES (?) WHERE postcode = ?");
+        $stmt = $conn->prepare("UPDATE buildings SET other_bedrooms_house = ? WHERE postcode = ?");
         $stmt->bind_param("is", $additional_bedrooms, $postcode);
         $stmt->execute();
         $stmt->close();
@@ -269,10 +271,12 @@
     }
     else {
         //Set contains house to no
+        $param = "no";
         $stmt = $conn->prepare("UPDATE buildings SET contains_house = ? WHERE postcode=?");
-        $stmt->bind_param("ss", "no", $postcode);
+        $stmt->bind_param("ss", $param, $postcode);
         $stmt->execute();
         $stmt->close();
+        unset($param);
     }
     //Caclulate apartment population
     if (isset($_POST["has_apartment"]) && $_POST["has_apartment"] == "yes") {
@@ -297,16 +301,20 @@
         $apartments_without_furniture = $total_apartments - $furniture_ammount;
         $total_population = $total_population + ($apartments_without_furniture + $furniture_ammount + $addition_bedrooms_apartment);
 
+        $param = "yes";
         $stmt = $conn->prepare("UPDATE buildings SET furniture_apartment = ?, other_bedrooms_apartment = ?, contains_apartment = ? WHERE postcode=?");
-        $stmt->bind_param("iiss",$furniture_ammount,$additional_bedrooms_apartment, "yes", $postcode);
+        $stmt->bind_param("iiss",$furniture_ammount,$additional_bedrooms_apartment, $param, $postcode);
         $stmt->execute();
         $stmt->close();
+        unset($param);
     }
     else {
+        $param = "no";
         $stmt = $conn->prepare("UPDATE buildings SET contains_apartment = ? WHERE postcode = ?");
-        $stmt->bind_param("ss", "yes", $postcode);
+        $stmt->bind_param("ss", $param, $postcode);
         $stmt->execute();
         $stmt->close();
+        unset($param);
     }
     $stmt = $conn->prepare("UPDATE buildings SET population = ? WHERE postcode = ?");
     $stmt->bind_param("is", $total_population, $postocde);
