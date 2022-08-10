@@ -246,8 +246,8 @@
             $_SESSION["building_error"] = "Please add the building type: house, to the list of building types.";
             removeRow();
         }
-        $stmt = $conn->prepare("UPDATE buildings SET contains_house = 'yes' WHERE postcode=?");
-        $stmt->bind_param("s", $postcode);
+        $stmt = $conn->prepare("UPDATE buildings SET contains_house = ? WHERE postcode=?");
+        $stmt->bind_param("ss", "yes", $postcode);
         $stmt->execute();
         $stmt->close();
 
@@ -269,6 +269,10 @@
     }
     else {
         //Set contains house to no
+        $stmt = $conn->prepare("UPDATE buildings SET contains_house = ? WHERE postcode=?");
+        $stmt->bind_param("ss", "no", $postcode);
+        $stmt->execute();
+        $stmt->close();
     }
     //Caclulate apartment population
     if (isset($_POST["has_apartment"]) && $_POST["has_apartment"] == "yes") {
@@ -293,13 +297,18 @@
         $apartments_without_furniture = $total_apartments - $furniture_ammount;
         $total_population = $total_population + ($apartments_without_furniture + $furniture_ammount + $addition_bedrooms_apartment);
 
-        $stmt = $conn->prepare("INSERT INTO buildings (furniture_apartment,other_bedrooms_apartment) VALUES (?,?) WHERE postcode=?");
-        $stmt->bind_param("iis",$furniture_ammount,$additional_bedrooms_apartment,$postcode);
+        $stmt = $conn->prepare("UPDATE buildings SET furniture_apartment = ?, other_bedrooms_apartment = ?, contains_apartment = ? WHERE postcode=?");
+        $stmt->bind_param("iiss",$furniture_ammount,$additional_bedrooms_apartment, "yes", $postcode);
         $stmt->execute();
         $stmt->close();
-
     }
-    $stmt = $conn->prepare("INSERT INTO buildings (population) VALUES (?) WHERE postcode = ?");
+    else {
+        $stmt = $conn->prepare("UPDATE buildings SET contains_apartment = ? WHERE postcode = ?");
+        $stmt->bind_param("ss", "yes", $postcode);
+        $stmt->execute();
+        $stmt->close();
+    }
+    $stmt = $conn->prepare("UPDATE buildings SET population = ? WHERE postcode = ?");
     $stmt->bind_param("is", $total_population, $postocde);
     $stmt->execute();
     $stmt->close();
@@ -310,7 +319,7 @@
     else {
         $description = $conn->real_escape_string($_POST["description"]);
     }
-    $stmt = $conn->prepare("INSERT INTO buildings (description) VALUES (?) WHERE postcode=?");
+    $stmt = $conn->prepare("UPDATE buildings SET description = ? WHERE postcode=?");
     $stmt->bind_param("ss",$description,$postcode);
     $stmt->execute();
     $stmt->close();
