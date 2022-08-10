@@ -342,7 +342,7 @@
         <form action="./register-building.php">
             <input type="submit" value="Register another">
         </form>
-        <form action="./pages/user/user-home.php">
+        <form action="/pages/user/user-home.php">
             <input type="submit" value="Home">
         </form>
         <p>The building has been registered.</p>
