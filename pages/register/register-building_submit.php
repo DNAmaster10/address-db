@@ -3,7 +3,7 @@
     include $_SERVER["DOCUMENT_ROOT"]."/includes/dbh.php";
     include $_SERVER["DOCUMENT_ROOT"]."/includes/check_login.php";
 
-    function removeRow() {
+    function removeRow($conn, $postcode) {
         $stmt = $conn->prepare("DELETE FROM buildings WHERE postcode = ?");
         $stmt->bind_param("s", $postcode);
         $stmt->close;
@@ -163,18 +163,18 @@
     if ($type_ammount < 1) {
         $_SESSION["buiding_error"] = "Please enter at least one building type";
         header ("Location: /pages/register/register-building.php");
-        removeRow();
+        removeRow($conn, $postcode);
     }
     if (!isset($_POST[$building_type_list_array[0]."_ammount"])) {
         $_SESSION["building_error"] = "Please enter the ammount of " + $building_type_list_array[0] + "s.";
-        removeRow();
+        removeRow($conn, $postcode);
     }
     //Generates ammount type list
     $ammount_type = $_POST[$building_type_list_array[0]."_ammount"];
     for ($i=1; $i < $type_ammount; $i++) {
         if (!isset($_POST[$building_type_list_array[$i]."_ammount"])) {
             $_SESSION["building_error"] = "Please enter the ammount of " + $building_type_list_array[$i] + "s.";
-            removeRow();
+            removeRow($conn, $postcode);
         }
         $ammount_type = $ammount_type.",".$_POST[$building_type_list_array[$i]."_ammount"];
     }
@@ -189,14 +189,14 @@
     if (str_contains($building_type_list, "commercial")) {
         if (!isset($_POST["commerce_types"])) {
             $_SESSION["building_error"] = "Please specify the commerce types sold in the commercial building(s)";
-            removeRow();
+            removeRow($conn, $postcode);
         }
         $commerce_types = $conn->real_escape_string($_POST["commerce_types"]);
     }
     if (str_contains($building_type_list, "franchise")) {
         if (!isset($_POST["commerce_types_franchise"])) {
             $_SESSION["building_error"] = "Please specify the commerce types sold in the franchise building(s)";
-            removeRow();
+            removeRow($conn, $postcode);
         }
         if (isset($commerce_types)) {
             $temp_types = $conn->real_escape_string($_POST["commerce_types_franchise"]);
@@ -207,7 +207,7 @@
         }
         if (!isset($_POST["franchise_owners"])) {
             $_SESSION["building_error"] = "Please specify the owners of the franchises contained in the building";
-            removeRow();
+            removeRow($conn, $postcode);
         }
         else {
             $franchise_owners = $conn->real_escape_string($_POST["franchise_owners"]);
@@ -244,7 +244,7 @@
     if (isset($_POST["has_house"]) && $_POST["has_house"] == "yes") {
         if (!str_contains($building_type_list, "house")) {
             $_SESSION["building_error"] = "Please add the building type: house, to the list of building types.";
-            removeRow();
+            removeRow($conn, $postcode);
         }
         $param = "yes";
         $stmt = $conn->prepare("UPDATE buildings SET contains_house = ? WHERE postcode=?");
@@ -257,7 +257,7 @@
         $total_houses = intval($total_houses);
         if (!isset($_POST["other_bedrooms_house"])) {
             $_SESSION["building_error"] = "Please enter the ammount of additional bedrooms contained in every house present other than the master bedroom";
-            removeRow();
+            removeRow($conn, $postcode);
         }
         $additional_bedrooms = $conn->real_escape_string($_POST["other_bedrooms_house"]);
         $additional_bedrooms = intval($additional_bedrooms);
@@ -282,15 +282,15 @@
     if (isset($_POST["has_apartment"]) && $_POST["has_apartment"] == "yes") {
         if (!str_contains($building_type_list, "apartment")) {
             $_SESSION["building_error"] = "Please add the building type: apartment, to the list of building types.";
-            removeRow();
+            removeRow($conn, $postcode);
         }
         if (!isset($_POST["apartment_bedroom_ammount"])) {
             $_SESSION["building_error"] = "Please enter the ammount of additional bedrooms in the apartment";
-            removeRow();
+            removeRow($conn, $postcode);
         }
         if (!isset($_POST["furniture_ammount"])) {
             $_SESSION["building_error"] = "Please enter the ammount of furniture items in the apartment";
-            removeRow();
+            removeRow($conn, $postcode);
         }
         $additional_bedrooms_apartment = $conn->real_escape_string($_POST["apartment_bedroom_ammount"]);
         $additional_bedrooms_apartment = intval($additional_bedrooms_apartment);
