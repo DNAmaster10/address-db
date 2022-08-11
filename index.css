@@ -5,7 +5,7 @@ body {
 a {
     display: block;
     padding: 8px;
-    background-color: #454647;
+    background-color: #464a4d;
 }
 ul {
     list-style-type: none;
@@ -20,7 +20,7 @@ ul {
 
 li a {
     display: block;
-    color: #464a4d;
+    color: white;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
@@ -41,4 +41,6 @@ li a:hover {
 }
 #login_button_li {
     float: right;
+}
+#index_bg_img {
 }
