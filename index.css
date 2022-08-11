@@ -6,17 +6,11 @@ body {
 
 }
 
-li a:hover {
-    background-color: #1d1f21;
-}
 .navbar_button_li {
     float: left;
 }
 .navbar_button {
 
-}
-#login_button_li {
-    float: right;
 }
 #index_bg_img_img {
     max-height: 400px;
