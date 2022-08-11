@@ -39,4 +39,5 @@
             <input type="text" id="search_input_box" onkeyup="submit_search()" placeholder="search">
         </div>
     </body>
+    <script src="/pages/js/browse-main.js"></script>
 </html>
