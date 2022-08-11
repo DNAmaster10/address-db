@@ -1,3 +1,7 @@
+body {
+    margin: 0px;
+}
+
 a {
     display: block;
     padding: 8px;
@@ -16,7 +20,7 @@ ul {
 
 li a {
     display: block;
-    color: #fcfcfc;
+    color: #464a4d;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
