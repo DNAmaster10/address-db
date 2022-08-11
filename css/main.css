@@ -10,7 +10,7 @@ html * {
     text-decoration: none;
 }
 
-.navbar_container {
+.navbar_container_ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
