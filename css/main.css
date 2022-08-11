@@ -8,6 +8,7 @@ html * {
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+    background-color: #464a4d;
 }
 
 .navbar_container_ul {
