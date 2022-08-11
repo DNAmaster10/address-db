@@ -7,16 +7,6 @@ a {
     padding: 8px;
     background-color: #464a4d;
 }
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #464a4d;
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0;
-}
 
 .navbar_button {
 
