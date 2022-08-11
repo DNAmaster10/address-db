@@ -9,8 +9,8 @@ body {
 .navbar_button_li {
     float: left;
 }
-.navbar_button {
-
+h1 {
+    text-align: center;
 }
 #index_bg_img_img {
     max-height: 400px;

@@ -1,5 +1,5 @@
 html * {
-    font-family: 'Heebo', sans-serif;
+    font-family: sans-serif;
 }
 
 .navbar_container_ul li a {
@@ -9,6 +9,7 @@ html * {
     padding: 14px 16px;
     text-decoration: none;
     background-color: #464a4d;
+    font-weight: bold;
 }
 
 .navbar_container_ul {
