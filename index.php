@@ -5,10 +5,11 @@
 <html>
     <head>
         <title>Kaloro db</title>
+        <link rel="stylesheet" href="/css/main.css">
         <link rel="stylesheet" href="/index.css">
     </head>
     <body>
-        <ul>
+        <ul class="navbar_container_ul">
             <li id="browse_button_li" class="navbar_button_li"><a href="/pages/browse.php" class="navbar_button">Browse</a></li>
             <?php
                 if (isset($_SESSION["username"])) {

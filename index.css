@@ -18,14 +18,6 @@ ul {
     top: 0;
 }
 
-li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-
 .navbar_button {
 
 }
@@ -42,5 +34,7 @@ li a:hover {
 #login_button_li {
     float: right;
 }
-#index_bg_img {
+#index_bg_img_img {
+    max-height: 400px;
+    object-fit: cover;
 }
