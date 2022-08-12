@@ -6,6 +6,7 @@
 <html>
     <head>
         <title>Search</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <link rel="stylesheet" href="/css/main.css">
         <link rel="stylesheet" href="/css/browse.css">
     </head>
