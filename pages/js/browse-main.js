@@ -43,7 +43,7 @@ function toggle_all() {
     }
     else {
         document.getElementById("search_district_checkbox").disabled = false;
-        document.getElementById("search_street_unit_checkbox").disable = false;
+        document.getElementById("search_street_unit_checkbox").disabled = false;
         document.getElementById("search_streets_checkbox").disabled = false;
         document.getElementById("search_building_checkbox").disabled = false;
     }
