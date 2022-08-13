@@ -18,7 +18,9 @@ function submit_search() {
             search_categories = search_categories + ",buildings";
         }
     }
+    console.log("Generated catergory string");
     if (!search_categories == ",") {
+        console.log("Starting POST request")
         var search_term = document.getElementById("search_input_box").value;
         if (search_term.length > 0) {
             $.ajax({
@@ -29,6 +31,7 @@ function submit_search() {
                     search_categories:search_categories
                 },
                 success: function(data) {
+                    console.log("Finsihed!")
                     console.log(data);
                 }
             });
