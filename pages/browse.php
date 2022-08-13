@@ -37,7 +37,9 @@
             <label for="search_street_checkbox">Street names</label>
             <input type="checkbox" id="search_building_checkbox" disabled>
             <label for="search_building_checkbox">Buildings</label>
-            <input type="text" id="search_input_box" onkeyup="submit_search()" placeholder="search">
+            <br>
+            <input type="text" id="search_input_box" placeholder="search">
+            <button type="button" id="submit_search_button">Search</button>
         </div>
     </body>
     <script src="/pages/js/browse-main.js"></script>
