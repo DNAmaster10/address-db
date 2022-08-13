@@ -104,7 +104,7 @@
             unset ($result);
 
             //Send result to main return string
-            $sendback_string = $sendback_string + $buildings_string;
+            $sendback_string = $sendback_string.$buildings_string."&-&";
         }
     }
 
