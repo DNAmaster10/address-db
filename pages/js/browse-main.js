@@ -1,7 +1,7 @@
 function submit_search() {
     console.log("Searching");
     if (document.getElementById("search_all_checkbox").checked) {
-        var search_categories = "all";
+        var search_categories = "districts,street_units,streets,buildings";
     }
     else {
         var search_categories = ",";
