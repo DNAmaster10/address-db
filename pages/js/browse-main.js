@@ -19,7 +19,7 @@ function submit_search() {
         }
     }
     console.log("Generated catergory string");
-    if (!search_categories == ",") {
+    if (search_categories != ",") {
         console.log("Starting POST request")
         var search_term = document.getElementById("search_input_box").value;
         if (search_term.length > 0) {
