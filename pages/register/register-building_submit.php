@@ -145,6 +145,21 @@
         header ("Location: /pages/register/register-building.php");
         die();
     }
+
+    //Add street to street table if it doesn't exist
+    $stmt = $conn->prepare("SELECT street FROM streets WHERE street=?");
+    $stmt->bind_param("s", $street_name);
+    $stmt->execute();
+    $stmt->bind_result($result);
+    $stmt->fetch();
+    $stmt->close();
+    if (!$result) {
+        $stmt = $conn->prepare("INSERT INTO streets (street) VALUES (?)");
+        $stmt->bind_param("s", $street_name);
+        $stmt->execute();
+        $stmt->close();
+    }
+
     //Get x and y co-ords
     $x_coord = $conn->real_escape_string($_POST["x_coord"]);
     $y_coord = $conn->real_escape_string($_POST["y_coord"]);

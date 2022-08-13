@@ -20,7 +20,7 @@
             $sendback_string = $sendback_string."district:!:";
             //search function for districts
             $district_string = "~-~";
-            $stmt = $conn->prepare("SELECT district_id,district_name FROM districts WHERE lower(district_name)=? OR lower(distring_name) LIKE %?%");
+            $stmt = $conn->prepare("SELECT district_id,district_name FROM districts WHERE lower(district_name)=? OR lower(distring_name) LIKE %?% LIMIT 10");
             $stmt->bind_param("ss",$search_term,$search_term);
             $stmt->execute();
             $result = $stmt->get_result();
@@ -30,7 +30,7 @@
             $stmt->close();
             unset($result);
 
-            $stmt = $conn->prepare("SELECT district_id,district_name FROM districts WHERE lower(postcodeChar)=? OR lower(postcodeChar)=?");
+            $stmt = $conn->prepare("SELECT district_id,district_name FROM districts WHERE lower(postcodeChar)=? OR lower(postcodeChar)=? LIMIT 10");
             $stmt->bind_param("s",$search_term,$search_term_first);
             $stmt->execute();
             $result = $stmt->get_result();
@@ -48,7 +48,7 @@
             $sendback_string = $sendback_string."street_units:!:";
             //search function for street units
             $street_unit_string = "~-~";
-            $stmt = $conn->prepare("SELECT id,name FROM street_units WHERE lower(name)=? OR lower(name) LIKE %?%");
+            $stmt = $conn->prepare("SELECT id,name FROM street_units WHERE lower(name)=? OR lower(name) LIKE %?% LIMIT 10");
             $stmt->bind_param("ss", $search_term,$search_term);
             $stmt->execute();
             $result = $stmt->get_result();
@@ -58,7 +58,7 @@
             $stmt->close();
             unset($result);
 
-            $stmt = $conn->prepare("SELECT id,name FROM street_units WHERE lower(postcodeChar)=? OR lower(full_postcode)=?");
+            $stmt = $conn->prepare("SELECT id,name FROM street_units WHERE lower(postcodeChar)=? OR lower(full_postcode)=? LIMIT 10");
             $stmt->bind_param("ss", $search_term,$search_term);
             $stmt->execute();
             $result = $stmt->get_result();
@@ -67,8 +67,48 @@
             }
             $stmt->close();
             unset ($result);
+
+            //Send result to main return string
+            $sendback_string = $sendback_string + $street_unit_string + "&_&";
+        }
+        if ($search_categories_array[$i] == "streets") {
+            $sendback_string = $sendback_string."streets:!:";
+            //search function for streets
+            $streets_string = "~-~";
+            $stmt = $conn->prepare("SELECT id,street FROM streets WHERE street LIKE %?% LIMIT 10");
+            $stmt->bind_param("s", $search_term);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            while ($row = $result->fetch_assoc()) {
+                $streets_string = $streets_string.$row["street"]."#-#".$row["id"]."~-~";
+            }
+            $stmt->close();
+            unset ($result);
+
+            //Send result to main return string
+            $sendback_string = $sendback_string + $streets_string;
+        }
+        if ($search_categories_array[$i] == "buildings") {
+            $sendback_string = $sendback_string."buildings:!:";
+            //search function for buildings
+            $buildings_string = "~-~";
+            $stmt = $conn->prepare("SELECT id,building_name FROM buildings WHERE building_name LIKE %?% OR postcode LIKE %?% LIMIT 10");
+            $stmt->bind_param("ss", $search_term, $search_term);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            while ($row = $result->fetch_assoc()) {
+                $buildings_string = $buildings_string.$row["building_name"]."#-#".$row["id"]."~-~";
+            }
+            $stmt->close();
+            unset ($result);
+
+            //Send result to main return string
+            $sendback_string = $sendback_string + $buildings_string;
         }
     }
+
+    echo ($sendback_string);
+
     //sendback 
     //"district:!:name#-#link~-~name#-#link&_&"
 ?>
