@@ -21,7 +21,7 @@
             $sendback_string = $sendback_string."district:!:";
             //search function for districts
             $district_string = "~-~";
-            $stmt = $conn->prepare("SELECT district_id,district_name FROM districts WHERE lower(district_name)=? OR lower(distring_name) LIKE ? LIMIT 10;");
+            $stmt = $conn->prepare("SELECT district_id,district_name FROM districts WHERE lower(district_name)=? OR lower(district_name) LIKE ? LIMIT 10;");
             $stmt->bind_param("ss",$search_term,$like_operator);
             $stmt->execute();
             $result = $stmt->get_result();
