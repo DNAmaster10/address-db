@@ -39,7 +39,7 @@
             <label for="search_building_checkbox">Buildings</label>
             <br>
             <input type="text" id="search_input_box" placeholder="search">
-            <button type="button" id="submit_search_button">Search</button>
+            <button type="button" id="submit_search_button" onclick="submit_search()">Search</button>
         </div>
     </body>
     <script src="/pages/js/browse-main.js"></script>
