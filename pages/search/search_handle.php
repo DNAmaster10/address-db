@@ -15,13 +15,14 @@
     $search_categories_array = explode(",", $search_categories);
     $category_length = count($search_categories_array);
     $sendback_string = "&_&";
+    $like_operator = '%'.$search_term.'%';
     for ($i = 0; $i < $category_length; $i++) {
         if ($search_categories_array[$i] == "districts") {
             $sendback_string = $sendback_string."district:!:";
             //search function for districts
             $district_string = "~-~";
-            $stmt = $conn->prepare("SELECT district_id,district_name FROM districts WHERE lower(district_name)=? OR lower(distring_name) LIKE %?% LIMIT 10");
-            $stmt->bind_param("ss",$search_term,$search_term);
+            $stmt = $conn->prepare("SELECT district_id,district_name FROM districts WHERE lower(district_name)=? OR lower(distring_name) LIKE ? LIMIT 10");
+            $stmt->bind_param("ss",$search_term,$like_operator);
             $stmt->execute();
             $result = $stmt->get_result();
             while ($row = $result->fetch_assoc()) {
@@ -48,8 +49,8 @@
             $sendback_string = $sendback_string."street_units:!:";
             //search function for street units
             $street_unit_string = "~-~";
-            $stmt = $conn->prepare("SELECT id,name FROM street_units WHERE lower(name)=? OR lower(name) LIKE %?% LIMIT 10");
-            $stmt->bind_param("ss", $search_term,$search_term);
+            $stmt = $conn->prepare("SELECT id,name FROM street_units WHERE lower(name)=? OR lower(name) LIKE ? LIMIT 10");
+            $stmt->bind_param("ss", $search_term,$like_operator);
             $stmt->execute();
             $result = $stmt->get_result();
             while ($row = $result->fetch_assoc()) {
@@ -75,8 +76,8 @@
             $sendback_string = $sendback_string."streets:!:";
             //search function for streets
             $streets_string = "~-~";
-            $stmt = $conn->prepare("SELECT id,street FROM streets WHERE street LIKE %?% LIMIT 10");
-            $stmt->bind_param("s", $search_term);
+            $stmt = $conn->prepare("SELECT id,street FROM streets WHERE street LIKE ? LIMIT 10");
+            $stmt->bind_param("s", $like_operator);
             $stmt->execute();
             $result = $stmt->get_result();
             while ($row = $result->fetch_assoc()) {
@@ -92,8 +93,8 @@
             $sendback_string = $sendback_string."buildings:!:";
             //search function for buildings
             $buildings_string = "~-~";
-            $stmt = $conn->prepare("SELECT id,building_name FROM buildings WHERE building_name LIKE %?% OR postcode LIKE %?% LIMIT 10");
-            $stmt->bind_param("ss", $search_term, $search_term);
+            $stmt = $conn->prepare("SELECT id,building_name FROM buildings WHERE building_name LIKE ? OR postcode LIKE ? LIMIT 10");
+            $stmt->bind_param("ss", $like_operator,$like_operator);
             $stmt->execute();
             $result = $stmt->get_result();
             while ($row = $result->fetch_assoc()) {
