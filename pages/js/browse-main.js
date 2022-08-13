@@ -1,4 +1,5 @@
 function submit_search() {
+    console.log("Searching");
     if (document.getElementById("search_all_checkbox").checked) {
         var search_categories = "all";
     }
@@ -16,21 +17,21 @@ function submit_search() {
         if (document.getElementById("search_building_checkbox").checked) {
             search_categories = search_categories + ",buildings";
         }
-        if (!search_categories == ",") {
-            var search_term = document.getElementById("search_input_box").value;
-            if (search_term.length > 0) {
-                $.ajax({
-                    url: "/pages/search/search_handle.php",
-                    type: "POST",
-                    data: {
-                        search_term:search_term,
-                        search_categories:search_categories
-                    },
-                    success: function(data) {
-                        console.log(data);
-                    }
-                });
-            }
+    }
+    if (!search_categories == ",") {
+        var search_term = document.getElementById("search_input_box").value;
+        if (search_term.length > 0) {
+            $.ajax({
+                url: "/pages/search/search_handle.php",
+                type: "POST",
+                data: {
+                    search_term:search_term,
+                    search_categories:search_categories
+                },
+                success: function(data) {
+                    console.log(data);
+                }
+            });
         }
     }
 }
