@@ -1,5 +1,8 @@
+const loadingText = ["Searching...", "Loading...", "Foraging...", "Processing...","Examining...","Finding..."];
+
 function submit_search() {
-    console.log("Searching");
+    var randomNum = Math.floor(Math.random() * 6);
+    document.getElementById("loading_text").innerHTML = loadingText[randomNum];
     if (document.getElementById("search_all_checkbox").checked) {
         var search_categories = "districts,street_units,streets,buildings";
     }
@@ -18,9 +21,7 @@ function submit_search() {
             search_categories = search_categories + ",buildings";
         }
     }
-    console.log("Generated catergory string");
     if (search_categories != ",") {
-        console.log("Starting POST request")
         var search_term = document.getElementById("search_input_box").value;
         if (search_term.length > 0) {
             $.ajax({
@@ -33,6 +34,25 @@ function submit_search() {
                 success: function(data) {
                     console.log("Finsihed!")
                     console.log(data);
+                    var result_found = false;
+                    var topSearchArray = data.split("&_&");
+                    var secondSearchArray = "null";
+                    var thirdSearchArray = "null";
+                    if (topSearchArray.length < 1) {
+                        document.getElementById("loading_text").innerHTML = "No results found.";
+                    }
+                    else {
+                        for (i = 0; i < topSearchArray.length; i++) {
+                            secondSearchArray = topSearchArray[i].split(":!:");
+                            if (secondSearchArray[0] == "district") {
+                                thirdSearchArray = secondSearchArray[1].split("~-~");
+                                for (j = 0; j < thirdSearchArray.length; j++) {
+                                    thirdSearchArray[j].split("#-#");
+                                    
+                                }
+                            }
+                        }
+                    }
                 }
             });
         }

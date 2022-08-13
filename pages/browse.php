@@ -41,6 +41,21 @@
             <input type="text" id="search_input_box" placeholder="search">
             <button type="button" id="submit_search_button" onclick="submit_search()">Search</button>
         </div>
+        <p id="loading_text"></p>
+        <div id="search_results_container">
+            <div id="district_result_container" hidden>
+                
+            </div>
+            <div id="street_units_result_container" hidden>
+
+            </div>
+            <div id="streets_result_container" hidden>
+
+            </div>
+            <div id="building_result_container" hidden>
+
+            </div>
+        </div>
     </body>
     <script src="/pages/js/browse-main.js"></script>
 </html>

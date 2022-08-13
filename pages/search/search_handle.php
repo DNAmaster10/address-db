@@ -111,5 +111,5 @@
     echo ($sendback_string);
 
     //sendback 
-    //"district:!:name#-#link~-~name#-#link&_&"
+    //"district:!:name#-#link~-~name#-#link&_&district:!:name#-#link~-~name#-#link&_&"
 ?>
