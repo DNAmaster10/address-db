@@ -70,7 +70,7 @@ function submit_search() {
                                     rootElement.innerHTML += element;
                                     console.log("Processing 4");
                                 }
-                                console.log("Processing 5")
+                                console.log("Processing 5");
                                 document.getElementById("district_result_container").style.visibility = "visible";
                             }
                         }
