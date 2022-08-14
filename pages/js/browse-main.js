@@ -1,6 +1,11 @@
 const loadingText = ["Searching...", "Loading...", "Foraging...", "Processing...","Examining...","Finding..."];
 
 function submit_search() {
+    document.getElementById("district_result_container").style.visibility = "hidden";
+    document.getElementById("street_units_result_container").style.visibility = "hidden";
+    document.getElementById("streets_result_container").style.visibility = "hidden";
+    document.getElementById("building_result_container").style.visibility = "hidden";
+
     var randomNum = Math.floor(Math.random() * 6);
     document.getElementById("loading_text").innerHTML = loadingText[randomNum];
     if (document.getElementById("search_all_checkbox").checked) {
@@ -52,17 +57,18 @@ function submit_search() {
                                 console.log("Processing2");
                                 for (j = 0; j < thirdSearchArray.length; j++) {
                                     console.log("Processing 3");
-                                    thirdSearchArray[j].split("#-#");
+                                    var fourthSearchArray = thirdSearchArray[j].split("#-#");
                                     var element = `
                                     <form onclick="javascript:this.form.submit();" action="/pages/info/info.php" method="POST" class="search_result">
                                         <input type="hidden" name="type" value="district">
-                                        <input type="hidden" name="id" value="`+ thirdSearchArray[0] +`">
-                                        <p>`+ thirdSearchArray[1] +`</p>
+                                        <input type="hidden" name="id" value="`+ fourthSearchArray[0] +`">
+                                        <p>`+ fourthSearchArray[1] +`</p>
                                     </form>`;
                                     console.log(element);
                                     rootElement.append(element);
                                     console.log("Processing 4");
                                 }
+                                document.getElementById("district_result_container").style.visibility = "visible";
                             }
                         }
                     }
