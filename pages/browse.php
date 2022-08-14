@@ -44,7 +44,7 @@
         <p id="loading_text"></p>
         <div id="search_results_container">
             <div id="district_result_container">
-                
+
             </div>
             <div id="street_units_result_container">
 
@@ -53,7 +53,7 @@
 
             </div>
             <div id="building_result_container">
-
+                
             </div>
         </div>
         <script src="/pages/js/browse-main.js"></script>
