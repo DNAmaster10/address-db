@@ -67,7 +67,7 @@ function submit_search() {
                                     </form>
                                     </div>`;
                                     console.log(element);
-                                    rootElement.insertAdjacentHTML("beforeend", element);
+                                    rootElement.innerHTML += element;
                                     console.log("Processing 4");
                                 }
                                 console.log("Processing 5")
