@@ -53,7 +53,7 @@ function submit_search() {
                             secondSearchArray = topSearchArray[i].split(":!:");
                             if (secondSearchArray[0] == "district") {
                                 thirdSearchArray = secondSearchArray[1].split("~-~");
-                                var rootElement = $("district_result_container");
+                                var rootElement = document.getElementById("district_result_container");
                                 console.log("Processing2");
                                 for (j = 0; j < thirdSearchArray.length; j++) {
                                     console.log("Processing 3");
@@ -68,9 +68,12 @@ function submit_search() {
                                     rootElement.append(element);
                                     console.log("Processing 4");
                                 }
+                                console.log("Processing 5")
                                 document.getElementById("district_result_container").style.visibility = "visible";
                             }
                         }
+                        console.log("Processing 6");
+                        document.getElementById("loading_text").innerHTML = "";
                     }
                 }
             });
