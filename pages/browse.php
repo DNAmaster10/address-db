@@ -56,6 +56,6 @@
 
             </div>
         </div>
+        <script src="/pages/js/browse-main.js"></script>
     </body>
-    <script src="/pages/js/browse-main.js"></script>
 </html>
