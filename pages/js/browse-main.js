@@ -130,7 +130,7 @@ function submit_search() {
                                 var elementCount = 0;
                                 for (j = 1; j < thirdSearchArray.length - 1; j++) {
                                     var fourthSearchArray = thirdSearchArray[j].split("#-#");
-                                    elementCound++;
+                                    elementCount++;
                                     var element = `
                                     <div id="`+ fourthSearchArray[1] +`_building_search_link" onclick="document.forms['`+ fourthSearchArray[1] +`_building_form'].submit();" class="search_submit_div">
                                         <form action="/pages/info/building_info.php" method="POST" class="search_result" id="`+ fourthSearchArray[1] +`_building_form">
