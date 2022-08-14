@@ -26,7 +26,9 @@
             $stmt->execute();
             $result = $stmt->get_result();
             while ($row = $result->fetch_assoc()) {
-                $district_string = $district_string.$row["district_name"]."#-#".$row["district_id"]."~-~";
+                if (!str_contains($district_string, $row["district_name"]."#-#".$row["district_id"]."~-~")) {
+                    $district_string = $district_string.$row["district_name"]."#-#".$row["district_id"]."~-~";
+                }
             }
             $stmt->close();
             unset($result);
@@ -36,7 +38,9 @@
             $stmt->execute();
             $result = $stmt->get_result();
             while ($row = $result->fetch_assoc()) {
-                $district_string = $district_string.$row["district_name"]."#-#".$row["district_id"]."~-~";
+                if (!str_contains($district_string, $row["district_name"]."#-#".$row["district_id"]."~-~")) {
+                    $district_string = $district_string.$row["district_name"]."#-#".$row["district_id"]."~-~";
+                }
             }
             $stmt->close();
             unset($result);
@@ -54,7 +58,9 @@
             $stmt->execute();
             $result = $stmt->get_result();
             while ($row = $result->fetch_assoc()) {
-                $street_unit_string = $street_unit_string.$row["name"]."#-#".$row["id"]."~-~";
+                if (!str_contains($street_unit_string, $row["name"]."#-#".$row["id"]."~-~")) {
+                    $street_unit_string = $street_unit_string.$row["name"]."#-#".$row["id"]."~-~";
+                }
             }
             $stmt->close();
             unset($result);
@@ -64,7 +70,9 @@
             $stmt->execute();
             $result = $stmt->get_result();
             while ($row = $result->fetch_assoc()) {
-                $street_unit_string = $street_unit_string.$row["name"]."#-#".$row["id"]."~-~";
+                if (!str_contains($street_unit_string, $row["name"]."#-#".$row["id"]."~-~")) {
+                    $street_unit_string = $street_unit_string.$row["name"]."#-#".$row["id"]."~-~";
+                }
             }
             $stmt->close();
             unset ($result);
@@ -81,7 +89,9 @@
             $stmt->execute();
             $result = $stmt->get_result();
             while ($row = $result->fetch_assoc()) {
-                $streets_string = $streets_string.$row["street"]."#-#".$row["id"]."~-~";
+                if (!str_contains($streets_string, $row["street"]."#-#".$row["id"]."~-~")) {
+                    $streets_string = $streets_string.$row["street"]."#-#".$row["id"]."~-~";
+                }
             }
             $stmt->close();
             unset ($result);
@@ -98,7 +108,9 @@
             $stmt->execute();
             $result = $stmt->get_result();
             while ($row = $result->fetch_assoc()) {
-                $buildings_string = $buildings_string.$row["building_name"]."#-#".$row["id"]."~-~";
+                if (!str_contains($buildings_string, $row["building_name"]."#-#".$row["id"]."~-~")) {
+                    $buildings_string = $buildings_string.$row["building_name"]."#-#".$row["id"]."~-~";
+                }
             }
             $stmt->close();
             unset ($result);
