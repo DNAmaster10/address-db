@@ -59,6 +59,7 @@ function submit_search() {
                                         <input type="hidden" name="id" value="`+ thirdSearchArray[0] +`">
                                         <p>`+ thirdSearchArray[1] +`</p>
                                     </form>`;
+                                    console.log(element);
                                     rootElement.append(element);
                                     console.log("Processing 4");
                                 }
