@@ -46,9 +46,16 @@ function submit_search() {
                             secondSearchArray = topSearchArray[i].split(":!:");
                             if (secondSearchArray[0] == "district") {
                                 thirdSearchArray = secondSearchArray[1].split("~-~");
+                                var rootElement = $("district_result_container");
                                 for (j = 0; j < thirdSearchArray.length; j++) {
                                     thirdSearchArray[j].split("#-#");
-                                    
+                                    var element = `
+                                    <form onclick="javascript:this.form.submit();" action="/pages/info/info.php" method="POST" class="search_result">
+                                        <input type="hidden" name="type" value="district">
+                                        <input type="hidden" name="id" value="`+ thirdSearchArray[0] +`">
+                                        <p>`+ thirdSearchArray[1] +`</p>
+                                    </form>`;
+                                    rootElement.append(element);
                                 }
                             }
                         }
