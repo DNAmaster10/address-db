@@ -58,8 +58,10 @@ function submit_search() {
                                 var rootElement = document.getElementById("district_result_container");
                                 var element = "<h2>Districts</h2>";
                                 rootElement.innerHTML += element;
+                                var elementCount = 0;
                                 for (j = 1; j < thirdSearchArray.length - 1; j++) {
                                     var fourthSearchArray = thirdSearchArray[j].split("#-#");
+                                    elementCount++;
                                     var element = `
                                     <div id="`+ fourthSearchArray[1] +`_district_search_link" onclick="document.forms['`+ fourthSearchArray[1] +`_district_form'].submit();" class="search_submit_div">
                                         <form action="/pages/info/district_info.php" method="POST" class="search_result" id="`+ fourthSearchArray[1] +`_district_form">
@@ -70,15 +72,19 @@ function submit_search() {
                                     </div>`;
                                     rootElement.innerHTML += element;
                                 }
-                                document.getElementById("district_result_container").style.visibility = "visible";
+                                if (elementCount > 0) {
+                                    document.getElementById("district_result_container").style.visibility = "visible";
+                                }
                             }
                             else if (secondSearchArray[0] == "street_units") {
                                 thirdSearchArray = secondSearchArray[1].split("~-~");
                                 var rootElement = document.getElementById("street_units_result_container");
                                 var element = "<h2>Street Units</h2>";
                                 rootElement.innerHTML += element;
+                                var elementCount = 0;
                                 for (j = 1; j < thirdSearchArray.length - 1; j++) {
                                     var fourthSearchArray = thirdSearchArray[j].split("#-#");
+                                    elementCount++;
                                     var element = `
                                     <div id="`+ fourthSearchArray[1] +`_street_unit_search_link" onclick="document.forms['`+ fourthSearchArray[1] +`_street_unit_form'].submit();" class="search_submit_div">
                                         <form action="/pages/info/street_unit_info.php" method="POST" class="search_result" id="`+ fourthSearchArray[1] +`_street_unit_form">
@@ -89,15 +95,19 @@ function submit_search() {
                                     </div>`;
                                     rootElement.innerHTML += element;
                                 }
-                                document.getElementById("street_units_result_container").style.visibility = "visible";
+                                if (elementCount > 0) {
+                                    document.getElementById("street_units_result_container").style.visibility = "visible";
+                                }
                             }
                             else if (secondSearchArray[0] == "streets") {
                                 thirdSearchArray = secondSearchArray[1].split("~-~");
                                 var rootElement = document.getElementById("streets_result_container");
                                 var element = "<h2>Streets / Roads</h2>";
                                 rootElement.innerHTML += element;
+                                var elementCount = 0;
                                 for (j = 1; j < thirdSearchArray.length - 1; j++) {
                                     var fourthSearchArray = thirdSearchArray[j].split("#-#");
+                                    elementCount++;
                                     var element = `
                                     <div id="`+ fourthSearchArray[1] +`_street_search_link" onclick="document.forms['`+ fourthSearchArray[1] +`_street_form'].submit();" class="search_submit_div">
                                         <form action="/pages/info/street_info.php" method="POST" class="search_result" id="`+ fourthSearchArray[1] +`_street_form">
@@ -108,15 +118,19 @@ function submit_search() {
                                     </div>`;
                                     rootElement.innerHTML += element;
                                 }
-                                document.getElementById("streets_result_container").style.visibility = "visible";
+                                if (elementCount > 0) {
+                                    document.getElementById("streets_result_container").style.visibility = "visible";
+                                }
                             }
                             else if (secondSearchArray[0] == "buildings") {
                                 thirdSearchArray = secondSearchArray[1].split("~-~");
                                 var rootElement = document.getElementById("building_result_container");
                                 var element = "<h2>Buildings</h2>";
                                 rootElement.innerHTML += element;
+                                var elementCount = 0;
                                 for (j = 1; j < thirdSearchArray.length - 1; j++) {
                                     var fourthSearchArray = thirdSearchArray[j].split("#-#");
+                                    elementCound++;
                                     var element = `
                                     <div id="`+ fourthSearchArray[1] +`_building_search_link" onclick="document.forms['`+ fourthSearchArray[1] +`_building_form'].submit();" class="search_submit_div">
                                         <form action="/pages/info/building_info.php" method="POST" class="search_result" id="`+ fourthSearchArray[1] +`_building_form">
@@ -127,7 +141,9 @@ function submit_search() {
                                     </div>`;
                                     rootElement.innerHTML += element;
                                 }
-                                document.getElementById("building_result_container").style.visibility = "visible";
+                                if (elementCount > 0) {
+                                    document.getElementById("building_result_container").style.visibility = "visible";
+                                }
                             }
                         }
                         document.getElementById("loading_text").innerHTML = "";

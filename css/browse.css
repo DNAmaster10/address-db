@@ -18,6 +18,9 @@ body {
 #loading_text {
     text-align: center;
 }
-#result_container {
+.result_container {
     text-align: center;
+    border: 1px solid black;
+    margin: 1%;
+    border-radius: 10px;
 }
