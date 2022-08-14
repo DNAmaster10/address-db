@@ -51,7 +51,7 @@ function submit_search() {
                         document.getElementById("loading_text").innerHTML = "No results found.";
                     }
                     else {
-                        for (i = 0; i < topSearchArray.length + 1; i++) {
+                        for (i = 0; i < topSearchArray.length; i++) {
                             secondSearchArray = topSearchArray[i].split(":!:");
                             if (secondSearchArray[0] == "district") {
                                 thirdSearchArray = secondSearchArray[1].split("~-~");
@@ -108,7 +108,7 @@ function submit_search() {
                                     </div>`;
                                     rootElement.innerHTML += element;
                                 }
-                                document.getElementById("street_units_result_container").style.visibility = "visible";
+                                document.getElementById("streets_result_container").style.visibility = "visible";
                             }
                             else if (secondSearchArray[0] == "buildings") {
                                 thirdSearchArray = secondSearchArray[1].split("~-~");
@@ -127,7 +127,7 @@ function submit_search() {
                                     </div>`;
                                     rootElement.innerHTML += element;
                                 }
-                                document.getElementById("street_units_result_container").style.visibility = "visible";
+                                document.getElementById("building_result_container").style.visibility = "visible";
                             }
                         }
                         document.getElementById("loading_text").innerHTML = "";
