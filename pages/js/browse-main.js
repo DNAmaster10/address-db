@@ -58,12 +58,12 @@ function submit_search() {
                                 for (j = 0; j < thirdSearchArray.length; j++) {
                                     console.log("Processing 3");
                                     var fourthSearchArray = thirdSearchArray[j].split("#-#");
-                                    var element = `
+                                    var element = $(`
                                     <form onclick="javascript:this.form.submit();" action="/pages/info/info.php" method="POST" class="search_result">
                                         <input type="hidden" name="type" value="district">
                                         <input type="hidden" name="id" value="`+ fourthSearchArray[0] +`">
                                         <p>`+ fourthSearchArray[1] +`</p>
-                                    </form>`;
+                                    </form>`);
                                     console.log(element);
                                     rootElement.append(element);
                                     console.log("Processing 4");
