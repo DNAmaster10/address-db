@@ -5,6 +5,10 @@ function submit_search() {
     document.getElementById("street_units_result_container").style.visibility = "hidden";
     document.getElementById("streets_result_container").style.visibility = "hidden";
     document.getElementById("building_result_container").style.visibility = "hidden";
+    document.getElementById("district_result_container").innerHTML = "";
+    document.getElementById("street_units_result_container").innerHTML = "";
+    document.getElementById("streets_result_container").innerHTML = "";
+    document.getElementById("building_result_container").innerHTML = "";
 
     var randomNum = Math.floor(Math.random() * 6);
     document.getElementById("loading_text").innerHTML = loadingText[randomNum];
@@ -49,14 +53,13 @@ function submit_search() {
                     }
                     else {
                         for (i = 0; i < topSearchArray.length; i++) {
-                            console.log("Processing1");
                             secondSearchArray = topSearchArray[i].split(":!:");
                             if (secondSearchArray[0] == "district") {
                                 thirdSearchArray = secondSearchArray[1].split("~-~");
                                 var rootElement = document.getElementById("district_result_container");
-                                console.log("Processing2");
+                                var element = "<h2>Districts</h2>";
+                                rootElement.innerHTML += element;
                                 for (j = 1; j < thirdSearchArray.length - 1; j++) {
-                                    console.log("Processing 3");
                                     var fourthSearchArray = thirdSearchArray[j].split("#-#");
                                     var element = `
                                     <div id="`+ fourthSearchArray[1] +`_search_link" onclick="document.forms['`+ fourthSearchArray[1] +`_form'].submit();" class="search_submit_div">
@@ -66,15 +69,11 @@ function submit_search() {
                                             <p>`+ fourthSearchArray[0] +`</p>
                                         </form>
                                     </div>`;
-                                    console.log(element);
                                     rootElement.innerHTML += element;
-                                    console.log("Processing 4");
                                 }
-                                console.log("Processing 5");
                                 document.getElementById("district_result_container").style.visibility = "visible";
                             }
                         }
-                        console.log("Processing 6");
                         document.getElementById("loading_text").innerHTML = "";
                     }
                 }
