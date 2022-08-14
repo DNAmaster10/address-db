@@ -72,6 +72,25 @@ function submit_search() {
                                 }
                                 document.getElementById("district_result_container").style.visibility = "visible";
                             }
+                            else if (secondSearchArray[0] == "street_units") {
+                                thirdSearchArray = secondSearchArray[1].split("~-~");
+                                var rootElement = document.getElementById("street_units_result_container");
+                                var element = "<h2>Street Units</h2>";
+                                rootElement.innerHTML += element;
+                                for (j = 1; j < thirdSearchArray.length - 1; j++) {
+                                    var fourthSearchArray = thirdSearchArray[j].split("#-#");
+                                    var element = `
+                                    <div id="`+ fourthSearchArray[1] +`_search_link" onclick="document.forms['`+ fourthSearchArray[1] +`_form'].submit();" class="search_submit_div">
+                                        <form action="/pages/info/street_unit_info.php" method="POST" class="search_result" id="`+ fourthSearchArray[1] +`_form">
+                                            <input type="hidden" name="type" value="street_unit">
+                                            <input type="hidden" name="id" value="`+ fourthSearchArray[1] +`">
+                                            <p>`+ fourthSearchArray[0] +`</p>
+                                        </form>
+                                    </div>`;
+                                    rootElement.innerHTML += element;
+                                }
+                                document.getElementById("street_units_result_container").style.visibility = "visible";
+                            }
                         }
                         document.getElementById("loading_text").innerHTML = "";
                     }
