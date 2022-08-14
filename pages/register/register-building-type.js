@@ -58,6 +58,7 @@ function addBuildingType() {
     }
     else {
         current_building_list = current_building_list + "#-#" + buildingType;
+        current_building_list = current_building_list.replace("#-##-#", "#-#");
         document.getElementById("building_type_list_hidden").value = current_building_list;
     }
     rootElement.append(element);
