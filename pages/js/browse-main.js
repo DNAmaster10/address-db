@@ -47,7 +47,6 @@ function submit_search() {
                     var topSearchArray = data.split("&_&");
                     var secondSearchArray = "null";
                     var thirdSearchArray = "null";
-                    console.log("processing 0");
                     if (topSearchArray.length < 1) {
                         document.getElementById("loading_text").innerHTML = "No results found.";
                     }
