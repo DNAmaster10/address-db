@@ -38,16 +38,20 @@ function submit_search() {
                     var topSearchArray = data.split("&_&");
                     var secondSearchArray = "null";
                     var thirdSearchArray = "null";
+                    console.log("processing 0");
                     if (topSearchArray.length < 1) {
                         document.getElementById("loading_text").innerHTML = "No results found.";
                     }
                     else {
                         for (i = 0; i < topSearchArray.length; i++) {
+                            console.log("Processing1");
                             secondSearchArray = topSearchArray[i].split(":!:");
                             if (secondSearchArray[0] == "district") {
                                 thirdSearchArray = secondSearchArray[1].split("~-~");
                                 var rootElement = $("district_result_container");
+                                console.log("Processing2");
                                 for (j = 0; j < thirdSearchArray.length; j++) {
+                                    console.log("Processing 3");
                                     thirdSearchArray[j].split("#-#");
                                     var element = `
                                     <form onclick="javascript:this.form.submit();" action="/pages/info/info.php" method="POST" class="search_result">
@@ -56,6 +60,7 @@ function submit_search() {
                                         <p>`+ thirdSearchArray[1] +`</p>
                                     </form>`;
                                     rootElement.append(element);
+                                    console.log("Processing 4");
                                 }
                             }
                         }
