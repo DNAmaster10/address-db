@@ -1,4 +1,8 @@
 const loadingText = ["Searching...", "Loading...", "Foraging...", "Processing...","Examining...","Finding..."];
+document.getElementById("district_result_container").style.visibility = "hidden";
+document.getElementById("street_units_result_container").style.visibility = "hidden";
+document.getElementById("streets_result_container").style.visibility = "hidden";
+document.getElementById("building_result_container").style.visibility = "hidden";
 
 function submit_search() {
     document.getElementById("district_result_container").style.visibility = "hidden";
