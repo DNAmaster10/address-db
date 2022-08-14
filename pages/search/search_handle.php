@@ -32,7 +32,7 @@
             unset($result);
 
             $stmt = $conn->prepare("SELECT district_id,district_name FROM districts WHERE lower(postcodeChar)=? OR lower(postcodeChar)=? LIMIT 10;");
-            $stmt->bind_param("s",$search_term,$search_term_first);
+            $stmt->bind_param("ss",$search_term,$search_term_first);
             $stmt->execute();
             $result = $stmt->get_result();
             while ($row = $result->fetch_assoc()) {
