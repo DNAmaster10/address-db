@@ -59,7 +59,7 @@ function submit_search() {
                                     console.log("Processing 3");
                                     var fourthSearchArray = thirdSearchArray[j].split("#-#");
                                     var element = `
-                                    <div id="`+ fourthSearchArray[1] +`_search_link" onclick="document.forms['`+ fourthSearchArray[1] +`_form"].submit();' class="search_submit_div">
+                                    <div id="`+ fourthSearchArray[1] +`_search_link" onclick="document.forms['`+ fourthSearchArray[1] +`_form'].submit();" class="search_submit_div">
                                     <form action="/pages/info/info.php" method="POST" class="search_result" id="`+ fourthSearchArray[1] +`_form">
                                         <input type="hidden" name="type" value="district">
                                         <input type="hidden" name="id" value="`+ fourthSearchArray[1] +`">
