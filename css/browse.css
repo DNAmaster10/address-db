@@ -9,3 +9,9 @@ body {
     border: 2px solid black;
     border-radius: 10px;
 }
+.search_submit_div {
+    text-align: center;
+    border: 1px solid black;
+    margin: 3px;
+    border-radius: 4px;
+}

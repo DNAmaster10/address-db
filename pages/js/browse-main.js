@@ -55,16 +55,16 @@ function submit_search() {
                                 thirdSearchArray = secondSearchArray[1].split("~-~");
                                 var rootElement = document.getElementById("district_result_container");
                                 console.log("Processing2");
-                                for (j = 0; j < thirdSearchArray.length; j++) {
+                                for (j = 1; j < thirdSearchArray.length - 1; j++) {
                                     console.log("Processing 3");
                                     var fourthSearchArray = thirdSearchArray[j].split("#-#");
                                     var element = `
                                     <div id="`+ fourthSearchArray[1] +`_search_link" onclick="document.forms['`+ fourthSearchArray[1] +`_form'].submit();" class="search_submit_div">
-                                    <form action="/pages/info/info.php" method="POST" class="search_result" id="`+ fourthSearchArray[1] +`_form">
-                                        <input type="hidden" name="type" value="district">
-                                        <input type="hidden" name="id" value="`+ fourthSearchArray[1] +`">
-                                        <p>`+ fourthSearchArray[0] +`</p>
-                                    </form>
+                                        <form action="/pages/info/district_info.php" method="POST" class="search_result" id="`+ fourthSearchArray[1] +`_form">
+                                            <input type="hidden" name="type" value="district">
+                                            <input type="hidden" name="id" value="`+ fourthSearchArray[1] +`">
+                                            <p>`+ fourthSearchArray[0] +`</p>
+                                        </form>
                                     </div>`;
                                     console.log(element);
                                     rootElement.innerHTML += element;
