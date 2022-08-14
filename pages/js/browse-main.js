@@ -53,7 +53,7 @@ function submit_search() {
                             secondSearchArray = topSearchArray[i].split(":!:");
                             if (secondSearchArray[0] == "district") {
                                 thirdSearchArray = secondSearchArray[1].split("~-~");
-                                var rootElement = document.getElementById("district_result_container");
+                                var rootElement = $("district_result_container");
                                 console.log("Processing2");
                                 for (j = 0; j < thirdSearchArray.length; j++) {
                                     console.log("Processing 3");
