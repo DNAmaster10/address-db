@@ -51,7 +51,7 @@ function submit_search() {
                         document.getElementById("loading_text").innerHTML = "No results found.";
                     }
                     else {
-                        for (i = 0; i < topSearchArray.length; i++) {
+                        for (i = 0; i < topSearchArray.length + 1; i++) {
                             secondSearchArray = topSearchArray[i].split(":!:");
                             if (secondSearchArray[0] == "district") {
                                 thirdSearchArray = secondSearchArray[1].split("~-~");
