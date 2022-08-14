@@ -12,6 +12,9 @@ body {
 .search_submit_div {
     text-align: center;
     border: 1px solid black;
-    margin: 3px;
+    margin: 1%;
     border-radius: 4px;
+}
+#loading_text {
+    text-align: center;
 }
