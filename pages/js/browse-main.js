@@ -112,7 +112,7 @@ function submit_search() {
                             }
                             else if (secondSearchArray[0] == "buildings") {
                                 thirdSearchArray = secondSearchArray[1].split("~-~");
-                                var rootElement = document.getElementById("buildings_result_container");
+                                var rootElement = document.getElementById("building_result_container");
                                 var element = "<h2>Buildings</h2>";
                                 rootElement.innerHTML += element;
                                 for (j = 1; j < thirdSearchArray.length - 1; j++) {
