@@ -1,4 +1,8 @@
 const loadingText = ["Searching...", "Loading...", "Foraging...", "Processing...","Examining...","Finding..."];
+document.getElementById("district_result_container").style.visibility = "hidden";
+document.getElementById("street_units_result_container").style.visibility = "hidden";
+document.getElementById("streets_result_container").style.visibility = "hidden";
+document.getElementById("building_result_container").style.visibility = "hidden";
 
 function submit_search() {
     document.getElementById("district_result_container").style.visibility = "hidden";
@@ -58,11 +62,13 @@ function submit_search() {
                                 var rootElement = document.getElementById("district_result_container");
                                 var element = "<h2>Districts</h2>";
                                 rootElement.innerHTML += element;
+                                var elementCount = 0;
                                 for (j = 1; j < thirdSearchArray.length - 1; j++) {
                                     var fourthSearchArray = thirdSearchArray[j].split("#-#");
+                                    elementCount++;
                                     var element = `
-                                    <div id="`+ fourthSearchArray[1] +`_search_link" onclick="document.forms['`+ fourthSearchArray[1] +`_form'].submit();" class="search_submit_div">
-                                        <form action="/pages/info/district_info.php" method="POST" class="search_result" id="`+ fourthSearchArray[1] +`_form">
+                                    <div id="`+ fourthSearchArray[1] +`_district_search_link" onclick="document.forms['`+ fourthSearchArray[1] +`_district_form'].submit();" class="search_submit_div">
+                                        <form action="/pages/info/district_info.php" method="POST" class="search_result" id="`+ fourthSearchArray[1] +`_district_form">
                                             <input type="hidden" name="type" value="district">
                                             <input type="hidden" name="id" value="`+ fourthSearchArray[1] +`">
                                             <p>`+ fourthSearchArray[0] +`</p>
@@ -70,18 +76,22 @@ function submit_search() {
                                     </div>`;
                                     rootElement.innerHTML += element;
                                 }
-                                document.getElementById("district_result_container").style.visibility = "visible";
+                                if (elementCount > 0) {
+                                    document.getElementById("district_result_container").style.visibility = "visible";
+                                }
                             }
                             else if (secondSearchArray[0] == "street_units") {
                                 thirdSearchArray = secondSearchArray[1].split("~-~");
                                 var rootElement = document.getElementById("street_units_result_container");
                                 var element = "<h2>Street Units</h2>";
                                 rootElement.innerHTML += element;
+                                var elementCount = 0;
                                 for (j = 1; j < thirdSearchArray.length - 1; j++) {
                                     var fourthSearchArray = thirdSearchArray[j].split("#-#");
+                                    elementCount++;
                                     var element = `
-                                    <div id="`+ fourthSearchArray[1] +`_search_link" onclick="document.forms['`+ fourthSearchArray[1] +`_form'].submit();" class="search_submit_div">
-                                        <form action="/pages/info/street_unit_info.php" method="POST" class="search_result" id="`+ fourthSearchArray[1] +`_form">
+                                    <div id="`+ fourthSearchArray[1] +`_street_unit_search_link" onclick="document.forms['`+ fourthSearchArray[1] +`_street_unit_form'].submit();" class="search_submit_div">
+                                        <form action="/pages/info/street_unit_info.php" method="POST" class="search_result" id="`+ fourthSearchArray[1] +`_street_unit_form">
                                             <input type="hidden" name="type" value="street_unit">
                                             <input type="hidden" name="id" value="`+ fourthSearchArray[1] +`">
                                             <p>`+ fourthSearchArray[0] +`</p>
@@ -89,7 +99,55 @@ function submit_search() {
                                     </div>`;
                                     rootElement.innerHTML += element;
                                 }
-                                document.getElementById("street_units_result_container").style.visibility = "visible";
+                                if (elementCount > 0) {
+                                    document.getElementById("street_units_result_container").style.visibility = "visible";
+                                }
+                            }
+                            else if (secondSearchArray[0] == "streets") {
+                                thirdSearchArray = secondSearchArray[1].split("~-~");
+                                var rootElement = document.getElementById("streets_result_container");
+                                var element = "<h2>Streets / Roads</h2>";
+                                rootElement.innerHTML += element;
+                                var elementCount = 0;
+                                for (j = 1; j < thirdSearchArray.length - 1; j++) {
+                                    var fourthSearchArray = thirdSearchArray[j].split("#-#");
+                                    elementCount++;
+                                    var element = `
+                                    <div id="`+ fourthSearchArray[1] +`_street_search_link" onclick="document.forms['`+ fourthSearchArray[1] +`_street_form'].submit();" class="search_submit_div">
+                                        <form action="/pages/info/street_info.php" method="POST" class="search_result" id="`+ fourthSearchArray[1] +`_street_form">
+                                            <input type="hidden" name="type" value="street">
+                                            <input type="hidden" name="id" value="`+ fourthSearchArray[1] +`">
+                                            <p>`+ fourthSearchArray[0] +`</p>
+                                        </form>
+                                    </div>`;
+                                    rootElement.innerHTML += element;
+                                }
+                                if (elementCount > 0) {
+                                    document.getElementById("streets_result_container").style.visibility = "visible";
+                                }
+                            }
+                            else if (secondSearchArray[0] == "buildings") {
+                                thirdSearchArray = secondSearchArray[1].split("~-~");
+                                var rootElement = document.getElementById("building_result_container");
+                                var element = "<h2>Buildings</h2>";
+                                rootElement.innerHTML += element;
+                                var elementCount = 0;
+                                for (j = 1; j < thirdSearchArray.length - 1; j++) {
+                                    var fourthSearchArray = thirdSearchArray[j].split("#-#");
+                                    elementCount++;
+                                    var element = `
+                                    <div id="`+ fourthSearchArray[1] +`_building_search_link" onclick="document.forms['`+ fourthSearchArray[1] +`_building_form'].submit();" class="search_submit_div">
+                                        <form action="/pages/info/building_info.php" method="POST" class="search_result" id="`+ fourthSearchArray[1] +`_building_form">
+                                            <input type="hidden" name="type" value="building">
+                                            <input type="hidden" name="id" value="`+ fourthSearchArray[1] +`">
+                                            <p>`+ fourthSearchArray[0] +`</p>
+                                        </form>
+                                    </div>`;
+                                    rootElement.innerHTML += element;
+                                }
+                                if (elementCount > 0) {
+                                    document.getElementById("building_result_container").style.visibility = "visible";
+                                }
                             }
                         }
                         document.getElementById("loading_text").innerHTML = "";
