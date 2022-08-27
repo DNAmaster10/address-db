@@ -68,6 +68,7 @@
     else {
         $street_unit = $result;
     }
+    unset($result);
     //Grab street
     $stmt = $conn->prepare("SELECT parent_street FROM buildings WHERE id=?");
     $stmt->bind_param("i", $building_id);
@@ -82,13 +83,69 @@
         $street = $result;
     }
     unset($result);
+    //Grab description
+    $stmt = $conn->prepare("SELECT description FROM buildings WHERE id=?");
+    $stmt->bind_param("i", $building_id);
+    $stmt->execute();
+    $stmt->bind_result($result);
+    $stmt->fetch();
+    $stmt->close();
+    if (!$result) {
+        $description = "none";
+    }
+    else {
+        $description = $result;
+    }
+    unset($result);
+    //Grab population
+    $stmt = $conn->prepare("SELECT population FROM buildings WHERE id=?");
+    $stmt->bind_param("i", $building_id);
+    $stmt->execute();
+    $stmt->bind_result($result);
+    $stmt->fetch();
+    $stmt->close();
+    if (!$result) {
+        $population = "0";
+    }
+    else {
+        $population = $result;
+    }
+    unset($result);
+    //Grab construction date
+    $stmt = $conn->prepare("SELECT construction_date FROM buildings WHERE id=?");
+    $stmt->bind_param("i", $building_id);
+    $stmt->execute();
+    $stmt->bind_result($result);
+    $stmt->fetch();
+    $stmt->close();
+    if (!$result) {
+        $construction_date = "Unknown";
+    }
+    else {
+        $construction_date = $result;
+    }
 ?>
 <!DOCTYPE html>
 <html>
     <head>
         <title>Building info</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <link rel="stylesheet" href="/css/main.css">
     </head> 
     <body>
+        <ul class="navbar_container_ul" id="navbar_container">
+            <li id="home_button_li" class="left"><a href="/index.php" class="navbar_button">Home</a></li>
+            <li id="browse_button_li" class="left"><a href="/pages/browse.php" class="navbar_button">Browse</a></li>
+            <?php
+                if (isset($_SESSION["username"])) {
+                    echo "<li id='' class='left'><a href='/pages/register/register.php'";
+                    echo "<li id='login_button_li' class='right'><a href='/pages/login/logout.php' class='navbar_button'>Logout</a></li>";
+                }
+                else {
+                    echo "<li id='login_button_li' class='right'><a href='/pages/login/login.php' class='navbar_button'>Login</a></li>";
+                }
+            ?>
+        </ul>
         <div id="main_container">
             <h2><?php echo $building_name; ?></h2>
             <div id="side_box">
@@ -96,6 +153,17 @@
                 <p class="info_text">District: <?php echo($district); ?></p>
                 <p class="info_text">Street Unit: <?php echo($street_unit); ?></p>
                 <p class="info_text">Street: <?php echo($street); ?></p>
+                <p class="info_text">Population: <?php echo($population); ?></p>
+                <p class="info_text">Construction Date: <?php echo($construction_date); ?></p>
+                <p class="info_text">Description: <?php echo($description); ?></p>
+            </div>
+            <div id="inner_building_container">
+
+            </div>
+            <div id="logged_in_container">
+                <?php if($logged_in) {
+                    echo ("<form id='edit_button' action='/pages/info/edit/edit_building.php'><input type='submit' value='Edit'></form>");
+                } ?>
             </div>
         </div>
     </body>
