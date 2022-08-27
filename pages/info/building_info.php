@@ -22,12 +22,81 @@
         header ("Location: /pages/error/generic_error.php");
         die();
     }
+    else {
+        $building_name = $result;
+    }
+    unset($result);
     //Grab data from database
-    
+    //Grab postcode
+    $stmt = $conn->prepare("SELECT postcode FROM buildings WHERE id=?");
+    $stmt->bind_param("i", $building_id);
+    $stmt->execute();
+    $stmt->bind_result($result);
+    $stmt->fetch();
+    $stmt->close();
+    if (!$result) {
+        $postcode = "none";
+    }
+    else {
+        $postcode = $result;
+    }
+    unset($result);
+    //Grab district
+    $stmt = $conn->prepare("SELECT parent_district FROM buildings WHERE id=?");
+    $stmt->bind_param("i", $building_id);
+    $stmt->execute();
+    $stmt->bind_result($result);
+    $stmt->fetch();
+    $stmt->close();
+    if (!$result) {
+        $district = "none";
+    }
+    else {
+        $district = $result;
+    }
+    unset($result);
+    //Grab street unit
+    $stmt = $conn->prepare("SELECT parent_street_unit FROM buildings WHERE id=?");
+    $stmt->bind_param("i", $building_id);
+    $stmt->execute();
+    $stmt->bind_result($result);
+    $stmt->fetch();
+    $stmt->close();
+    if (!$result) {
+        $street_unit = "none";
+    }
+    else {
+        $street_unit = $result;
+    }
+    //Grab street
+    $stmt = $conn->prepare("SELECT parent_street FROM buildings WHERE id=?");
+    $stmt->bind_param("i", $building_id);
+    $stmt->execute();
+    $stmt->bind_result($result);
+    $stmt->fetch();
+    $stmt->close();
+    if (!$result) {
+        $street = "none";
+    }
+    else {
+        $street = $result;
+    }
+    unset($result);
 ?>
 <!DOCTYPE html>
 <html>
     <head>
         <title>Building info</title>
-    </head>
+    </head> 
+    <body>
+        <div id="main_container">
+            <h2><?php echo $building_name; ?></h2>
+            <div id="side_box">
+                <p class="info_text">Postcode: <?php echo($postcode); ?></p>
+                <p class="info_text">District: <?php echo($district); ?></p>
+                <p class="info_text">Street Unit: <?php echo($street_unit); ?></p>
+                <p class="info_text">Street: <?php echo($street); ?></p>
+            </div>
+        </div>
+    </body>
 </html>
