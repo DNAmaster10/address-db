@@ -1,4 +1,5 @@
 function addBuildingType() {
+    console.log("Running")
     var rootElement = $("#building_type_list_container");
     var buildingType = document.getElementById("add_building_type").value;
     var buildingTypeText = buildingType.replace("_", " ");
