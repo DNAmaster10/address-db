@@ -1,0 +1,18 @@
+body {
+    margin: 0px;
+}
+
+.navbar_button {
+
+}
+
+.navbar_button_li {
+    float: left;
+}
+h1 {
+    text-align: center;
+}
+#index_bg_img_img {
+    max-height: 400px;
+    object-fit: cover;
+}

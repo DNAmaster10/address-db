@@ -1,27 +1,31 @@
 <?php
     session_start();
-    if (isset($_SESSION["search_error"])) {
-        $error_message = $_SESSION["search_error"];
-        unset($_SESSION["search_error"]);
-    }
 ?>
 <!DOCTYPE html>
 <html>
     <head>
         <title>Kaloro db</title>
+        <link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="/index.css">
     </head>
     <body>
-        <form action="/pages/login/login.php">
-            <input type="submit" value="login">
-        </form>
-        <form action="/pages/search/search_submit.php" method="GET">
-            <input type="text" placeholder ="XYZ XYZ" name="search_term" required>
-            <input type="submit" value="Search">
-        </form>
-        <?php
-            if (isset($error_message)) {
-                echo "<p>".$error_message."</p>";
-            }
-        ?>
+        <ul class="navbar_container_ul" id="navbar_container">
+            <li id="home_button_li" class="left"><a href="/index.php" class="navbar_button">Home</a></li>
+            <li id="browse_button_li" class="left"><a href="/pages/browse.php" class="navbar_button">Browse</a></li>
+            <?php
+                if (isset($_SESSION["username"])) {
+                    echo "<li id='' class='left'><a href='/pages/register/register'";
+                    echo "<li id='login_button_li' class='right'><a href='/pages/login/logout.php' class='navbar_button'>Logout</a></li>";
+                }
+                else {
+                    echo "<li id='login_button_li' class='right'><a href='/pages/login/login.php' class='navbar_button'>Login</a></li>";
+                }
+            ?>
+        </ul>
+        <div id="index_bg_img">
+            <img src="/media/images/src/index-bg-1.jpg" style="width: 100%;" id="index_bg_img_img">
+        </div>
+        <h1>Welcome to Kaloro-db</h1>
+        <p>Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text Long text </p>
     </body>
 </html>

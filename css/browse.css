@@ -1,0 +1,26 @@
+body {
+    margin: 0px;
+}
+
+#search_box_container {
+    text-align: center;
+    margin: 1%;
+    padding: 1%px;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+.search_submit_div {
+    text-align: center;
+    border: 1px solid black;
+    margin: 1%;
+    border-radius: 4px;
+}
+#loading_text {
+    text-align: center;
+}
+.result_container {
+    text-align: center;
+    border: 1px solid black;
+    margin: 1%;
+    border-radius: 10px;
+}

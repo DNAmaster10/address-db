@@ -1,5 +1,4 @@
 function addBuildingType() {
-    console.log("Running")
     var rootElement = $("#building_type_list_container");
     var buildingType = document.getElementById("add_building_type").value;
     var buildingTypeText = buildingType.replace("_", " ");
@@ -59,6 +58,7 @@ function addBuildingType() {
     }
     else {
         current_building_list = current_building_list + "#-#" + buildingType;
+        current_building_list = current_building_list.replace("#-##-#", "#-#");
         document.getElementById("building_type_list_hidden").value = current_building_list;
     }
     rootElement.append(element);

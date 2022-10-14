@@ -60,15 +60,11 @@ function get_details() {
 }
 function show_house() {
     if (document.getElementById("house_yes_no").checked) {
-        document.getElementById("master_bedroom_yes").disabled = false;
-        document.getElementById("master_bedroom_no").disabled = false;
         document.getElementById("house_bedroom_ammount").disabled = false;
         document.getElementById("increment_house_bedroom_ammount_1").disabled = false;
         document.getElementById("increment_house_bedroom_ammount_-1").disabled = false;
     }
     else {
-        document.getElementById("master_bedroom_yes").disabled = true;
-        document.getElementById("master_bedroom_no").disabled = true;
         document.getElementById("house_bedroom_ammount").disabled = true;
         document.getElementById("increment_house_bedroom_ammount_1").disabled = true;
         document.getElementById("increment_house_bedroom_ammount_-1").disabled = true;
@@ -76,15 +72,17 @@ function show_house() {
 }
 function show_apartment() {
     if (document.getElementById("apartment_yes_no").checked) {
-        document.getElementById("furniture_yes").disabled = false;
-        document.getElementById("furniture_no").disabled = false;
+        document.getElementById("furniture_ammount").disabled = false;
+        document.getElementById("increment_apartment_furniture_ammount_1").disabled = false;
+        document.getElementById("increment_apartment_furniture_ammount_-1").disabled = false;
         document.getElementById("apartment_bedroom_ammount").disabled = false;
         document.getElementById("increment_apartment_bedroom_ammount_1").disabled = false;
         document.getElementById("increment_apartment_bedroom_ammount_-1").disabled = false;
     }
     else {
-        document.getElementById("furniture_yes").disabled = true;
-        document.getElementById("furniture_no").disabled = true;
+        document.getElementById("furniture_ammount").disabled = true;
+        document.getElementById("increment_apartment_furniture_ammount_1").disabled = true;
+        document.getElementById("increment_apartment_furniture_ammount_-1").disabled = true;
         document.getElementById("apartment_bedroom_ammount").disabled = true;
         document.getElementById("increment_apartment_bedroom_ammount_1").disabled = true;
         document.getElementById("increment_apartment_bedroom_ammount_-1").disabled = true;
@@ -114,6 +112,19 @@ function increment_apartment_bedroom_ammount(element) {
     }
     else {
         document.getElementById("apartment_bedroom_ammount").value = current_count;
+    }
+}
+function increment_apartment_furniture(element) {
+    var increment_ammount = element.value;
+    increment_ammount = parseInt(increment_ammount);
+    var current_count = document.getElementById("furniture_ammount").value;
+    current_count = parseInt(current_count);
+    current_count = current_count + increment_ammount;
+    if (current_count < 0) {
+        document.getElementById("furniture_ammount").value = "0";
+    }
+    else {
+        document.getElementById("furniture_ammount").value = current_count;
     }
 }
 
