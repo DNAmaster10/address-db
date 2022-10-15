@@ -8,7 +8,7 @@
     <head>
         <title>Home</title>
         <link rel="stylesheet" href="/css/main.css">
-        <link rel="stylesheer" href="/css/user-home.css">
+        <link rel="stylesheet" href="/css/user-home.css">
     </head>
     <body>
         <ul class="navbar_container_ul" id="navbar_container">
