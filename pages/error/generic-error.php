@@ -14,7 +14,7 @@
         <title>Error</title>
     </head>
     <body>
-        <ul class="navbar_container_ul" id="navbar_container">
+    <ul class="navbar_container_ul" id="navbar_container">
             <li id="home_button_li" class="left"><a href="/index.php" class="navbar_button">Home</a></li>
             <li id="browse_button_li" class="left"><a href="/pages/browse.php" class="navbar_button">Browse</a></li>
             <?php
