@@ -30,7 +30,9 @@
             <h1>Login</h1>
             <form action="/pages/login/login_submit.php" method="POST">
                 <input type="text" name="username" placeholder="username">
+                <br>
                 <input type="text" name="password" placeholder="password">
+                <br>
                 <input type="submit" value="login">
             </form>
             <?php

@@ -3,4 +3,10 @@ body {
 }
 .login_container {
     margin: 10px;
+    text-align: center;
+}
+input[type=text] {
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 3px;
 }
