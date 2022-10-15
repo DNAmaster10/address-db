@@ -10,6 +10,7 @@
     <head>
         <title>Kaloro-db</title>
         <link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheer" href="/css/login.css">
     </head>
     <body>
         <ul class="navbar_container_ul" id="navbar_container">
@@ -25,16 +26,18 @@
                 }
             ?>
         </ul>
-        <h1>Login</h1>
-        <form action="/pages/login/login_submit.php" method="POST">
-            <input type="text" name="username" placeholder="username">
-            <input type="text" name="password" placeholder="password">
-            <input type="submit" value="login">
-        </form>
-        <?php
-            if (isset($error_message)) {
-                echo '<p>'.$error_message.'</p>';
-            }
-        ?>
+        <div id="login_container" class="login_container">
+            <h1>Login</h1>
+            <form action="/pages/login/login_submit.php" method="POST">
+                <input type="text" name="username" placeholder="username">
+                <input type="text" name="password" placeholder="password">
+                <input type="submit" value="login">
+            </form>
+            <?php
+                if (isset($error_message)) {
+                    echo '<p>'.$error_message.'</p>';
+                }
+            ?>
+        </div>
     </body>
 </html>
