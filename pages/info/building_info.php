@@ -161,7 +161,8 @@
 
             </div>
             <div id="logged_in_container">
-                <?php echo ($logged_in); ?>
+                <?php echo ($logged_in); 
+                error_log ($logged_in); ?>
                 <?php if($logged_in) {
                     echo (`<form id='edit_button' action='/pages/info/edit/edit_building.php'>
                         <input type="hidden" value="` + $building_id +  `" name="id">
