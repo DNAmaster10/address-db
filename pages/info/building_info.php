@@ -162,11 +162,10 @@
             </div>
             <div id="logged_in_container">
                 <?php if($logged_in) {
-                    echo ("<p>yes</p>");
-                    echo (`<form id='edit_button' action='/pages/info/edit/edit_building.php'>
-                        <input type="hidden" value="` + $building_id +  `" name="id">
-                        <input type='submit' value='Edit' method="POST">
-                    </form>`);
+                    echo ("<form id='edit_button' action='/pages/info/edit/edit_building.php'>
+                        <input type='hidden' value='" + $building_id +  "' name='id'>
+                        <input type='submit' value='Edit' method='POST'>
+                    </form>");
                 } ?>
             </div>
         </div>
