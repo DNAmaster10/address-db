@@ -25,7 +25,7 @@
             ?>
         </ul>
         <div id="search_box_container">
-            <p>Use this page to search for buildings, street units, streets and districts in Kaloro</p>
+            <p id="browse_text">Use this page to search for buildings, street units, streets and districts in Kaloro</p>
             <br>
             <input type="checkbox" id="search_all_checkbox" onclick="toggle_all()">
             <label for="search_all_checkbox">Search all</label>
