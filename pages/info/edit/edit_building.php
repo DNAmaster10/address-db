@@ -45,9 +45,18 @@
 <html>
     <head>
         <link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="/css/pages/edit_building.css">
         <title>Editing <?php echo ($building_name) ?></title>
     </head>
     <body>
         <?php include $_SERVER["DOCUMENT_ROOT"]."/includes/html/header.php"; ?>
+        <div id="main_container">
+            <div id="back_button_container">
+                <form id="back_button_form" action="/pages/info/building_info.php" method="POST">
+                    <input type="hidden" name="id" value="<?php echo (strval($building_id)); ?>">
+                    <input type="submit" value="Back">
+                </form>
+            </div>
+        </div>
     </body>
 </html>

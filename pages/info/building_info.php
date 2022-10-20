@@ -152,7 +152,7 @@
             <div id="logged_in_container">
                 <?php if($logged_in) {
                     $building_id_string = strval($building_id);
-                    echo ("<form id='edit_button' action='/pages/info/edit/edit_building.php'><input type='hidden' value='$building_id_string' name='id'><input type='submit' value='Edit' method='POST'></form>");
+                    echo ("<form id='edit_button' action='/pages/info/edit/edit_building.php' method='POST'><input type='hidden' value='$building_id_string' name='id'><input type='submit' value='Edit'></form>");
                 } ?>
             </div>
         </div>
