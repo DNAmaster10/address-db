@@ -147,7 +147,7 @@
                 <p class="info_text">Description: <?php echo($description); ?></p>
             </div>
             <div id="inner_building_container">
-
+                <?php include $_SERVER["DOCUMENT_ROOT"]."/pages/info/handle/handle_building_type.php"; ?>
             </div>
             <div id="logged_in_container">
                 <?php if($logged_in) {

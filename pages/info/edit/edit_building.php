@@ -38,8 +38,6 @@
     }
     $building_name = $result;
     unset($result);
-
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -57,6 +55,7 @@
                     <input type="submit" value="Back">
                 </form>
             </div>
+            
         </div>
     </body>
 </html>
