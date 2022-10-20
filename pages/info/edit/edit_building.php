@@ -47,4 +47,7 @@
         <link rel="stylesheet" href="/css/main.css">
         <title>Editing <?php echo ($building_name) ?></title>
     </head>
+    <body>
+        <?php include $_SERVER["DOCUMENT_ROOT"]."/includes/html/header.php"; ?>
+    </body>
 </html>

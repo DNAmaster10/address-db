@@ -13,6 +13,7 @@
         <title>Create Street Unit</title>
     </head>
     <body>
+        <?php include $_SERVER["DOCUMENT_ROOT"]."/includes/html/header.php"; ?>
         <form action="/pages/register/street-unit-home.php">
             <input type="submit" value="Back">
         </form>

@@ -130,6 +130,7 @@
         <title>error</title>
     </head>
     <body>
+        <?php include $_SERVER["DOCUMENT_ROOT"]."/includes/html/header.php"; ?>
         <p>If you are seeing this page, a serious error has occured</p>
     </body>
 </html>

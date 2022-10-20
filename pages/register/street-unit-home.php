@@ -9,6 +9,7 @@
         <title>Street units</title>
     </head>
     <body>
+        <?php include $_SERVER["DOCUMENT_ROOT"]."/includes/html/header.php"; ?>
         <p>Street Units</p>
         <form action="/pages/user/user-home.php">
             <input type="submit" value="Back">

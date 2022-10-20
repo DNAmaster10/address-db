@@ -354,6 +354,7 @@
         <link rel="stylesheet" href="/css/main.css">
     </head>
     <body>
+        <?php include $_SERVER["DOCUMENT_ROOT"]."/includes/html/header.php"; ?>
         <form action="./register-building.php">
             <input type="submit" value="Register another">
         </form>

@@ -9,6 +9,7 @@
         <title>Districts</title>
     </head>
     <body>
+        <?php include $_SERVER["DOCUMENT_ROOT"]."/includes/html/header.php"; ?>
         <form action="/pages/register/register-district.php">
             <input type="submit" value="Create district">
         </form>

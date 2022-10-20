@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="./css/register-building.css">
     <link rel="stylesheet" href="/css/main.css">
     <body>
+        <?php include $_SERVER["DOCUMENT_ROOT"]."/includes/html/header.php"; ?>
         <div id="back_button_container" class="back_button_container">
             <form action="/pages/register/building-home.php">
                 <input type="submit" value="Back">

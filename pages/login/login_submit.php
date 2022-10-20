@@ -38,6 +38,7 @@
         <title>Error</title>
     </head>
     <body>
+        <?php include $_SERVER["DOCUMENT_ROOT"]."/includes/html/header.php"; ?>
         <p>If you are seeing this, an unknown error has occured>
         <form action="index.php">
             <input type="submit" value="Home">
