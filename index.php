@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="/index.css">
     </head>
     <body>
-        <div id="header" w3-include-html="/includes/html/header.php"></div>
+        <?php include "/includes/html/header.php"; ?>
         <div id="index_bg_img">
             <img src="/media/images/src/index-bg-1.jpg" style="width: 100%;" id="index_bg_img_img">
         </div>
