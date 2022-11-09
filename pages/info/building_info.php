@@ -157,4 +157,5 @@
             </div>
         </div>
     </body>
+    <script src="/pages/info/js/building_info.js"></script>
 </html>
