@@ -146,9 +146,8 @@
                 <p class="info_text">Construction Date: <?php echo($construction_date); ?></p>
                 <p class="info_text">Description: <?php echo($description); ?></p>
             </div>
-            <div id="inner_building_container">
-                <?php include $_SERVER["DOCUMENT_ROOT"]."/pages/info/handle/handle_building_type.php"; ?>
-            </div>
+                <div id="inner_building_container">
+                </div>
             <div id="logged_in_container">
                 <?php if($logged_in) {
                     $building_id_string = strval($building_id);

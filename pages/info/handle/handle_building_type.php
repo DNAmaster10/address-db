@@ -99,7 +99,30 @@
     $types_array = explode(",", $types);
     $types_ammount_array = explode(",", $types_ammount_array);
     $total_types = count($types_array);
+
+    //Generate final sendback string
+    $sendback_string = "";
     for ($i = 0; $i < $total_types; $i++) {
-        echo "test";
+        $sendback_string = $sendback_string.$types_array[$i].";".$types_ammount_array[$i];
+        if ($types_array[$i] == "franchise") {
+            $sendback_string = $sendback_string.";".$franchise_owners.";".$commerce_types;
+        }
+        else if ($types_array[$i] == "house") {
+            if ($house_data_set) {
+                $sendback_string = $sendback_string.";".$other_bedrooms_house;
+            }
+            else {
+                $sendback_string = $sendback_string.";"."none";
+            }
+        }
+        else if ($types_array[$i] == "apartment") {
+            if ($apartment_data_set) {
+                $sendback_string = $sendback_string.";".$other_bedrooms_apartment.";".$furniture_apartment;
+            }
+            else {
+                $sendback_string = $sendback_string.";"."none";
+            }
+        }
+        $sendback_string = $sendback_string."-@-";
     }
 ?>
