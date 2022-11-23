@@ -1,4 +1,5 @@
 <?php
+    include $_SERVER["DOCUMENT_ROOT"].("/includes/dbh.php");
     $contains_types = false;
     //uses $_POST["building_id"]. Requires database connection.
     if (!isset($_POST["building_id"])) {
