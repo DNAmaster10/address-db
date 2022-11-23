@@ -45,14 +45,14 @@
         }
         //check if house data is set
         if (str_contains($types,"house")) {
-            $stmt = $conn->prepare("SELECT contains_house FROM buildgins WHERE id=?");
+            $stmt = $conn->prepare("SELECT contains_house FROM buildings WHERE id=?");
             $stmt->bind_param("i", $building_id);
             $stmt->execute();
             $stmt->bind_result($result);
             $stmt->fetch();
             $stmt->close();
             if ($result && $result == "yes") {
-                $stmt = $conn->prepare("SELECT other_bedrooms_house FROM buildgins WHERE id=?");
+                $stmt = $conn->prepare("SELECT other_bedrooms_house FROM buildings WHERE id=?");
                 $stmt->bind_param("i",$building_id);
                 $stmt->execute();
                 $stmt->bind_result($result);
@@ -63,6 +63,21 @@
                 }
             }
         }
+        //Check if apartment data is set
+        if (str_contains($types, "apartment")) {
+            
+        }
+    }
+
+    //Convert results into arrays for processing
+    $types_array = explode(",", $types);
+    $types_ammount_array = explode(",", $types_ammount_array)
+
+
+    //Construct the sendback string
+
+    for ($i=0; $i < 5; $i++) {
+
     }
 
 ?>
