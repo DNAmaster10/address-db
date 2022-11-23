@@ -2,5 +2,7 @@
 $.ajax({
     url: "/pages/info/handle/handle_building_type.php",
     type: "POST",
-    
+    success: function(data) {
+        console.log(data);
+    }
 })
