@@ -120,7 +120,7 @@
 
     //Convert results into arrays for processing
     $types_array = explode(",", $types);
-    $types_ammount_array = explode(",", $types_ammount_array);
+    $types_ammount_array = explode(",", $types_ammount);
     $total_types = count($types_array);
 
     //Generate final sendback string
