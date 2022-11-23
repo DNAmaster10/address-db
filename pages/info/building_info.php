@@ -155,6 +155,7 @@
                 } ?>
             </div>
         </div>
+        <p hidden id="building_id_p"><?php echo($building_id); ?></p>
     </body>
     <script src="/pages/info/js/building_info.js"></script>
 </html>
