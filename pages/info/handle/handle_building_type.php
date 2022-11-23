@@ -125,4 +125,5 @@
         }
         $sendback_string = $sendback_string."-@-";
     }
+    echo ($sendback_string);
 ?>
