@@ -105,7 +105,7 @@
                 $stmt = $conn->prepare("SELECT other_bedrooms_apartment,furniture_apartment FROM buildings WHERE id=?");
                 $stmt->bind_param("i", $building_id);
                 $stmt->execute();
-                $result = $stmt->get_result($result);
+                $result = $stmt->get_result();
                 while ($row = $result->fetch_assoc()) {
                     $other_bedrooms_apartment = $row["other_bedrooms_apartment"];
                     $furniture_apartment = $row["furniture_apartment"];
