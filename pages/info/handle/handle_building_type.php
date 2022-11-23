@@ -1,6 +1,28 @@
 <?php
     $contains_types = false;
-    //uses $building_id. Requires database connection.
+    //uses $_POST["building_id"]. Requires database connection.
+    if (!isset($_POST["building_id"])) {
+        echo ("Error: Id not set");
+        die();
+    }
+    if (!is_numeric($_POST["building_id"])) {
+        echo ("Error: Id not an integer");
+        die();
+    }
+    $building_id = intval($_POST["building_id"]);
+
+    //Check ID exists in database
+    $stmt = $conn->prepare("SELECT id FROM buildings WHERE id=?");
+    $stmt->bind_param("i",$building_id);
+    $stmt->execute();
+    $stmt->bind_result($result);
+    $stmt->fetch();
+    $stmt->close();
+    if (!$result) {
+        echo ("Error: Id not in database");
+        die();
+    }
+
     //get building types array
     $stmt = $conn->prepare("SELECT types FROM buildings WHERE id=?");
     $stmt->bind_param("i",$building_id);
