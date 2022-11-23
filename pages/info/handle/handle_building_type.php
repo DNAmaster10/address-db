@@ -59,7 +59,7 @@
             $stmt->execute();
             $result = $stmt->get_result();
             while ($row = $result->fetch_assoc()) {
-                $franchise_owners = $row["framchise_owners"];
+                $franchise_owners = $row["franchise_owners"];
                 $commerce_types = $row["commerce_types"];
             }
             $stmt->close();
