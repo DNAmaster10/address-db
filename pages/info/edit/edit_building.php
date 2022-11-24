@@ -12,13 +12,13 @@
 
     //if ID is set, check it's valid
     if (!is_numeric($_GET["id"])) {
-        $_SESSION["generic_error"] = "ID invalid";
+        $_SESSION["generic_error"] = "ID invalid: is not numeric";
         header ("location: /pages/error/generic-error.php");
         die();
     }
 
     if (!is_int($_GET["id"])) {
-        $_SESSION["generic_error"] = "ID invalid";
+        $_SESSION["generic_error"] = "ID invalid: is not integer";
         header ("location: /pages/error/generic-error.php");
         die();
     }
