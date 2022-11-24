@@ -6,6 +6,7 @@ $.ajax({
     type: "POST",
     data: {building_id:building_id},
     success: function(data) {
+        console.log(data);
         var rootElement = $("#logged_in_container")
         if (!data.length > 0) {
             var element = "<p>No type data was returned</p>";
@@ -46,6 +47,18 @@ $.ajax({
                         <p>Additional Furniture: ` + current_type_array[3] + `</p>
                     </div>
                     `;
+                }
+                else {
+                    if (!current_type_array[0].length < 1) {
+                        var element = `
+                        <div id="` + current_type_array[1] + `" class="type_container">
+
+                        </div>
+                        `
+                    }
+                    else {
+                        console.log("An error occured");
+                    }
                 }
                 rootElement.append(element);
             }
