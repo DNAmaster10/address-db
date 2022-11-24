@@ -63,6 +63,7 @@ $.ajax({
                     }
                 }
                 rootElement.append(element);
+                console.log("Appending")
             }
         }
     }
