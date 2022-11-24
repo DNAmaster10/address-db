@@ -275,7 +275,7 @@
                     <input type="file" name="image_file" id="image_upload">
                     <br>
                     <h4>Description</h4>
-                    <textarea name="description" id="description_text_area" class="description_text_area" rows="5" cols="50" value="<?php if ($contains_description) { echo ($description); } ?>"></textarea>
+                    <textarea name="description" id="description_text_area" class="description_text_area" rows="5" cols="50"><?php if ($contains_description) { echo ($description); } ?></textarea>
                 </div>
                 <input type="submit" value="Register Building" id="form_submit">
                 <p><?php if (isset($error)) {
