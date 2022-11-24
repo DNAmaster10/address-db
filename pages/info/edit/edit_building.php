@@ -94,6 +94,76 @@
         $date = $result;
     }
     unset ($result);
+
+    //Check if house data is set
+    $stmt = $conn->prepare("SELECT contains_house FROM buildings WHERE id=?");
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+    $stmt->bind_result();
+    $stmt->fetch();
+    $stmt->close();
+    if (!$result || $result == "no") {
+        $has_house_data = false;
+    }
+    else {
+        //fetch house data if it is contained
+        unset($result);
+        $stmt = $conn->prepare("SELECT other_bedrooms_house FROM buildings WHERE id=?");
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $stmt->bind_result();
+        $stmt->fetch();
+        $stmt->close();
+        if (!$result) {
+            $has_house_data = false;
+        }
+        else {
+            $has_house_data = true;
+            $other_bedrooms_house = $result;
+        }
+    }
+    unset($result);
+
+    //Check if apartment data is set
+    $stmt = $conn->prepare("SELECT contains_apartment FROM buildings WHERE id=?");
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+    $stmt->bind_result();
+    $stmt->fetch();
+    $stmt->close();
+    if (!$result || $result == "no") {
+        $has_apartment_data = false;
+    }
+    else {
+        $stmt = $conn->preapre("SELECT furniture_apartment,other_bedrooms_apartment FROM buildings WHERE id=?");
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        while ($row = $result->fetch_assoc()) {
+            $furniture_apartment = $row["furniture_apartment"];
+            $other_bedrooms_apartment = $row["other_bedrooms_apartment"];
+        }
+        $has_apartment_data = true;
+    }
+    unset($result);
+
+    //Fetch description
+    $stmt = $conn->prepare("SELECT description FROM buildings WHERE id=?");
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+    $stmt->bind_result();
+    $stmt->fetch();
+    $stmt->close();
+    if (!$result) {
+        $contains_description = false;
+    }
+    else {
+        $contains_description = true;
+        $description = $result;
+    }
+    unset ($result);
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -176,6 +246,7 @@
                 <div class="secondary_container" id="cencus_container">
                     <h4>Cencus data</h4>
                     <div id="cencus_data_house" class="inline">
+                        <p id="contains_house_data" hidden><?php if ($has_house_data) {echo ("true,".$other_bedrooms_house); } else {echo "false"; }?></p>
                         <h5>House data</h5>
                         <input type="checkbox" id="house_yes_no" name="has_house" value="yes" onclick="show_house()">
                         <label for="house_yes_no">Contains house</label><br>
@@ -184,6 +255,7 @@
                         <button type="button" onclick="increment_house_bedroom_ammount(this)" id="increment_house_bedroom_ammount_-1" value="-1">-1</button>
                     </div>
                     <div id="cencus_data_apartment">
+                        <p id="contains_apartment_data" hidden><?php if ($has_apartment_data) { echo ("true,".$other_bedrooms_apartment.",".$furniture_apartment);} else { echo ("false"); }?></p>
                         <h5>Apartment data</h5>
                         <input type="checkbox" id="apartment_yes_no" name="has_apartment" value="yes" onclick="show_apartment()">
                         <label for="apartment_yes_no">Contains apartment</label><br>
@@ -203,7 +275,7 @@
                     <input type="file" name="image_file" id="image_upload">
                     <br>
                     <h4>Description</h4>
-                    <textarea name="description" id="description_text_area" class="description_text_area" rows="5" cols="50"></textarea>
+                    <textarea name="description" id="description_text_area" class="description_text_area" rows="5" cols="50" value="<?php if ($contains_description) { echo ($description); } ?>"></textarea>
                 </div>
                 <input type="submit" value="Register Building" id="form_submit">
                 <p><?php if (isset($error)) {
