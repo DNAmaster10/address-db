@@ -51,8 +51,9 @@ $.ajax({
                 else {
                     if (!current_type_array[0].length < 1) {
                         var element = `
-                        <div id="` + current_type_array[1] + `" class="type_container">
-
+                        <div id="` + current_type_array[0] + `" class="type_container">
+                            <p>` + current_type_array[0] + `(s)</p>
+                            <p>Ammount: ` + current_type_array[1]`</p>
                         </div>
                         `
                     }
