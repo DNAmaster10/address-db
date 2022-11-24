@@ -6,8 +6,7 @@ $.ajax({
     type: "POST",
     data: {building_id:building_id},
     success: function(data) {
-        console.log("test data" + data);
-        var rootElement = $("#logged_in_container")
+        var rootElement = $("#inner_building_container")
         if (!data.length > 0) {
             var element = "<p>No type data was returned</p>";
             rootElement.append(element);
@@ -19,7 +18,6 @@ $.ajax({
             for (var i = 0; i < type_array.length; i++) {
                 current_type = type_array[i];
                 current_type_array = current_type.split(";");
-                console.log(current_type_array[0])
                 if (current_type_array[0] == "franchise") {
                     var element = `
                     <div id="franchise_type" class="type_container">
@@ -63,7 +61,6 @@ $.ajax({
                     }
                 }
                 rootElement.append(element);
-                console.log("Appending")
             }
         }
     }
