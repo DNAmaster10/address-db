@@ -17,6 +17,7 @@ $.ajax({
             var current_type;
             var current_type_array;
             for (var i = 0; i < type_array.length; i++) {
+                console.log(added_buildings);
                 current_type = type_array[i];
                 current_type_array = current_type.split(";");
                 if (!(added_buildings.includes(added_buildings[0]))) {
