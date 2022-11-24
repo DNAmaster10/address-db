@@ -99,7 +99,7 @@
     $stmt = $conn->prepare("SELECT contains_house FROM buildings WHERE id=?");
     $stmt->bind_param("i", $id);
     $stmt->execute();
-    $stmt->bind_result();
+    $stmt->bind_result($result);
     $stmt->fetch();
     $stmt->close();
     if (!$result || $result == "no") {
