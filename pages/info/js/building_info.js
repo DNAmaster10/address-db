@@ -6,6 +6,7 @@ $.ajax({
     type: "POST",
     data: {building_id:building_id},
     success: function(data) {
+        console.log("test data" + data);
         var rootElement = $("#logged_in_container")
         if (!data.length > 0) {
             var element = "<p>No type data was returned</p>";
