@@ -3,13 +3,13 @@
     include $_SERVER["DOCUMENT_ROOT"]."/includes/dbh.php";
     include $_SERVER["DOCUMENT_ROOT"]."/includes/return_login.php";
     //Make sure variables for searching are set
-    if (!isset($_POST["id"])) {
-        $_SESSION["generic_error"] = "POST variable 'id' is not set";
+    if (!isset($_GET["id"])) {
+        $_SESSION["generic_error"] = "GET variable 'id' is not set";
         header ("Location: /pages/error/generic_error.php");
         die();
     }
     //Check to make sure building exists in database
-    $building_id = $conn->real_escape_string($_POST["id"]);
+    $building_id = $conn->real_escape_string($_GET["id"]);
     $building_id = intval($building_id);
     $stmt = $conn->prepare("SELECT building_name FROM buildings WHERE id=?");
     $stmt->bind_param("i",$building_id);
@@ -151,7 +151,7 @@
             <div id="logged_in_container">
                 <?php if($logged_in) {
                     $building_id_string = strval($building_id);
-                    echo ("<form id='edit_button' action='/pages/info/edit/edit_building.php' method='POST'><input type='hidden' value='$building_id_string' name='id'><input type='submit' value='Edit'></form>");
+                    echo ("<form id='edit_button' action='/pages/info/edit/edit_building.php' method='GET'><input type='hidden' value='$building_id_string' name='id'><input type='submit' value='Edit'></form>");
                 } ?>
             </div>
         </div>

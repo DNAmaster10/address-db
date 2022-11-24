@@ -68,7 +68,7 @@ function submit_search() {
                                     elementCount++;
                                     var element = `
                                     <div id="`+ fourthSearchArray[1] +`_district_search_link" onclick="document.forms['`+ fourthSearchArray[1] +`_district_form'].submit();" class="search_submit_div">
-                                        <form action="/pages/info/district_info.php" method="POST" class="search_result" id="`+ fourthSearchArray[1] +`_district_form">
+                                        <form action="/pages/info/district_info.php" method="GET" class="search_result" id="`+ fourthSearchArray[1] +`_district_form">
                                             <input type="hidden" name="type" value="district">
                                             <input type="hidden" name="id" value="`+ fourthSearchArray[1] +`">
                                             <p>`+ fourthSearchArray[0] +`</p>
@@ -91,7 +91,7 @@ function submit_search() {
                                     elementCount++;
                                     var element = `
                                     <div id="`+ fourthSearchArray[1] +`_street_unit_search_link" onclick="document.forms['`+ fourthSearchArray[1] +`_street_unit_form'].submit();" class="search_submit_div">
-                                        <form action="/pages/info/street_unit_info.php" method="POST" class="search_result" id="`+ fourthSearchArray[1] +`_street_unit_form">
+                                        <form action="/pages/info/street_unit_info.php" method="GET" class="search_result" id="`+ fourthSearchArray[1] +`_street_unit_form">
                                             <input type="hidden" name="type" value="street_unit">
                                             <input type="hidden" name="id" value="`+ fourthSearchArray[1] +`">
                                             <p>`+ fourthSearchArray[0] +`</p>
@@ -114,7 +114,7 @@ function submit_search() {
                                     elementCount++;
                                     var element = `
                                     <div id="`+ fourthSearchArray[1] +`_street_search_link" onclick="document.forms['`+ fourthSearchArray[1] +`_street_form'].submit();" class="search_submit_div">
-                                        <form action="/pages/info/street_info.php" method="POST" class="search_result" id="`+ fourthSearchArray[1] +`_street_form">
+                                        <form action="/pages/info/street_info.php" method="GET" class="search_result" id="`+ fourthSearchArray[1] +`_street_form">
                                             <input type="hidden" name="type" value="street">
                                             <input type="hidden" name="id" value="`+ fourthSearchArray[1] +`">
                                             <p>`+ fourthSearchArray[0] +`</p>
@@ -137,7 +137,7 @@ function submit_search() {
                                     elementCount++;
                                     var element = `
                                     <div id="`+ fourthSearchArray[1] +`_building_search_link" onclick="document.forms['`+ fourthSearchArray[1] +`_building_form'].submit();" class="search_submit_div">
-                                        <form action="/pages/info/building_info.php" method="POST" class="search_result" id="`+ fourthSearchArray[1] +`_building_form">
+                                        <form action="/pages/info/building_info.php" method="GET" class="search_result" id="`+ fourthSearchArray[1] +`_building_form">
                                             <input type="hidden" name="type" value="building">
                                             <input type="hidden" name="id" value="`+ fourthSearchArray[1] +`">
                                             <p>`+ fourthSearchArray[0] +`</p>
