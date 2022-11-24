@@ -135,7 +135,7 @@
         $has_apartment_data = false;
     }
     else {
-        $stmt = $conn->preapre("SELECT furniture_apartment,other_bedrooms_apartment FROM buildings WHERE id=?");
+        $stmt = $conn->prepare("SELECT furniture_apartment,other_bedrooms_apartment FROM buildings WHERE id=?");
         $stmt->bind_param("i", $id);
         $stmt->execute();
         $result = $stmt->get_result();
