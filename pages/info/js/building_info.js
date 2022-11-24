@@ -19,6 +19,7 @@ $.ajax({
             for (var i = 0; i < type_array.length; i++) {
                 current_type = type_array[i];
                 current_type_array = current_type.split(";");
+                console.log(current_type_array[0])
                 if (current_type_array[0] == "franchise") {
                     var element = `
                     <div id="franchise_type" class="type_container">
