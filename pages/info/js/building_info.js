@@ -16,7 +16,6 @@ $.ajax({
             var added_buildings = ",";
             var current_type_array;
             for (var i = 0; i < type_array.length; i++) {
-                console.log(added_buildings);
                 current_type_array = type_array[i].split(";");
                 if (!(added_buildings.includes(current_type_array[0]))) {
                     if (current_type_array[0] == "franchise") {
