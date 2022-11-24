@@ -13,54 +13,58 @@ $.ajax({
         }
         else {
             type_array = data.split("-@-");
+            var added_buildings;
             var current_type;
             var current_type_array;
             for (var i = 0; i < type_array.length; i++) {
                 current_type = type_array[i];
                 current_type_array = current_type.split(";");
-                if (current_type_array[0] == "franchise") {
-                    var element = `
-                    <div id="franchise_type" class="type_container">
-                        <p>Franchise(s)</p>
-                        <p>Ammount: ` + current_type_array[1] + `</p>
-                        <p>Franchise Owner(s): ` + current_type_array[2] + `</p>
-                        <p>Commerce Type(s): ` + current_type_array[3] + `</p>
-                    </div>
-                    `;
-                }
-                else if (current_type_array[0] == "house") {
-                    var element = `
-                    <div id="house_type" class="type_container">
-                        <p>House(s)</p>
-                        <p>Ammount: ` + current_type_array[1] + `</p>
-                        <p>Additional Bedrooms: ` + current_type_array[2] + `</p>
-                    </div>
-                    `;
-                }
-                else if (current_type_array[0] == "apartment") {
-                    var element = `
-                    <div id="apartment_type" class="type_container">
-                        <p>Apartment(s)</p>
-                        <p>Ammount: ` + current_type_array[1] + `</p>
-                        <p>Additional Bedrooms: ` + current_type_array[2] + `</p>
-                        <p>Additional Furniture: ` + current_type_array[3] + `</p>
-                    </div>
-                    `;
-                }
-                else {
-                    if (!((current_type_array[0].length) < 1)) {
+                if (!(added_buildings.includes(added_buildings[0]))) {
+                    if (current_type_array[0] == "franchise") {
                         var element = `
-                        <div id="` + current_type_array[0] + `" class="type_container">
-                            <p>` + current_type_array[0] + `(s)</p>
+                        <div id="franchise_type" class="type_container">
+                            <p>Franchise(s)</p>
                             <p>Ammount: ` + current_type_array[1] + `</p>
+                            <p>Franchise Owner(s): ` + current_type_array[2] + `</p>
+                            <p>Commerce Type(s): ` + current_type_array[3] + `</p>
                         </div>
-                        `
+                        `;
+                    }
+                    else if (current_type_array[0] == "house") {
+                        var element = `
+                        <div id="house_type" class="type_container">
+                            <p>House(s)</p>
+                            <p>Ammount: ` + current_type_array[1] + `</p>
+                            <p>Additional Bedrooms: ` + current_type_array[2] + `</p>
+                        </div>
+                        `;
+                    }
+                    else if (current_type_array[0] == "apartment") {
+                        var element = `
+                        <div id="apartment_type" class="type_container">
+                            <p>Apartment(s)</p>
+                            <p>Ammount: ` + current_type_array[1] + `</p>
+                            <p>Additional Bedrooms: ` + current_type_array[2] + `</p>
+                            <p>Additional Furniture: ` + current_type_array[3] + `</p>
+                        </div>
+                        `;
                     }
                     else {
-                        console.log("An error occured");
+                        if (!((current_type_array[0].length) < 1)) {
+                            var element = `
+                            <div id="` + current_type_array[0] + `" class="type_container">
+                                <p>` + current_type_array[0] + `(s)</p>
+                                <p>Ammount: ` + current_type_array[1] + `</p>
+                            </div>
+                            `
+                        }
+                        else {
+                            console.log("An error occured");
+                        }
                     }
+                    added_buildings = added_buildings + current_type_array[0] + ",";
+                    rootElement.append(element);
                 }
-                rootElement.append(element);
             }
         }
     }

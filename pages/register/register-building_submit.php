@@ -48,7 +48,7 @@
         die();
     }
     //Finds parent district and street unit chars
-    $district_name = $conn->real_escape_string($_POST["district"]);
+    $district_name = $_POST["district"];
     $stmt = $conn->prepare("SELECT postcodeChar FROM districts WHERE district_name = ?");
     $stmt->bind_param("s", $district_name);
     $stmt->execute();
@@ -62,7 +62,7 @@
     }
     $district_char = $result;
 
-    $street_unit_name = $conn->real_escape_string($_POST["street_unit"]);
+    $street_unit_name = $_POST["street_unit"];
     $stmt = $conn->prepare("SELECT postcodeChar FROM street_units WHERE name=?");
     $stmt->bind_param("s", $street_unit_name);
     $stmt->execute();
@@ -128,8 +128,8 @@
     $postcode = $postcode_pre.$free_char;
     $postcode_char = $free_char;
     //Checks if a building with that name under that street already exists
-    $building_name = $conn->real_escape_string($_POST["building_name"]);
-    $street_name = $conn->real_escape_string($_POST["street_name"]);
+    $building_name = $_POST["building_name"];
+    $street_name = $_POST["street_name"];
 
     $stmt = $conn->prepare("SELECT building_name FROM buildings WHERE parent_street=? AND building_name=?");
     $stmt->bind_param("ss",$street_name, $building_name);
@@ -161,8 +161,8 @@
     }
 
     //Get x and y co-ords
-    $x_coord = $conn->real_escape_string($_POST["x_coord"]);
-    $y_coord = $conn->real_escape_string($_POST["y_coord"]);
+    $x_coord = $_POST["x_coord"];
+    $y_coord = $_POST["y_coord"];
     $x_coord = intval($x_coord);
     $y_coord = intval($y_coord);
 
@@ -172,7 +172,7 @@
     $stmt->execute();
     $stmt->close();
 
-    $building_type_list = $conn->real_escape_string($_POST["building_type_list"]);
+    $building_type_list = $_POST["building_type_list"];
     $building_type_list_array = explode("#-#",$building_type_list);
     $type_ammount = count($building_type_list_array);
     if ($type_ammount < 1) {
@@ -206,7 +206,7 @@
             $_SESSION["building_error"] = "Please specify the commerce types sold in the commercial building(s)";
             removeRow($conn, $postcode);
         }
-        $commerce_types = $conn->real_escape_string($_POST["commerce_types"]);
+        $commerce_types = $_POST["commerce_types"];
     }
     if (str_contains($building_type_list, "franchise")) {
         if (!isset($_POST["commerce_types_franchise"])) {
@@ -214,18 +214,18 @@
             removeRow($conn, $postcode);
         }
         if (isset($commerce_types)) {
-            $temp_types = $conn->real_escape_string($_POST["commerce_types_franchise"]);
+            $temp_types = $_POST["commerce_types_franchise"];
             $commerce_types = $commerce_types.",".$temp_types;
         }
         else {
-            $commerce_types = $conn->real_escape_string($_POST["commerce_types_franchise"]);
+            $commerce_types = $_POST["commerce_types_franchise"];
         }
         if (!isset($_POST["franchise_owners"])) {
             $_SESSION["building_error"] = "Please specify the owners of the franchises contained in the building";
             removeRow($conn, $postcode);
         }
         else {
-            $franchise_owners = $conn->real_escape_string($_POST["franchise_owners"]);
+            $franchise_owners = $_POST["franchise_owners"];
             $stmt = $conn->prepare("UPDATE buildings SET franchise_owners = ? WHERE postcode=?");
             $stmt->bind_param("ss", $franchise_owners, $postcode);
             $stmt->execute();
@@ -240,14 +240,14 @@
     }
 
     if (isset($_POST["builders"])) {
-        $builders = $conn->real_escape_string($_POST["builders"]);
+        $builders = $_POST["builders"];
         $stmt = $conn->prepare("UPDATE buildings SET builders = ? WHERE postcode=?");
         $stmt->bind_param("ss", $builders, $postcode);
         $stmt->execute();
         $stmt->close();
     }
     if (isset($_POST["construction_date"])) {
-        $construction_date = $conn->real_escape_string($_POST["construction_date"]);
+        $construction_date = $_POST["construction_date"];
         $stmt = $conn->prepare("UPDATE buildings SET construction_date = ? WHERE postcode=?");
         $stmt->bind_param("ss", $construction_date, $postcode);
         $stmt->execute();
@@ -268,13 +268,13 @@
         $stmt->close();
         unset($param);
 
-        $total_houses = $conn->real_escape_string($_POST["house_ammount"]);
+        $total_houses = $_POST["house_ammount"];
         $total_houses = intval($total_houses);
         if (!isset($_POST["other_bedrooms_house"])) {
             $_SESSION["building_error"] = "Please enter the ammount of additional bedrooms contained in every house present other than the master bedroom";
             removeRow($conn, $postcode);
         }
-        $additional_bedrooms = $conn->real_escape_string($_POST["other_bedrooms_house"]);
+        $additional_bedrooms = $_POST["other_bedrooms_house"];
         $additional_bedrooms = intval($additional_bedrooms);
 
         $stmt = $conn->prepare("UPDATE buildings SET other_bedrooms_house = ? WHERE postcode = ?");
@@ -307,11 +307,11 @@
             $_SESSION["building_error"] = "Please enter the ammount of furniture items in the apartment";
             removeRow($conn, $postcode);
         }
-        $additional_bedrooms_apartment = $conn->real_escape_string($_POST["apartment_bedroom_ammount"]);
+        $additional_bedrooms_apartment = $_POST["apartment_bedroom_ammount"];
         $additional_bedrooms_apartment = intval($additional_bedrooms_apartment);
-        $furniture_ammount = $conn->real_escape_string($_POST["furniture_ammount"]);
+        $furniture_ammount = $_POST["furniture_ammount"];
         $furniture_ammount = intval($furniture_ammount);
-        $total_apartments = $conn->real_escape_string($_POST["apartment_ammount"]);
+        $total_apartments = $_POST["apartment_ammount"];
         $total_apartments = intval($total_apartments);
         $apartments_without_furniture = $total_apartments - $furniture_ammount;
         $total_population = $total_population + ($apartments_without_furniture + $furniture_ammount + $addition_bedrooms_apartment);
@@ -340,7 +340,7 @@
         $description = "none";
     }
     else {
-        $description = $conn->real_escape_string($_POST["description"]);
+        $description = $_POST["description"];
     }
     $stmt = $conn->prepare("UPDATE buildings SET description = ? WHERE postcode=?");
     $stmt->bind_param("ss",$description,$postcode);
