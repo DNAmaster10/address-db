@@ -145,14 +145,12 @@
                 <p class="info_text">Population: <?php echo($population); ?></p>
                 <p class="info_text">Construction Date: <?php echo($construction_date); ?></p>
                 <p class="info_text">Description: <?php echo($description); ?></p>
-            </div>
-                <div id="inner_building_container">
-                </div>
-            <div id="logged_in_container">
                 <?php if($logged_in) {
                     $building_id_string = strval($building_id);
-                    echo ("<form id='edit_button' action='/pages/info/edit/edit_building.php' method='GET'><input type='hidden' value='$building_id_string' name='id'><input type='submit' value='Edit'></form>");
+                    echo ("<form id='edit_button_form' action='/pages/info/edit/edit_building.php' method='GET'><input type='hidden' value='$building_id_string' name='id'><input id='edit_button' type='submit' value='Edit'></form>");
                 } ?>
+            </div>
+            <div id="inner_building_container">
             </div>
         </div>
         <p hidden id="building_id_p"><?php echo($building_id); ?></p>
