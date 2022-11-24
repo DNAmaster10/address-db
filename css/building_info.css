@@ -24,3 +24,9 @@ body {
     margin-bottom: 5px;
     background-color: lightblue;
 }
+#edit_button {
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 100%;
+    height: 25px;
+}
