@@ -111,7 +111,7 @@
         $stmt = $conn->prepare("SELECT other_bedrooms_house FROM buildings WHERE id=?");
         $stmt->bind_param("i", $id);
         $stmt->execute();
-        $stmt->bind_result();
+        $stmt->bind_result($result);
         $stmt->fetch();
         $stmt->close();
         if (!$result) {
@@ -128,7 +128,7 @@
     $stmt = $conn->prepare("SELECT contains_apartment FROM buildings WHERE id=?");
     $stmt->bind_param("i", $id);
     $stmt->execute();
-    $stmt->bind_result();
+    $stmt->bind_result($result);
     $stmt->fetch();
     $stmt->close();
     if (!$result || $result == "no") {
@@ -151,7 +151,7 @@
     $stmt = $conn->prepare("SELECT description FROM buildings WHERE id=?");
     $stmt->bind_param("i", $id);
     $stmt->execute();
-    $stmt->bind_result();
+    $stmt->bind_result($result);
     $stmt->fetch();
     $stmt->close();
     if (!$result) {
