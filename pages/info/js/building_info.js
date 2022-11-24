@@ -13,7 +13,7 @@ $.ajax({
         }
         else {
             type_array = data.split("-@-");
-            var added_buildings;
+            var added_buildings = ",";
             var current_type;
             var current_type_array;
             for (var i = 0; i < type_array.length; i++) {
