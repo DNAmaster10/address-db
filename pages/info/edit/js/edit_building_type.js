@@ -75,13 +75,12 @@ function addExistingTypes(types) {
                 </div>`;
             }
         }
+        var rootElement = $("#building_type_list_container");
+        rootElement.append(element);
     }
     var current_building_list = document.getElementById("building_type_list_hidden").value;
     current_building_list = current_building_list + building_list_array;
     document.getElementById("building_type_list_hidden").value = current_building_list;
-
-    var rootElement = $("#building_type_list_container");
-    rootElement.append(element);
 }
 function addBuildingType() {
     var rootElement = $("#building_type_list_container");
