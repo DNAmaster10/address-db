@@ -20,11 +20,11 @@ function addExistingTypes(types) {
                 var element = `
                 <div id="franchise_container" class="building_type_container">
                     <p class="inline">Type: Franchise | Ammount: </p>
-                    <input type="text" name="franchise_ammount" value="1" placeholder="ammount" class="inline" id="franchise_ammount_input">
+                    <input type="text" name="franchise_ammount" value="` + current_type_array[1] + `" placeholder="ammount" class="inline" id="franchise_ammount_input">
                     <button type="button" onclick="change_building_count(this)" value="1" class="inline" id="franchise#minus_ammount_button">+1</button>
                     <button type="button" onclick="change_building_count(this)" value="-1" class="inline" id="franchise#plus_ammount_button">-1</button>
                     <p class="inline"> | Owner(s): </p>
-                    <input type="text" placeholder="DNAmaster10,Needn_NL" name="franchise_owners">
+                    <input type="text" placeholder="DNAmaster10,Needn_NL" name="franchise_owners" value="` + current_type_array[2] + `">
                     <p class="inline"> | Commerce types: </p>
                     <div id="commerce_franchise" class="inline">
                         <input type="text" name="commerce_types_franchise" placeholder="Food,Car Parts">

@@ -179,10 +179,13 @@
         $_SESSION["buiding_error"] = "Please enter at least one building type";
         header ("Location: /pages/register/register-building.php");
         removeRow($conn, $postcode);
+        die();
     }
     if (!isset($_POST[$building_type_list_array[0]."_ammount"])) {
         $_SESSION["building_error"] = "Please enter the ammount of " + $building_type_list_array[0] + "s.";
         removeRow($conn, $postcode);
+        header ("Location: /pages/register/register-building.php");
+        die();
     }
     //Generates ammount type list
     $ammount_type = $_POST[$building_type_list_array[0]."_ammount"];
@@ -190,6 +193,8 @@
         if (!isset($_POST[$building_type_list_array[$i]."_ammount"])) {
             $_SESSION["building_error"] = "Please enter the ammount of " + $building_type_list_array[$i] + "s.";
             removeRow($conn, $postcode);
+            header ("Location: /pages/register/register-building.php");
+            die();
         }
         $ammount_type = $ammount_type.",".$_POST[$building_type_list_array[$i]."_ammount"];
     }
@@ -205,6 +210,8 @@
         if (!isset($_POST["commerce_types"])) {
             $_SESSION["building_error"] = "Please specify the commerce types sold in the commercial building(s)";
             removeRow($conn, $postcode);
+            header ("Location: /pages/register/register-building.php");
+            die();
         }
         $commerce_types = $_POST["commerce_types"];
     }
@@ -212,10 +219,13 @@
         if (!isset($_POST["commerce_types_franchise"])) {
             $_SESSION["building_error"] = "Please specify the commerce types sold in the franchise building(s)";
             removeRow($conn, $postcode);
+            header ("Location: /pages/register/register-building.php");
+            die();
         }
         if (isset($commerce_types)) {
             $temp_types = $_POST["commerce_types_franchise"];
-            $commerce_types = $commerce_types.",".$temp_types;
+            $commerce_types = $commerce_types."-@-".$temp_types;
+            error_log($commerce_types);
         }
         else {
             $commerce_types = $_POST["commerce_types_franchise"];
@@ -223,6 +233,8 @@
         if (!isset($_POST["franchise_owners"])) {
             $_SESSION["building_error"] = "Please specify the owners of the franchises contained in the building";
             removeRow($conn, $postcode);
+            header ("Location: /pages/register/register-building.php");
+            die();
         }
         else {
             $franchise_owners = $_POST["franchise_owners"];
@@ -260,6 +272,8 @@
         if (!str_contains($building_type_list, "house")) {
             $_SESSION["building_error"] = "Please add the building type: house, to the list of building types.";
             removeRow($conn, $postcode);
+            header ("Location: /pages/register/register-building.php");
+            die();
         }
         $param = "yes";
         $stmt = $conn->prepare("UPDATE buildings SET contains_house = ? WHERE postcode=?");
@@ -273,6 +287,8 @@
         if (!isset($_POST["other_bedrooms_house"])) {
             $_SESSION["building_error"] = "Please enter the ammount of additional bedrooms contained in every house present other than the master bedroom";
             removeRow($conn, $postcode);
+            header ("Location: /pages/register/register-building.php");
+            die();
         }
         $additional_bedrooms = $_POST["other_bedrooms_house"];
         $additional_bedrooms = intval($additional_bedrooms);
@@ -298,14 +314,20 @@
         if (!str_contains($building_type_list, "apartment")) {
             $_SESSION["building_error"] = "Please add the building type: apartment, to the list of building types.";
             removeRow($conn, $postcode);
+            header ("Location: /pages/register/register-building.php");
+            die();
         }
         if (!isset($_POST["other_bedrooms_apartment"])) {
             $_SESSION["building_error"] = "Please enter the ammount of additional bedrooms in the apartment";
             removeRow($conn, $postcode);
+            header ("Location: /pages/register/register-building.php");
+            die();
         }
         if (!isset($_POST["furniture_ammount"])) {
             $_SESSION["building_error"] = "Please enter the ammount of furniture items in the apartment";
             removeRow($conn, $postcode);
+            header ("Location: /pages/register/register-building.php");
+            die();
         }
         $additional_bedrooms_apartment = $_POST["apartment_bedroom_ammount"];
         $additional_bedrooms_apartment = intval($additional_bedrooms_apartment);
