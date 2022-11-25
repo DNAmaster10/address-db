@@ -179,4 +179,4 @@ function remove_type(element) {
     document.getElementById("building_type_list_hidden").value = current_building_list;
 }
 
-fetchExistingTypeArray()
+fetchExistingTypeArray();
