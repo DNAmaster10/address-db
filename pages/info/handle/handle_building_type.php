@@ -56,15 +56,13 @@
         //If it contains franchise or commercial, fetch commerce types
         if (str_contains($types, "commercial") || str_contains($types, "franchise")) {
             $stmt = $conn->prepare("SELECT commerce_types FROM buildings WHERE id=?");
-            $stmt->bind_param("i", $id);
+            $stmt->bind_param("i", $building_id);
             $stmt->execute();
             $stmt->bind_result($result);
             $stmt->fetch();
             $stmt->close();
             
-            error_log("test: ".$result);
             $commerce_types = $result;
-            error_log("commerce types".$commerce_types);
         }
         unset ($result);
         //If it contains frachise, fetch franchise info
