@@ -61,10 +61,10 @@
             $stmt->bind_result($result);
             $stmt->fetch();
             $stmt->close();
-            if ($result) {
-                $commerce_types = $result;
-            }
+            
+            $commerce_types = $result;
         }
+        unset ($result);
         //If it contains frachise, fetch franchise info
         if (str_contains($types,"franchise")) {
             $stmt = $conn->prepare("SELECT franchise_owners FROM buildings WHERE id=?");
