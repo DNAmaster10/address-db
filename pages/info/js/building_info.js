@@ -48,6 +48,7 @@ $.ajax({
                         `;
                     }
                     else if (current_type_array[0] == "commercial") {
+                        console.log(current_type_array);
                         var element = `
                         <div id="apartment_type" class="type_container">
                             <p>Commercial</p>
