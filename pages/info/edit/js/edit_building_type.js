@@ -13,8 +13,10 @@ function addExistingTypes(types) {
     type_array = types.split("-@-");
     var added_buildings = ",";
     var current_type_array;
+    var building_list_array = "#-#";
     for (var i = 0; i < type_array.length; i++) {
         current_type_array = type_array[i].split(";");
+        building_list_array = building_list_array + "#-#" + current_type_array[0];
         if (!(added_buildings.includes(current_type_array[0]))) {
             if (current_type_array[0] == "franchise") {
                 if (current_type_array[3].includes("-@-")) {
@@ -74,4 +76,40 @@ function addExistingTypes(types) {
             }
         }
     }
+    var current_building_list = document.getElementById("building_type_list_hidden").value;
+    current_building_list = current_building_list + building_list_array;
+    document.getElementById("building_type_list_hidden").value = current_building_list;
+
+    var rootElement = $("#building_type_list_container");
+    rootElement.append(element);
+}
+
+function change_building_count(element) {
+    var increment_ammount = element.value;
+    increment_ammount = parseInt(increment_ammount);
+    var button_id = element.id;
+    var id_array = button_id.split("#");
+    var building_type = id_array[0];
+    var current_count = document.getElementById(building_type + "_ammount_input").value;
+    current_count = parseInt(current_count);
+    var new_count = current_count + increment_ammount;
+    if (new_count == 0 || isNaN(new_count)) {
+        new_count = 1;
+    }
+    document.getElementById(building_type + "_ammount_input").value = new_count;
+}
+
+function remove_type(element) {
+    var button_id = element.id;
+    var id_array = button_id.split("#");
+    var building_type = id_array[0];
+    document.getElementById(building_type + "_container").remove();
+    var current_building_list = document.getElementById("building_type_list_hidden").value;
+    if (current_building_list.includes("#-#" + building_type)) {
+        current_building_list = current_building_list.replace("#-#" + building_type, "");
+    }
+    else {
+        current_building_list = current_building_list.replace(building_type, "");
+    }
+    document.getElementById("building_type_list_hidden").value = current_building_list;
 }
