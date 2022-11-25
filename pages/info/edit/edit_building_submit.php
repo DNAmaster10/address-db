@@ -172,5 +172,47 @@
     //Generate new ammount type list
     $building_type_list = $_POST["building_type_list"];
     $building_type_list_array = explode("#-#", $building_type_list);
-    $ammount_type = $_POST[$buil]
+    $type_ammount = count($building_type_list_array);
+    if ($type_ammount < 1) {
+        error("Please enter at least one building type");
+    }
+    if (!isset($_POST[$building_type_list_array[0]."_ammount"])) {
+        error("Please enter the ammount of " + $building_type_list_array[0]);
+    }
+    $ammount_type = $_POST[$building_type_list_array[0]."_ammount"];
+    for ($i = 1; $i < $type_ammount; $i++) {
+        if (!isset($_POST[$building_type_list_array[$i]."_ammount"])) {
+            error("Please enter the ammount of " + $building_type_list_array[0]);
+        }
+        $ammount_type = $ammount_type.",".$_POST[$building_type_list_array[$i]."_ammount"];
+    }
+    $building_type_list = implode(",",$building_type_list_array);
+
+
+    //Check commercial info
+    if (str_contains($building_type_list, "commercial")) {
+        if (!isset($_POST["commerce_types"])) {
+            error("Please specify the commerce type in the commercial building");
+        }
+        $commerce_types = $_POST["commerce_types"];
+    }
+    //Check franchise info
+    if (str_contains($building_type_list, "franchise")) {
+        if (!isset($_POST["commerce_types_franchise"])) {
+            error("Please specify the commerce type of the franchise");
+        }
+        if (isset($commerce_types)) {
+            $temp_types = $_POST["commerce_types_franchise"];
+            $commerce_types = $commerce_types."-@-".$temp_types;
+        }
+        else {
+            $commerce_types = $_POST["commerce_types_franchise"];
+        }
+        if (!isset($_POST["franchise_owners"])) {
+            error("Please specify the franchise owners");
+        }
+        else {
+            $franchise_owners = $_POST["franchise_owners"];
+        }
+    }
 ?>
