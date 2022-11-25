@@ -46,6 +46,7 @@
         $xcoord = $row["x"];
         $ycoord = $row["y"];
     }
+    $stmt->close();
     unset ($result);
 
     //fetch street
@@ -145,6 +146,7 @@
         }
         $has_apartment_data = true;
     }
+    $stmt->close();
     unset($result);
 
     //Fetch description
@@ -179,6 +181,18 @@
     }
     unset ($result);
 
+    //Fetch street unit and district
+    $stmt = $conn->prepare("SELECT parent_street_unit,parent_district FROM buildings WHERE id=?");
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    while ($row = $result->fetch_assoc()) {
+        $parent_street_unit = $row["parent_street_unit"];
+        $parent_district = $row["parent_district"];
+    }
+    $stmt->close();
+    unset ($result);
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -206,6 +220,7 @@
                         <p id="generate_details_error_p"></p>
                     </div>
                     <div id="district_street_unit_container" class="district_street_unit_container">
+                        <p id="edit_district_street_unit_info" hidden><?php echo ($parent_district.",".$parent_street_unit); ?></p>
                         <p class="inline">District: </p>
                         <select name="district" id="district_select" onchange="changeStreetUnits()">
                             <?php

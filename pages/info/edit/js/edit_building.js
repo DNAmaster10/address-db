@@ -134,6 +134,7 @@ function increment_apartment_furniture(element) {
 }
 
 function alter_edit_details() {
+    //If cencus data is set, fill it in
     var house_data = document.getElementById("contains_house_data").innerHTML;
     if (!(house_data == "false")) {
         house_data = house_data.split(",");
@@ -147,6 +148,14 @@ function alter_edit_details() {
         document.getElementById("furniture_ammount").value = apartment_data[2];
         document.getElementById("apartment_bedroom_ammount").value = apartment_data[1];
     }
+
+    //Change district and street unit
+    var district_street_unit_data = document.getElementById("edit_district_street_unit_info").innerHTML;
+    district_street_unit_data = district_street_unit_data.split(",");
+    var district = district_street_unit_data[0];
+    var street_unit = district_street_unit_data[1];
+    document.getElementById("district_select").value = district;
+    document.getElementById("street_unit_select").value = street_unit;
 }
 
 alter_edit_details();
