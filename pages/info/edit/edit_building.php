@@ -198,10 +198,11 @@
 <html>
     <head>
         <title>Editing <?php echo ($building_name); ?></title>
+        <link rel="stylesheet" href="/pages/register/css/register-building.css">
+        <link rel="stylesheet" href="/css/main.css">
     </head>
-    <link rel="stylesheet" href="/pages/register/css/register-building.css">
-    <link rel="stylesheet" href="/css/main.css">
     <body>
+        <p id="building_id_p" hidden><?php echo (strval($id)) ?></p>
         <?php include $_SERVER["DOCUMENT_ROOT"]."/includes/html/header.php"; ?>
         <div id="back_button_container" class="back_button_container">
             <form action="/pages/info/building_info.php?type=building&id=<?php echo $id; ?>">

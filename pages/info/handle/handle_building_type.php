@@ -53,15 +53,26 @@
     }
     //Only if the building has types, continue
     if ($contains_types) {
+        //If it contains franchise or commercial, fetch commerce types
+        if (str_contains($types, "commercial") || str_contains($types, "franchise")) {
+            $stmt = $conn->prepare("SELECT commerce_types FROM buildings WHERE id=?");
+            $stmt->bind_param("i", $id);
+            $stmt->execute();
+            $stmt->bind_result($result);
+            $stmt->fetch();
+            $stmt->close();
+            if ($result) {
+                $commerce_types = $result;
+            }
+        }
         //If it contains frachise, fetch franchise info
         if (str_contains($types,"franchise")) {
-            $stmt = $conn->prepare("SELECT franchise_owners,commerce_types FROM buildings WHERE id=?");
+            $stmt = $conn->prepare("SELECT franchise_owners FROM buildings WHERE id=?");
             $stmt->bind_param("i", $building_id);
             $stmt->execute();
             $result = $stmt->get_result();
             while ($row = $result->fetch_assoc()) {
                 $franchise_owners = $row["franchise_owners"];
-                $commerce_types = $row["commerce_types"];
             }
             $stmt->close();
             unset($result);
@@ -127,7 +138,10 @@
     $sendback_string = "";
     for ($i = 0; $i < $total_types; $i++) {
         $sendback_string = $sendback_string.$types_array[$i].";".$types_ammount_array[$i];
-        if ($types_array[$i] == "franchise") {
+        if ($types_array[$i] == "commercial") {
+            $sendback_string = $sendback_string.";".$commerce_types;
+        }
+        else if ($types_array[$i] == "franchise") {
             $sendback_string = $sendback_string.";".$franchise_owners.";".$commerce_types;
         }
         else if ($types_array[$i] == "house") {

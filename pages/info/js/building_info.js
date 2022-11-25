@@ -47,6 +47,15 @@ $.ajax({
                         </div>
                         `;
                     }
+                    else if (current_type_array[0] == "commercial") {
+                        var element = `
+                        <div id="apartment_type" class="type_container">
+                            <p>Commercial</p>
+                            <p>Ammount: ` + current_type_array[1] + `</p>
+                            <p>Commerce type(s): ` + current_type_array[2] + `
+                        </div>
+                        `;
+                    }
                     else {
                         if (!((current_type_array[0].length) < 1)) {
                             var element = `
