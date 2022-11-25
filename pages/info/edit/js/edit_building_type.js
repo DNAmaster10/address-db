@@ -75,7 +75,7 @@ function addExistingTypes(types) {
                 </div>`;
             }
         }
-        if (!(current_building_list.includes(current_type_array[0]))){
+        if (!(building_list_array.includes(current_type_array[0]))){
             var rootElement = $("#building_type_list_container");
             rootElement.append(element);
         }
