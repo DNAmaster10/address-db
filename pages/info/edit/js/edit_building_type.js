@@ -16,7 +16,6 @@ function addExistingTypes(types) {
     var building_list_array = "#-#";
     for (var i = 0; i < type_array.length; i++) {
         current_type_array = type_array[i].split(";");
-        building_list_array = building_list_array + "#-#" + current_type_array[0];
         if (!(added_buildings.includes(current_type_array[0]))) {
             if (current_type_array[0] == "franchise") {
                 if (current_type_array[3].includes("-@-")) {
@@ -79,6 +78,7 @@ function addExistingTypes(types) {
             var rootElement = $("#building_type_list_container");
             rootElement.append(element);
         }
+        building_list_array = building_list_array + "#-#" + current_type_array[0];
     }
     var current_building_list = document.getElementById("building_type_list_hidden").value;
     current_building_list = current_building_list + building_list_array;
