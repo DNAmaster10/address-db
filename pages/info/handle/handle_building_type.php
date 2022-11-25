@@ -62,6 +62,7 @@
             $stmt->fetch();
             $stmt->close();
             
+            error_log("test: ".$result);
             $commerce_types = $result;
             error_log("commerce types".$commerce_types);
         }
