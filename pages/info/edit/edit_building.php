@@ -163,6 +163,21 @@
     }
     unset ($result);
 
+    //Fetch postcode char
+    $stmt = $conn->prepare("SELECT postcode_char FROM buildings WHERE id=?");
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+    $stmt->bind_result($result);
+    $stmt->fetch();
+    $stmt->close();
+    if (!$result) {
+        $contains_postcode_char = false;
+    }
+    else {
+        $contains_postcode_char = true;
+        $postcode_char = $result;
+    }
+    unset ($result);
 
 ?>
 <!DOCTYPE html>
@@ -205,6 +220,8 @@
                         </select>
                         <p class="inline">Street Unit: </p>
                         <select name="street_unit" id="street_unit_select">
+                        <p class="inline">Current Postcode Character: </p>
+                        <input type="text" name="postcode_char" placeholder="A-9" value="<?php if ($contains_postcode_char) { echo ($postcode_char); } ?>">
                         </select>
                     </div>
                     <div id="building_type_container_main" class="building_type_container_main">
@@ -285,6 +302,6 @@
         </div>
     </body>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="/pages/register/register-building.js"></script>
-    <script src="register-building-type.js"></script>
+    <script src="/pages/info/edit/js/edit_building.js"></script>
+    <script src="/pages/info/edit/js/edit_building_type.js"></script>
 </html>
