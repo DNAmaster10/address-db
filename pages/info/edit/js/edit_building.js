@@ -149,6 +149,7 @@ function alter_edit_details() {
     }
 }
 
+alter_edit_details();
 show_house();
 show_apartment();
 changeStreetUnits();
