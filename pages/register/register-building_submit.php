@@ -6,7 +6,7 @@
     function removeRow($conn, $postcode) {
         $stmt = $conn->prepare("DELETE FROM buildings WHERE postcode = ?");
         $stmt->bind_param("s", $postcode);
-        $stmt->close;
+        $stmt->close();
         header ("Location: /pages/register/register-building.php");
         die();
     }

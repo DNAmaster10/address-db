@@ -199,9 +199,14 @@
         <title>Editing <?php echo ($building_name); ?></title>
         <link rel="stylesheet" href="/pages/register/css/register-building.css">
         <link rel="stylesheet" href="/css/main.css">
+        <style>
+            body {
+                padding: 0px;
+            }
+        </style>
     </head>
     <body>
-        <p id="building_id_p" hidden><?php echo (strval($id)) ?></p>
+        <p id="building_id_p" hidden><?php echo (strval($id)); ?></p>
         <?php include $_SERVER["DOCUMENT_ROOT"]."/includes/html/header.php"; ?>
         <div id="back_button_container" class="back_button_container">
             <form action="/pages/info/building_info.php?type=building&id=<?php echo $id; ?>">
@@ -210,6 +215,7 @@
         </div>
         <div id="main_form_container" class="main_form_container">
             <form action="/pages/info/edit/edit_building_submit.php" method="POST" enctype="multipart/form-data">
+                <input type="hidden" name="id" value="<?php echo (strval($id)); ?>">
                 <div id="essential_container" class="essential_container secondary_container">
                 <h3>Essential Details</h3>
                     <div id="coords_container" class="coords_container">
