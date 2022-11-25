@@ -63,7 +63,7 @@
             $stmt->close();
             
             $commerce_types = $result;
-            error_log($commerce_types);
+            error_log("commerce types".$commerce_types);
         }
         unset ($result);
         //If it contains frachise, fetch franchise info
