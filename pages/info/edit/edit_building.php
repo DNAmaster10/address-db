@@ -219,7 +219,7 @@
                             ?>
                         </select>
                         <p class="inline">Street Unit: </p>
-                        <select name="street_unit" id="street_unit_select">
+                        <select name="street_unit" id="street_unit_select" class="inline">
                         <p class="inline">Current Postcode Character: </p>
                         <input type="text" name="postcode_char" placeholder="A-9" value="<?php if ($contains_postcode_char) { echo ($postcode_char); } ?>">
                         </select>
