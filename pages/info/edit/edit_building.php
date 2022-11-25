@@ -146,7 +146,6 @@
         }
         $has_apartment_data = true;
     }
-    $stmt->close();
     unset($result);
 
     //Fetch description
