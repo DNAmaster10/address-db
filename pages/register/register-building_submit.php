@@ -225,7 +225,6 @@
         if (isset($commerce_types)) {
             $temp_types = $_POST["commerce_types_franchise"];
             $commerce_types = $commerce_types."-@-".$temp_types;
-            error_log($commerce_types);
         }
         else {
             $commerce_types = $_POST["commerce_types_franchise"];

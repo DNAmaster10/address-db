@@ -62,7 +62,10 @@
             $stmt->fetch();
             $stmt->close();
             
-            $commerce_types = $result;
+            //Split commerce types
+            $commerce_types = explode("-@-", $commerce_types);
+            $commerce_types_commercial = $commerce_types[0];
+            $commerce_types_franchise = $commerce_types[1];
         }
         unset ($result);
         //If it contains frachise, fetch franchise info
@@ -139,10 +142,10 @@
     for ($i = 0; $i < $total_types; $i++) {
         $sendback_string = $sendback_string.$types_array[$i].";".$types_ammount_array[$i];
         if ($types_array[$i] == "commercial") {
-            $sendback_string = $sendback_string.";".$commerce_types;
+            $sendback_string = $sendback_string.";".$commerce_types_commercial;
         }
         else if ($types_array[$i] == "franchise") {
-            $sendback_string = $sendback_string.";".$franchise_owners.";".$commerce_types;
+            $sendback_string = $sendback_string.";".$franchise_owners.";".$commerce_types_franchise;
         }
         else if ($types_array[$i] == "house") {
             if ($house_data_set) {
