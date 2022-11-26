@@ -186,11 +186,31 @@
     $stmt->execute();
     $result = $stmt->get_result();
     while ($row = $result->fetch_assoc()) {
-        $parent_street_unit = $row["parent_street_unit"];
-        $parent_district = $row["parent_district"];
+        $parent_street_unit_char = $row["parent_street_unit"];
+        $parent_district_char = $row["parent_district"];
     }
     $stmt->close();
     unset ($result);
+
+    //Fetch street unit name
+    $stmt = $conn->prepare("SELECT name FROM street_units WHERE postcodeChar=?");
+    $stmt->bind_param("s", $parent_street_unit_char);
+    $stmt->execute();
+    $stmt->bind_result($result);
+    $stmt->fetch();
+    $stmt->close();
+    $parent_street_unit = $result;
+    unset ($result);
+
+    //Fetch district name
+    $stmt = $conn->prepare("SELECT district_name FROM districts WHERE postcodeChar=?");
+    $stmt->bind_result("s", $parent_district_char);
+    $stmt->execute();
+    $stmt->bind_result($result);
+    $stmt->fetch();
+    $stmt->close();
+    $parent_district = $result;
+    unset($result);
 
 ?>
 <!DOCTYPE html>
