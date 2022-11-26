@@ -205,6 +205,7 @@
     $building_type_list = $_POST["building_type_list"];
     $building_type_list_array = explode("#-#", $building_type_list);
     $type_ammount = count($building_type_list_array);
+    error_log(strval($building_type_list_array));
     if ($type_ammount < 1) {
         error("Please enter at least one building type");
     }
