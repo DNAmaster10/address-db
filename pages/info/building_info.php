@@ -41,7 +41,7 @@
         $postcode = $result;
     }
     unset($result);
-    //Grab district
+    //Grab district char
     $stmt = $conn->prepare("SELECT parent_district FROM buildings WHERE id=?");
     $stmt->bind_param("i", $building_id);
     $stmt->execute();
@@ -49,13 +49,24 @@
     $stmt->fetch();
     $stmt->close();
     if (!$result) {
-        $district = "none";
+        $district_char = "none";
     }
     else {
-        $district = $result;
+        $district_char = $result;
     }
     unset($result);
-    //Grab street unit
+
+    //Grab district name
+    $stmt = $conn->prepare("SELECT district_name FROM districts WHERE postcodeChar=?");
+    $stmt->bind_param("s", $district_char);
+    $stmt->execute();
+    $stmt->bind_result($result);
+    $stmt->fetch();
+    $stmt->close();
+    $district = $result;
+    unset ($result);
+
+    //Grab street unit char
     $stmt = $conn->prepare("SELECT parent_street_unit FROM buildings WHERE id=?");
     $stmt->bind_param("i", $building_id);
     $stmt->execute();
@@ -63,12 +74,22 @@
     $stmt->fetch();
     $stmt->close();
     if (!$result) {
-        $street_unit = "none";
+        $street_unit_char = "none";
     }
     else {
-        $street_unit = $result;
+        $street_unit_char = $result;
     }
     unset($result);
+    //Grab street unit
+    $stmt = $conn->prepare("SELECT name FROM street_units WHERE postcodeChar=?");
+    $stmt->bind_param("s", $street_unit_char);
+    $stmt->execute();
+    $stmt->bind_result($result);
+    $stmt->fetch();
+    $stmt->close();
+    $street_unit = $result;
+    unset($result);
+    
     //Grab street
     $stmt = $conn->prepare("SELECT parent_street FROM buildings WHERE id=?");
     $stmt->bind_param("i", $building_id);
