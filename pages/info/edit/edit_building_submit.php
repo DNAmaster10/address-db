@@ -209,6 +209,7 @@
         error("Please enter at least one building type");
     }
     if (!isset($_POST[$building_type_list_array[0]."_ammount"])) {
+        echo ($_POST[$building_type_list_array[0]."_ammount"]);
         error_log("first");
         error("Please enter the ammount of ".$building_type_list_array[0]);
     }
