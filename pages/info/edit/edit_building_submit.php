@@ -170,6 +170,7 @@
     $stmt->bind_result($result);
     $stmt->fetch();
     $stmt->close();
+    error_log($result." Is culpret");
     if ($result) {
         error("A building with that name under that street already exists!");
     }
