@@ -204,6 +204,7 @@
     //Generate new ammount type list
     $building_type_list = $_POST["building_type_list"];
     $building_type_list_array = explode("#-#", $building_type_list);
+    $building_type_list_array = array_filter($building_type_list_array);
     $type_ammount = count($building_type_list_array);
     if ($type_ammount < 1) {
         error("Please enter at least one building type");
