@@ -316,7 +316,7 @@
                     <h4>Description</h4>
                     <textarea name="description" id="description_text_area" class="description_text_area" rows="5" cols="50"><?php if ($contains_description) { echo ($description); } ?></textarea>
                 </div>
-                <input type="submit" value="Register Building" id="form_submit">
+                <input type="submit" value="Submit new details" id="form_submit">
                 <p><?php if (isset($error)) {
                     echo ($error);
                 } ?></p>
