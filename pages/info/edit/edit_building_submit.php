@@ -326,7 +326,7 @@
 
     //Update street unit, district, postcode and coords, and street name and building name
     $stmt = $conn->prepare("UPDATE buildings SET parent_street_unit=?,parent_district=?,postcode=?,postcode_char=?,parent_street=?,building_name=? WHERE id=?");
-    $stmt->bind_param("sssssi",$street_unit_name,$district_name,$postcode,$postcode_char,$street_name,$building_name,$id);
+    $stmt->bind_param("ssssssi",$street_unit_name,$district_name,$postcode,$postcode_char,$street_name,$building_name,$id);
     $stmt->execute();
     $stmt->close();
 
