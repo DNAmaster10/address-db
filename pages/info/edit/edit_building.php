@@ -204,7 +204,7 @@
 
     //Fetch district name
     $stmt = $conn->prepare("SELECT district_name FROM districts WHERE postcodeChar=?");
-    $stmt->bind_result("s", $parent_district_char);
+    $stmt->bind_param("s", $parent_district_char);
     $stmt->execute();
     $stmt->bind_result($result);
     $stmt->fetch();
