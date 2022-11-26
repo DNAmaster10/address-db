@@ -67,7 +67,7 @@
         $stmt->bind_result($result);
         $stmt->fetch();
         $stmt->close();
-        error_log($result." is the culpret")
+        error_log($result." is the culpret");
         if ($result) {
             error("A building with that postcode char in that street unit already exists");
         }
