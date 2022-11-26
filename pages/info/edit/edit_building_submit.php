@@ -4,14 +4,18 @@
     include $_SERVER["DOCUMENT_ROOT"]."/includes/check_login.php";
 
     function error($error_message) {
+        //Get ID
+        $id = $_POST["id"];
         $_SESSION["building_error"] = $error_message;
-        header ("Location: /pages/info/edit/edit_building.php");
+        header ("Location: /pages/info/edit/edit_building.php?"."id=".strval($id));
         die();
     }
 
     //Check if all essential types are set
     if (!isset($_POST["id"])) {
-        error("No ID was set");
+        $_SESSION["generic_error"] = "No building ID was set in the GET request";
+        header ("Location: /pages/error/generic-error.php");
+        die();
     }
     if (!isset($_POST["x_coord"])) {
         error("Please enter a valid x co-ord");
