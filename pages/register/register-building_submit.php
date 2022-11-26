@@ -191,7 +191,7 @@
     $ammount_type = $_POST[$building_type_list_array[0]."_ammount"];
     for ($i=1; $i < $type_ammount; $i++) {
         if (!isset($_POST[$building_type_list_array[$i]."_ammount"])) {
-            $_SESSION["building_error"] = "Please enter the ammount of " + $building_type_list_array[$i] + "s.";
+            $_SESSION["building_error"] = "Please enter the ammount of ".$building_type_list_array[$i] + "s.";
             removeRow($conn, $postcode);
             header ("Location: /pages/register/register-building.php");
             die();
