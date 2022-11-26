@@ -160,6 +160,8 @@
     else {
         $postcode = $district_char.$street_unit_char.$postcode_char;
     }
+    unset($result);
+
     //Check if it's a duplicate building name
     $building_name = $_POST["building_name"];
     $street_name = $_POST["street_name"];
@@ -170,7 +172,6 @@
     $stmt->bind_result($result);
     $stmt->fetch();
     $stmt->close();
-    error_log($result." Is culpret");
     if ($result) {
         error("A building with that name under that street already exists!");
     }
