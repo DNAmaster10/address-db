@@ -356,7 +356,7 @@
         $stmt->bind_param("si",$commerce_types,$id);
     }
     else {
-        $stmt = $conn->prepare("UPDATE buildings SET commerce_types=NULL WHER id=?");
+        $stmt = $conn->prepare("UPDATE buildings SET commerce_types=NULL WHERE id=?");
         $stmt->bind_param("i",$id);
         $stmt->execute();
         $stmt->close();
