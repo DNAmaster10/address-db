@@ -67,7 +67,6 @@
         $stmt->bind_result($result);
         $stmt->fetch();
         $stmt->close();
-        error_log($result." is the culpret");
         if ($result) {
             error("A building with that postcode char in that street unit already exists");
         }
@@ -100,6 +99,9 @@
     $stmt->close();
     if (!$result) {
         error("Please enter a valid district name");
+    }
+    else {
+        $district_char = $result;
     }
 
     //If a postcode char isn't entered, find a new one
