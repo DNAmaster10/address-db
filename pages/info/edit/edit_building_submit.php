@@ -307,6 +307,11 @@
         $population = ((($total_apartments - ($total_apartments - $total_furniture_apartment)) * 2) + ($total_apartments - $total_furniture_apartment) + $total_additional_bedrooms_apartment);
     }
     else {
+        $total_houses = intval($_POST["house_ammount"]);
+        $other_bedrooms_house = intval($_POST["other_bedrooms_house"]);
+        $total_apartments = intval($_POST["apartment_ammount"]);
+        $total_furniture_apartment = intval($_POST["furniture_ammount"]);
+        $total_additional_bedrooms_apartment = intval($_POST["other_bedrooms_apartment"]);
         $house_population = ($total_houses * 2) + $other_bedrooms_house;
         $apartment_population = ((($total_apartments - ($total_apartments - $total_furniture_apartment)) * 2) + ($total_apartments - $total_furniture_apartment) + $total_additional_bedrooms_apartment);
         $population = $house_population + $apartment_population;
