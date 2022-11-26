@@ -207,24 +207,17 @@
     if ($building_type_list[2] == "#") {
         $building_type_list = substr($building_type_list, 3);
     }
-    error_log($building_type_list);
     $building_type_list_array = explode("#-#", $building_type_list);
     $building_type_list_array = array_filter($building_type_list_array);
-    error_log(implode($building_type_list_array));
-    error_log($_POST[$building_type_list_array[1]."_ammount"]);
     $type_ammount = count($building_type_list_array);
     if ($type_ammount < 1) {
-        error("Please enter at least one building type");
     }
     if (!isset($_POST[$building_type_list_array[0]."_ammount"])) {
         echo ($_POST[$building_type_list_array[0]."_ammount"]);
-        error_log("first");
         error("Please enter the ammount of ".$building_type_list_array[0]);
     }
     $ammount_type = $_POST[$building_type_list_array[0]."_ammount"];
     for ($i = 1; $i < $type_ammount; $i++) {
-        error_log("second");
-        error_log($building_type_list_array[$i]);
         if (!isset($_POST[$building_type_list_array[$i]."_ammount"])) {
             error("Please enter the ammount of ".$building_type_list_array[0]);
         }
