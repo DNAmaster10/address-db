@@ -213,6 +213,7 @@
     }
     $ammount_type = $_POST[$building_type_list_array[0]."_ammount"];
     for ($i = 1; $i < $type_ammount; $i++) {
+        error_log($building_type_list_array[$i]);
         if (!isset($_POST[$building_type_list_array[$i]."_ammount"])) {
             error("Please enter the ammount of ".$building_type_list_array[0]);
         }
