@@ -382,7 +382,7 @@
         $stmt->close();
     }
     else {
-        $stmt = $conn->prepare("UPDATE buildings SET contains_apartment='no',furniture_apartment=NULL,other_bedrooms_apartment=? WHERE id=?");
+        $stmt = $conn->prepare("UPDATE buildings SET contains_apartment='no',furniture_apartment=NULL,other_bedrooms_apartment=NULL WHERE id=?");
         $stmt->bind_param("i", $id);
         $stmt->execute();
         $stmt->close();
