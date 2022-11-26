@@ -55,7 +55,7 @@
     else {
         $street_unit_char = $result;
     }
-    
+    unset($result);
     
     //Check if a char is set already
     if (isset($_POST["postcode_char"])) {
