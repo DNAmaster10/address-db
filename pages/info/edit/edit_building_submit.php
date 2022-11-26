@@ -205,7 +205,7 @@
     $building_type_list = $_POST["building_type_list"];
     $building_type_list_array = explode("#-#", $building_type_list);
     $building_type_list_array = array_filter($building_type_list_array);
-    error_log($building_type_list_array.implode(","));
+    error_log(implode($building_type_list_array));
     error_log($_POST[$building_type_list_array[1]."_ammount"]);
     $type_ammount = count($building_type_list_array);
     if ($type_ammount < 1) {
