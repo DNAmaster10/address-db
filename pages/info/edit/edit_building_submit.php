@@ -205,7 +205,7 @@
     $building_type_list = $_POST["building_type_list"];
     $building_type_list = str_replace("#-##-#", "#-#", $building_type_list);
     if ($building_type_list[2] == "#") {
-        $building_type_list = substr($building_type_list, 2);
+        $building_type_list = substr($building_type_list, 3);
     }
     error_log($building_type_list);
     $building_type_list_array = explode("#-#", $building_type_list);
