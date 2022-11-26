@@ -331,7 +331,7 @@
     $stmt->close();
 
     //Update type array
-    $stmt = $conn->prepare("UPDATE buildings SET tpyes=?,type_ammount=? WHERE id=?");
+    $stmt = $conn->prepare("UPDATE buildings SET types=?,type_ammount=? WHERE id=?");
     $stmt->bind_param("ssi",$building_type_list,$ammount_type,$id);
     $stmt->execute();
     $stmt->close();
