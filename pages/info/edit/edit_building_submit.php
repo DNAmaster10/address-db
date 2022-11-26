@@ -181,7 +181,7 @@
     $stmt = $conn->prepare("SELECT street FROM streets WHERE street=?");
     $stmt->bind_param("s", $street_name);
     $stmt->execute();
-    $stmt->bind_result();
+    $stmt->bind_result($result);
     $stmt->fetch();
     $stmt->close();
     if (!$result) {
