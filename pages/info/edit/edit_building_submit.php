@@ -215,4 +215,71 @@
             $franchise_owners = $_POST["franchise_owners"];
         }
     }
+    //Check builders
+    if (isset($_POST["builders"])) {
+        $builders = $_POST["builders"];
+    }
+    //Check construction date
+    if (isset($_POST["construction_date"])) {
+        $construction_date = $_POST["construction_date"];
+    }
+
+    //Check cencus data house
+    if (isset($_POST["has_house"]) && $_POST["has_house"] == "yes") {
+        $has_house = true;
+        if (!str_contains($building_type_list, "house")) {
+            error("Please add the building type 'house' before registering cencus data for a house");
+        }
+        if (!isset($_POST["other_bedrooms_house"])) {
+            error("Please enter the ammount of additional bedrooms in the house");
+        }
+    }
+    else {
+        $has_house = false;
+    }
+    //Check apartment cencus data
+    if (isset($_POST["has_apartment"]) && $_POST["has_apartment"] == "yes") {
+        $has_apartment = true;
+        if (!str_contains($building_type_list, "apartment")) {
+            error("Please add the building type 'apartment' before registering apartment cencus data");
+        }
+        if (!isset($_POST["other_bedrooms_apartment"])) {
+            error("Please enter all cencus data for the apartment");
+        }
+        if (!isset($_POST["furniture_ammount"])) {
+            error("Please enter all cencus data for the apartment");
+        }
+    }
+    else {
+        $has_apartment = false;
+    }
+
+    //Calculate population based on cencus data
+    if (!$has_apartment && !$has_house) {
+        $population = 0;
+    }
+    else if (!$has_apartment && $has_house) {
+        $total_houses = intval($_POST["house_ammount"]);
+        $other_bedrooms_house = intval($_POST["other_bedrooms_house"]);
+        $population = ($total_houses * 2) + $other_bedrooms_house;
+    }
+    else if ($has_apartment && !$has_house) {
+        $total_apartments = intval($_POST["apartment_ammount"]);
+        $total_additional_bedrooms_apartment = intval($_POST["other_bedrooms_apartment"]);
+        $total_furniture_apartment = intval($_POST["furniture_ammount"]);
+        $population = ((($total_apartments - ($total_apartments - $total_furniture_apartment)) * 2) + ($total_apartments - $total_furniture_apartment) + $total_additional_bedrooms_apartment);
+    }
+    else {
+        $house_population = ($total_houses * 2) + $other_bedrooms_house;
+        $apartment_population = ((($total_apartments - ($total_apartments - $total_furniture_apartment)) * 2) + ($total_apartments - $total_furniture_apartment) + $total_additional_bedrooms_apartment);
+        $population = $house_population + $apartment_population;
+    }
+
+    //Check description
+    if (isset($_POST["description"])) {
+        $description = $_POST["description"];
+    }
+
+    //Update database code
+    
 ?>
