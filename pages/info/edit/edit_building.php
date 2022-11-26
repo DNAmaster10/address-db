@@ -2,6 +2,12 @@
     //start sessions and make sure user is logged in
     session_start();
     include $_SERVER["DOCUMENT_ROOT"]."/includes/check_login.php";
+
+    //Get error message
+    if (isset($_SESSION["building_error"])) {
+        $error = $_SESSION["building_error"];
+        unset ($_SESSION["building_error"]);
+    }
     
     //make sure ID is set in GET request
     if (!isset($_GET["id"])) {
