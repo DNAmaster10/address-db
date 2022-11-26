@@ -209,12 +209,12 @@
         error("Please enter at least one building type");
     }
     if (!isset($_POST[$building_type_list_array[0]."_ammount"])) {
-        error("Please enter the ammount of " + $building_type_list_array[0]);
+        error("Please enter the ammount of ".$building_type_list_array[0]);
     }
     $ammount_type = $_POST[$building_type_list_array[0]."_ammount"];
     for ($i = 1; $i < $type_ammount; $i++) {
         if (!isset($_POST[$building_type_list_array[$i]."_ammount"])) {
-            error("Please enter the ammount of " + $building_type_list_array[0]);
+            error("Please enter the ammount of ".$building_type_list_array[0]);
         }
         $ammount_type = $ammount_type.",".$_POST[$building_type_list_array[$i]."_ammount"];
     }
