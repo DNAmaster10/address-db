@@ -52,8 +52,10 @@
         $street_unit_char = $result;
     }
     
+    
     //Check if a char is set already
     if (isset($_POST["postcode_char"])) {
+        $postcode_char = strtoupper($_POST["postcode_char"]);
         //Make sure that the char isn't a duplicate
         $stmt = $conn->prepare("SELECT building_name FROM buildings WHERE postcode_char=? AND id!=?");
         $stmt->bind_param("si", $_POST["postcode_char"],$id);
@@ -63,6 +65,23 @@
         $stmt->close();
         if ($result) {
             error("A building with that postcode char in that street unit already exists");
+        }
+
+        //Validate postcode char if it's not duplicate
+        //make sure it's one character only
+        if (strlen($postcode_char) > 1) {
+            error("Postcode entered is too long");
+        }
+        //Make sure it's a letter or a number
+        $is_letter_or_num = false;
+        if (preg_match('/\d/', $postcode_char)) {
+            $is_letter_or_num = true;
+        }
+        if (preg_match('/[a-zA-Z]/', $postcode_char)){
+            $is_letter_or_num = true;
+        }
+        if (!$is_letter_or_num) {
+            error("Postcode must be a letter or a number");
         }
     }
 
@@ -130,6 +149,9 @@
         unset ($result);
         $postcode = $postcode_pre.$free_char;
         $postcode_char = $free_char;
+    }
+    else {
+        $postcode = $district_char.$street_unit_char.$postcode_char;
     }
     //Check if it's a duplicate building name
     $building_name = $_POST["building_name"];
@@ -281,5 +303,130 @@
     }
 
     //Update database code
+
+    //Update street unit, district, postcode and coords, and street name and building name
+    $stmt = $conn->prepare("UPDATE buildings SET parent_street_unit=?,parent_district=?,postcode=?,postcode_char=?,parent_street=?,building_name=? WHERE id=?");
+    $stmt->bind_param("ssssi",$street_unit_name,$district_name,$postcode,$postcode_char,$street_name,$building_name,$id);
+    $stmt->execute();
+    $stmt->close();
+
+    //Update type array
+    $stmt = $conn->prepare("UPDATE buildings SET tpyes=?,type_ammount=? WHERE id=?");
+    $stmt->bind_param("ssi",$building_type_list,$ammount_type,$id);
+    $stmt->execute();
+    $stmt->close();
+
+    //Update franchise owners
+    if (isset($franchise_owners)) {
+        $stmt = $conn->prepare("UPDATE buildings SET franchise_owners=? WHERE id=?");
+        $stmt->bind_param("si", $franchise_owners,$id);
+        $stmt->execute();
+        $stmt->close();
+    }
+    else {
+        $stmt = $conn->prepare("UPDATE buildings SET franchise_owners=NULL WHERE id=?");
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $stmt->close();
+    }
+
+    //Update commerce types
+    if (isset($commerce_types)) {
+        $stmt = $conn->prepare("UPDATE buildings SET commerce_types=? WHERE id=?");
+        $stmt->bind_param("si",$commerce_types,$id);
+    }
+    else {
+        $stmt = $conn->prepare("UPDATE buildings SET commerce_types=NULL WHER id=?");
+        $stmt->bind_param("i",$id);
+        $stmt->execute();
+        $stmt->close();
+    }
+
+    //Update cencus info
+    if ($has_house) {
+        $stmt = $conn->prepare("UPDATE buildings SET contains_house='yes',other_bedrooms_house=? WHERE id=?");
+        $stmt->bind_param("ii", $other_bedrooms_house, $id);
+        $stmt->execute();
+        $stmt->close();
+    }
+    else {
+        $stmt = $conn->prepare("UPDATE buildings SET contains_house='no',other_bedrooms_house=NULL WHERE id=?");
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $stmt->close();
+    }
+    if ($has_apartment) {
+        $stmt = $conn->prepare("UPDATE buildings SET contains_apartment='yes',furniture_apartment=?,other_bedrooms_apartment=? WHERE id=?");
+        $stmt->bind_param("iii", $total_furniture_apartment,$total_additional_bedrooms_apartment,$id);
+        $stmt->execute();
+        $stmt->close();
+    }
+    else {
+        $stmt = $conn->prepare("UPDATE buildings SET contains_apartment='no',furniture_apartment=NULL,other_bedrooms_apartment=? WHERE id=?");
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $stmt->close();
+    }
+    if ($has_house || $has_apartment) {
+        $stmt = $conn->prepare("UPDATE buildings SET population=? WHERE id=?");
+        $stmt->bind_param("ii", $population,$id);
+        $stmt->execute();
+        $stmt->close();
+    }
+    else {
+        $stmt = $conn->prepare("UPDATE buildings SET population=NULL WHERE id=?");
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $stmt->close();
+    }
+    //Update construction details 
+    if (isset($builders)) {
+        $stmt = $conn->prepare("UPDATE buildings SET builders=? WHERE id=?");
+        $stmt->bind_param("si", $builders, $id);
+        $stmt->execute();
+        $stmt->close();
+    }
+    else {
+        $stmt = $conn->prepare("UPDATE buildings SET builders=NULL WHERE id=?");
+        $stmt->bind_param("i", $id);
+    }
     
+    if (isset($construction_date)) {
+        $stmt = $conn->prepare("UPDATE buildings SET construction_date=? WHERE id=?");
+        $stmt->bind_param("si", $construction_date, $id);
+        $stmt->execute();
+        $stmt->close();
+    }
+    else {
+        $stmt = $conn->prepare("UPDATE buildings SET construction_date=NULL WHERE id=?");
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $stmt->close();
+    }
+
+    //Set description
+    if (isset($description)) {
+        $stmt = $conn->prepare("UPDATE buildings SET description=? WHERE id=?");
+        $stmt->bind_param("si", $description,$id);
+        $stmt->execute();
+        $stmt->close();
+    }
+    else {
+        $stmt = $conn->prepare("UPDATE buildings SET description=NULL WHERE id=?");
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $stmt->close();
+    }
+
+    header("Location: /pages/info/building_info.php?type=building&id=".strval($id));
 ?>
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="/css/main.css"></link>
+    </head>
+    <body>
+        <?php include $_SERVER("DOCUMENT_ROOT")."/pages/includes/html/header.php"; ?>
+        <p>If you are seeing this page, an error has occured. Please contact DNAmaster10 for further support</p>
+    </body>
+</html>
