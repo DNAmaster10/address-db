@@ -328,14 +328,14 @@
             header ("Location: /pages/register/register-building.php");
             die();
         }
-        $additional_bedrooms_apartment = $_POST["apartment_bedroom_ammount"];
+        $additional_bedrooms_apartment = $_POST["other_bedrooms_apartment"];
         $additional_bedrooms_apartment = intval($additional_bedrooms_apartment);
         $furniture_ammount = $_POST["furniture_ammount"];
         $furniture_ammount = intval($furniture_ammount);
         $total_apartments = $_POST["apartment_ammount"];
         $total_apartments = intval($total_apartments);
         $apartments_without_furniture = $total_apartments - $furniture_ammount;
-        $total_population = $total_population + ($apartments_without_furniture + $furniture_ammount + $addition_bedrooms_apartment);
+        $total_population = $total_population + ($apartments_without_furniture + $furniture_ammount + $additional_bedrooms_apartment);
 
         $param = "yes";
         $stmt = $conn->prepare("UPDATE buildings SET furniture_apartment = ?, other_bedrooms_apartment = ?, contains_apartment = ? WHERE postcode=?");
