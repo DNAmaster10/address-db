@@ -54,6 +54,10 @@
         <?php include $_SERVER["DOCUMENT_ROOT"]."/includes/html/header.php"; ?>
         <div id="main_container">
             <h1><?php echo ($district_name); ?></h1>
+            <div id="side_box">
+                <p class="info_text">Postcode Char: <?php echo ($postcode_char); ?></p>
+                <p class="info_text">District Colour: </p><div id="colour_box"></div>
+            </div>
         </div>
     </body>
 </html>
