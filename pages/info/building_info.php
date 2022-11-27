@@ -11,7 +11,7 @@
     //Check to make sure building exists in database
     $building_id = $conn->real_escape_string($_GET["id"]);
     $building_id = intval($building_id);
-    $stmt = $conn->prepare("SELECT building_name FROM buildings WHERE id=?");
+    $stmt = $conn->prepare("SELECT building_name FROM buildings WHERE district_id=?");
     $stmt->bind_param("i",$building_id);
     $stmt->execute();
     $stmt->bind_result($result);
@@ -28,7 +28,7 @@
     unset($result);
     //Grab data from database
     //Grab postcode
-    $stmt = $conn->prepare("SELECT postcode FROM buildings WHERE id=?");
+    $stmt = $conn->prepare("SELECT postcode FROM buildings WHERE district_id=?");
     $stmt->bind_param("i", $building_id);
     $stmt->execute();
     $stmt->bind_result($result);
