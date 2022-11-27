@@ -20,6 +20,7 @@
     $stmt->bind_param("i", $id);
     $stmt->execute();
     $stmt->bind_result($result);
+    $stmt->fetch();
     $stmt->close();
     if (!$result) {
         error("District with the id ".strval($id)." not found in database");
