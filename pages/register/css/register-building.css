@@ -1,5 +1,7 @@
 body {
     background-color: #b9f5d8;
+    margin: 0px;
+    padding: 0px;
 }
 .inline {
     display: inline;
@@ -133,6 +135,9 @@ input[disabled],input[disabled]:hover,button[disabled],button[disabled]:hover {
     padding:10px;
     text-align: center;
     margin-top: 10px;
+}
+#main_container {
+    padding: 5px;
 }
 
 

@@ -11,15 +11,16 @@
         <style>
             body {
                 padding: 0px;
+                margin: 0px;
             }
             #main_container {
-                pading: 5px;
+                padding: 5px;
             }
         </style>
     </head>
     <body>
+        <?php include $_SERVER["DOCUMENT_ROOT"]."/includes/html/header.php"; ?>
         <div id="main_container">
-            <?php include $_SERVER["DOCUMENT_ROOT"]."/includes/html/header.php"; ?>
             <form action="/pages/register/register-district.php">
                 <input type="submit" value="Create district">
             </form>
