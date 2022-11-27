@@ -5,3 +5,21 @@ body {
 #main_container {
     padding: 5px;
 }
+#side_box {
+    padding: 5px;
+    background-color: lightblue;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    width: 40%;
+    border: 1px solid black;
+    font-size: 20px;
+    max-width: 400px;
+    float: left;
+}
+#colour_box {
+    width: 100%;
+    border-radius: 5px;
+    height: 10px;
+    background-color: red;
+    
+}
