@@ -16,3 +16,7 @@ h1 {
     max-height: 400px;
     object-fit: cover;
 }
+#div {
+    padding: 5px;
+    text-align: center;;
+}
