@@ -1,9 +1,9 @@
 <?php
   //Alter this file to suite the needs of your own database
   $dbServername = "localhost";
-  $dbUsername = "dbUsername";
-  $dbPassword = "dbPassword";
-  $dbName = "kaloro-dbName";
+  $dbUsername = getenv("DB_USERNAME");
+  $dbPassword = getenv("DB_PASSWORD");
+  $dbName = getenv("DB_NAME");
   $conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);
   if (mysqli_connect_errno())
     {
