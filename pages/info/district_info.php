@@ -4,7 +4,7 @@
     include $_SERVER["DOCUMENT_ROOT"]."/includes/return_login.php";
 
     function error($error) {
-        $_SESSION["generic-error"] = $error;
+        $_SESSION["generic_error"] = $error;
         header ("Location: /pages/error/generic-error.php");
         die();
     }
