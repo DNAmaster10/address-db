@@ -22,7 +22,7 @@
     $stmt->bind_result($result);
     $stmt->close();
     if (!$result) {
-        error("District not found in database");
+        error("District with the id ".strval($id)." not found in database");
     }
     else {
         $district_name = $result;
