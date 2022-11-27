@@ -16,7 +16,7 @@
     }
     $id = intval($_GET["id"]);
     //Check if ID exists in database and gets district name
-    $stmt = $conn->prepare("SELECT district_name FROM districts WHERE id=?");
+    $stmt = $conn->prepare("SELECT district_name FROM districts WHERE district_id=?");
     $stmt->bind_param("i", $id);
     $stmt->execute();
     $stmt->bind_result($result);
@@ -30,7 +30,7 @@
     unset ($result);
 
     //Get other district details
-    $stmt = $conn->prepare("SELECT district_colour,postcodeChar,points FROM districts WHERE id=?");
+    $stmt = $conn->prepare("SELECT district_colour,postcodeChar,points FROM districts WHERE district_id=?");
     $stmt->bind_param("i", $id);
     $stmt->execute();
     $result = $stmt->get_result();
