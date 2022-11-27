@@ -53,12 +53,23 @@
     <body>
         <?php include $_SERVER["DOCUMENT_ROOT"]."/includes/html/header.php"; ?>
         <div id="main_container">
+            <form action="/pages/browse.php">
+                <input id="back_button" type="submit" value="Back">
+            </form>
             <h1><?php echo ($district_name); ?></h1>
             <div id="side_box">
                 <p class="info_text">Postcode Char: <?php echo ($postcode_char); ?></p>
                 <p class="info_text">District Colour: <?php echo ($district_colour); ?></p>
                 <div id="colour_box">
                 </div>
+                <?php if ($logged_in) {
+                    echo (`
+                    <form action="/pages/info/edit/edit_district.php" method="GET">
+                        <input type="hidden" value="` + $id + `" name="id">
+                        <input id="edit_button" type="submit" value="Edit">
+                    </form>
+                    `);
+                } ?>
             </div>
         </div>
     </body>
