@@ -11,6 +11,12 @@
 <html>
     <head>
         <title>Register district</title>
+        <link rel="stylesheet" href="/css/main.css">
+        <style>
+            body {
+                padding: 0px;
+            }
+        </style>
     </head>
     <body>
         <?php include $_SERVER["DOCUMENT_ROOT"]."/includes/html/header.php"; ?>
