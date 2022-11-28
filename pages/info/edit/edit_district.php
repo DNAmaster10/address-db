@@ -54,8 +54,10 @@
         <div id="main_container">
             <form id="back_button_form" action="/pages/info/district_info
             <form id="edit_district_form" action="/pages/info/edit/edit_district_submit.php" method="POST">
-                <input type="text" name="district_name" placeholder="District Name" value="<?php echo ($district_name); ?>">
-                <input type="color" name="district_color" value="<?php echo ($district_colour) ?>">
+                <p id="info_text">District Name: </p><input type="text" name="district_name" placeholder="District Name" value="<?php echo ($district_name); ?>">
+                <br>
+                <p id="info_text">District Colour: </p><input type="color" name="district_color" value="<?php echo ($district_colour) ?>">
+                <br>
                 <input type="submit" value="Submit">
             </form>
         </div>
