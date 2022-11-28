@@ -63,12 +63,12 @@
                 <div id="colour_box">
                 </div>
                 <?php if ($logged_in) {
-                    echo (`
+                    echo `
                     <form action="/pages/info/edit/edit_district.php" method="GET">
-                        <input type="hidden" value="` + $id + `" name="id">
+                        <input type="hidden" value="$id" name="id">
                         <input id="edit_button" type="submit" value="Edit">
                     </form>
-                    `);
+                    `;
                 } ?>
             </div>
         </div>
