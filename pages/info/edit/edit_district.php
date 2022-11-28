@@ -34,12 +34,12 @@
     $stmt = $conn->prepare("SELECT district_colour,postcodeChar FROM districts WHERE district_id=?");
     $stmt->bind_param("i", $id);
     $stmt->execute();
-    $stmt->close();
     $result = $stmt->get_result();
     while ($row = $result->fetch_assoc()) {
         $district_colour = $row["district_colour"];
         $postcodeChar = $row["postcodeChar"];
     }
+    $stmt->close();
     unset ($result);
 ?>
 <!DOCTYPE html>
