@@ -8,10 +8,10 @@
         echo "error";
         die();
     }
-    $search_term = $conn->real_escape_string($_POST["search_term"]);
+    $search_term = $_POST["search_term"];
     $search_term = strtolower($search_term);
     $search_term_first = substr($search_term, 0);
-    $search_categories = $conn->real_escape_string($_POST["search_categories"]);
+    $search_categories = $_POST["search_categories"];
     $search_categories_array = explode(",", $search_categories);
     $category_length = count($search_categories_array);
     $sendback_string = "&_&";

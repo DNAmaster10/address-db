@@ -1,14 +1,18 @@
 <?php
     include $_SERVER["DOCUMENT_ROOT"]."/includes/dbh.php";
     include $_SERVER["DOCUMENT_ROOT"]."/includes/check_login.php";
-    #Get the street unit name
-    if (!isset($_POST["street_unit"])) {
-        $_SESSION["street_unit_error"] = "Please enter a name for the street unit";
+
+    function error($error) {
+        $_SESSION["street_unit_error"] = $error;
         header ("Location: /pages/register/register-street_unit.php");
         die();
     }
+    #Get the street unit name
+    if (!isset($_POST["street_unit"])) {
+        error("Please enter a name for the street unit");
+    }
     #Make sure a street unit with that name does not already exist
-    $unit_name = $conn->real_escape_string ($_POST["street_unit"]);
+    $unit_name = $_POST["street_unit"];
     $stmt = $conn->prepare("SELECT name FROM street_units WHERE name=?");
     $stmt->bind_param("s",$unit_name);
     $stmt->execute();
@@ -16,18 +20,14 @@
     $stmt->fetch();
     $stmt->close();
     if ($result) {
-        $_SESSION["street_unit_error"] = "A street unit with that name already exists";
-        header ("Location: /pages/register/register-street_unit.php");
-        die();
+        error("A street unit with that name already exists");
     }
     unset($result);
     #Get district
     if (!isset($_POST["district"])) {
-        $_SESSION["street_unit_error"] = "Please select a parent district";
-        header ("Location: /pages/register/register-street_unit.php");
-        die();
+        error("Please select a parent district");
     }
-    $district = $conn->real_escape_string($_POST["district"]);
+    $district = $_POST["district"];
     #Make sure district exists
     $stmt = $conn->prepare("SELECT postcodeChar FROM districts WHERE district_name=?");
     $stmt->bind_param("s",$district);
@@ -36,19 +36,14 @@
     $stmt->fetch();
     $stmt->close();
     if (!$result) {
-        $_SESSION["street_unit_error"] = "A district with that name does not exist.";
-        header ("Location: /pages/register/register-street_unit.php");
-        die();
+        error("A district with that name does not exist.");
     }
     $district_code = $result;
     unset($result);
     if (strlen($_POST["unit_code"]) > 0) {
-        error_log("Got to line 44");
-        $code = $conn->real_escape_string($_POST["unit_code"]);
+        $code = $_POST["unit_code"];
         if (strlen($code) > 1) {
-            $_SESSION["street_unit_error"] = "Enter a code 1 character long";
-            header ("Location: /pages/register/register-street_unit.php");
-            die();
+            error("Enter a code 1 character long");
         }
         $stmt = $conn->prepare ("SELECT name FROM street_units WHERE postcodeChar = ? AND parent_district = ?");
         $stmt->bind_param("ss",$code,$district);
@@ -57,13 +52,10 @@
         $stmt->fetch();
         $stmt->close();
         if (strlen($result) > 0) {
-            $_SESSION["street_unit_error"] = "A unit with that code already exists";
-            header ("Location: /pages/register/register-street_unit.php");
-            die();
+            error("A unit with that code already exists");
         }
-        error_log("Got to line 61");
         $full_code = $district_code.$code;
-        $coords = $conn->real_escape_string($_POST["coords"]);
+        $coords = $_POST["coords"];
         $coords = str_replace("(","", $coords);
         $coords = str_replace(")","", $coords);
         $stmt = $conn->prepare("INSERT INTO street_units (name,postcodeChar,full_postcode,parent_district,points) VALUES (?,?,?,?,?)");
@@ -112,13 +104,11 @@
             }
         }
         if (!$empty_found) {
-            $_SESSION["street_unit_error"] = "The maximum number of street units for this district has been reached.";
-            header ("Location: /pages/register/register-street_unit.php");
-            die();
+            error("The maximum number of street units for this district has been reached.");
         }
         else {
             $full_code = $district_code.$code;
-            $coords = $conn->real_escape_string($_POST["coords"]);
+            $coords = $_POST["coords"];
             $coords = str_replace("(","", $coords);
             $coords = str_replace(")","", $coords);
             $stmt = $conn->prepare("INSERT INTO street_units (name,postcodeChar,full_postcode,parent_district,points) VALUES (?,?,?,?,?)");

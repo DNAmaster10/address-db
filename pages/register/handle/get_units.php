@@ -6,7 +6,7 @@
         echo ("error");
     }
     else {
-        $district = $conn->real_escape_string($_GET["district"]);
+        $district = $_GET["district"];
         $stmt = $conn->prepare("SELECT name FROM street_units WHERE parent_district=?");
         $stmt->bind_param("s",$district);
         $stmt->execute();

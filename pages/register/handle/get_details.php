@@ -8,7 +8,7 @@
         echo ("error");
         die();
     }
-    $coords_string = $conn->real_escape_string($_GET["coords"]);
+    $coords_string = $_GET["coords"];
     if (!str_contains($coords_string,",")) {
         echo ("error");
         die();
