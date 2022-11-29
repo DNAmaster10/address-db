@@ -52,7 +52,7 @@
     <body>
         <?php include $_SERVER["DOCUMENT_ROOT"]."/includes/html/header.php"; ?>
         <div id="main_container">
-            <form id="back_button_form" action="/pages/info/district_info.php?id=<?php echo ($id); ?>">
+            <form id="back_button_form" action="/pages/info/district_info.php?id=<?php echo (strval($id)); ?>">
                 <input type="submit" value="Back">
             </form>
             <form id="edit_district_form" action="/pages/info/edit/edit_district_submit.php" method="POST">
