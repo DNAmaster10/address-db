@@ -2,31 +2,29 @@
     session_start();
     include $_SERVER["DOCUMENT_ROOT"]."/includes/dbh.php";
     include $_SERVER["DOCUMENT_ROOT"]."/includes/check_login.php";
-    if (!isset($_POST["district_name"])) {
-        $_SESSION["district_error"] = "Please enter a valid district name";
+    
+    function error($error) {
+        $_SESSION["district_error"] = $error;
         header ("Location: /pages/register/register-district.php");
         die();
+    }
+    if (!isset($_POST["district_name"])) {
+        error("Please enter a valid district name");
     }
     if (!isset($_POST["colour_code"])) {
-        $_SESSION["district_error"] = "Please select a colour";
-        header ("Location: /pages/register/register-district.php");
-        die();
+        error("Please select a colour");
     }
     if (!isset($_POST["points"]) or strlen($_POST["points"]) < 16) {
-        $_SESSION["district_error"] = "Please enter at least three points for the district border";
-        header ("Location: /pages/register/register-district.php");
-        die();
+        error("Please enter at least three points for the district border");
     }
-    $points = $conn->real_escape_string($_POST["points"]);
+    $points = $_POST["points"];
     if ((substr_count($points, ".")) < 2) {
-        $_SESSION["district_error"] = "Please enter at least three points for the district border";
-        header ("Location: /pages/register/register-district.php");
-        die();
+        error("Please enter at least three points for the district border");
     }
     $points = str_replace("(", "", $points);
     $points = str_replace(")", "", $points);
 
-    $district_name = $conn->real_escape_string($_POST["district_name"]);
+    $district_name = $_POST["district_name"];
     $stmt = $conn->prepare("SELECT postcodeChar FROM districts WHERE district_name=?");
     $stmt->bind_param("s", $district_name);
     $stmt->execute();
@@ -34,19 +32,15 @@
     $stmt->fetch();
     $stmt->close();
     if (strlen($result) > 0) {
-        $_SESSION["district_error"] = "A district with that name already exists";
-        header ("Location: /pages/register/register-district.php");
-        die();
+        error("A district with that name already exists");
     }
     if (strlen($_POST["code"]) > 0) {
         if (strlen($_POST["code"]) > 1) {
-            $_SESSION["district_error"] = "Code too long. Maximim one character allowed.";
-            header ("Location: /pages/register/register-district.php");
-            die();
+            error("Code too long. Maximim one character allowed.");
         }
-        $code = $conn->real_escape_string($_POST["code"]);
+        $code = $_POST["code"];
         $code = strtoupper($code);
-        $colour_code = $conn->real_escape_string($_POST["colour_code"]);
+        $colour_code = $_POST["colour_code"];
         $stmt = $conn->prepare("SELECT postcodeChar FROM districts WHERE postcodeChar = ?");
         $stmt->bind_param("s", $code);
         $stmt->execute();
@@ -54,9 +48,7 @@
         $stmt->fetch();
         $stmt->close();
         if (strlen($result) > 0) {
-            $_SESSION["district_error"] = "A district with that code already exists.";
-            header ("Location: /pages/register/register-district.php");
-            die();
+            error("A district with that code already exists.");
         }
         else {
             unset($result);
@@ -69,7 +61,7 @@
         }
     }
     else {
-        $colour_code = $conn->real_escape_string($_POST["colour_code"]);
+        $colour_code = $_POST["colour_code"];
         $current_letter = "A";
         $loop_count = 1;
         $empty_found = false;
@@ -119,9 +111,7 @@
                 unset($result);
             }
         }
-        $_SESSION["district_error"] = "The maximim ammount of districts for this city has been reached";
-        header ("Location: /pages/register/register-district.php");
-        die();
+        error("The maximim ammount of districts for this city has been reached");
     }
 ?>
 <!DOCTYPE html>

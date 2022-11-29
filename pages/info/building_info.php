@@ -5,11 +5,16 @@
     //Make sure variables for searching are set
     if (!isset($_GET["id"])) {
         $_SESSION["generic_error"] = "GET variable 'id' is not set";
-        header ("Location: /pages/error/generic_error.php");
+        header ("Location: /pages/error/generic-error.php");
+        die();
+    }
+    if (!is_numeric($_GET["id"])) {
+        $_SESSION["generic_error"] = "Id invalid";
+        header ("Location: /pages/error/generic-error.php");
         die();
     }
     //Check to make sure building exists in database
-    $building_id = $conn->real_escape_string($_GET["id"]);
+    $building_id = $_GET["id"];
     $building_id = intval($building_id);
     $stmt = $conn->prepare("SELECT building_name FROM buildings WHERE id=?");
     $stmt->bind_param("i",$building_id);
@@ -18,7 +23,7 @@
     $stmt->fetch();
     $stmt->close();
     if (!$result) {
-        $_SESSION["generic_error"] = "Building not found in database";
+        $_SESSION["generic-error"] = "Building not found in database";
         header ("Location: /pages/error/generic_error.php");
         die();
     }

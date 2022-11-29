@@ -11,8 +11,8 @@
         header ("Location: /pages/login/login.php");
         die();
     }
-    $username = $conn->real_escape_string($_POST["username"]);
-    $password = $conn->real_escape_string($_POST["password"]);
+    $username = $_POST["username"];
+    $password = $_POST["password"];
 
     $stmt = $conn->prepare("SELECT password FROM users WHERE username=?");
     $stmt->bind_param("s", $username);
