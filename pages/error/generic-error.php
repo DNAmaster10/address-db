@@ -21,14 +21,19 @@
         </style>
         <link rel="stylesheet" href="/css/main.css">
         <title>Error</title>
+        <style>
+            #error_message_container {
+                padding: 10px;
+            }
+        </style>
     </head>
     <body>
         <?php include $_SERVER["DOCUMENT_ROOT"]."/includes/html/header.php"; ?>
         <div id="error_message_container">
-        <p><?php echo $error_message; ?></p>
-        <form action="/index.php">
-            <input type="submit" value="Home">
-        </form>
+            <p><?php echo $error_message; ?></p>
+            <form action="/index.php">
+                <input type="submit" value="Home">
+            </form>
         </div>
     </body>
 </html>

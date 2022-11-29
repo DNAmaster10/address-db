@@ -1,15 +1,17 @@
 <?php
     session_start();
     include $_SERVER["DOCUMENT_ROOT"]."/includes/dbh.php";
-    if (!isset($_SESSION["username"])) {
-        $_SESSION["generic_error"] = "Your session has expired.";
-        header ("location: /pages/error/generic-error.php");
+
+    function error($error) {
+        $_SESSION["generic_error"] = $error;
+        header ("Location: /pages/error/generic-error.php");
         die();
     }
+    if (!isset($_SESSION["username"])) {
+        error("Your session has expired.");
+    }
     else if (!isset($_SESSION["password"])) {
-        $_SESSION["generic_error"] = "Your session has expired.";
-        header ("location: /pages/error/generic_error.php");
-        die();
+        error("Your session has expired.");
     }
     $stmt = $conn->prepare("SELECT password FROM users WHERE username=?");
     $stmt->bind_param("s",$_SESSION["username"]);
@@ -21,10 +23,7 @@
         $logged_in = true;
     }
     else {
-        $_SESSION["generic_error"] = "There was an issue verifying your account.";
-        $logged_in = false;
-        header ("Location: /pages/error/generic-error.php");
-        die();
+        error("There was an issue verifying your account.");
     }
     unset($result);
 ?>
