@@ -41,6 +41,7 @@
         $current_district_name = $result;
     }
     unset($result);
+    error_log("Test: ".$current_district_name);
 
     //Check if the district name needs changing, if so, change it
     if (!$current_district_name == $_POST["district_name"]) {
