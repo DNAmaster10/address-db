@@ -45,6 +45,7 @@
 
     //Check if the district name needs changing, if so, change it
     if (!$current_district_name == $_POST["district_name"]) {
+        error_log("Got to 2");
         //Check if another district with that name already exists
         $new_district_name = $_POST["district_name"];
 
