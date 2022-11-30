@@ -44,7 +44,6 @@
 
     //Check if the district name needs changing, if so, change it
     if (!($current_district_name == $_POST["district_name"])) {
-        error_log("Got to 2");
         //Check if another district with that name already exists
         $new_district_name = $_POST["district_name"];
 
@@ -65,9 +64,10 @@
         $stmt->close();
 
         $stmt = $conn->prepare("UPDATE street_units SET parent_district=? WHERE parent_district=?");
-        $stmt->bind_param("ss", $current_district_name, $new_district_name);
+        $stmt->bind_param("ss", $new_district_name, $current_district_name);
         $stmt->execute();
         $stmt->close();
+
     }
 
     //Update district colour
